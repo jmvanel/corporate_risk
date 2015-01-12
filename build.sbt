@@ -19,3 +19,4 @@ javacOptions ++= Seq("-source","1.7", "-target","1.7")
 resolvers += Resolver.file("Local repo", file(System.getProperty("user.home") + "/.ivy2/local"))(Resolver.ivyStylePatterns)
 // cf http://stackoverflow.com/questions/16400877/local-dependencies-resolved-by-sbt-but-not-by-play-framework
 
+lazy val myapp = (project in file(".")).enablePlugins(PlayScala)
