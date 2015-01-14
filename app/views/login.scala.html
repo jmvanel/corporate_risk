@@ -1,0 +1,12 @@
+@(loginForm: Form[(String, String)])
+
+@main("Welcome to Corporate Risk!") {
+    <h2>Login</h2>
+    @helper.form(action = routes.Auth.authenticate) {
+    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
+    	
+    	@helper.inputText(loginForm("email"))
+    	@helper.inputPassword(loginForm("password"))
+    	<input type="submit" class="btn" value="Login">
+    }
+}
