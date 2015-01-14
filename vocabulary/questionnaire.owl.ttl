@@ -1,7 +1,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl:  <http://www.w3.org/2002/07/owl#>.
 @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
-@prefix     : <http://www.bizinnov.com/quest.owl.ttl#> .
+@prefix     : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
 <> a owl:Ontology ; rdfs:label "Vocabulaire RDF très simple sur un questionnaire correspondant au fichier questionnaire_risque.xlsx" .
 
@@ -9,12 +9,19 @@ ques:theme a owl:DatatypeProperty ;
 	rdfs:domain ques:Question .
 ques:label a owl:DatatypeProperty  ;
 	rdfs:domain ques:Question .
+
 ques:answerType a owl:ObjectProperty  ;
-	rdfs:domain ques:Question .
+	rdfs:domain ques:Question ;
+	rdfs:range ques:AnswerType .
 
 ques:Question a owl:Class .
 ques:AnswerType a owl:Class ;
   owl:oneOf (
 	:Interval-1-5
   ).
+
+ques:interval-1-5 a  rdfs:Datatype;
+  owl:onDatatype  xsd:integer;
+  owl:withRestrictions (
+    [xsd:minInclusive 1] [xsd:maxInclusive 5] ) .
 
