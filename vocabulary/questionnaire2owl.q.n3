@@ -19,7 +19,7 @@
  ?Q a owl:DatatypeProperty ;
  rdfs:label ?L ;
  rdfs:comment ?C ;
- rdfs:domain ques:BusinessFeature ;
+ # rdfs:domain ques:BusinessFeature ;
  rdfs:range ques:interval-1-5 ;
  ques:coef ?CO .
 } .
@@ -28,12 +28,17 @@
 # Rassembler par theme pour faire une owl:Class
 { ?Q a ques:Question ;
   ques:theme ?T ;
-  :hasId ?C . # voir règle en chaînage arrière
+  :hasRubricId ?C . # voir règle en chaînage arrière
 } => {
   ?C a owl:Class ;
   rdfs:label ?T .
 }.
 
-# Relier le theme avec les owl:DatatypeProperty via rdfs:domain TODO
+# Relier le theme avec les owl:DatatypeProperty via rdfs:domain
+{ ?Q a ques:Question ;
+  :hasRubricId ?C . # voir règle en chaînage arrière
+} => {
+  ?Q rdfs:domain ?C .
+}.
 
 

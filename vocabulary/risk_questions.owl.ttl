@@ -1,263 +1,334 @@
-#Processed by Id: euler.yap 7602 2014-12-10 20:26:19Z josd
-#eye --nope risk_questions.raw.ttl --query questionnaire2owl.q.n3 questionnaire2owl.n3
+#Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
+        #    using base file:///home/jmv/src/corporate_risk/vocabulary/risk_questions.owl0.ttl
+        
+#  Notation3 generation by
+#       notation3.py,v 1.200 2007/12/11 21:18:08 syosi Exp
 
-PREFIX string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX fn: <http://www.w3.org/2005/xpath-functions#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
-
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-5> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-4> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-4> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-4> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-5> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-6> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-7> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-8> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-4> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-9> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-4> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-2> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-3> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-1> a owl:DatatypeProperty.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-2> a owl:DatatypeProperty.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#5" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#6" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#7" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#8" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#9" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#10" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#11" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#12" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#13" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#14" a owl:Class.
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#15" a owl:Class.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> ques:coef "50"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-2> ques:coef "50"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-1> ques:coef "20"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-2> ques:coef "15"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-3> ques:coef "30"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-5> ques:coef "20"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-1> ques:coef "40"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-2> ques:coef "40"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-3> ques:coef "20"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-2> ques:coef "20"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-4> ques:coef "25"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-1> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-3> ques:coef "30"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-4> ques:coef "30"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-1> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-2> ques:coef "15"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-3> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-4> ques:coef "15"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-5> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-6> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-7> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-8> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-1> ques:coef "15"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-2> ques:coef "5"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-3> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-4> ques:coef "10"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-9> ques:coef "5"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-1> ques:coef "30"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-2> ques:coef "25"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-3> ques:coef "15"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-4> ques:coef "30"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-1> ques:coef "35"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-2> ques:coef "35"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-3> ques:coef "30"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-1> ques:coef "45"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-3> ques:coef "25"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-1> ques:coef "50"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-2> ques:coef "50"^^<http://www.w3.org/2001/XMLSchema#int>.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> rdfs:label "Existe-t-il une politique de sécurité locale spécifique (formelle ou informelle) ? Sur quelle base méthodologique a-t-elle été développée ? Les domaines non techniques (RH, crises, continuité, etc.) sont-ils couverts?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-2> rdfs:label "La démarche de politique de sécurité (ou pour le moins les pratiques de sécurité) est-elle soutenue par le management ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-1> rdfs:label "Comment est organisée la sécurité des SI au sein de XXX et de ses processus? Les acteurs sont-ils désignés et connus (par la DG et au sein de l'entreprise) et par la même sont-ils légitimes?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-2> rdfs:label "Existe-t-il un correspondant ou un point unique d'entrée pour la gestion des règles techniques qui ont trait à la sécurité (ouverture de comptes sur internet, gestion des ports des firewalls, etc.…)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-3> rdfs:label "Des audits de sécurité indépendants sont-ils menés régulièrement à l'initiative de la direction générale ou de la direction de l'audit?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-5> rdfs:label "Existe-t-il une classification portant sur la confidentialité pour les biens de l'entreprise ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-1> rdfs:label "Existe-t-il un inventaire formalisé des ressources des SI (données traitées, équipements matériels et logiciels…) précisant les propriétaires et les niveaux de besoin en sécurité?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-2> rdfs:label "Les exigences associées à la manipulation des ressources sensibles sont-elles établies en connaissance des scénarios de risque ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-3> rdfs:label "Des pratiques de classification, de marquage et de manipulation de l'information confidentielle sont-elles définies et rigoureusement appliquées?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-2> rdfs:label "Les conséquences en termes de sécurité de l'évolution professionnelle des personnes sont-elles appréhendées (nouvelles responsabilités, changement de poste, départ volontaire, licenciement…)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-4> rdfs:label "Existe-t-il une gestion des entrées et sorties des utilisateurs internes et externes ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-1> rdfs:label "Existe-t-il des règles de zonages en fonction de la sensibilité des ressources (ex : gestion des archives, serveurs de secours…)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-3> rdfs:label "Est ce que les menaces liées à la sécurité environnementale  (incendie, dégât des eaux, surtension…) sont étudiées et couvertes ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-4> rdfs:label "Les moyens de climatisation (climatisation de secours, puissance, redondance et contrats d'entretien) et d'alimentation électrique sont-ils adaptés?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-1> rdfs:label "Est-ce que les activités de développement, d'exploitation et de production sont basées sur des processus établis (gestion des changements, maîtrise des compétences, séparation des environnements)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-2> rdfs:label "Existe-t-il une politique effective de limitation des cumuls de privilèges (administration système, données, sécurité, gestion des habilitations etc.…)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-3> rdfs:label "Existe-t-il une politique de lutte contre les virus et autres codes malveillants pour les serveurs et les postes de travail?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-4> rdfs:label "Existe-t-il une politique de sauvegarde (sauvegardes et tests) appliquée systématiquement ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-5> rdfs:label "Existe-t-il une politique de sécurité réseau efficace (moyens de sécurité implémentés et suivis) ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-6> rdfs:label "Les activités de monitoring sur les SI (réseau, applications, systèmes, mécanismes de sécurité) sont-elles définies et mises en œuvre?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-7> rdfs:label "Les échanges d'informations par voie électronique ou physique sont-ils maîtrisés, s'inscrivent-ils dans des protocoles d'autorisation formels ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-8> rdfs:label "Les applications de dématérialisation (procédures, e-commerce, …) sont-elles spécifiquement sécurisées en tenant compte de l'évolution des menaces?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-1> rdfs:label "Avez-vous des procédures écrites d'attribution des droits rigoureuses ? S'appuient-elles sur une traçabilité indéfectible de l'origine des demandes ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-2> rdfs:label "Les droits des utilisateurs sont-ils à jour et en cohérence avec les besoins métiers ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-3> rdfs:label "Le contrôle d'accès au réseau s'appuie-t-il sur des mécanismes autorisant les seuls personnes et équipements légitimes?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-4> rdfs:label "Existe-t-il des mécanismes de sécurité suffisamment renforcés pour les applications sensibles (vérification de la qualité des mdp, changements forcés des mdp, authentification forte, sécurisation des logs d'accès…)".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-9> rdfs:label "Existe-t-il des mesures supplémentaires pour l'informatique nomade, non exclusivement les postes VIP ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-1> rdfs:label "Les aspects de sécurité sont-ils intégrés systématiquement dans tous les nouveaux projets ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-2> rdfs:label "Existe-t-il des phases de recettes fonctionnelles et techniques de sécurité en fonction de la sensibilité des applications?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-3> rdfs:label "Existe-t-il des moyens spécifiques, notamment cryptographiques, adaptés aux ressources les plus sensibles ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-4> rdfs:label "Les contrats de maintenance sont-ils établis en cohérence avec les besoins des applications?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-1> rdfs:label "Des moyens (techniques et organisationnels) sont-ils en œuvre pour identifier les incidents de sécurité au plus tôt?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-2> rdfs:label "Des procédures et processus de mobilisation des acteurs concernés par le traitement des incidents sont-ils définis, documentés et effectifs (personnes connues, téléphones mobiles, audio pré-réservée…)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-3> rdfs:label "Les événements de sécurité impliquent-ils la DSI Groupe, tant dans la phase de résolution que dans la phase de reporting a posteriori?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-1> rdfs:label "Est-ce que les besoins métiers de continuité sont exprimés pour les principales applications (PCA) et précisent les durées d'indisponibilité et les durées de perte maximale de données?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-3> rdfs:label "Les délais pour réinjecter les différents types de données sont-ils connus ?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-1> rdfs:label "Avez-vous fait l'inventaire des exigences légales auxquelles votre organisation est soumise et quelles sont les mesures prises en conséquence (propriété intellectuelle, données personnelles...)? Y a-t-il des spécificités significatives à prendre en compte (règlements interprofessionnels, décrets spécifiques, ex: BALE2/SOLVENCY...)?".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-2> rdfs:label "Quels sont les moyens mis en place pour évaluer la conformité de la sécurité du système d'information par rapport à la politique de sécurité (ou autre référentiel si elle n'existe pas) ?".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#5" rdfs:label "POLITIQUE DE SECURITE".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#6" rdfs:label "ORGANISATION DE LA SECURITE".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#7" rdfs:label "BIENS SENSIBLES".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#8" rdfs:label "SECURITE ET PERSONNEL".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#9" rdfs:label "SECURITE PHYSIQUE".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#10" rdfs:label "EXPLOITATION ET RESEAUX".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#11" rdfs:label "CONTRÔLE D'ACCES".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#12" rdfs:label "DEVELOPPEMENTS et MCO".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#13" rdfs:label "ALERTES ET CRISES".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#14" rdfs:label "CONTINUITE D'ACTIVITE".
-"http://www.bizinnov.com/ontologies/quest.owl.ttl#15" rdfs:label "CONFORMITE".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> rdfs:comment "La politique de sécurité peut prendre des formes diverses, l'essentiel étant qu'elle décrive les objectifs prioritaires de sécurité, les principes d'organisation et les grandes règles dans des domaines tels que ceux explorés par le présent questionnaire.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-2> rdfs:comment "Le management devrait démontrer son intérêt et son soutien (ex: inviter la sécurité dans les ordres du jour de certains comités décisionnels, publier une lettre d'intention, fixer certains objectifs aux cadres dirigeants…).".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-1> rdfs:comment "La fonction sécurité mobilise plusieurs strates, du stratégique à la mise en œuvre et jusqu'au suivi. Au minimum il doit y avoir un RSSI (Responsable de la Sécurité des SI) ou une fonction équivalente. Les acteurs concernés doivent y consacrer une part suffisante de leur temps de travail.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-2> rdfs:comment "Plus généralement, il doit un avoir une fonction reconnue d'administrateur sécurité. L'administrateur de sécurité est celui qui gère les privilèges des personnes et des ressources.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-3> rdfs:comment "Les audits menés à ce niveau peuvent être techniques, mais ils doivent aussi aborder des problématiques organisationnelles ou fonctionnelles qui témoignent de la maturité atteinte. Ils peuvent aussi être commandités par le groupe.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-5> rdfs:comment "Une classification est définie pour les biens de l'entreprise, les personnes sont habilitées en fonction des niveau de classification des informations qu'elles gèrent, les responsables des biens sont identifiés".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-1> rdfs:comment "Il s'agit ici d'être en mesure de connaître les biens les plus sensibles (applications, machines, bases de données…) sur les critères de Confidentialité, d'Intégrité, de Disponibilité et de Preuve.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-2> rdfs:comment "Les ressources sensibles peuvent être soumises à des risques spécifiques à l'entité. (Par exemple, indisponibilité du centre de secours suite un conflit social bloquant le quartier).".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-3> rdfs:comment "Le marquage de l'information s'entend aussi bien pour l'information papier (impression sécurisée, plan de classement, tampon CONFIDENTIEL…) que pour l'information électronique (chiffrement, destruction sécurisée…).".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-2> rdfs:comment "Le point essentiel est que l'information soit remontée de manière systématique, et surtout au plus tôt. L'information doit être fournie par la DRH sur la base d'un processus traçable (ex: mail, note…).".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-4> rdfs:comment "La table des droits d'accès doit être mise à jour lors de départ de personnel interne ou externe à l'entreprise ou de changement de fonction.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-1> rdfs:comment "Il s'agit ici de gérer des périmètres de sécurité. Les conventions de nommage sont libres et peuvent être partagées avec des conventions qui ne sont pas spécifiques à l'informatique.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-3> rdfs:comment "L'idée est ici d'identifier si les principaux moyens (détection, extincteurs testés régulièrement, extinction automatique, faux plafonds, sous planchers sécurisés, pompes d'évacuation…) sont présents et nécessaires eut égard au contexte et aux enjeux de sécurité.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-4> rdfs:comment "Les moyens électriques peuvent être : double armoire électrique, onduleurs, groupes de batteries, groupe électrogène...".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-1> rdfs:comment "Cette dimension relève à la fois de la sécurité et de la qualité. L'objectif essentiel est de s'assurer que les différents processus ont une autonomie propre.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-2> rdfs:comment "Les limitations de privilèges doivent répondre à des fonctions techniques (administration, supervision…) mais aussi aux rôles dans l'entreprise (ex: cumuls de droits entre les achats et le paiement). Les aspects métiers doivent être instanciés sur la base d'échanges avec la direction.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-3> rdfs:comment "Les démarches doivent être à la fois techniques et organisationnelles (sensibilisation des personnes, veille active, moteurs antivirus différents, MAJ forcées, vérification des postes au retour, existence d'une DMZ de MAJ, détection spécifique des mouchards, maîtrise des navigateurs Internet…).".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-4> rdfs:comment "Cette politique doit préciser les cibles, les supports, les fréquences et les durées de conservation des sauvegarde. Des tests partiels ou complets doivent être menés annuellement ou plus fréquemment si nécessaire.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-5> rdfs:comment "La politique de sécurité réseau doit cibler le réseau local, et être complémentaire par rapport à la politique de sécurité du Groupe. Elle doit traiter des conditions d'accès au LAN, des moyens de protection locaux spécifiques, des règles de cloisonnement, de la supervision...".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-6> rdfs:comment "Le monitoring (intrusions, erreurs, infections, abus de droits…) doit être adapté à la sensibilité des ressources. Il peut être plus ou moins profond, synchrone ou asynchrone.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-7> rdfs:comment "Ce point peut se traduire, par exemple, par l'activation de protocoles sécurisés entre les messageries, ou encore l'utilisation d'outils tels que PGP.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-8> rdfs:comment "Sont dans la cible des applications telles que les places de marché, les commandes en ligne….".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-1> rdfs:comment "Les attributions de droits doivent notamment s'appuyer sur des démarches d'autorisation par les métiers. Les échanges afférents doivent être tracés.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-2> rdfs:comment "La pertinence des droits implémentés dans les systèmes doit être estimée régulièrement, avec une implication des métiers dans ces opérations de contrôle.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-3> rdfs:comment "Les contrôles d'accès au réseau doivent être adaptés à la sensibilité des données et des applications du réseau (ex de moyens mobilisables : adresses MAC, configuration du poste, mise à jour des fonctions des sécurité sur l'équipement, absence de vulnérabilités critiques, moyens de chiffrement…)".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-4> rdfs:comment "L'authentification doit être renforcée pour les applications et fonctions sensibles (certificats, changements de mots de passe, etc.)".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-9> rdfs:comment "Ces mesures peuvent imposer des connexions réseau exclusives, un firewall personnel, le verrouillage des bases de registre, le renforcement de la sécurité des navigateurs, une authentification forte associée à un VPN…".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-1> rdfs:comment "Pour chaque projet ayant des besoins de sécurité spécifiques, il est nécessaire que le responsable métier exprime ce besoin sur les critères de Disponibilité, d'Intégrité ou de confidentialité. Des besoins spécifiques de conservation des traces et des preuves peuvent aussi être exprimés.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-2> rdfs:comment "Les recettes de sécurité peuvent aller de la simple vérification de la prise en compte fonctionnelle des besoins à une évaluation technique des moyens mis en œuvre.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-3> rdfs:comment "Les moyens cryptographiques peuvent contribuer au chiffrement, au calcul d'empreintes (Hash), à l'authentification forte, à la signature électronique ou encore à l'horodatage sécurisé.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-4> rdfs:comment "Les métiers devraient être impliqués dans la validation des contrats de maintenance, pour ce qui les concerne directement (ex: possibilité de gérer rapidement des évolutions fonctionnelles ou techniques en cas de problème).".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-1> rdfs:comment "Les moyens peuvent viser un suivi synchrone ou asynchrone.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-2> rdfs:comment "De manière concrète, ceci prend la forme de processus et procédures de gestion des crises, incluant une cellule de crise locale avec des passerelles préétablies vers les acteurs légitimes du Groupe.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-3> rdfs:comment "La capitalisation est essentielle pour réduire les incidents au plus tôt, mais aussi pour favoriser l'apprentissage au sein de l'ensemble de l'organisation.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-1> rdfs:comment "Ces besoins de continuité peuvent aussi être connus sous les appellations dîtes PTO (Point Time Objective) et RTO (Recovery Time Objective)".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-3> rdfs:comment "Suite à un sinistre, il faut pouvoir redémarrer les systèmes et applications, mais il convient de bien maîtriser les délais pour recharger les données dans les systèmes.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-1> rdfs:comment "La prise en compte de la législation locale est essentielle, ce peut être le cas pour des sujets comme les moyens de chiffrement, la protection des données personnelles, les droits des salariés…".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-2> rdfs:comment "La conformité s'exprime sur plusieurs niveau : la loi (elle supplante tous les autres), la politique de sécurité en œuvre, les exigences spécifiques, les référentiels d'audit externes éventuellement reconnus.".
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-5> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-4> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-4> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-4> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-5> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-6> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-7> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-8> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-4> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-9> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-4> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-3> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-1> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-2> rdfs:domain ques:BusinessFeature.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#5-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#6-5> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#7-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#8-4> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#9-4> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-4> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-5> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-6> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-7> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#10-8> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-4> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#11-9> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#12-4> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-2> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#13-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#14-3> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-1> rdfs:range ques:interval-1-5.
-<http://www.bizinnov.com/ontologies/quest.owl.ttl#15-2> rdfs:range ques:interval-1-5.
-
-#ENDS 0.184 [sec] TC=49 TP=174 BC=0 BP=0 PM=0 CM=0 FM=0 AM=0
-
+#   Base was: file:///home/jmv/src/corporate_risk/vocabulary/risk_questions.owl0.ttl
+     @prefix : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+    @prefix XML: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix owl: <http://www.w3.org/2002/07/owl#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    
+    :10     a owl:Class;
+         rdfs:label "EXPLOITATION ET RESEAUX" .
+    
+    :10-1     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Cette dimension relève à la fois de la sécurité et de la qualité. L'objectif essentiel est de s'assurer que les différents processus ont une autonomie propre.";
+         rdfs:domain :10;
+         rdfs:label "Est-ce que les activités de développement, d'exploitation et de production sont basées sur des processus établis (gestion des changements, maîtrise des compétences, séparation des environnements)?";
+         rdfs:range :interval-1-5 .
+    
+    :10-2     a owl:DatatypeProperty;
+         :coef "15"^^XML:int;
+         rdfs:comment "Les limitations de privilèges doivent répondre à des fonctions techniques (administration, supervision…) mais aussi aux rôles dans l'entreprise (ex: cumuls de droits entre les achats et le paiement). Les aspects métiers doivent être instanciés sur la base d'échanges avec la direction.";
+         rdfs:domain :10;
+         rdfs:label "Existe-t-il une politique effective de limitation des cumuls de privilèges (administration système, données, sécurité, gestion des habilitations etc.…)?";
+         rdfs:range :interval-1-5 .
+    
+    :10-3     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Les démarches doivent être à la fois techniques et organisationnelles (sensibilisation des personnes, veille active, moteurs antivirus différents, MAJ forcées, vérification des postes au retour, existence d'une DMZ de MAJ, détection spécifique des mouchards, maîtrise des navigateurs Internet…).";
+         rdfs:domain :10;
+         rdfs:label "Existe-t-il une politique de lutte contre les virus et autres codes malveillants pour les serveurs et les postes de travail?";
+         rdfs:range :interval-1-5 .
+    
+    :10-4     a owl:DatatypeProperty;
+         :coef "15"^^XML:int;
+         rdfs:comment "Cette politique doit préciser les cibles, les supports, les fréquences et les durées de conservation des sauvegarde. Des tests partiels ou complets doivent être menés annuellement ou plus fréquemment si nécessaire.";
+         rdfs:domain :10;
+         rdfs:label "Existe-t-il une politique de sauvegarde (sauvegardes et tests) appliquée systématiquement ?";
+         rdfs:range :interval-1-5 .
+    
+    :10-5     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "La politique de sécurité réseau doit cibler le réseau local, et être complémentaire par rapport à la politique de sécurité du Groupe. Elle doit traiter des conditions d'accès au LAN, des moyens de protection locaux spécifiques, des règles de cloisonnement, de la supervision...";
+         rdfs:domain :10;
+         rdfs:label "Existe-t-il une politique de sécurité réseau efficace (moyens de sécurité implémentés et suivis) ?";
+         rdfs:range :interval-1-5 .
+    
+    :10-6     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Le monitoring (intrusions, erreurs, infections, abus de droits…) doit être adapté à la sensibilité des ressources. Il peut être plus ou moins profond, synchrone ou asynchrone.";
+         rdfs:domain :10;
+         rdfs:label "Les activités de monitoring sur les SI (réseau, applications, systèmes, mécanismes de sécurité) sont-elles définies et mises en œuvre?";
+         rdfs:range :interval-1-5 .
+    
+    :10-7     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Ce point peut se traduire, par exemple, par l'activation de protocoles sécurisés entre les messageries, ou encore l'utilisation d'outils tels que PGP.";
+         rdfs:domain :10;
+         rdfs:label "Les échanges d'informations par voie électronique ou physique sont-ils maîtrisés, s'inscrivent-ils dans des protocoles d'autorisation formels ?";
+         rdfs:range :interval-1-5 .
+    
+    :10-8     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Sont dans la cible des applications telles que les places de marché, les commandes en ligne….";
+         rdfs:domain :10;
+         rdfs:label "Les applications de dématérialisation (procédures, e-commerce, …) sont-elles spécifiquement sécurisées en tenant compte de l'évolution des menaces?";
+         rdfs:range :interval-1-5 .
+    
+    :10-9     rdfs:domain :10 .
+    
+    :11     a owl:Class;
+         rdfs:label "CONTRÔLE D'ACCES" .
+    
+    :11-1     a owl:DatatypeProperty;
+         :coef "15"^^XML:int;
+         rdfs:comment "Les attributions de droits doivent notamment s'appuyer sur des démarches d'autorisation par les métiers. Les échanges afférents doivent être tracés.";
+         rdfs:domain :11;
+         rdfs:label "Avez-vous des procédures écrites d'attribution des droits rigoureuses ? S'appuient-elles sur une traçabilité indéfectible de l'origine des demandes ?";
+         rdfs:range :interval-1-5 .
+    
+    :11-10     rdfs:domain :11 .
+    
+    :11-2     a owl:DatatypeProperty;
+         :coef "5"^^XML:int;
+         rdfs:comment "La pertinence des droits implémentés dans les systèmes doit être estimée régulièrement, avec une implication des métiers dans ces opérations de contrôle.";
+         rdfs:domain :11;
+         rdfs:label "Les droits des utilisateurs sont-ils à jour et en cohérence avec les besoins métiers ?";
+         rdfs:range :interval-1-5 .
+    
+    :11-3     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Les contrôles d'accès au réseau doivent être adaptés à la sensibilité des données et des applications du réseau (ex de moyens mobilisables : adresses MAC, configuration du poste, mise à jour des fonctions des sécurité sur l'équipement, absence de vulnérabilités critiques, moyens de chiffrement…)";
+         rdfs:domain :11;
+         rdfs:label "Le contrôle d'accès au réseau s'appuie-t-il sur des mécanismes autorisant les seuls personnes et équipements légitimes?";
+         rdfs:range :interval-1-5 .
+    
+    :11-4     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "L'authentification doit être renforcée pour les applications et fonctions sensibles (certificats, changements de mots de passe, etc.)";
+         rdfs:domain :11;
+         rdfs:label "Existe-t-il des mécanismes de sécurité suffisamment renforcés pour les applications sensibles (vérification de la qualité des mdp, changements forcés des mdp, authentification forte, sécurisation des logs d'accès…)";
+         rdfs:range :interval-1-5 .
+    
+    :11-5     rdfs:domain :11 .
+    
+    :11-6     rdfs:domain :11 .
+    
+    :11-7     rdfs:domain :11 .
+    
+    :11-8     rdfs:domain :11 .
+    
+    :11-9     a owl:DatatypeProperty;
+         :coef "5"^^XML:int;
+         rdfs:comment "Ces mesures peuvent imposer des connexions réseau exclusives, un firewall personnel, le verrouillage des bases de registre, le renforcement de la sécurité des navigateurs, une authentification forte associée à un VPN…";
+         rdfs:domain :11;
+         rdfs:label "Existe-t-il des mesures supplémentaires pour l'informatique nomade, non exclusivement les postes VIP ?";
+         rdfs:range :interval-1-5 .
+    
+    :12     a owl:Class;
+         rdfs:label "DEVELOPPEMENTS et MCO" .
+    
+    :12-1     a owl:DatatypeProperty;
+         :coef "30"^^XML:int;
+         rdfs:comment "Pour chaque projet ayant des besoins de sécurité spécifiques, il est nécessaire que le responsable métier exprime ce besoin sur les critères de Disponibilité, d'Intégrité ou de confidentialité. Des besoins spécifiques de conservation des traces et des preuves peuvent aussi être exprimés.";
+         rdfs:domain :12;
+         rdfs:label "Les aspects de sécurité sont-ils intégrés systématiquement dans tous les nouveaux projets ?";
+         rdfs:range :interval-1-5 .
+    
+    :12-2     a owl:DatatypeProperty;
+         :coef "25"^^XML:int;
+         rdfs:comment "Les recettes de sécurité peuvent aller de la simple vérification de la prise en compte fonctionnelle des besoins à une évaluation technique des moyens mis en œuvre.";
+         rdfs:domain :12;
+         rdfs:label "Existe-t-il des phases de recettes fonctionnelles et techniques de sécurité en fonction de la sensibilité des applications?";
+         rdfs:range :interval-1-5 .
+    
+    :12-3     a owl:DatatypeProperty;
+         :coef "15"^^XML:int;
+         rdfs:comment "Les moyens cryptographiques peuvent contribuer au chiffrement, au calcul d'empreintes (Hash), à l'authentification forte, à la signature électronique ou encore à l'horodatage sécurisé.";
+         rdfs:domain :12;
+         rdfs:label "Existe-t-il des moyens spécifiques, notamment cryptographiques, adaptés aux ressources les plus sensibles ?";
+         rdfs:range :interval-1-5 .
+    
+    :12-4     a owl:DatatypeProperty;
+         :coef "30"^^XML:int;
+         rdfs:comment "Les métiers devraient être impliqués dans la validation des contrats de maintenance, pour ce qui les concerne directement (ex: possibilité de gérer rapidement des évolutions fonctionnelles ou techniques en cas de problème).";
+         rdfs:domain :12;
+         rdfs:label "Les contrats de maintenance sont-ils établis en cohérence avec les besoins des applications?";
+         rdfs:range :interval-1-5 .
+    
+    :13     a owl:Class;
+         rdfs:label "ALERTES ET CRISES" .
+    
+    :13-1     a owl:DatatypeProperty;
+         :coef "35"^^XML:int;
+         rdfs:comment "Les moyens peuvent viser un suivi synchrone ou asynchrone.";
+         rdfs:domain :13;
+         rdfs:label "Des moyens (techniques et organisationnels) sont-ils en œuvre pour identifier les incidents de sécurité au plus tôt?";
+         rdfs:range :interval-1-5 .
+    
+    :13-2     a owl:DatatypeProperty;
+         :coef "35"^^XML:int;
+         rdfs:comment "De manière concrète, ceci prend la forme de processus et procédures de gestion des crises, incluant une cellule de crise locale avec des passerelles préétablies vers les acteurs légitimes du Groupe.";
+         rdfs:domain :13;
+         rdfs:label "Des procédures et processus de mobilisation des acteurs concernés par le traitement des incidents sont-ils définis, documentés et effectifs (personnes connues, téléphones mobiles, audio pré-réservée…)?";
+         rdfs:range :interval-1-5 .
+    
+    :13-3     a owl:DatatypeProperty;
+         :coef "30"^^XML:int;
+         rdfs:comment "La capitalisation est essentielle pour réduire les incidents au plus tôt, mais aussi pour favoriser l'apprentissage au sein de l'ensemble de l'organisation.";
+         rdfs:domain :13;
+         rdfs:label "Les événements de sécurité impliquent-ils la DSI Groupe, tant dans la phase de résolution que dans la phase de reporting a posteriori?";
+         rdfs:range :interval-1-5 .
+    
+    :14     a owl:Class;
+         rdfs:label "CONTINUITE D'ACTIVITE" .
+    
+    :14-1     a owl:DatatypeProperty;
+         :coef "45"^^XML:int;
+         rdfs:comment "Ces besoins de continuité peuvent aussi être connus sous les appellations dîtes PTO (Point Time Objective) et RTO (Recovery Time Objective)";
+         rdfs:domain :14;
+         rdfs:label "Est-ce que les besoins métiers de continuité sont exprimés pour les principales applications (PCA) et précisent les durées d'indisponibilité et les durées de perte maximale de données?";
+         rdfs:range :interval-1-5 .
+    
+    :14-2     rdfs:domain :14 .
+    
+    :14-3     a owl:DatatypeProperty;
+         :coef "25"^^XML:int;
+         rdfs:comment "Suite à un sinistre, il faut pouvoir redémarrer les systèmes et applications, mais il convient de bien maîtriser les délais pour recharger les données dans les systèmes.";
+         rdfs:domain :14;
+         rdfs:label "Les délais pour réinjecter les différents types de données sont-ils connus ?";
+         rdfs:range :interval-1-5 .
+    
+    :15     a owl:Class;
+         rdfs:label "CONFORMITE" .
+    
+    :15-1     a owl:DatatypeProperty;
+         :coef "50"^^XML:int;
+         rdfs:comment "La prise en compte de la législation locale est essentielle, ce peut être le cas pour des sujets comme les moyens de chiffrement, la protection des données personnelles, les droits des salariés…";
+         rdfs:domain :15;
+         rdfs:label "Avez-vous fait l'inventaire des exigences légales auxquelles votre organisation est soumise et quelles sont les mesures prises en conséquence (propriété intellectuelle, données personnelles...)? Y a-t-il des spécificités significatives à prendre en compte (règlements interprofessionnels, décrets spécifiques, ex: BALE2/SOLVENCY...)?";
+         rdfs:range :interval-1-5 .
+    
+    :15-2     a owl:DatatypeProperty;
+         :coef "50"^^XML:int;
+         rdfs:comment "La conformité s'exprime sur plusieurs niveau : la loi (elle supplante tous les autres), la politique de sécurité en œuvre, les exigences spécifiques, les référentiels d'audit externes éventuellement reconnus.";
+         rdfs:domain :15;
+         rdfs:label "Quels sont les moyens mis en place pour évaluer la conformité de la sécurité du système d'information par rapport à la politique de sécurité (ou autre référentiel si elle n'existe pas) ?";
+         rdfs:range :interval-1-5 .
+    
+    :5     a owl:Class;
+         rdfs:label "POLITIQUE DE SECURITE" .
+    
+    :5-1     a owl:DatatypeProperty;
+         :coef "50"^^XML:int;
+         rdfs:comment "La politique de sécurité peut prendre des formes diverses, l'essentiel étant qu'elle décrive les objectifs prioritaires de sécurité, les principes d'organisation et les grandes règles dans des domaines tels que ceux explorés par le présent questionnaire.";
+         rdfs:domain :5;
+         rdfs:label "Existe-t-il une politique de sécurité locale spécifique (formelle ou informelle) ? Sur quelle base méthodologique a-t-elle été développée ? Les domaines non techniques (RH, crises, continuité, etc.) sont-ils couverts?";
+         rdfs:range :interval-1-5 .
+    
+    :5-2     a owl:DatatypeProperty;
+         :coef "50"^^XML:int;
+         rdfs:comment "Le management devrait démontrer son intérêt et son soutien (ex: inviter la sécurité dans les ordres du jour de certains comités décisionnels, publier une lettre d'intention, fixer certains objectifs aux cadres dirigeants…).";
+         rdfs:domain :5;
+         rdfs:label "La démarche de politique de sécurité (ou pour le moins les pratiques de sécurité) est-elle soutenue par le management ?";
+         rdfs:range :interval-1-5 .
+    
+    :6     a owl:Class;
+         rdfs:label "ORGANISATION DE LA SECURITE" .
+    
+    :6-1     a owl:DatatypeProperty;
+         :coef "20"^^XML:int;
+         rdfs:comment "La fonction sécurité mobilise plusieurs strates, du stratégique à la mise en œuvre et jusqu'au suivi. Au minimum il doit y avoir un RSSI (Responsable de la Sécurité des SI) ou une fonction équivalente. Les acteurs concernés doivent y consacrer une part suffisante de leur temps de travail.";
+         rdfs:domain :6;
+         rdfs:label "Comment est organisée la sécurité des SI au sein de XXX et de ses processus? Les acteurs sont-ils désignés et connus (par la DG et au sein de l'entreprise) et par la même sont-ils légitimes?";
+         rdfs:range :interval-1-5 .
+    
+    :6-2     a owl:DatatypeProperty;
+         :coef "15"^^XML:int;
+         rdfs:comment "Plus généralement, il doit un avoir une fonction reconnue d'administrateur sécurité. L'administrateur de sécurité est celui qui gère les privilèges des personnes et des ressources.";
+         rdfs:domain :6;
+         rdfs:label "Existe-t-il un correspondant ou un point unique d'entrée pour la gestion des règles techniques qui ont trait à la sécurité (ouverture de comptes sur internet, gestion des ports des firewalls, etc.…)?";
+         rdfs:range :interval-1-5 .
+    
+    :6-3     a owl:DatatypeProperty;
+         :coef "30"^^XML:int;
+         rdfs:comment "Les audits menés à ce niveau peuvent être techniques, mais ils doivent aussi aborder des problématiques organisationnelles ou fonctionnelles qui témoignent de la maturité atteinte. Ils peuvent aussi être commandités par le groupe.";
+         rdfs:domain :6;
+         rdfs:label "Des audits de sécurité indépendants sont-ils menés régulièrement à l'initiative de la direction générale ou de la direction de l'audit?";
+         rdfs:range :interval-1-5 .
+    
+    :6-4     rdfs:domain :6 .
+    
+    :6-5     a owl:DatatypeProperty;
+         :coef "20"^^XML:int;
+         rdfs:comment "Une classification est définie pour les biens de l'entreprise, les personnes sont habilitées en fonction des niveau de classification des informations qu'elles gèrent, les responsables des biens sont identifiés";
+         rdfs:domain :6;
+         rdfs:label "Existe-t-il une classification portant sur la confidentialité pour les biens de l'entreprise ?";
+         rdfs:range :interval-1-5 .
+    
+    :7     a owl:Class;
+         rdfs:label "BIENS SENSIBLES" .
+    
+    :7-1     a owl:DatatypeProperty;
+         :coef "40"^^XML:int;
+         rdfs:comment "Il s'agit ici d'être en mesure de connaître les biens les plus sensibles (applications, machines, bases de données…) sur les critères de Confidentialité, d'Intégrité, de Disponibilité et de Preuve.";
+         rdfs:domain :7;
+         rdfs:label "Existe-t-il un inventaire formalisé des ressources des SI (données traitées, équipements matériels et logiciels…) précisant les propriétaires et les niveaux de besoin en sécurité?";
+         rdfs:range :interval-1-5 .
+    
+    :7-2     a owl:DatatypeProperty;
+         :coef "40"^^XML:int;
+         rdfs:comment "Les ressources sensibles peuvent être soumises à des risques spécifiques à l'entité. (Par exemple, indisponibilité du centre de secours suite un conflit social bloquant le quartier).";
+         rdfs:domain :7;
+         rdfs:label "Les exigences associées à la manipulation des ressources sensibles sont-elles établies en connaissance des scénarios de risque ?";
+         rdfs:range :interval-1-5 .
+    
+    :7-3     a owl:DatatypeProperty;
+         :coef "20"^^XML:int;
+         rdfs:comment "Le marquage de l'information s'entend aussi bien pour l'information papier (impression sécurisée, plan de classement, tampon CONFIDENTIEL…) que pour l'information électronique (chiffrement, destruction sécurisée…).";
+         rdfs:domain :7;
+         rdfs:label "Des pratiques de classification, de marquage et de manipulation de l'information confidentielle sont-elles définies et rigoureusement appliquées?";
+         rdfs:range :interval-1-5 .
+    
+    :8     a owl:Class;
+         rdfs:label "SECURITE ET PERSONNEL" .
+    
+    :8-1     rdfs:domain :8 .
+    
+    :8-2     a owl:DatatypeProperty;
+         :coef "20"^^XML:int;
+         rdfs:comment "Le point essentiel est que l'information soit remontée de manière systématique, et surtout au plus tôt. L'information doit être fournie par la DRH sur la base d'un processus traçable (ex: mail, note…).";
+         rdfs:domain :8;
+         rdfs:label "Les conséquences en termes de sécurité de l'évolution professionnelle des personnes sont-elles appréhendées (nouvelles responsabilités, changement de poste, départ volontaire, licenciement…)?";
+         rdfs:range :interval-1-5 .
+    
+    :8-3     rdfs:domain :8 .
+    
+    :8-4     a owl:DatatypeProperty;
+         :coef "25"^^XML:int;
+         rdfs:comment "La table des droits d'accès doit être mise à jour lors de départ de personnel interne ou externe à l'entreprise ou de changement de fonction.";
+         rdfs:domain :8;
+         rdfs:label "Existe-t-il une gestion des entrées et sorties des utilisateurs internes et externes ?";
+         rdfs:range :interval-1-5 .
+    
+    :9     a owl:Class;
+         rdfs:label "SECURITE PHYSIQUE" .
+    
+    :9-1     a owl:DatatypeProperty;
+         :coef "10"^^XML:int;
+         rdfs:comment "Il s'agit ici de gérer des périmètres de sécurité. Les conventions de nommage sont libres et peuvent être partagées avec des conventions qui ne sont pas spécifiques à l'informatique.";
+         rdfs:domain :9;
+         rdfs:label "Existe-t-il des règles de zonages en fonction de la sensibilité des ressources (ex : gestion des archives, serveurs de secours…)?";
+         rdfs:range :interval-1-5 .
+    
+    :9-2     rdfs:domain :9 .
+    
+    :9-3     a owl:DatatypeProperty;
+         :coef "30"^^XML:int;
+         rdfs:comment "L'idée est ici d'identifier si les principaux moyens (détection, extincteurs testés régulièrement, extinction automatique, faux plafonds, sous planchers sécurisés, pompes d'évacuation…) sont présents et nécessaires eut égard au contexte et aux enjeux de sécurité.";
+         rdfs:domain :9;
+         rdfs:label "Est ce que les menaces liées à la sécurité environnementale  (incendie, dégât des eaux, surtension…) sont étudiées et couvertes ?";
+         rdfs:range :interval-1-5 .
+    
+    :9-4     a owl:DatatypeProperty;
+         :coef "30"^^XML:int;
+         rdfs:comment "Les moyens électriques peuvent être : double armoire électrique, onduleurs, groupes de batteries, groupe électrogène...";
+         rdfs:domain :9;
+         rdfs:label "Les moyens de climatisation (climatisation de secours, puissance, redondance et contrats d'entretien) et d'alimentation électrique sont-ils adaptés?";
+         rdfs:range :interval-1-5 .
+    
+#ENDS

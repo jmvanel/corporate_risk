@@ -7,7 +7,7 @@
 @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 @prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
-{ ?Q :hasId ?C .
+{ ?Q :hasRubricId ?URI .
 } <= { # chaînage arrière
   # créer un URI pour le thème = owl:Class
   ?Q ques:a ?ID .
@@ -16,4 +16,5 @@
   # _:d eu:trace ("fn:substring-before " ?ID ).
   ques: log:uri ?PREF .
   ( ?PREF ?IDC ) string:concatenation ?C .
+  ?URI log:uri ?C .
 }.
