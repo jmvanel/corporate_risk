@@ -19,5 +19,5 @@ Just like any Play! Framework application, install SBT, and type:
 
     run
 
-For more details, see[in semantic\_forms how-to-run](https://github.com/jmvanel/semantic_forms/tree/master/scala/forms_play#how-to-run)
+For more details, see [in semantic\_forms the paragraph "How to run"](https://github.com/jmvanel/semantic_forms/tree/master/scala/forms_play#how-to-run)
 

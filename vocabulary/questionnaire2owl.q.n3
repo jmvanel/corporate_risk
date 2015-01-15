@@ -1,0 +1,39 @@
+@prefix eu: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix fn:     <http://www.w3.org/2005/xpath-functions#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl:  <http://www.w3.org/2002/07/owl#>.
+@prefix log:  <http://www.w3.org/2000/10/swap/log#>.
+@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+# lancer avec:
+# eye --nope risk_questions.raw.ttl --query questionnaire2owl.q.n3 questionnaire2owl.n3 > risk_questions.owl.ttl
+
+# Chaque question du fichier de tableur devient une owl:DatatypeProperty à valeurs entre 1 et 5
+{ ?Q a ques:Question ;
+  ques:questions ?L ;
+  ques:commentaires ?C ;
+  ques:coef ?CO .
+} => {
+ ?Q a owl:DatatypeProperty ;
+ rdfs:label ?L ;
+ rdfs:comment ?C ;
+ rdfs:domain ques:BusinessFeature ;
+ rdfs:range ques:interval-1-5 ;
+ ques:coef ?CO .
+} .
+
+
+# Rassembler par theme pour faire une owl:Class
+{ ?Q a ques:Question ;
+  ques:theme ?T ;
+  :hasId ?C . # voir règle en chaînage arrière
+} => {
+  ?C a owl:Class ;
+  rdfs:label ?T .
+}.
+
+# Relier le theme avec les owl:DatatypeProperty via rdfs:domain TODO
+
+
