@@ -11,8 +11,8 @@ object Application extends Controller with Secured {
       Ok(views.html.index("Application"))
   }
   
-  def form = withAuth { username => implicit request =>
-      Ok(views.html.form(new CreationForm { actionURI = "/save" }.create("http://xmlns.com/foaf/0.1", "en").get))
+  def form(url: String) = withAuth { username => implicit request =>
+      Ok(views.html.form(new CreationForm { actionURI = "/save" }.create(url, "en").get))
   }
   
   def save = withAuth { username => implicit request =>

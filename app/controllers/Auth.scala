@@ -15,10 +15,6 @@ object Auth extends Controller {
       })
   )
 
-//  val registerForm = Form(
-//    mapping("email" -> nonEmptyText, "password" -> nonEmptyText) (User.apply)(User.unapply)
-//  )
-
   def check(username: String, password: String) = {
     (username == "admin" && password == "1234")  
   }
