@@ -1,0 +1,23 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl:  <http://www.w3.org/2002/07/owl#>.
+@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix     : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+# lancer avec:
+# eye --nope risk_questions.raw.ttl --query questionnaire2owl.n3 > risk_questions.owl.ttl
+# TODO rassembler par theme pour faire un seul DatatypeProperty
+
+{ ?Q a ques:Question ;
+  ques:theme ?T ;
+  ques:questions ?L ;
+  ques:commentaires ?C ;
+  ques:coef ?CO .
+} => {
+ ?Q a owl:DatatypeProperty ;
+ rdfs:label ?L ;
+ rdfs:comment ?C ;
+ rdfs:domain ques:BusinessFeature ;
+ rdfs:range ques:interval-1-5 ;
+ ques:coef ?CO .
+} .
+
