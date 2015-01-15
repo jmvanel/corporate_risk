@@ -4,6 +4,7 @@ import play.api._
 import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
+import models.User
 
 object Auth extends Controller {
 
@@ -14,6 +15,10 @@ object Auth extends Controller {
       })
   )
 
+//  val registerForm = Form(
+//    mapping("email" -> nonEmptyText, "password" -> nonEmptyText) (User.apply)(User.unapply)
+//  )
+
   def check(username: String, password: String) = {
     (username == "admin" && password == "1234")  
   }
@@ -23,6 +28,13 @@ object Auth extends Controller {
   }
 
   def authenticate = Action { implicit request =>
+    loginForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.login(formWithErrors)),
+      user => Redirect(routes.Application.index).withSession(Security.username -> user._1)
+    )
+  }
+  
+  def register = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.login(formWithErrors)),
       user => Redirect(routes.Application.index).withSession(Security.username -> user._1)

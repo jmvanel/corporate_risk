@@ -2,5 +2,8 @@
 
 @main("Welcome to Corporate Risk!") {
     <h2>@message</h2>
-    <a href="/form">Accéder au formulaire</a>
+    <a href="@routes.Application.form">Accéder au formulaire</a>
+    <div>
+    	<a href="@routes.Auth.logout">Se déconnecter</a>
+    </div>
 }

@@ -7,7 +7,8 @@ GET     /                           controllers.Application.index
 GET     /form                       controllers.Application.form
 GET     /login                      controllers.Auth.login
 POST    /login                      controllers.Auth.authenticate
-GET     /logout                     controllers.Auth.login
+POST    /register                   controllers.Auth.register
+GET     /logout                     controllers.Auth.logout
 POST    /save                       controllers.Application.save
 
 # Map static resources from the /public folder to the /assets URL path

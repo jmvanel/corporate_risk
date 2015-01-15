@@ -9,4 +9,14 @@
     	@helper.inputPassword(loginForm("password"))
     	<input type="submit" class="btn" value="Login">
     }
+    
+    <h2>Register</h2>
+    @helper.form(action = routes.Auth.register) {
+    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
+    	
+    	@helper.inputText(loginForm("email"))
+    	@helper.inputPassword(loginForm("password"))
+    	<input type="submit" class="btn" value="Login">
+    }
+    
 }
