@@ -5,7 +5,9 @@ import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
 import models.User
+import models.InMemoryUser
 
+/** TODO indiquer la source d'inspiration */
 object Auth extends Controller {
 
   val loginForm = Form(
@@ -44,6 +46,7 @@ object Auth extends Controller {
   }
 }
 
+/** TODO comment. */
 trait Secured {
 
   def username(request: RequestHeader) = request.session.get(Security.username)
@@ -55,10 +58,11 @@ trait Secured {
       Action(request => f(user)(request))
     }
   }
-//
-//  def withUser(f: User => Request[AnyContent] => Result) = withAuth { username => implicit request =>
-//    User.find(username).map { user =>
-//      f(user)(request)
-//    }.getOrElse(onUnauthorized(request))
-//  }
+
+  /** TODO */
+  def withUser(f: User => Request[AnyContent] => Result) = withAuth { username => implicit request =>
+    InMemoryUser.find(username).map { user =>
+      f(user)(request)
+    }.getOrElse(onUnauthorized(request))
+  }
 }
