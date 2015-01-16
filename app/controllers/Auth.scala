@@ -18,7 +18,7 @@ object Auth extends Controller {
   )
 
   def check(username: String, password: String) = {
-    (username == "admin" && password == "1234")  
+    (username == "admin" && password == "1234")
   }
 
   def login = Action { implicit request =>
@@ -31,7 +31,7 @@ object Auth extends Controller {
       user => Redirect(routes.Application.index).withSession(Security.username -> user._1)
     )
   }
-  
+
   def register = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.login(formWithErrors)),
@@ -60,9 +60,10 @@ trait Secured {
   }
 
   /** TODO */
-  def withUser(f: User => Request[AnyContent] => Result) = withAuth { username => implicit request =>
-    InMemoryUser.find(username).map { user =>
-      f(user)(request)
-    }.getOrElse(onUnauthorized(request))
+  def withUser(f: User => Request[AnyContent] => Result) = withAuth { username =>
+    implicit request =>
+      InMemoryUser.find(username).map { user =>
+        f(user)(request)
+      }.getOrElse(onUnauthorized(request))
   }
 }

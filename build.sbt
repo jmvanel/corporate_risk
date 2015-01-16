@@ -20,3 +20,5 @@ resolvers += Resolver.file("Local repo", file(System.getProperty("user.home") + 
 // cf http://stackoverflow.com/questions/16400877/local-dependencies-resolved-by-sbt-but-not-by-play-framework
 
 lazy val myapp = (project in file(".")).enablePlugins(PlayScala)
+
+scalariformSettings

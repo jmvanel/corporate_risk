@@ -11,9 +11,7 @@ import org.w3.banana.jena.Jena
 /** TODO indiquer le but de la classe */
 // trait RDFUser extends RDFModule with RDFOpsModule {
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-                                                    rdfStore: RDFStore[Rdf, Try,
-                                                      RDFStoreObject.DATASET
-                                                      ]) {
+    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) {
   val rdfStoreObject = RDFStoreObject
   import ops._
   import RDFStoreUser._
@@ -27,13 +25,8 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
   def save(user: User) = {
     val triples = List(
-//      makeTriple(
-//        makeUri(bizinnovUserVocabPrefix + "user1"),
-//        makeUri(bizinnovUserVocabPrefix + "email"),
-//        makeUri(bizinnovUserVocabPrefix + user.email)),
       makeTriple(
-    		  makeUri(bizinnovUserVocabPrefix + user.email),
-//        makeUri(bizinnovUserVocabPrefix + "user1"),
+        makeUri(bizinnovUserVocabPrefix + user.email),
         makeUri(bizinnovUserVocabPrefix + "password"),
         makeUri(bizinnovUserVocabPrefix + MessageDigest.getInstance("MD5").digest(user.password.getBytes))))
     val graph = makeGraph(triples)
@@ -45,25 +38,25 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
 /** TODO indiquer le but de la classe */
 class User(var email: String, var password: String)
-extends RDFUser[Jena]
+  extends RDFUser[Jena]
 
 /** User lookup, using RDF store  */
 object RDFStoreUser extends JenaModule {
   import ops._
   val bizinnovUserVocabPrefix = "http://bizinnov.com/ontologies/users.owl.ttl#"
   val bizinnovUserGraphURI = URI("http://bizinnov.com/ontologies/users/")
-    val rdfStoreObject = RDFStoreObject
-    def find(email: String): Option[User] = {
-    	rdfStoreObject.rdfStore.r(rdfStoreObject.dataset, {
-      val userGraph = rdfStore.getGraph( rdfStoreObject.dataset, bizinnovUserGraphURI).get
+  val rdfStoreObject = RDFStoreObject
+  def find(email: String): Option[User] = {
+    rdfStoreObject.rdfStore.r(rdfStoreObject.dataset, {
+      val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
       // TODO null pas beau !!!!!!!!!!!!!!
-      val triples = ops.getObjects( userGraph, URI(bizinnovUserVocabPrefix+email), null )
+      val triples = ops.getObjects(userGraph, URI(bizinnovUserVocabPrefix + email), null)
     })
-//    if( triples.size > 0 )
-//      Some(???)
-//     else
-      None // TODO <<<<<<<<<
-    }
+    //    if( triples.size > 0 )
+    //      Some(???)
+    //     else
+    None // TODO <<<<<<<<<
+  }
 }
 
 /** in-memory User lookup */
