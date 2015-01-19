@@ -35,7 +35,10 @@ object Auth extends Controller {
   def register = Action { implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.login(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession(Security.username -> user._1)
+      user => {
+          new User(user._1, user._2).save()
+          Redirect(routes.Application.index).withSession(Security.username -> user._1)
+      }
     )
   }
 

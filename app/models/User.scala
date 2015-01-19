@@ -27,13 +27,12 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
   def save(user: User) = {
     val triples = List(
-//      makeTriple(
-//        makeUri(bizinnovUserVocabPrefix + "user1"),
-//        makeUri(bizinnovUserVocabPrefix + "email"),
-//        makeUri(bizinnovUserVocabPrefix + user.email)),
+      makeTriple(
+        makeUri(bizinnovUserVocabPrefix + user.email),
+        makeUri(bizinnovUserVocabPrefix + "email"),
+        makeUri(bizinnovUserVocabPrefix + user.email)),
       makeTriple(
     		  makeUri(bizinnovUserVocabPrefix + user.email),
-//        makeUri(bizinnovUserVocabPrefix + "user1"),
         makeUri(bizinnovUserVocabPrefix + "password"),
         makeUri(bizinnovUserVocabPrefix + MessageDigest.getInstance("MD5").digest(user.password.getBytes))))
     val graph = makeGraph(triples)
@@ -48,7 +47,7 @@ class User(var email: String, var password: String)
 extends RDFUser[Jena]
 
 /** User lookup, using RDF store  */
-object RDFStoreUser extends JenaModule {
+object User extends JenaModule {
   import ops._
   val bizinnovUserVocabPrefix = "http://bizinnov.com/ontologies/users.owl.ttl#"
   val bizinnovUserGraphURI = URI("http://bizinnov.com/ontologies/users/")
@@ -64,14 +63,4 @@ object RDFStoreUser extends JenaModule {
 //     else
       None // TODO <<<<<<<<<
     }
-}
-
-/** in-memory User lookup */
-object InMemoryUser {
-  val users = List(
-    new User("admin", "1234"),
-    new User("user", "password"))
-
-  def find(email: String): Option[User] =
-    users.filter(_.email == email).headOption
 }
