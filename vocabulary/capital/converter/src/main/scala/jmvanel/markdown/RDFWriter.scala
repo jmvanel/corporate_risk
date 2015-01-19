@@ -14,7 +14,8 @@ import java.io.{ StringWriter, Writer }
 import com.tristanhunt.knockoff._
 
 trait RDFWriter {
-  
+  val prefix = "http://www.bizinnov.com/ontologies/quest.owl.ttl#"
+  var index=0
   /** Creates a Group representation of the document. */
   def toTTL( blocks : Seq[Block] ) : String = {
     implicit val writer = new StringWriter
@@ -36,16 +37,20 @@ trait RDFWriter {
       case OrderedItem( children, _ ) => children.foreach( blockToTTL )
       case UnorderedItem( children, _ ) => children.foreach( blockToTTL )
       case OrderedList( items ) => items.foreach( blockToTTL )
-      case UnorderedList( items ) => items.foreach( itemToTTL )
+      case UnorderedList( items ) => {
+        index=index+1
+        val uri = prefix + index
+        items.foreach( it => itemToTTL(it, uri) )
+      }
     }
     writer.write(" ")
   }
   
-  def itemToTTL( item: UnorderedItem )( implicit writer : Writer ) : Unit = {
+  def itemToTTL( item: UnorderedItem, uri: String )( implicit writer : Writer ) : Unit = {
     val head = item.children.head
     head match {
       case Paragraph( Seq(Text(t)), _ ) =>
-        writer.write( s"""_:parent rdfs:label "${t.replaceFirst("\n$", "")}" .\n""")        
+        writer.write( s"""<$uri> rdfs:label "${t.replaceFirst("\n$", "")}" .\n""")        
       case _ =>
     }
   }
