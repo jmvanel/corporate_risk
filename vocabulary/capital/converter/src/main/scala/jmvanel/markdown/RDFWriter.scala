@@ -36,9 +36,18 @@ trait RDFWriter {
       case OrderedItem( children, _ ) => children.foreach( blockToTTL )
       case UnorderedItem( children, _ ) => children.foreach( blockToTTL )
       case OrderedList( items ) => items.foreach( blockToTTL )
-      case UnorderedList( items ) => items.foreach( blockToTTL )
+      case UnorderedList( items ) => items.foreach( itemToTTL )
     }
     writer.write(" ")
+  }
+  
+  def itemToTTL( item: UnorderedItem )( implicit writer : Writer ) : Unit = {
+    val head = item.children.head
+    head match {
+      case Paragraph( Seq(Text(t)), _ ) =>
+        writer.write( s"""_:parent rdfs:label "${t.replaceFirst("\n$", "")}" .\n""")        
+      case _ =>
+    }
   }
   
   def spanToTTL( span : Span )( implicit writer : Writer ) : Unit = {
