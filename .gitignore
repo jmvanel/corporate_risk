@@ -18,9 +18,8 @@ project/plugins/project/
 .classpath
 .project
 /bin/
-<<<<<<< HEAD
 /TDB/
-=======
->>>>>>> 443f3717fb611b2381af5031fc59db6d28a81986
+.settings
+.cache
 
 *.\~
