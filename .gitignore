@@ -1,9 +1,11 @@
-*.class
-*.log
+**/*.class
+**/*.log
 
 # sbt specific
-.cache/
-.history/
+**/.cache
+**/.history
+.settings
+
 .lib/
 dist/*
 target/
@@ -17,9 +19,12 @@ project/plugins/project/
 .worksheet
 .classpath
 .project
+**/.settings
+
 /bin/
 /TDB/
 .settings
 .cache
 
 *.\~
+.*.swp
