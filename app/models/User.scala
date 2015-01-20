@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.adapters.HexBinaryAdapter
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) //    extends UserVocab
     {
+
   val rdfStoreObject = RDFStoreObject
   import ops._
 
@@ -34,7 +35,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
   def checkPassword(user: User): Boolean = {
     User.find(user.email) match {
       case None => false
-      case Some(registeredUser) => registeredUser.password ==
+      case Some(registeredUser) => registeredUser.passwordHash ==
         hashPassword(user.password)
     }
   }
@@ -63,7 +64,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 }
 
 /** Class representing the users of the application */
-case class User(var email: String, var password: String)
+case class User(var email: String, var password: String, var passwordHash: String = "")
   extends RDFUser[Jena]
 
 /** gather URI's and prefixes for user management */
@@ -87,14 +88,16 @@ object User extends JenaModule with UserVocab {
         val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
         val userURI = getSubjects(userGraph,
           bizinnovUserVocabPrefix("email"),
-          bizinnovUserPrefix(email))
+          makeLiteral(email, xsd.string))
         if (!userURI.isEmpty) {
-          val password = getObjects(userGraph, userURI.head,
+          val passwordHash = getObjects(userGraph, userURI.head,
             bizinnovUserVocabPrefix("passwordHash"))
           val email = getObjects(userGraph, userURI.head,
             bizinnovUserVocabPrefix("email"))
-          if (!password.isEmpty) {
-            Some(User(email.head.toString(), ""))
+          if (!passwordHash.isEmpty) {
+            val userEmail = foldNode(email.head)(_ => "", _ => "", l => fromLiteral(l)_1)
+            val userPasswordHash = foldNode(passwordHash.head)(_ => "", _ => "", l => fromLiteral(l)._1)
+            Some(User(email = userEmail, password = "", passwordHash = userPasswordHash))
           } else None
         } else None
       })
