@@ -71,7 +71,7 @@ trait RDFWriter {
     val head = item.children.head
     head match {
       case Paragraph( Seq(Text(t)), _ ) =>
-      writeTriple(uri, "rdfs:label", t)
+      writeTriple(uri, "ques:item", t)
       case _ =>
     }
   }
@@ -82,7 +82,11 @@ trait RDFWriter {
 
   def spanToTTL( span : Span )( implicit writer : Writer ) : Unit = {
     span match {
-      case Text( content ) => writer.write( content )
+//      case Text( content ) => {
+      case t:Text => {
+        paragraphToTTL(t)
+//        writer.write( content )
+      }
       case HTMLSpan( html ) => {} 
       case CodeSpan( code ) => writer.write( code )
       case Strong( children ) => children.foreach( spanToTTL )
@@ -93,5 +97,9 @@ trait RDFWriter {
       case IndirectImageLink( children, definition ) => children.foreach( spanToTTL )
     }
     writer.write( " " )
+  }
+  
+  def paragraphToTTL( text : Text )( implicit writer : Writer ) : Unit = {
+	  writeTriple( currentURI(), "ques:paragraph", text.content )
   }
 }
