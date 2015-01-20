@@ -1,23 +1,30 @@
 @(loginForm: Form[(String, String)], registerForm: Form[(String, String, String)])
 
 @main("Welcome to Corporate Risk!") {
-    <h2>Login</h2>
-    @helper.form(action = routes.Auth.authenticate) {
-    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
-    	
-    	@helper.inputText(loginForm("email"))
-    	@helper.inputPassword(loginForm("password"))
-    	<input type="submit" class="btn" value="Login">
-    }
-    
-    <h2>Register</h2>
-    @helper.form(action = routes.Auth.register) {
-    	@registerForm.globalError.map { error => <p class="error">@error.message</p>}
-    	
-    	@helper.inputText(registerForm("email"))
-    	@helper.inputPassword(registerForm("password"))
-    	@helper.inputPassword(registerForm("confirmPassword"))
-    	<input type="submit" class="btn" value="Login">
-    }
-    
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices auctor turpis eu pellentesque. Mauris et pretium sapien, et malesuada ligula. Phasellus aliquam, mi ut venenatis feugiat, tortor quam ultricies dui, ac hendrerit purus dolor ut turpis. Vivamus imperdiet ultricies nulla pulvinar aliquet. Sed velit ipsum, rutrum nec nisl eget, maximus dictum ante. Nam imperdiet erat non nibh viverra, nec pulvinar tellus mattis. In tincidunt felis interdum metus suscipit, nec aliquam augue blandit. Proin condimentum quam eget sagittis ornare. Cras porta massa eget fermentum facilisis. Aliquam nec tellus fringilla, dapibus diam in, pharetra quam.
+	</p>
+	<p>
+		Nam nulla ipsum, auctor eu risus non, venenatis euismod odio. Curabitur ultricies enim id congue iaculis. Nam consequat risus ante, ut tempus dui ultrices sed. Fusce vel lectus eu tellus luctus lacinia ac ac dolor. Aenean ac arcu augue. Praesent eget est vel ante varius consectetur sit amet id lacus. Curabitur sed mattis dolor, in luctus massa. Proin luctus neque eros, eget pellentesque ante porttitor vitae. Phasellus sit amet consectetur nisi, non malesuada eros. 
+    </p>
+    <div class="loginform">
+	    <h2>Login</h2>
+	    @helper.form(action = routes.Auth.authenticate) {
+	    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
+	    	
+	    	@helper.inputText(loginForm("email"))
+	    	@helper.inputPassword(loginForm("password"))
+	    	<input type="submit" class="btn" value="Login">
+	    }
+	    
+	    <h2>Register</h2>
+	    @helper.form(action = routes.Auth.register) {
+	    	@registerForm.globalError.map { error => <p class="error">@error.message</p>}
+	    	
+	    	@helper.inputText(registerForm("email"))
+	    	@helper.inputPassword(registerForm("password"))
+	    	@helper.inputPassword(registerForm("confirmPassword"))
+	    	<input type="submit" class="btn" value="Login">
+	    }
+    </div>
 }

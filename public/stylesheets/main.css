@@ -1,0 +1,32 @@
+@font-face {
+	font-family: "DIN";
+	src: url("/assets/fonts/DINPro-Regular.otf") format('opentype');
+}
+@font-face {
+	font-family: "DIN";
+	font-weight: bold;
+	src: url("/assets/fonts/DINPro-Bold.otf") format('opentype');
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+#header {
+	background: #011936;
+	height: 138px;
+}
+#content {
+	max-width: 1024px;
+	margin: auto;
+	padding: 50px;
+}
+.footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background: #011936;
+	height: 48px;
+	padding-top: 20px;
+}
