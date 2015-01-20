@@ -12,10 +12,19 @@ html {
 	position: relative;
 	min-height: 100%;
 }
+body {
+	margin-bottom: 58px;
+}
 
 #header {
 	background: #011936;
 	height: 138px;
+	text-align: center;
+	border-bottom: solid white;
+	margin-bottom: 100px;
+}
+#header img {
+	margin-top: 57px;
 }
 #content {
 	max-width: 1024px;
@@ -29,4 +38,13 @@ html {
 	background: #011936;
 	height: 48px;
 	padding-top: 20px;
+	color: white;
+}
+
+.loginform {
+	width: 50%;
+	margin: auto;
+}
+.loginform input {
+	width: 100%
 }

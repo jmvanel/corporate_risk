@@ -8,7 +8,7 @@
 		Nam nulla ipsum, auctor eu risus non, venenatis euismod odio. Curabitur ultricies enim id congue iaculis. Nam consequat risus ante, ut tempus dui ultrices sed. Fusce vel lectus eu tellus luctus lacinia ac ac dolor. Aenean ac arcu augue. Praesent eget est vel ante varius consectetur sit amet id lacus. Curabitur sed mattis dolor, in luctus massa. Proin luctus neque eros, eget pellentesque ante porttitor vitae. Phasellus sit amet consectetur nisi, non malesuada eros. 
     </p>
     <div class="loginform">
-	    <h2>Login</h2>
+	    <h2>Déjà membre</h2>
 	    @helper.form(action = routes.Auth.authenticate) {
 	    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
 	    	
@@ -17,7 +17,7 @@
 	    	<input type="submit" class="btn" value="Login">
 	    }
 	    
-	    <h2>Register</h2>
+	    <h2>Nouveau membre</h2>
 	    @helper.form(action = routes.Auth.register) {
 	    	@registerForm.globalError.map { error => <p class="error">@error.message</p>}
 	    	

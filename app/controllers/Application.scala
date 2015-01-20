@@ -9,7 +9,7 @@ object Application extends Controller with Secured {
 
   def index = withAuth { username =>
     implicit request =>
-      Ok(views.html.index("Application"))
+      Ok(views.html.index("Tableau de bord"))
   }
 
   def form(url: String) = withAuth { username =>
