@@ -68,8 +68,8 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
 /** Class representing the users of the application */
 case class User(var email: String, var password: String, var passwordHash: String = "")
-  extends RDFUser[Jena] {
-//	def makeURI() = bizinnovUserPrefix(email)
+    extends RDFUser[Jena] {
+  //	def makeURI() = bizinnovUserPrefix(email)
 }
 
 /** gather URI's and prefixes for user management */
@@ -84,7 +84,7 @@ trait UserVocab extends RDFOpsModule {
     "http://bizinnov.com/ontologies/users.owl.ttl#")
   /** Questionnaire vocabulary */
   val bizinnovQuestionsVocabPrefix = Prefix("ques",
-      "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
+    "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
   // TODO Add props & classes to Prefix objects
   def makeURI(user: User) = bizinnovUserPrefix(user.email)
 
