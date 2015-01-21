@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.adapters.HexBinaryAdapter
 
 /** TODO indiquer le but de la classe */
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) //    extends UserVocab
+    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) // extends UserVocab
     {
 
   val rdfStoreObject = RDFStoreObject
@@ -40,7 +40,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     }
   }
 
-  def save(user: User) = {
+  def save(user: User): Boolean = {
     User.find(user.email) match {
       case Some(existingUser) => false
       case None =>
@@ -50,7 +50,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
             bizinnovUserVocabPrefix("passwordHash"),
             makeLiteral(hashPassword(user.password), xsd.string)),
           makeTriple(
-            bizinnovUserPrefix(user.email),
+            makeURI(user),
             bizinnovUserVocabPrefix("email"),
             makeLiteral(user.email, xsd.string)
           ))
@@ -58,23 +58,36 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
         rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
           rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
         })
+        UserData.createEmptyUserData(user)
         true
     }
   }
+
+  def makeURI(user: User) = bizinnovUserPrefix(user.email)
 }
 
 /** Class representing the users of the application */
 case class User(var email: String, var password: String, var passwordHash: String = "")
-  extends RDFUser[Jena]
+  extends RDFUser[Jena] {
+//	def makeURI() = bizinnovUserPrefix(email)
+}
 
 /** gather URI's and prefixes for user management */
 trait UserVocab extends RDFOpsModule {
   import ops._
+  /** users' prefix */
   val bizinnovUserPrefix = Prefix("usr",
     "http://bizinnov.com/ontologies/users/")
   val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
+  /** user vocabulary */
   val bizinnovUserVocabPrefix = Prefix("user",
     "http://bizinnov.com/ontologies/users.owl.ttl#")
+  /** Questionnaire vocabulary */
+  val bizinnovQuestionsVocabPrefix = Prefix("ques",
+      "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
+  // TODO Add props & classes to Prefix objects
+  def makeURI(user: User) = bizinnovUserPrefix(user.email)
+
 }
 
 /** User lookup, using RDF store  */

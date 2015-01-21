@@ -25,13 +25,13 @@
 } .
 
 
-# Rassembler par theme pour faire une owl:Class
+# Rassembler par theme pour faire une owl:Class et la propriété correspondante
 { ?Q a ques:Question ;
   ques:theme ?T ;
   :hasRubricId ?C . # voir règle en chaînage arrière
 } => {
-  ?C a owl:Class ;
-  rdfs:label ?T .
+  ?C a owl:Class ; rdfs:label ?T .
+  ?P a owl:ObjectProperty; rdfs:domain :User; rdfs:range ?C .
 }.
 
 # Relier le theme avec les owl:DatatypeProperty via rdfs:domain
