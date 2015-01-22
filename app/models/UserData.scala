@@ -34,12 +34,32 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     // TODO read RDF configuration for this, like is done for classes themselves 
     rdfStore.rw(
       dataset, {
-        for (classAndPropURI <- applicationClasses())
-          createEmptyClassInstances(bizinnovUserPrefix(user.email), classAndPropURI)
+        for (classAndPropURI <- applicationClassesAndProperties())
+          //          createEmptyClassInstances(bizinnovUserPrefix(user.email), classAndPropURI)
+          //          createEmptyClassInstances(user.getURI(), classAndPropURI)
+          createEmptyClassInstances(getURI(user), classAndPropURI)
       })
   }
 
-  def applicationClasses() = {
+  def getUserData(user: User): Seq[Rdf#URI] = {
+    val nodes = rdfStore.r(
+      dataset, {
+        val userURI = getURI(user)
+        val graph = rdfStore.getGraph(dataset, userURI).get
+        for {
+          (cl, prop) <- applicationClassesAndProperties
+          triple <- find(graph, userURI, prop, ANY)
+        } yield triple.objectt
+      })
+    val uriOptions = nodes.get.map {
+      case n => foldNode(n)(
+        uri => Some(uri),
+        x => None, x => None)
+    }
+    uriOptions collect { case Some(uri) => uri }
+  }
+
+  def applicationClassesAndProperties() = {
     val range = 5 until 16
     for (i <- range) yield (bizinnovQuestionsVocabPrefix(i.toString()),
       bizinnovQuestionsVocabPrefix("prop-" + i.toString()))
