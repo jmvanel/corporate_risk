@@ -5,7 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /form                       controllers.Application.form(url: String)
-POST    /save                       controllers.Application.save
+POST    /save                       controllers.Application.save(url: String)
 GET     /login                      controllers.Auth.login
 POST    /login                      controllers.Auth.authenticate
 POST    /register                   controllers.Auth.register
