@@ -1,8 +1,21 @@
-@(message: Any)
+@(forms: Seq[String])
 
 @main("Welcome to Corporate Risk!") {
-    <h2>@message</h2>
-    <a href="@routes.Application.form("http://xmlns.com/foaf/0.1")">Accéder au formulaire</a>
+    <table>
+    	<tr>
+    		<th>Mes formulaires</th>
+    		<th>Questions</th>
+    	</tr>
+    	@for(form <- forms) {
+    	<tr>
+    		<td>
+    			<a href="@routes.Application.form(form.toString)">Accéder au formulaire</a>
+    		</td>
+    		<td>
+    			0 question remplie
+    		</td>
+   		</tr>
+   		}
     <div>
     	<a href="@routes.Auth.logout">Se déconnecter</a>
     </div>
