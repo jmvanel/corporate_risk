@@ -46,7 +46,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
       case None =>
         val triples = List(
           makeTriple(
-            bizinnovUserPrefix(user.email),
+            makeURI(user),
             bizinnovUserVocabPrefix("passwordHash"),
             makeLiteral(hashPassword(user.password), xsd.string)),
           makeTriple(
