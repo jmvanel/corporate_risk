@@ -9,17 +9,17 @@ import models.UserData
 
 object Application extends Controller with Secured {
 
-  def index = withUser { user =>
+  def index = withUser { implicit user =>
     implicit request =>
       Ok(views.html.index(UserData.getUserData(user).map(_.getURI)))
   }
 
-  def form(url: String) = withAuth { username =>
+  def form(url: String) = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.form(new CreationForm { actionURI = "/save" }.create(url, "en").get))
+      Ok(views.html.form(new CreationForm { actionURI = "/save" }.create(url).get))
   }
 
-  def save = withAuth { username =>
+  def save = withUser { implicit user =>
     implicit request =>
       val tableView = new TableView {}
       Ok(views.html.report(tableView.htmlForm("http://xmlns.com/foaf/0.1", "", "").get))

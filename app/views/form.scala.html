@@ -1,6 +1,6 @@
-@(form: Any)
+@(form: Any)(implicit user: User)
 
-@main("Welcome to Corporate Risk!") {
+@main("Welcome to Corporate Risk!", Some(user)) {
     <h2>Formulaire</h2>
     @form
 }

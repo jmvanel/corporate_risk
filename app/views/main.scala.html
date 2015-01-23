@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String, userOption: Option[User])(content: Html)
 
 <!DOCTYPE html>
 
@@ -13,6 +13,16 @@
     </head>
     <body>
     	<div id="header">
+    		@userOption match {
+    			case Some(user) => {
+    				<div class="username">
+    					@user.email
+    					<div><a href="@routes.Auth.logout">Se déconnecter</a></div>
+    				</div>
+    				
+   				}
+    			case None => {Connectez-vous}
+    		}
     		<img src="@routes.Assets.at("images/logo.png")" />
     	</div>
     	<div id="content">

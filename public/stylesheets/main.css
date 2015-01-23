@@ -23,6 +23,11 @@ body {
 	border-bottom: solid white;
 	margin-bottom: 100px;
 }
+.username {
+	color: white;
+	position: absolute;
+	padding: 30px;
+}
 #header img {
 	margin-top: 57px;
 }
@@ -47,4 +52,12 @@ body {
 }
 .loginform input {
 	width: 100%
+}
+
+.index-col-left {
+	text-align: right;
+	width: 50%;
+}
+.index-col-right {
+	padding-right: 2em;
 }

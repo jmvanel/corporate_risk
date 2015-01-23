@@ -1,6 +1,6 @@
-@(report: Any)
+@(report: Any)(implicit user: User)
 
-@main("Welcome to Corporate Risk!") {
+@main("Welcome to Corporate Risk!", Some(user)) {
     <h2>Rapport d'audit</h2>
     <a href="@routes.Application.index">Retour à mon tableau de bord</a>
     @report
