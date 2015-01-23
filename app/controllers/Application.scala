@@ -5,12 +5,14 @@ import play.api.mvc._
 import deductions.runtime.html.{ CreationForm, TableView }
 import Auth._
 
+import models.UserData
+
 object Application extends Controller with Secured {
   lazy val tableView = new TableView {}
 
-  def index = withAuth { username =>
+  def index = withUser { user =>
     implicit request =>
-      Ok(views.html.index("Tableau de bord"))
+      Ok(views.html.index(UserData.getUserData(user).map(_.getURI)))
   }
 
   /** edit given URI */
