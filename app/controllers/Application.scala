@@ -15,7 +15,10 @@ object Application extends Controller with Secured with RDFCache {
 
   def index = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.index(UserData.getUserData(user).map(_.getURI)))
+      //      Ok(views.html.index(UserData.getUserData(user).map(_.getURI))) // NOTE: getURI is Jena stuff
+      Ok(views.html.index(UserData.getUserData(user).map {
+        case (uri, label) => (ops.fromUri(uri), label)
+      }))
   }
 
   /** edit given URI */

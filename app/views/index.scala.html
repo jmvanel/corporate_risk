@@ -1,4 +1,4 @@
-@(forms: Seq[String])(implicit user: User)
+@(forms: Seq[(String, String)] )(implicit user: User)
 
 @main("Welcome to Corporate Risk!", Some(user)) {
     <table class="table">
@@ -9,7 +9,7 @@
     	@for(form <- forms) {
     	<tr>
     		<td class="index-col-left">
-    			<a href="@routes.Application.form(form.toString)">Accéder au formulaire</a>
+    			<a href="@routes.Application.form(form._1.toString)">Accéder au formulaire @form._2</a>
     		</td>
     		<td class="index-col-right">
     			0 question remplie

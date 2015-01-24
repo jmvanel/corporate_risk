@@ -6,6 +6,7 @@ import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
 
+/** Links To User Forms - unused ! */
 object LinksToUserForms extends RDFStoreLocalJena1Provider with LinksToUserFormsTrait[Jena, Dataset]
 
 trait LinksToUserFormsTrait[Rdf <: RDF, DATASET] extends UserVocab

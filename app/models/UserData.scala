@@ -10,12 +10,14 @@ import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
 import deductions.runtime.jena.RDFStoreObject
 import deductions.runtime.abstract_syntax.UnfilledFormFactory
+import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 
 /** Banana principle: refer to concrete implementation only in blocks without code */
 object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
 
 trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
-    with RDFStoreLocalProvider2[Rdf, DATASET] {
+    with RDFStoreLocalProvider2[Rdf, DATASET]
+    with InstanceLabelsInference2[Rdf] {
 
   import ops._
 
@@ -41,22 +43,26 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       })
   }
 
-  def getUserData(user: User): Seq[Rdf#URI] = {
+  def getUserData(user: User): Seq[(Rdf#URI, String)] = {
     val nodes = rdfStore.r(
       dataset, {
         val userURI = getURI(user)
         val graph = rdfStore.getGraph(dataset, userURI).get
+        implicit val graphForVocabulary = rdfStore.getGraph(dataset,
+          URI("vocabulary/risk/risk_questions.owl.ttl")).get
         for {
           (cl, prop) <- applicationClassesAndProperties
           triple <- find(graph, userURI, prop, ANY)
-        } yield triple.objectt
+        } yield {
+          (triple.objectt, instanceLabel(cl))
+        }
       })
     val uriOptions = nodes.get.map {
-      case n => foldNode(n)(
-        uri => Some(uri),
+      case (n, il) => foldNode(n)(
+        uri => Some(uri, il),
         x => None, x => None)
     }
-    uriOptions collect { case Some(uri) => uri }
+    uriOptions collect { case Some((uri, il)) => (uri, il) }
   }
 
   def applicationClassesAndProperties() = {
