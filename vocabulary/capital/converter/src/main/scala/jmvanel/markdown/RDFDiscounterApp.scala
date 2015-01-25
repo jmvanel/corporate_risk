@@ -52,7 +52,7 @@ object RDFDiscounterApp extends Discounter with RDFWriter {
     } else {
       args.filter(_ != "--html4tags").foreach {
         fileName =>
-          println(toTTL(knockoff(readText(fileName))).toString)
+          printTurtleFile(toTTL(knockoff(readText(fileName))), fileName )
       }
     }
   } catch {
@@ -61,6 +61,17 @@ object RDFDiscounterApp extends Discounter with RDFWriter {
     }
   }
 
+  private def printTurtleFile(ttl: String, fileName: String) = {
+    val ttlFileName = fileName.replaceFirst("""\.md$""", ".ttl")
+    import java.nio.file.{ Paths, Files }
+    import java.nio.charset.StandardCharsets
+    Files.write(Paths.get(ttlFileName), ttl.getBytes(StandardCharsets.UTF_8))
+    println(s"Writen ${ttl.length()} characters to file \n $ttlFileName")
+  }
+
   private def readText(fileName: String): String =
     io.Source.fromFile(new File(fileName)).mkString("")
+
+  private def readToList(fileName: String): List[String] =
+    io.Source.fromFile(new File(fileName)).getLines().toList
 }

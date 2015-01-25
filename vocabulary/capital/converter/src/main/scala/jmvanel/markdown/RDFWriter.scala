@@ -22,7 +22,8 @@ trait RDFWriter {
       @prefix owl:  <http://www.w3.org/2002/07/owl#>.
       @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
       @prefix     : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
-      """)
+
+""")
 
     blocksToTTL( blocks )
     writer.toString
@@ -47,7 +48,7 @@ trait RDFWriter {
       case UnorderedItem( children, _ ) => children.foreach( blockToTTL )
       case OrderedList( items ) => items.foreach( blockToTTL )
       case UnorderedList( items ) => {
-        updatecurrentURI()
+//        updatecurrentURI()
         val uri = currentURI()
         items.foreach( it => itemToTTL(it, uri) )
       }
@@ -55,13 +56,14 @@ trait RDFWriter {
     writer.write(" ")
   }
   
-  def currentURI() = prefix + index
+  def currentURI() = prefix + "capital-" + index
   def updatecurrentURI() = index=index+1 
      
   def headerToTTL(h:Header, uri: String="") ( implicit writer : Writer ) = {
     h match {
       case Header(_,List(Text(t)),_) => 
       // Header(1,List(Text(T1)),1.1)
+        writer.write( "\n" )
         writeTriple(uri, prefix+"header", t)
       case _ =>
     }
@@ -78,7 +80,7 @@ trait RDFWriter {
   
   /** write a literal Triple; subject and pred are with an Turtle prefix */
   def writeTriple(subject:String, pred:String, objet:String ) ( implicit writer : Writer ) =
-    writer.write( s"""$subject $pred "${objet.replaceFirst("\n$", "")}" .\n""")        
+    writer.write( s"""$subject $pred ""\"${objet.replaceFirst("\n$", "")}""\" .\n""")        
 
   def spanToTTL( span : Span )( implicit writer : Writer ) : Unit = {
     span match {
