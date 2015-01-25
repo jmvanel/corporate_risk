@@ -1,0 +1,11 @@
+# Saved by EulerGUI on Thu Jan 15 14:16:22 CET 2015 from file:/home/jmv/src/corporate_risk/vocabulary/risk_questions.n3p.n3
+@prefix owl:  <http://www.w3.org/2002/07/owl#>.
+@prefix eg:  <http://eulergui.sourceforge.net/engine.owl#>.
+@prefix proj:  <http://eulergui.sf.net/ontology/project.owl.n3#>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix void:  <http://rdfs.org/ns/void#>.
+
+<> a owl:Ontology .
+<> proj:hasN3Query <questionnaire2owl.q.n3> .
+<questionnaire2owl.q.n3> proj:isMainQuery true .
+<> owl:imports <Evaluation_capital_opérationnel.ttl> , <questionnaire2owl.n3> .

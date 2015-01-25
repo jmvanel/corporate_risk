@@ -1,0 +1,252 @@
+ #Processed by Id: euler.yap 7433 2014-09-30 16:04:00Z josd
+#eye --nope /home/jmv/src/corporate_risk/vocabulary/capital/Evaluation_capital_opérationnel.ttl /home/jmv/src/corporate_risk/vocabulary/capital/questionnaire2owl.n3 --query /home/jmv/src/corporate_risk/vocabulary/capital/questionnaire2owl.q.n3
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX fn: <http://www.w3.org/2005/xpath-functions#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+
+ques:capital-1 a owl:DatatypeProperty.
+ques:capital-1 rdfs:label "Evaluation du capital opérationnel {.P29}".
+ques:capital-1 rdfs:comment "Ce questionnaire a pour but de permettre l'évaluation du capital\nopérationnel selon les thèmes suivants :".
+ques:capital-1 rdfs:range _:sk0.
+_:sk0 owl:oneOf ("Capital naturel " "capital sociétal " "capital de marque ").
+ques:capital-1 rdfs:comment "Il y a 34 questions dans ce questionnaire".
+ques:capital-1 rdfs:range _:sk1.
+_:sk1 owl:oneOf ("Capital naturel " "capital sociétal " "capital de marque ").
+ques:capital-3 a owl:DatatypeProperty.
+ques:capital-3 rdfs:label "Qualité de la ressource (air) {.P1}".
+ques:capital-3 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-3 rdfs:range _:sk2.
+_:sk2 owl:oneOf ("Les alertes sont très fréquentes et les niveaux atteints sont très élevés" " Les alertes sont fréquentes" " Les alertes sont assez fréquentes" " Les alertes sont très rares" " L’air n’est jamais pollué").
+ques:capital-4 a owl:DatatypeProperty.
+ques:capital-4 rdfs:label "Qualité de la ressource (eau) {.P1}".
+ques:capital-4 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-4 rdfs:range _:sk3.
+_:sk3 owl:oneOf (" L’eau est de très mauvaise qualité en surface et en profondeur, les\nteneurs en nitrates, hydrocarbures, pesticides…sont très élevées" " L’eau est polluée en surface et en profondeur (nitrates,\nhydrocarbures, pesticides)" " L’eau est de qualité acceptable en profondeur mais pas en surface" " Bonne qualité en surface et en profondeur" " Grande pureté tant en surface que dans les nappes phréatiques").
+ques:capital-5 a owl:DatatypeProperty.
+ques:capital-5 rdfs:label "Abondance de la ressource {.P1}".
+ques:capital-5 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-5 rdfs:range _:sk4.
+_:sk4 owl:oneOf (" Il y a des restrictions d’eau très fréquentes dans l’année" " Il y a des restrictions d’eau souvent en été" " Il y a des restrictions d’eau de temps en temps en été" " Des risques de restriction ont déjà été évoqués mais n’ont pas eu lieu" " Ressource abondante en permanence").
+ques:capital-6 a owl:DatatypeProperty.
+ques:capital-6 rdfs:label "Matières Premières {.P1}".
+ques:capital-6 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-6 rdfs:range _:sk5.
+_:sk5 owl:oneOf (" La ressource est devenue rare et le métier de l’entreprise est de ce\nfait en danger" " L’approvisionnement fait régulièrement question, l’entreprise a déjà\nsouffert de ruptures" " La qualité et le prix posent des problèmes réguliers qui iront en\ns’intensifiant" " Quelques petits problèmes de qualité ou de prix peuvent se\nmanifester à 5 ans" " Les matières premières que l’entreprise emploie sont abondantes, de\ngrande qualité et bon marché à long terme").
+ques:capital-7 a owl:DatatypeProperty.
+ques:capital-7 rdfs:label "Evaluation du climat {.P1}".
+ques:capital-7 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-7 rdfs:range _:sk6.
+_:sk6 owl:oneOf (" Nord" " Bretagne, Est, Massif Central, Normandie" " Ile de France" " Aquitaine, Rhône Alpes" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue climat : Région PACA, Midi Pyrénées\nLes sites de l’entreprise sont implantés dans des régions très").
+ques:capital-8 a owl:DatatypeProperty.
+ques:capital-8 rdfs:label "Géographie et climat {.P1}".
+ques:capital-8 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-8 rdfs:range _:sk7.
+_:sk7 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment "Capital sociétal {.P1}\n---------------- \nSont regroupées les rubriques :".
+ques:capital-8 rdfs:range _:sk8.
+_:sk8 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment "Sport, culture, loisirs".
+ques:capital-8 rdfs:range _:sk9.
+_:sk9 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment "Partenaires publics".
+ques:capital-8 rdfs:range _:sk10.
+_:sk10 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment "Accès et infrastructure".
+ques:capital-8 rdfs:range _:sk11.
+_:sk11 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment "RH locales et services (services publics)".
+ques:capital-8 rdfs:range _:sk12.
+_:sk12 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment "RH locales et services (potentiel local RH)".
+ques:capital-8 rdfs:range _:sk13.
+_:sk13 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-8 rdfs:comment " ".
+ques:capital-8 rdfs:range _:sk14.
+_:sk14 owl:oneOf (" L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…").
+ques:capital-9 a owl:DatatypeProperty.
+ques:capital-9 rdfs:label "Sport, Culture, loisirs {.P1}".
+ques:capital-9 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-9 rdfs:range _:sk15.
+_:sk15 owl:oneOf (" Toutes les régions d’implantation de l’entreprise sont très pauvres\nsur le plan sportif, culturel ou des loisirs" " Les trois quarts des implantations sont dans des régions pauvres\ndans ce domaine" " La moitié des implantations présente peu de potentiel dans ce\ndomaine" " Les régions d’implantation sont pour la plupart riches sur le plan\ndu sport, de la culture et des loisirs" " Tous les sites de l’entreprise sont implantés dans des régions très\nriches sur le plan culturel, sportif ou de loisirs").
+ques:capital-10 a owl:DatatypeProperty.
+ques:capital-10 rdfs:label "Partenaires publics {.P1}".
+ques:capital-10 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-10 rdfs:range _:sk16.
+_:sk16 owl:oneOf (" L’entreprise est très éloignée de ses partenaires publics (à plus de" " L’entreprise est éloignée de ses partenaires publics (à plus de 200\nkm)" " Les partenaires publics importants pour l’entreprise sont présents\ndans la région (à 100 km)" " L’entreprise a un accès facile (moins de 50 km) aux partenaires\npublics importants pour elle" " L’entreprise est implantée à proximité de partenaires publics\nimportants pour elle. Exemple: pôles de compétitivité, de\ntechnopôles, de centres de recherche ou de formation professionnelle\nliés à ses métiers").
+ques:capital-11 a owl:DatatypeProperty.
+ques:capital-11 rdfs:label "Accès et infrastructures {.P1}".
+ques:capital-11 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-11 rdfs:range _:sk17.
+_:sk17 owl:oneOf (" Autoroute à + de 50 KM, pas de gare" " Autoroute à + de 50 KM, Gare TER à 20 KM" " Autoroute proche" " Autoroute et gare TGV à 20 KM" " Autoroute, gare TGV, aéroport à 20KM").
+ques:capital-12 a owl:DatatypeProperty.
+ques:capital-12 rdfs:label "RH locales et Services (Services Publics) {.P1}".
+ques:capital-12 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-12 rdfs:range _:sk18.
+_:sk18 owl:oneOf (" Les zones ou l’entreprise est implantée sont très pauvres en service\npublics" " Les services publics lorsqu’ils existent sont de mauvaise qualité" " Certains services publics manquent (accès à 50 km) ou sont de\nqualité moyenne" " Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour\nles salariés (hôpitaux, écoles,…) sont bons" " Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour\nles salariés (hôpitaux, écoles,…) sont d’excellente qualité").
+ques:capital-13 a owl:DatatypeProperty.
+ques:capital-13 rdfs:label "RH locales et Services (Potentiel local RH) {.P1}".
+ques:capital-13 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-13 rdfs:range _:sk19.
+_:sk19 owl:oneOf (" Les différents sites de l’entreprise sont implantés dans des zones\nrurales très éloignées de centres urbains. Les problèmes de\nrecrutement qui en résultent sont très sérieux" " Le recrutement est difficile à cause de l’implantation de\nl’entreprise majoritairement dans des petites agglomérations" " La démographie des régions d’implantation de l’entreprise fait que\ndes problèmes de recrutement significatifs se posent" " Certains sites de l’entreprise sont implantés dans des villes de\ntaille moyenne (50 000 habitants). Le recrutement pose parfois\nquelques problèmes de ce fait mais à la marge" " Tous les sites de l’entreprise sont implantés à proximité de grands\ncentres urbains où il existe des écoles ou centres de formation en\nphase avec les métiers de l’entreprise. Le recrutement ne pose\njamais de problèmes").
+ques:capital-13 rdfs:comment "Capital de Marque {.P1}\n----------------- ".
+ques:capital-13 rdfs:range _:sk20.
+_:sk20 owl:oneOf (" Les différents sites de l’entreprise sont implantés dans des zones\nrurales très éloignées de centres urbains. Les problèmes de\nrecrutement qui en résultent sont très sérieux" " Le recrutement est difficile à cause de l’implantation de\nl’entreprise majoritairement dans des petites agglomérations" " La démographie des régions d’implantation de l’entreprise fait que\ndes problèmes de recrutement significatifs se posent" " Certains sites de l’entreprise sont implantés dans des villes de\ntaille moyenne (50 000 habitants). Le recrutement pose parfois\nquelques problèmes de ce fait mais à la marge" " Tous les sites de l’entreprise sont implantés à proximité de grands\ncentres urbains où il existe des écoles ou centres de formation en\nphase avec les métiers de l’entreprise. Le recrutement ne pose\njamais de problèmes").
+ques:capital-14 a owl:DatatypeProperty.
+ques:capital-14 rdfs:label "Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}".
+ques:capital-14 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-14 rdfs:range _:sk21.
+_:sk21 owl:oneOf (" Les produits ou services actuels ont une influence négative sur la\nmarque" " Les produits ou services ont une influence très négative sur la\nmarque" " Il n’y a aucun problème de ce type").
+ques:capital-15 a owl:DatatypeProperty.
+ques:capital-15 rdfs:label "Protection juridique des noms de produits ou d’offre {.P1}".
+ques:capital-15 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-15 rdfs:range _:sk22.
+_:sk22 owl:oneOf (" Pas de dépôt INPI, pas de veille" " Mauvaise qualité du dépôt de la marque, pas de veille." " Marque protégée, pas de cluster, marque assez jeune, pas de veille." " Veille insuffisante, reste comme ci-dessus" " Marque protégée, par un cluster de dépôts, large périmètre de\nprotection, forte ancienneté, aucun plagiat, bon dispositif de\nveille").
+ques:capital-16 a owl:DatatypeProperty.
+ques:capital-16 rdfs:label "Protections des noms de domaine internet {.P1}".
+ques:capital-16 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-16 rdfs:range _:sk23.
+_:sk23 owl:oneOf (" Marque absente sur internet" " Le nom de domaine est différent du nom de l’entreprise" " Pas de cluster , pas de veille" " La veille est insuffisante, reste comme ci-dessus" " Le nom de domaine principal est égal au nom de l’entreprise ou de la\nmarque commerciale phare, il est protégé par un cluster de nom de\ndomaines, la veille est assurée").
+ques:capital-17 a owl:DatatypeProperty.
+ques:capital-17 rdfs:label "Protection juridique du nom de l’entreprise {.P1}".
+ques:capital-17 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-17 rdfs:range _:sk24.
+_:sk24 owl:oneOf (" Pas de dépôt INPI, pas de veille" " Mauvaise qualité du dépôt de la marque, pas de veille." " Marque protégée, pas de cluster, marque assez jeune, pas de veille." " Veille insuffisante, reste comme ci-dessus" " Marque protégée, par un cluster de dépôts, large périmètre de\nprotection, forte ancienneté, aucun plagiat, bon dispositif de\nveille").
+ques:capital-18 a owl:DatatypeProperty.
+ques:capital-18 rdfs:label "La marque peut-elle être confondue avec une autre marque ? {.P1}".
+ques:capital-18 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-18 rdfs:range _:sk25.
+_:sk25 owl:oneOf (" Pas de marque : produit générique" " Marque peu singulière souvent prise pour une autre" " 10 % des consommateurs confondent notre marque avec celle d’un\nconcurrent" " Des confusions rares peuvent exister avec une autre marque dans un\nsecteur très distant" " Forte personnalité de la marque - n’est jamais confondue avec une\nautre").
+ques:capital-19 a owl:DatatypeProperty.
+ques:capital-19 rdfs:label "La marque apporte-t-elle un supplément d’image à ses clients ? (Influence) {.P1}".
+ques:capital-19 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-19 rdfs:range _:sk26.
+_:sk26 owl:oneOf (" Les clients cachent le fait qu’ils achètent cette marque" " Les clients ne montrent pas qu’ils achètent cette marque" " La marque n’a pas d’influence sur l’ego de ses clients" " En général les clients aiment montrer qu’ils possèdent un produit\nayant cette marque" " La marque est une référence socioculturelle utilisée dans de\nnombreux films à dessein").
+ques:capital-20 a owl:DatatypeProperty.
+ques:capital-20 rdfs:label "Réputation de l’entreprise {.P1}".
+ques:capital-20 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-20 rdfs:range _:sk27.
+_:sk27 owl:oneOf (" La marque en sursis : a souffert de crises graves et largement\nmédiatisées" " La marque rencontre des problèmes de réputation ou d’image" " Réputation neutre" " Bonne réputation" " Excellente image de la marque : toujours très positive, partout").
+ques:capital-21 a owl:DatatypeProperty.
+ques:capital-21 rdfs:label "Budgets de promotion de la marque (mesure de la notoriété) {.P1}".
+ques:capital-21 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-21 rdfs:range _:sk28.
+_:sk28 owl:oneOf (" Aucun investissement" " Documentation marketing diffusée par l’entreprise" " Presse écrite" " Affichage, pub télé, presse écrite" " Budget énorme: sponsoring voile, F1, pub télé, affichage").
+ques:capital-23 a owl:DatatypeProperty.
+ques:capital-23 rdfs:label "Il s’agit de l’âge de la marque {.P1}".
+ques:capital-23 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-23 rdfs:range _:sk29.
+_:sk29 owl:oneOf (" 6 mois" " 5 ans" " 10 ans" " 50 ans" " Marque centenaire" " Notoriété directe" " Marque inconnue" " Sort parfois dans les enquêtes de notoriété assistée" " Sort souvent dans les enquêtes de notoriété assistée" " Sort presque toujours dans les enquêtes de notoriété spontanée" " Marque leader").
+ques:capital-24 a owl:DatatypeProperty.
+ques:capital-24 rdfs:label "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}".
+ques:capital-24 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
+ques:capital-24 rdfs:range _:sk30.
+_:sk30 owl:oneOf (" Pas du tout" " Globalement Non" " Partiellement" " Globalement Oui" " Absolument").
+ques:capital-24 rdfs:comment "Identification de l'entreprise {.P1}\n------------------------------ \n### []Raison sociale : {.P1}".
+ques:capital-24 rdfs:range _:sk31.
+_:sk31 owl:oneOf (" Pas du tout" " Globalement Non" " Partiellement" " Globalement Oui" " Absolument").
+ques:capital-24 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-24 rdfs:range _:sk32.
+_:sk32 owl:oneOf (" Pas du tout" " Globalement Non" " Partiellement" " Globalement Oui" " Absolument").
+ques:capital-24 rdfs:comment " ".
+ques:capital-24 rdfs:range _:sk33.
+_:sk33 owl:oneOf (" Pas du tout" " Globalement Non" " Partiellement" " Globalement Oui" " Absolument").
+ques:capital-25 a owl:DatatypeProperty.
+ques:capital-25 rdfs:label "[]N° SIREN : {.P1}".
+ques:capital-25 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-25 rdfs:range _:sk34.
+_:sk34 owl:oneOf ().
+ques:capital-25 rdfs:comment " ".
+ques:capital-25 rdfs:range _:sk35.
+_:sk35 owl:oneOf ().
+ques:capital-26 a owl:DatatypeProperty.
+ques:capital-26 rdfs:label "[]Sites web de l'entreprise et sites liés à son activité {.P1}".
+ques:capital-26 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-26 rdfs:range _:sk36.
+_:sk36 owl:oneOf ().
+ques:capital-26 rdfs:comment " ".
+ques:capital-26 rdfs:range _:sk37.
+_:sk37 owl:oneOf ().
+ques:capital-27 a owl:DatatypeProperty.
+ques:capital-27 rdfs:label "[]Nombre d'employés {.P1}".
+ques:capital-27 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-27 rdfs:range _:sk38.
+_:sk38 owl:oneOf ().
+ques:capital-27 rdfs:comment " ".
+ques:capital-27 rdfs:range _:sk39.
+_:sk39 owl:oneOf ().
+ques:capital-28 a owl:DatatypeProperty.
+ques:capital-28 rdfs:label "[]Nombre de sites : {.P1}".
+ques:capital-28 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-28 rdfs:range _:sk40.
+_:sk40 owl:oneOf ().
+ques:capital-28 rdfs:comment " ".
+ques:capital-28 rdfs:range _:sk41.
+_:sk41 owl:oneOf ().
+ques:capital-29 a owl:DatatypeProperty.
+ques:capital-29 rdfs:label "[]Chiffre d'affaire : {.P1}".
+ques:capital-29 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-29 rdfs:range _:sk42.
+_:sk42 owl:oneOf ().
+ques:capital-29 rdfs:comment " ".
+ques:capital-29 rdfs:range _:sk43.
+_:sk43 owl:oneOf ().
+ques:capital-30 a owl:DatatypeProperty.
+ques:capital-30 rdfs:label "[]Marge brute annuelle : {.P1}".
+ques:capital-30 rdfs:comment "Veuillez écrire votre(vos) réponse(s) ici :".
+ques:capital-30 rdfs:range _:sk44.
+_:sk44 owl:oneOf ("Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n ").
+ques:capital-30 rdfs:comment " ".
+ques:capital-30 rdfs:range _:sk45.
+_:sk45 owl:oneOf ("Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n ").
+ques:capital-30 rdfs:comment "Totale et par région :".
+ques:capital-30 rdfs:range _:sk46.
+_:sk46 owl:oneOf ("Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n ").
+ques:capital-30 rdfs:comment "Personne à contacter {.P1}\n-------------------- \n### []NOM et PRENOM {.P1}".
+ques:capital-30 rdfs:range _:sk47.
+_:sk47 owl:oneOf ("Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n ").
+ques:capital-30 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-30 rdfs:range _:sk48.
+_:sk48 owl:oneOf ("Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n ").
+ques:capital-31 a owl:DatatypeProperty.
+ques:capital-31 rdfs:label "[]Qualité {.P1}".
+ques:capital-31 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-31 rdfs:range _:sk49.
+_:sk49 owl:oneOf ().
+ques:capital-31 rdfs:comment " ".
+ques:capital-31 rdfs:range _:sk50.
+_:sk50 owl:oneOf ().
+ques:capital-32 a owl:DatatypeProperty.
+ques:capital-32 rdfs:label "[]Téléphone {.P1}".
+ques:capital-32 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-32 rdfs:range _:sk51.
+_:sk51 owl:oneOf ().
+ques:capital-32 rdfs:comment " ".
+ques:capital-32 rdfs:range _:sk52.
+_:sk52 owl:oneOf ().
+ques:capital-33 a owl:DatatypeProperty.
+ques:capital-33 rdfs:label "[]Adresse courriel {.P1}".
+ques:capital-33 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-33 rdfs:range _:sk53.
+_:sk53 owl:oneOf ().
+ques:capital-33 rdfs:comment " ".
+ques:capital-33 rdfs:range _:sk54.
+_:sk54 owl:oneOf ().
+ques:capital-34 a owl:DatatypeProperty.
+ques:capital-34 rdfs:label "[]Complété par : {.P1}".
+ques:capital-34 rdfs:comment "Veuillez écrire votre réponse ici :".
+ques:capital-34 rdfs:range _:sk55.
+_:sk55 owl:oneOf ().
+ques:capital-34 rdfs:comment " ".
+ques:capital-34 rdfs:range _:sk56.
+_:sk56 owl:oneOf ().
+ques:capital-34 rdfs:comment "\n\n\nEnvoyer votre questionnaire.\nMerci d'avoir complété ce questionnaire.".
+ques:capital-34 rdfs:range _:sk57.
+_:sk57 owl:oneOf ().
+
+#ENDS 0.187 [sec] TC=58 TP=116 BC=0 BP=0 PM=0 CM=0 FM=0 AM=0
+

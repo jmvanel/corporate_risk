@@ -1,0 +1,20 @@
+@prefix eu: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix fn:     <http://www.w3.org/2005/xpath-functions#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl:  <http://www.w3.org/2002/07/owl#>.
+@prefix log:  <http://www.w3.org/2000/10/swap/log#>.
+@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+{ ?Q :hasRubricId ?URI .
+} <= { # chaînage arrière
+  # créer un URI pour le thème = owl:Class
+  ?Q ques:a ?ID .
+  # _:d eu:trace ("ID " ?ID ).
+  ( ?ID "." ) fn:substring-before ?IDC .
+  # _:d eu:trace ("fn:substring-before " ?ID ).
+  ques: log:uri ?PREF .
+  ( ?PREF ?IDC ) string:concatenation ?C .
+  ?URI log:uri ?C .
+}.

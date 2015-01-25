@@ -313,10 +313,10 @@ ques:capital-33 ques:header """[]Adresse courriel {.P1}""" .
 ques:capital-34 ques:header """[]Complété par : {.P1}""" .
  ques:capital-34 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:paragraph """\
-\
-\
-Envoyer votre questionnaire.\
+  ques:capital-34 ques:paragraph """
+
+
+Envoyer votre questionnaire.
 Merci d'avoir complété ce questionnaire.""" .
   ques:capital-34 ques:paragraph """ """ .
   
