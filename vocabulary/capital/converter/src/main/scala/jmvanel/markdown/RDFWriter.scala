@@ -36,10 +36,9 @@ trait RDFWriter {
     block match {
       case Paragraph( spans, _ ) => spans.foreach( spanToTTL )
 //      case Header( _, spans, _ ) => 
-      case h:Header => 
-        updatecurrentURI()
-        headerToTTL(h, currentURI() )
-//        spans.foreach( spanToTTL )
+      case h:Header =>
+        val oldURI = updatecurrentURI()
+        headerToTTL(h, currentURI(), oldURI )
       case LinkDefinition( _, _, _, _ ) => {}
       case Blockquote( children, _ ) => children.foreach( blockToTTL )
       case CodeBlock( text, _ ) => writer.write( text.content )
@@ -56,15 +55,17 @@ trait RDFWriter {
     writer.write(" ")
   }
   
-  def currentURI() = prefix + "capital-" + index
-  def updatecurrentURI() = index=index+1 
+  def currentURI() = index2URI(index)
+  private def index2URI(i:Int)= prefix + "capital-" + i
+  def updatecurrentURI() = {val oldIndex=index; index=index+1; index2URI(oldIndex) } 
      
-  def headerToTTL(h:Header, uri: String="") ( implicit writer : Writer ) = {
+  def headerToTTL(h:Header, uri: String="", oldURI: String="") ( implicit writer : Writer ) = {
     h match {
       case Header(_,List(Text(t)),_) => 
       // Header(1,List(Text(T1)),1.1)
         writer.write( "\n" )
         writeTriple(uri, prefix+"header", t)
+        writeTripleURI(oldURI, prefix+"subheader", uri)
       case _ =>
     }
   }
@@ -82,6 +83,10 @@ trait RDFWriter {
   def writeTriple(subject:String, pred:String, objet:String ) ( implicit writer : Writer ) =
     writer.write( s"""$subject $pred ""\"${objet.replaceFirst("\n$", "")}""\" .\n""")        
 
+  /** write a URI Triple; subject and pred are with an Turtle prefix */
+  def writeTripleURI(subject:String, pred:String, objet:String ) ( implicit writer : Writer ) =
+    writer.write( s"""$subject $pred ${objet} .\n""") 
+    
   def spanToTTL( span : Span )( implicit writer : Writer ) : Unit = {
     span match {
 //      case Text( content ) => {

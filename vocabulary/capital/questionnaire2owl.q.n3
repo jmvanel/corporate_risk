@@ -13,9 +13,10 @@
 # Chaque question du fichier MD devient une owl:DatatypeProperty à valeurs énumérées
 { ?Q ques:header ?L ;
      ques:paragraph ?C .
-     _:d eu:findall ( ?I
-     { ?Q ques:item ?I .
-     }
+     _:d eu:findall (
+     	     # { ?ENUM rdfs:label ?I }
+     	     ?I
+     { ?Q ques:item ?I }
      ?LIST
      ).
 } => {
