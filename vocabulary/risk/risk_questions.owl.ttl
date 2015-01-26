@@ -5,9 +5,9 @@
 #       notation3.py,v 1.200 2007/12/11 21:18:08 syosi Exp
 
 #   Base was: file:///home/jmv/src/corporate_risk/vocabulary/risk_questions.owl0.ttl
-    @prefix :     <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
-    @prefix user: <http://bizinnov.com/ontologies/users.owl.ttl#"> .
 
+    @prefix :     <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+    @prefix user: <http://bizinnov.com/ontologies/users.owl.ttl#> .
     @prefix XML: <http://www.w3.org/2001/XMLSchema#> .
     @prefix owl: <http://www.w3.org/2002/07/owl#> .
     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -26,6 +26,10 @@ user:User a owl:Class; rdfs:label "Utilisateur"@fr .
     :prop-14     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :14 .
     :prop-15     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :15 .
 
+:risk-fg a :FormGroup ;
+    rdfs:label "Questions sur la gestion des risques."@fr ;
+    :properties :prop-5 , :prop-6 , :prop-7 , :prop-8 ,:prop-9 , :prop-10 , :prop-11 , :prop-12 , :prop-13 , :prop-14 , :prop-15
+.
     
     :10     a owl:Class;
          rdfs:label "EXPLOITATION ET RESEAUX" .
