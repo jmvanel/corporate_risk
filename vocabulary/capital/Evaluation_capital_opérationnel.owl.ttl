@@ -1,0 +1,375 @@
+@prefix :      <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix e:     <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix log:   <http://www.w3.org/2000/10/swap/log#> .
+@prefix ques:  <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+ques:capital-3  a     owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-2 ;
+        rdfs:label    "Qualité de la ressource (air) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( "Les alertes sont très fréquentes et les niveaux atteints sont très élevés" " Les alertes sont fréquentes" " Les alertes sont assez fréquentes" " Les alertes sont très rares" " L’air n’est jamais pollué" ) ] .
+
+ques:capital-40  a    owl:DatatypeProperty ;
+        rdfs:comment  "Envoyer votre questionnaire.\nMerci d'avoir complété ce questionnaire." , " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Complété par : {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-19  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Protection juridique du nom de l’entreprise {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Pas de dépôt INPI, pas de veille" " Mauvaise qualité du dépôt de la marque, pas de veille." " Marque protégée, pas de cluster, marque assez jeune, pas de veille." " Veille insuffisante, reste comme ci-dessus" " Marque protégée, par un cluster de dépôts, large périmètre de\nprotection, forte ancienneté, aucun plagiat, bon dispositif de\nveille" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+ques:capital-27  a  owl:Class ;
+        rdfs:label  "Identification de l'entreprise {.P1}" .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-27
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-2
+] .
+
+ques:capital-14  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-9 ;
+        rdfs:label    "RH locales et Services (Potentiel local RH) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Les différents sites de l’entreprise sont implantés dans des zones\nrurales très éloignées de centres urbains. Les problèmes de\nrecrutement qui en résultent sont très sérieux" " Le recrutement est difficile à cause de l’implantation de\nl’entreprise majoritairement dans des petites agglomérations" " La démographie des régions d’implantation de l’entreprise fait que\ndes problèmes de recrutement significatifs se posent" " Certains sites de l’entreprise sont implantés dans des villes de\ntaille moyenne (50 000 habitants). Le recrutement pose parfois\nquelques problèmes de ce fait mais à la marge" " Tous les sites de l’entreprise sont implantés à proximité de grands\ncentres urbains où il existe des écoles ou centres de formation en\nphase avec les métiers de l’entreprise. Le recrutement ne pose\njamais de problèmes" ) ] .
+
+ques:capital-6  a     owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-2 ;
+        rdfs:label    "Matières Premières {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " La ressource est devenue rare et le métier de l’entreprise est de ce\nfait en danger" " L’approvisionnement fait régulièrement question, l’entreprise a déjà\nsouffert de ruptures" " La qualité et le prix posent des problèmes réguliers qui iront en\ns’intensifiant" " Quelques petits problèmes de qualité ou de prix peuvent se\nmanifester à 5 ans" " Les matières premières que l’entreprise emploie sont abondantes, de\ngrande qualité et bon marché à long terme" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-9
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+ques:capital-22  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Réputation de l’entreprise {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " La marque en sursis : a souffert de crises graves et largement\nmédiatisées" " La marque rencontre des problèmes de réputation ou d’image" " Réputation neutre" " Bonne réputation" " Excellente image de la marque : toujours très positive, partout" ) ] .
+
+ques:capital-30  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Sites web de l'entreprise et sites liés à son activité {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-1  a     owl:DatatypeProperty ;
+        rdfs:comment  "Il y a 34 questions dans ce questionnaire" , "Ce questionnaire a pour but de permettre l'évaluation du capital\nopérationnel selon les thèmes suivants :" ;
+        rdfs:label    "Evaluation du capital opérationnel {.P29}" ;
+        rdfs:range    [ owl:oneOf  ( "Capital naturel " "capital sociétal " "capital de marque " ) ] ;
+        rdfs:range    [ owl:oneOf  ( "Capital naturel " "capital sociétal " "capital de marque " ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+ques:capital-38  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Téléphone {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-17  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Protection juridique des noms de produits ou d’offre {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Pas de dépôt INPI, pas de veille" " Mauvaise qualité du dépôt de la marque, pas de veille." " Marque protégée, pas de cluster, marque assez jeune, pas de veille." " Veille insuffisante, reste comme ci-dessus" " Marque protégée, par un cluster de dépôts, large périmètre de\nprotection, forte ancienneté, aucun plagiat, bon dispositif de\nveille" ) ] .
+
+ques:capital-9  a     owl:DatatypeProperty , owl:Class ;
+        rdfs:comment  "Sont regroupées les rubriques :" , " " , "Accès et infrastructure" , "Sport, culture, loisirs" , "Partenaires publics" , "RH locales et services (services publics)" , "RH locales et services (potentiel local RH)" ;
+        rdfs:label    "Capital sociétal {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-25  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Il s’agit de l’âge de la marque {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " 6 mois" " 5 ans" " 10 ans" " 50 ans" " Marque centenaire" " Notoriété directe" " Marque inconnue" " Sort parfois dans les enquêtes de notoriété assistée" " Sort souvent dans les enquêtes de notoriété assistée" " Sort presque toujours dans les enquêtes de notoriété spontanée" " Marque leader" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-2
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-9
+] .
+
+ques:capital-33  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Chiffre d'affaire : {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-12  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-9 ;
+        rdfs:label    "Accès et infrastructures {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Autoroute à + de 50 KM, pas de gare" " Autoroute à + de 50 KM, Gare TER à 20 KM" " Autoroute proche" " Autoroute et gare TGV à 20 KM" " Autoroute, gare TGV, aéroport à 20KM" ) ] .
+
+ques:capital-4  a     owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-2 ;
+        rdfs:label    "Qualité de la ressource (eau) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " L’eau est de très mauvaise qualité en surface et en profondeur, les\nteneurs en nitrates, hydrocarbures, pesticides…sont très élevées" " L’eau est polluée en surface et en profondeur (nitrates,\nhydrocarbures, pesticides)" " L’eau est de qualité acceptable en profondeur mais pas en surface" " Bonne qualité en surface et en profondeur" " Grande pureté tant en surface que dans les nappes phréatiques" ) ] .
+
+ques:capital-20  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "La marque peut-elle être confondue avec une autre marque ? {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Pas de marque : produit générique" " Marque peu singulière souvent prise pour une autre" " 10 % des consommateurs confondent notre marque avec celle d’un\nconcurrent" " Des confusions rares peuvent exister avec une autre marque dans un\nsecteur très distant" " Forte personnalité de la marque - n’est jamais confondue avec une\nautre" ) ] .
+
+ques:capital-28  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Raison sociale : {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-2
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-9
+] .
+
+ques:capital-36  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]NOM et PRENOM {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-15  a  owl:Class ;
+        rdfs:label  "Capital de Marque {.P1}" .
+
+ques:capital-7  a     owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-2 ;
+        rdfs:label    "Evaluation du climat {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Nord" " Bretagne, Est, Massif Central, Normandie" " Ile de France" " Aquitaine, Rhône Alpes" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue climat : Région PACA, Midi Pyrénées\nLes sites de l’entreprise sont implantés dans des régions très" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-2
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-9
+] .
+
+ques:capital-23  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Budgets de promotion de la marque (mesure de la notoriété) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Aucun investissement" " Documentation marketing diffusée par l’entreprise" " Presse écrite" " Affichage, pub télé, presse écrite" " Budget énorme: sponsoring voile, F1, pub télé, affichage" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-9
+] .
+
+ques:capital-31  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Nombre d'employés {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-10  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-9 ;
+        rdfs:label    "Sport, Culture, loisirs {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Toutes les régions d’implantation de l’entreprise sont très pauvres\nsur le plan sportif, culturel ou des loisirs" " Les trois quarts des implantations sont dans des régions pauvres\ndans ce domaine" " La moitié des implantations présente peu de potentiel dans ce\ndomaine" " Les régions d’implantation sont pour la plupart riches sur le plan\ndu sport, de la culture et des loisirs" " Tous les sites de l’entreprise sont implantés dans des régions très\nriches sur le plan culturel, sportif ou de loisirs" ) ] .
+
+ques:capital-2  a   owl:Class ;
+        rdfs:label  "Capital Naturel {.P1}" .
+
+ques:capital-39  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Adresse courriel {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-18  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Protections des noms de domaine internet {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Marque absente sur internet" " Le nom de domaine est différent du nom de l’entreprise" " Pas de cluster , pas de veille" " La veille est insuffisante, reste comme ci-dessus" " Le nom de domaine principal est égal au nom de l’entreprise ou de la\nmarque commerciale phare, il est protégé par un cluster de nom de\ndomaines, la veille est assurée" ) ] .
+
+ques:capital-26  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Pas du tout" " Globalement Non" " Partiellement" " Globalement Oui" " Absolument" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+ques:capital-34  a    owl:DatatypeProperty ;
+        rdfs:comment  "Totale et par région :" , " " , "Veuillez écrire votre(vos) réponse(s) ici :" ;
+        rdfs:domain   ques:capital-27 ;
+        rdfs:label    "[]Marge brute annuelle : {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( "Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n " ) ] ;
+        rdfs:range    [ owl:oneOf  ( "Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n " ) ] ;
+        rdfs:range    [ owl:oneOf  ( "Total :  " "Europe (EU) :  " "US/Canada :  " "Reste du monde :  \n " ) ] .
+
+ques:capital-13  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-9 ;
+        rdfs:label    "RH locales et Services (Services Publics) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Les zones ou l’entreprise est implantée sont très pauvres en service\npublics" " Les services publics lorsqu’ils existent sont de mauvaise qualité" " Certains services publics manquent (accès à 50 km) ou sont de\nqualité moyenne" " Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour\nles salariés (hôpitaux, écoles,…) sont bons" " Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour\nles salariés (hôpitaux, écoles,…) sont d’excellente qualité" ) ] .
+
+ques:capital-5  a     owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-2 ;
+        rdfs:label    "Abondance de la ressource {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Il y a des restrictions d’eau très fréquentes dans l’année" " Il y a des restrictions d’eau souvent en été" " Il y a des restrictions d’eau de temps en temps en été" " Des risques de restriction ont déjà été évoqués mais n’ont pas eu lieu" " Ressource abondante en permanence" ) ] .
+
+ques:capital-21  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "La marque apporte-t-elle un supplément d’image à ses clients ? (Influence) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Les clients cachent le fait qu’ils achètent cette marque" " Les clients ne montrent pas qu’ils achètent cette marque" " La marque n’a pas d’influence sur l’ego de ses clients" " En général les clients aiment montrer qu’ils possèdent un produit\nayant cette marque" " La marque est une référence socioculturelle utilisée dans de\nnombreux films à dessein" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-2
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+ques:capital-29  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]N° SIREN : {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .
+
+ques:capital-37  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Qualité {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-16  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-15 ;
+        rdfs:label    "Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " Les produits ou services actuels ont une influence négative sur la\nmarque" " Les produits ou services ont une influence très négative sur la\nmarque" " Il n’y a aucun problème de ce type" ) ] .
+
+ques:capital-8  a     owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-2 ;
+        rdfs:label    "Géographie et climat {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes" " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)" " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)" " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…" " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-2
+] .
+
+ques:capital-32  a    owl:DatatypeProperty ;
+        rdfs:comment  " " , "Veuillez écrire votre réponse ici :" ;
+        rdfs:label    "[]Nombre de sites : {.P1}" ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] ;
+        rdfs:range    [ owl:oneOf  ()
+                 ] .
+
+ques:capital-11  a    owl:DatatypeProperty ;
+        rdfs:comment  "Veuillez sélectionner une seule des propositions suivantes :" ;
+        rdfs:domain   ques:capital-9 ;
+        rdfs:label    "Partenaires publics {.P1}" ;
+        rdfs:range    [ owl:oneOf  ( " L’entreprise est très éloignée de ses partenaires publics (à plus de" " L’entreprise est éloignée de ses partenaires publics (à plus de 200\nkm)" " Les partenaires publics importants pour l’entreprise sont présents\ndans la région (à 100 km)" " L’entreprise a un accès facile (moins de 50 km) aux partenaires\npublics importants pour elle" " L’entreprise est implantée à proximité de partenaires publics\nimportants pour elle. Exemple: pôles de compétitivité, de\ntechnopôles, de centres de recherche ou de formation professionnelle\nliés à ses métiers" ) ] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:capital-15
+] .

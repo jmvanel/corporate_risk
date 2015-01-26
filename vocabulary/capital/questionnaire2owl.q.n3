@@ -8,7 +8,7 @@
 @prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
 # lancer avec:
-# eye --nope risk_questions.raw.ttl --query questionnaire2owl.q.n3 questionnaire2owl.n3 > risk_questions.owl.ttl
+# eye --nope Evaluation_capital_opérationnel.ttl --query questionnaire2owl.q.n3 > Evaluation_capital_opérationnel.owl.ttl
 
 # Chaque question du fichier MD devient une owl:DatatypeProperty à valeurs énumérées
 { ?Q ques:header ?L ;
@@ -20,27 +20,20 @@
      ?LIST
      ).
 } => {
- ?Q a owl:DatatypeProperty ;
- rdfs:label ?L ;
- rdfs:comment ?C ;
- rdfs:range [ owl:oneOf ?LIST ] . # ?RANGE.
+  ?Q a owl:DatatypeProperty ;
+  rdfs:label ?L ;
+  rdfs:comment ?C ;
+  rdfs:range [ owl:oneOf ?LIST ] . # ?RANGE.
 } .
 
 
-# Rassembler par theme pour faire une owl:Class et la propriété correspondante
-{ ?Q a ques:Question ;
-  ques:theme ?T ;
-  :hasRubricId ?C . # voir règle en chaînage arrière
+# Rassembler via ques:subheader pour faire une owl:Class et la propriété correspondante de :User
+{ ?CLASS ques:subheader ?PROP ;
+	ques:header ?LAB .
+  ?PROP ques:item ?ITEM .
 } => {
-  ?C a owl:Class ; rdfs:label ?T .
-  ?P a owl:ObjectProperty; rdfs:domain :User; rdfs:range ?C .
+  ?CLASS a owl:Class ; rdfs:label ?LAB .
+  ?P a owl:ObjectProperty; rdfs:domain :User; rdfs:range ?CLASS .
+  ?PROP rdfs:domain ?CLASS.
 }.
-
-# Relier le theme avec les owl:DatatypeProperty via rdfs:domain
-{ ?Q a ques:Question ;
-  :hasRubricId ?C . # voir règle en chaînage arrière
-} => {
-  ?Q rdfs:domain ?C .
-}.
-
 

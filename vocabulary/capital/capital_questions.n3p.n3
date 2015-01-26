@@ -8,4 +8,4 @@
 <> a owl:Ontology .
 <> proj:hasN3Query <questionnaire2owl.q.n3> .
 <questionnaire2owl.q.n3> proj:isMainQuery true .
-<> owl:imports <Evaluation_capital_opérationnel.ttl> , <questionnaire2owl.n3> .
+<> owl:imports <Evaluation_capital_opérationnel.ttl> .

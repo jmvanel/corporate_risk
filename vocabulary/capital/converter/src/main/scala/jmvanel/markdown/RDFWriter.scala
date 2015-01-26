@@ -10,10 +10,23 @@ package jmvanel.markdown
 
 import java.io.{ StringWriter, Writer }
 import com.tristanhunt.knockoff._
+import scala.util.parsing.input.Position
 
 trait RDFWriter {
   val prefix = "ques:" // http://www.bizinnov.com/ontologies/quest.owl.ttl#"
+  /** current index for created URI's */
   var index=0
+  /** last header for each level */
+  val headers = scala.collection.mutable.ArrayBuffer.fill(20)("")
+  headers(0) = "ques:capital-0"
+  class HeaderResource(h:Header, val uri:String) extends Header(h.level, h.spans, h.position)
+  var lastHeader: HeaderResource = _
+  var precedingHeader: HeaderResource = new HeaderResource( new Header(0, Seq(), new Position{
+    def column: Int = 1
+    def line: Int = 1
+    protected def lineContents: String = ""    
+  } ), headers(0) )
+  
   /** Creates a Group representation of the document. */
   def toTTL(blocks: Seq[Block]): String = {
     implicit val writer = new StringWriter
@@ -63,9 +76,16 @@ trait RDFWriter {
     h match {
       case Header(_,List(Text(t)),_) => 
       // Header(1,List(Text(T1)),1.1)
+        println(s"Header: level ${h.level} text $t")
+        headers(h.level) = uri
+        if( h.level > precedingHeader.level ) lastHeader = precedingHeader
+        
         writer.write( "\n" )
         writeTriple(uri, prefix+"header", t)
-        writeTripleURI(oldURI, prefix+"subheader", uri)
+        if( h.level >0 )
+          writeTripleURI( lastHeader.uri, prefix+"subheader", uri)
+//          writeTripleURI( headers(h.level-1), prefix+"subheader", uri)
+        precedingHeader = new HeaderResource(h, uri)
       case _ =>
     }
   }

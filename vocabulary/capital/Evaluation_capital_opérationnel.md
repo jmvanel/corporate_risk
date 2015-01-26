@@ -96,7 +96,8 @@ Veuillez sélectionner une seule des propositions suivantes :
     Côte d’Azur…
 
 Capital sociétal {.P1}
----------------- 
+----------------
+
 Sont regroupées les rubriques :
 
 Sport, culture, loisirs
@@ -192,7 +193,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     jamais de problèmes
 
 Capital de Marque {.P1}
------------------ 
+-----------------
 
 #### Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}
 
@@ -328,7 +329,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Absolument
 
 Identification de l'entreprise {.P1}
------------------------------- 
+------------------------------
+
 ### []Raison sociale : {.P1}
 
 Veuillez écrire votre réponse ici :
@@ -396,7 +398,8 @@ Veuillez écrire votre(vos) réponse(s) ici :
 Totale et par région :
 
 Personne à contacter {.P1}
--------------------- 
+--------------------
+
 ### []NOM et PRENOM {.P1}
 
 Veuillez écrire votre réponse ici :
@@ -427,10 +430,7 @@ Veuillez écrire votre réponse ici :
 
  
 
-\
-\
-\
-Envoyer votre questionnaire.\
+Envoyer votre questionnaire.
 Merci d'avoir complété ce questionnaire.
 
  

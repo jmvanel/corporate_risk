@@ -27,7 +27,7 @@ ques:capital-3 ques:item """ Les alertes sont très rares""" .
 ques:capital-3 ques:item """ L’air n’est jamais pollué""" .
  
 ques:capital-4 ques:header """Qualité de la ressource (eau) {.P1}""" .
-ques:capital-3 ques:subheader ques:capital-4 .
+ques:capital-2 ques:subheader ques:capital-4 .
  ques:capital-4 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-4 ques:item """ L’eau est de très mauvaise qualité en surface et en profondeur, les
 teneurs en nitrates, hydrocarbures, pesticides…sont très élevées""" .
@@ -38,7 +38,7 @@ ques:capital-4 ques:item """ Bonne qualité en surface et en profondeur""" .
 ques:capital-4 ques:item """ Grande pureté tant en surface que dans les nappes phréatiques""" .
  
 ques:capital-5 ques:header """Abondance de la ressource {.P1}""" .
-ques:capital-4 ques:subheader ques:capital-5 .
+ques:capital-2 ques:subheader ques:capital-5 .
  ques:capital-5 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-5 ques:item """ Il y a des restrictions d’eau très fréquentes dans l’année""" .
 ques:capital-5 ques:item """ Il y a des restrictions d’eau souvent en été""" .
@@ -47,7 +47,7 @@ ques:capital-5 ques:item """ Des risques de restriction ont déjà été évoqu�
 ques:capital-5 ques:item """ Ressource abondante en permanence""" .
  
 ques:capital-6 ques:header """Matières Premières {.P1}""" .
-ques:capital-5 ques:subheader ques:capital-6 .
+ques:capital-2 ques:subheader ques:capital-6 .
  ques:capital-6 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-6 ques:item """ La ressource est devenue rare et le métier de l’entreprise est de ce
 fait en danger""" .
@@ -61,7 +61,7 @@ ques:capital-6 ques:item """ Les matières premières que l’entreprise emploie
 grande qualité et bon marché à long terme""" .
  
 ques:capital-7 ques:header """Evaluation du climat {.P1}""" .
-ques:capital-6 ques:subheader ques:capital-7 .
+ques:capital-2 ques:subheader ques:capital-7 .
  ques:capital-7 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-7 ques:item """ Nord""" .
 ques:capital-7 ques:item """ Bretagne, Est, Massif Central, Normandie""" .
@@ -72,7 +72,7 @@ attractives du point de vue climat : Région PACA, Midi Pyrénées
 Les sites de l’entreprise sont implantés dans des régions très""" .
  
 ques:capital-8 ques:header """Géographie et climat {.P1}""" .
-ques:capital-7 ques:subheader ques:capital-8 .
+ques:capital-2 ques:subheader ques:capital-8 .
  ques:capital-8 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-8 ques:item """ L’entreprise est implantée dans des régions ou peu de personnes
 souhaitent s’installer : Creuse, Allier, Ardennes""" .
@@ -84,120 +84,100 @@ ques:capital-8 ques:item """ Les régions d’implantation sont jolies: Touraine
 ques:capital-8 ques:item """ Les sites de l’entreprise sont implantés dans des régions très
 attractives du point de vue géographique. Exemple: Bretagne, Alpes,
 Côte d’Azur…""" .
- ques:capital-8 ques:paragraph """Capital sociétal {.P1}
----------------- 
-Sont regroupées les rubriques :""" .
-  ques:capital-8 ques:paragraph """Sport, culture, loisirs""" .
-  ques:capital-8 ques:paragraph """Partenaires publics""" .
-  ques:capital-8 ques:paragraph """Accès et infrastructure""" .
-  ques:capital-8 ques:paragraph """RH locales et services (services publics)""" .
-  ques:capital-8 ques:paragraph """RH locales et services (potentiel local RH)""" .
-  ques:capital-8 ques:paragraph """ """ .
-  
-ques:capital-9 ques:header """Sport, Culture, loisirs {.P1}""" .
-ques:capital-8 ques:subheader ques:capital-9 .
- ques:capital-9 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-9 ques:item """ Toutes les régions d’implantation de l’entreprise sont très pauvres
-sur le plan sportif, culturel ou des loisirs""" .
-ques:capital-9 ques:item """ Les trois quarts des implantations sont dans des régions pauvres
-dans ce domaine""" .
-ques:capital-9 ques:item """ La moitié des implantations présente peu de potentiel dans ce
-domaine""" .
-ques:capital-9 ques:item """ Les régions d’implantation sont pour la plupart riches sur le plan
-du sport, de la culture et des loisirs""" .
-ques:capital-9 ques:item """ Tous les sites de l’entreprise sont implantés dans des régions très
-riches sur le plan culturel, sportif ou de loisirs""" .
  
-ques:capital-10 ques:header """Partenaires publics {.P1}""" .
+ques:capital-9 ques:header """Capital sociétal {.P1}""" .
+ques:capital-2 ques:subheader ques:capital-9 .
+ ques:capital-9 ques:paragraph """Sont regroupées les rubriques :""" .
+  ques:capital-9 ques:paragraph """Sport, culture, loisirs""" .
+  ques:capital-9 ques:paragraph """Partenaires publics""" .
+  ques:capital-9 ques:paragraph """Accès et infrastructure""" .
+  ques:capital-9 ques:paragraph """RH locales et services (services publics)""" .
+  ques:capital-9 ques:paragraph """RH locales et services (potentiel local RH)""" .
+  ques:capital-9 ques:paragraph """ """ .
+  
+ques:capital-10 ques:header """Sport, Culture, loisirs {.P1}""" .
 ques:capital-9 ques:subheader ques:capital-10 .
  ques:capital-10 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-10 ques:item """ L’entreprise est très éloignée de ses partenaires publics (à plus de""" .
-ques:capital-10 ques:item """ L’entreprise est éloignée de ses partenaires publics (à plus de 200
+  ques:capital-10 ques:item """ Toutes les régions d’implantation de l’entreprise sont très pauvres
+sur le plan sportif, culturel ou des loisirs""" .
+ques:capital-10 ques:item """ Les trois quarts des implantations sont dans des régions pauvres
+dans ce domaine""" .
+ques:capital-10 ques:item """ La moitié des implantations présente peu de potentiel dans ce
+domaine""" .
+ques:capital-10 ques:item """ Les régions d’implantation sont pour la plupart riches sur le plan
+du sport, de la culture et des loisirs""" .
+ques:capital-10 ques:item """ Tous les sites de l’entreprise sont implantés dans des régions très
+riches sur le plan culturel, sportif ou de loisirs""" .
+ 
+ques:capital-11 ques:header """Partenaires publics {.P1}""" .
+ques:capital-9 ques:subheader ques:capital-11 .
+ ques:capital-11 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-11 ques:item """ L’entreprise est très éloignée de ses partenaires publics (à plus de""" .
+ques:capital-11 ques:item """ L’entreprise est éloignée de ses partenaires publics (à plus de 200
 km)""" .
-ques:capital-10 ques:item """ Les partenaires publics importants pour l’entreprise sont présents
+ques:capital-11 ques:item """ Les partenaires publics importants pour l’entreprise sont présents
 dans la région (à 100 km)""" .
-ques:capital-10 ques:item """ L’entreprise a un accès facile (moins de 50 km) aux partenaires
+ques:capital-11 ques:item """ L’entreprise a un accès facile (moins de 50 km) aux partenaires
 publics importants pour elle""" .
-ques:capital-10 ques:item """ L’entreprise est implantée à proximité de partenaires publics
+ques:capital-11 ques:item """ L’entreprise est implantée à proximité de partenaires publics
 importants pour elle. Exemple: pôles de compétitivité, de
 technopôles, de centres de recherche ou de formation professionnelle
 liés à ses métiers""" .
  
-ques:capital-11 ques:header """Accès et infrastructures {.P1}""" .
-ques:capital-10 ques:subheader ques:capital-11 .
- ques:capital-11 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-11 ques:item """ Autoroute à + de 50 KM, pas de gare""" .
-ques:capital-11 ques:item """ Autoroute à + de 50 KM, Gare TER à 20 KM""" .
-ques:capital-11 ques:item """ Autoroute proche""" .
-ques:capital-11 ques:item """ Autoroute et gare TGV à 20 KM""" .
-ques:capital-11 ques:item """ Autoroute, gare TGV, aéroport à 20KM""" .
- 
-ques:capital-12 ques:header """RH locales et Services (Services Publics) {.P1}""" .
-ques:capital-11 ques:subheader ques:capital-12 .
+ques:capital-12 ques:header """Accès et infrastructures {.P1}""" .
+ques:capital-9 ques:subheader ques:capital-12 .
  ques:capital-12 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-12 ques:item """ Les zones ou l’entreprise est implantée sont très pauvres en service
+  ques:capital-12 ques:item """ Autoroute à + de 50 KM, pas de gare""" .
+ques:capital-12 ques:item """ Autoroute à + de 50 KM, Gare TER à 20 KM""" .
+ques:capital-12 ques:item """ Autoroute proche""" .
+ques:capital-12 ques:item """ Autoroute et gare TGV à 20 KM""" .
+ques:capital-12 ques:item """ Autoroute, gare TGV, aéroport à 20KM""" .
+ 
+ques:capital-13 ques:header """RH locales et Services (Services Publics) {.P1}""" .
+ques:capital-9 ques:subheader ques:capital-13 .
+ ques:capital-13 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-13 ques:item """ Les zones ou l’entreprise est implantée sont très pauvres en service
 publics""" .
-ques:capital-12 ques:item """ Les services publics lorsqu’ils existent sont de mauvaise qualité""" .
-ques:capital-12 ques:item """ Certains services publics manquent (accès à 50 km) ou sont de
+ques:capital-13 ques:item """ Les services publics lorsqu’ils existent sont de mauvaise qualité""" .
+ques:capital-13 ques:item """ Certains services publics manquent (accès à 50 km) ou sont de
 qualité moyenne""" .
-ques:capital-12 ques:item """ Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour
+ques:capital-13 ques:item """ Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour
 les salariés (hôpitaux, écoles,…) sont bons""" .
-ques:capital-12 ques:item """ Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour
+ques:capital-13 ques:item """ Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour
 les salariés (hôpitaux, écoles,…) sont d’excellente qualité""" .
  
-ques:capital-13 ques:header """RH locales et Services (Potentiel local RH) {.P1}""" .
-ques:capital-12 ques:subheader ques:capital-13 .
- ques:capital-13 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-13 ques:item """ Les différents sites de l’entreprise sont implantés dans des zones
+ques:capital-14 ques:header """RH locales et Services (Potentiel local RH) {.P1}""" .
+ques:capital-9 ques:subheader ques:capital-14 .
+ ques:capital-14 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-14 ques:item """ Les différents sites de l’entreprise sont implantés dans des zones
 rurales très éloignées de centres urbains. Les problèmes de
 recrutement qui en résultent sont très sérieux""" .
-ques:capital-13 ques:item """ Le recrutement est difficile à cause de l’implantation de
+ques:capital-14 ques:item """ Le recrutement est difficile à cause de l’implantation de
 l’entreprise majoritairement dans des petites agglomérations""" .
-ques:capital-13 ques:item """ La démographie des régions d’implantation de l’entreprise fait que
+ques:capital-14 ques:item """ La démographie des régions d’implantation de l’entreprise fait que
 des problèmes de recrutement significatifs se posent""" .
-ques:capital-13 ques:item """ Certains sites de l’entreprise sont implantés dans des villes de
+ques:capital-14 ques:item """ Certains sites de l’entreprise sont implantés dans des villes de
 taille moyenne (50 000 habitants). Le recrutement pose parfois
 quelques problèmes de ce fait mais à la marge""" .
-ques:capital-13 ques:item """ Tous les sites de l’entreprise sont implantés à proximité de grands
+ques:capital-14 ques:item """ Tous les sites de l’entreprise sont implantés à proximité de grands
 centres urbains où il existe des écoles ou centres de formation en
 phase avec les métiers de l’entreprise. Le recrutement ne pose
 jamais de problèmes""" .
- ques:capital-13 ques:paragraph """Capital de Marque {.P1}
------------------ """ .
-  
-ques:capital-14 ques:header """Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}""" .
-ques:capital-13 ques:subheader ques:capital-14 .
- ques:capital-14 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-14 ques:item """ Les produits ou services actuels ont une influence négative sur la
-marque""" .
-ques:capital-14 ques:item """ Les produits ou services ont une influence très négative sur la
-marque""" .
-ques:capital-14 ques:item """ Il n’y a aucun problème de ce type""" .
  
-ques:capital-15 ques:header """Protection juridique des noms de produits ou d’offre {.P1}""" .
-ques:capital-14 ques:subheader ques:capital-15 .
- ques:capital-15 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-15 ques:item """ Pas de dépôt INPI, pas de veille""" .
-ques:capital-15 ques:item """ Mauvaise qualité du dépôt de la marque, pas de veille.""" .
-ques:capital-15 ques:item """ Marque protégée, pas de cluster, marque assez jeune, pas de veille.""" .
-ques:capital-15 ques:item """ Veille insuffisante, reste comme ci-dessus""" .
-ques:capital-15 ques:item """ Marque protégée, par un cluster de dépôts, large périmètre de
-protection, forte ancienneté, aucun plagiat, bon dispositif de
-veille""" .
+ques:capital-15 ques:header """Capital de Marque {.P1}""" .
+ques:capital-9 ques:subheader ques:capital-15 .
  
-ques:capital-16 ques:header """Protections des noms de domaine internet {.P1}""" .
+ques:capital-16 ques:header """Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}""" .
 ques:capital-15 ques:subheader ques:capital-16 .
  ques:capital-16 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-16 ques:item """ Marque absente sur internet""" .
-ques:capital-16 ques:item """ Le nom de domaine est différent du nom de l’entreprise""" .
-ques:capital-16 ques:item """ Pas de cluster , pas de veille""" .
-ques:capital-16 ques:item """ La veille est insuffisante, reste comme ci-dessus""" .
-ques:capital-16 ques:item """ Le nom de domaine principal est égal au nom de l’entreprise ou de la
-marque commerciale phare, il est protégé par un cluster de nom de
-domaines, la veille est assurée""" .
+  ques:capital-16 ques:item """ Les produits ou services actuels ont une influence négative sur la
+marque""" .
+ques:capital-16 ques:item """ Les produits ou services ont une influence très négative sur la
+marque""" .
+ques:capital-16 ques:item """ Il n’y a aucun problème de ce type""" .
  
-ques:capital-17 ques:header """Protection juridique du nom de l’entreprise {.P1}""" .
-ques:capital-16 ques:subheader ques:capital-17 .
+ques:capital-17 ques:header """Protection juridique des noms de produits ou d’offre {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-17 .
  ques:capital-17 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-17 ques:item """ Pas de dépôt INPI, pas de veille""" .
 ques:capital-17 ques:item """ Mauvaise qualité du dépôt de la marque, pas de veille.""" .
@@ -207,150 +187,175 @@ ques:capital-17 ques:item """ Marque protégée, par un cluster de dépôts, lar
 protection, forte ancienneté, aucun plagiat, bon dispositif de
 veille""" .
  
-ques:capital-18 ques:header """La marque peut-elle être confondue avec une autre marque ? {.P1}""" .
-ques:capital-17 ques:subheader ques:capital-18 .
+ques:capital-18 ques:header """Protections des noms de domaine internet {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-18 .
  ques:capital-18 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-18 ques:item """ Pas de marque : produit générique""" .
-ques:capital-18 ques:item """ Marque peu singulière souvent prise pour une autre""" .
-ques:capital-18 ques:item """ 10 % des consommateurs confondent notre marque avec celle d’un
+  ques:capital-18 ques:item """ Marque absente sur internet""" .
+ques:capital-18 ques:item """ Le nom de domaine est différent du nom de l’entreprise""" .
+ques:capital-18 ques:item """ Pas de cluster , pas de veille""" .
+ques:capital-18 ques:item """ La veille est insuffisante, reste comme ci-dessus""" .
+ques:capital-18 ques:item """ Le nom de domaine principal est égal au nom de l’entreprise ou de la
+marque commerciale phare, il est protégé par un cluster de nom de
+domaines, la veille est assurée""" .
+ 
+ques:capital-19 ques:header """Protection juridique du nom de l’entreprise {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-19 .
+ ques:capital-19 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-19 ques:item """ Pas de dépôt INPI, pas de veille""" .
+ques:capital-19 ques:item """ Mauvaise qualité du dépôt de la marque, pas de veille.""" .
+ques:capital-19 ques:item """ Marque protégée, pas de cluster, marque assez jeune, pas de veille.""" .
+ques:capital-19 ques:item """ Veille insuffisante, reste comme ci-dessus""" .
+ques:capital-19 ques:item """ Marque protégée, par un cluster de dépôts, large périmètre de
+protection, forte ancienneté, aucun plagiat, bon dispositif de
+veille""" .
+ 
+ques:capital-20 ques:header """La marque peut-elle être confondue avec une autre marque ? {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-20 .
+ ques:capital-20 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-20 ques:item """ Pas de marque : produit générique""" .
+ques:capital-20 ques:item """ Marque peu singulière souvent prise pour une autre""" .
+ques:capital-20 ques:item """ 10 % des consommateurs confondent notre marque avec celle d’un
 concurrent""" .
-ques:capital-18 ques:item """ Des confusions rares peuvent exister avec une autre marque dans un
+ques:capital-20 ques:item """ Des confusions rares peuvent exister avec une autre marque dans un
 secteur très distant""" .
-ques:capital-18 ques:item """ Forte personnalité de la marque - n’est jamais confondue avec une
+ques:capital-20 ques:item """ Forte personnalité de la marque - n’est jamais confondue avec une
 autre""" .
  
-ques:capital-19 ques:header """La marque apporte-t-elle un supplément d’image à ses clients ? (Influence) {.P1}""" .
-ques:capital-18 ques:subheader ques:capital-19 .
- ques:capital-19 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-19 ques:item """ Les clients cachent le fait qu’ils achètent cette marque""" .
-ques:capital-19 ques:item """ Les clients ne montrent pas qu’ils achètent cette marque""" .
-ques:capital-19 ques:item """ La marque n’a pas d’influence sur l’ego de ses clients""" .
-ques:capital-19 ques:item """ En général les clients aiment montrer qu’ils possèdent un produit
+ques:capital-21 ques:header """La marque apporte-t-elle un supplément d’image à ses clients ? (Influence) {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-21 .
+ ques:capital-21 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-21 ques:item """ Les clients cachent le fait qu’ils achètent cette marque""" .
+ques:capital-21 ques:item """ Les clients ne montrent pas qu’ils achètent cette marque""" .
+ques:capital-21 ques:item """ La marque n’a pas d’influence sur l’ego de ses clients""" .
+ques:capital-21 ques:item """ En général les clients aiment montrer qu’ils possèdent un produit
 ayant cette marque""" .
-ques:capital-19 ques:item """ La marque est une référence socioculturelle utilisée dans de
+ques:capital-21 ques:item """ La marque est une référence socioculturelle utilisée dans de
 nombreux films à dessein""" .
  
-ques:capital-20 ques:header """Réputation de l’entreprise {.P1}""" .
-ques:capital-19 ques:subheader ques:capital-20 .
- ques:capital-20 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-20 ques:item """ La marque en sursis : a souffert de crises graves et largement
+ques:capital-22 ques:header """Réputation de l’entreprise {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-22 .
+ ques:capital-22 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-22 ques:item """ La marque en sursis : a souffert de crises graves et largement
 médiatisées""" .
-ques:capital-20 ques:item """ La marque rencontre des problèmes de réputation ou d’image""" .
-ques:capital-20 ques:item """ Réputation neutre""" .
-ques:capital-20 ques:item """ Bonne réputation""" .
-ques:capital-20 ques:item """ Excellente image de la marque : toujours très positive, partout""" .
+ques:capital-22 ques:item """ La marque rencontre des problèmes de réputation ou d’image""" .
+ques:capital-22 ques:item """ Réputation neutre""" .
+ques:capital-22 ques:item """ Bonne réputation""" .
+ques:capital-22 ques:item """ Excellente image de la marque : toujours très positive, partout""" .
  
-ques:capital-21 ques:header """Budgets de promotion de la marque (mesure de la notoriété) {.P1}""" .
-ques:capital-20 ques:subheader ques:capital-21 .
- ques:capital-21 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-21 ques:item """ Aucun investissement""" .
-ques:capital-21 ques:item """ Documentation marketing diffusée par l’entreprise""" .
-ques:capital-21 ques:item """ Presse écrite""" .
-ques:capital-21 ques:item """ Affichage, pub télé, presse écrite""" .
-ques:capital-21 ques:item """ Budget énorme: sponsoring voile, F1, pub télé, affichage""" .
- 
-ques:capital-22 ques:header """Age (mesure de la notoriété) {.P1}""" .
-ques:capital-21 ques:subheader ques:capital-22 .
- 
-ques:capital-23 ques:header """Il s’agit de l’âge de la marque {.P1}""" .
-ques:capital-22 ques:subheader ques:capital-23 .
+ques:capital-23 ques:header """Budgets de promotion de la marque (mesure de la notoriété) {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-23 .
  ques:capital-23 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-23 ques:item """ 6 mois""" .
-ques:capital-23 ques:item """ 5 ans""" .
-ques:capital-23 ques:item """ 10 ans""" .
-ques:capital-23 ques:item """ 50 ans""" .
-ques:capital-23 ques:item """ Marque centenaire""" .
- ques:capital-23 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-23 ques:item """ Notoriété directe""" .
-ques:capital-23 ques:item """ Marque inconnue""" .
-ques:capital-23 ques:item """ Sort parfois dans les enquêtes de notoriété assistée""" .
-ques:capital-23 ques:item """ Sort souvent dans les enquêtes de notoriété assistée""" .
-ques:capital-23 ques:item """ Sort presque toujours dans les enquêtes de notoriété spontanée""" .
-ques:capital-23 ques:item """ Marque leader""" .
+  ques:capital-23 ques:item """ Aucun investissement""" .
+ques:capital-23 ques:item """ Documentation marketing diffusée par l’entreprise""" .
+ques:capital-23 ques:item """ Presse écrite""" .
+ques:capital-23 ques:item """ Affichage, pub télé, presse écrite""" .
+ques:capital-23 ques:item """ Budget énorme: sponsoring voile, F1, pub télé, affichage""" .
  
-ques:capital-24 ques:header """La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}""" .
-ques:capital-23 ques:subheader ques:capital-24 .
- ques:capital-24 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
-  ques:capital-24 ques:item """ Pas du tout""" .
-ques:capital-24 ques:item """ Globalement Non""" .
-ques:capital-24 ques:item """ Partiellement""" .
-ques:capital-24 ques:item """ Globalement Oui""" .
-ques:capital-24 ques:item """ Absolument""" .
- ques:capital-24 ques:paragraph """Identification de l'entreprise {.P1}
------------------------------- 
-### []Raison sociale : {.P1}""" .
-  ques:capital-24 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-24 ques:paragraph """ """ .
-  
-ques:capital-25 ques:header """[]N° SIREN : {.P1}""" .
-ques:capital-24 ques:subheader ques:capital-25 .
- ques:capital-25 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-25 ques:paragraph """ """ .
-  
-ques:capital-26 ques:header """[]Sites web de l'entreprise et sites liés à son activité {.P1}""" .
-ques:capital-25 ques:subheader ques:capital-26 .
- ques:capital-26 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-26 ques:paragraph """ """ .
-  
-ques:capital-27 ques:header """[]Nombre d'employés {.P1}""" .
-ques:capital-26 ques:subheader ques:capital-27 .
- ques:capital-27 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-27 ques:paragraph """ """ .
-  
-ques:capital-28 ques:header """[]Nombre de sites : {.P1}""" .
+ques:capital-24 ques:header """Age (mesure de la notoriété) {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-24 .
+ 
+ques:capital-25 ques:header """Il s’agit de l’âge de la marque {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-25 .
+ ques:capital-25 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-25 ques:item """ 6 mois""" .
+ques:capital-25 ques:item """ 5 ans""" .
+ques:capital-25 ques:item """ 10 ans""" .
+ques:capital-25 ques:item """ 50 ans""" .
+ques:capital-25 ques:item """ Marque centenaire""" .
+ ques:capital-25 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-25 ques:item """ Notoriété directe""" .
+ques:capital-25 ques:item """ Marque inconnue""" .
+ques:capital-25 ques:item """ Sort parfois dans les enquêtes de notoriété assistée""" .
+ques:capital-25 ques:item """ Sort souvent dans les enquêtes de notoriété assistée""" .
+ques:capital-25 ques:item """ Sort presque toujours dans les enquêtes de notoriété spontanée""" .
+ques:capital-25 ques:item """ Marque leader""" .
+ 
+ques:capital-26 ques:header """La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-26 .
+ ques:capital-26 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-26 ques:item """ Pas du tout""" .
+ques:capital-26 ques:item """ Globalement Non""" .
+ques:capital-26 ques:item """ Partiellement""" .
+ques:capital-26 ques:item """ Globalement Oui""" .
+ques:capital-26 ques:item """ Absolument""" .
+ 
+ques:capital-27 ques:header """Identification de l'entreprise {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-27 .
+ 
+ques:capital-28 ques:header """[]Raison sociale : {.P1}""" .
 ques:capital-27 ques:subheader ques:capital-28 .
  ques:capital-28 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-28 ques:paragraph """ """ .
   
-ques:capital-29 ques:header """[]Chiffre d'affaire : {.P1}""" .
-ques:capital-28 ques:subheader ques:capital-29 .
+ques:capital-29 ques:header """[]N° SIREN : {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-29 .
  ques:capital-29 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-29 ques:paragraph """ """ .
   
-ques:capital-30 ques:header """[]Marge brute annuelle : {.P1}""" .
-ques:capital-29 ques:subheader ques:capital-30 .
- ques:capital-30 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
-  ques:capital-30 ques:item """Total :  """ .
- ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:item """Europe (EU) :  """ .
- ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:item """US/Canada :  """ .
- ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:item """Reste du monde :  
- """ .
- ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:paragraph """Totale et par région :""" .
-  ques:capital-30 ques:paragraph """Personne à contacter {.P1}
--------------------- 
-### []NOM et PRENOM {.P1}""" .
-  ques:capital-30 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+ques:capital-30 ques:header """[]Sites web de l'entreprise et sites liés à son activité {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-30 .
+ ques:capital-30 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-30 ques:paragraph """ """ .
   
-ques:capital-31 ques:header """[]Qualité {.P1}""" .
-ques:capital-30 ques:subheader ques:capital-31 .
+ques:capital-31 ques:header """[]Nombre d'employés {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-31 .
  ques:capital-31 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-31 ques:paragraph """ """ .
   
-ques:capital-32 ques:header """[]Téléphone {.P1}""" .
-ques:capital-31 ques:subheader ques:capital-32 .
+ques:capital-32 ques:header """[]Nombre de sites : {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-32 .
  ques:capital-32 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-32 ques:paragraph """ """ .
   
-ques:capital-33 ques:header """[]Adresse courriel {.P1}""" .
-ques:capital-32 ques:subheader ques:capital-33 .
+ques:capital-33 ques:header """[]Chiffre d'affaire : {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-33 .
  ques:capital-33 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-33 ques:paragraph """ """ .
   
-ques:capital-34 ques:header """[]Complété par : {.P1}""" .
-ques:capital-33 ques:subheader ques:capital-34 .
- ques:capital-34 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+ques:capital-34 ques:header """[]Marge brute annuelle : {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-34 .
+ ques:capital-34 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
+  ques:capital-34 ques:item """Total :  """ .
+ ques:capital-34 ques:paragraph """ """ .
+  ques:capital-34 ques:item """Europe (EU) :  """ .
+ ques:capital-34 ques:paragraph """ """ .
+  ques:capital-34 ques:item """US/Canada :  """ .
+ ques:capital-34 ques:paragraph """ """ .
+  ques:capital-34 ques:item """Reste du monde :  
+ """ .
+ ques:capital-34 ques:paragraph """ """ .
   ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:paragraph """
-
-
-Envoyer votre questionnaire.
+  ques:capital-34 ques:paragraph """ """ .
+  ques:capital-34 ques:paragraph """Totale et par région :""" .
+  
+ques:capital-35 ques:header """Personne à contacter {.P1}""" .
+ques:capital-27 ques:subheader ques:capital-35 .
+ 
+ques:capital-36 ques:header """[]NOM et PRENOM {.P1}""" .
+ques:capital-35 ques:subheader ques:capital-36 .
+ ques:capital-36 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-36 ques:paragraph """ """ .
+  
+ques:capital-37 ques:header """[]Qualité {.P1}""" .
+ques:capital-35 ques:subheader ques:capital-37 .
+ ques:capital-37 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-37 ques:paragraph """ """ .
+  
+ques:capital-38 ques:header """[]Téléphone {.P1}""" .
+ques:capital-35 ques:subheader ques:capital-38 .
+ ques:capital-38 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-38 ques:paragraph """ """ .
+  
+ques:capital-39 ques:header """[]Adresse courriel {.P1}""" .
+ques:capital-35 ques:subheader ques:capital-39 .
+ ques:capital-39 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-39 ques:paragraph """ """ .
+  
+ques:capital-40 ques:header """[]Complété par : {.P1}""" .
+ques:capital-35 ques:subheader ques:capital-40 .
+ ques:capital-40 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-40 ques:paragraph """ """ .
+  ques:capital-40 ques:paragraph """Envoyer votre questionnaire.
 Merci d'avoir complété ce questionnaire.""" .
-  ques:capital-34 ques:paragraph """ """ .
+  ques:capital-40 ques:paragraph """ """ .
   
