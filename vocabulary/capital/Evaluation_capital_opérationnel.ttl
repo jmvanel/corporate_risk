@@ -9,10 +9,10 @@ ques:capital-1 ques:header """Evaluation du capital opérationnel {.P29}""" .
 ques:capital-0 ques:subheader ques:capital-1 .
  ques:capital-1 ques:paragraph """Ce questionnaire a pour but de permettre l'évaluation du capital
 opérationnel selon les thèmes suivants :""" .
-  ques:capital-1 ques:item """Capital naturel """ .
-ques:capital-1 ques:item """capital sociétal """ .
-ques:capital-1 ques:item """capital de marque """ .
- ques:capital-1 ques:paragraph """Il y a 34 questions dans ce questionnaire""" .
+  ques:capital-1 ques:paragraph """Capital naturel """ .
+  ques:capital-1 ques:paragraph """capital sociétal """ .
+  ques:capital-1 ques:paragraph """capital de marque """ .
+  ques:capital-1 ques:paragraph """Il y a 34 questions dans ce questionnaire""" .
   
 ques:capital-2 ques:header """Capital Naturel {.P1}""" .
 ques:capital-1 ques:subheader ques:capital-2 .
@@ -279,83 +279,31 @@ ques:capital-26 ques:item """ Partiellement""" .
 ques:capital-26 ques:item """ Globalement Oui""" .
 ques:capital-26 ques:item """ Absolument""" .
  
-ques:capital-27 ques:header """Identification de l'entreprise {.P1}""" .
+ques:capital-27 ques:header """[]Nombre d'employés {.P1}""" .
 ques:capital-15 ques:subheader ques:capital-27 .
- 
-ques:capital-28 ques:header """[]Raison sociale : {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-28 .
+ ques:capital-27 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-27 ques:paragraph """ """ .
+  
+ques:capital-28 ques:header """[]Nombre de sites : {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-28 .
  ques:capital-28 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-28 ques:paragraph """ """ .
   
-ques:capital-29 ques:header """[]N° SIREN : {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-29 .
+ques:capital-29 ques:header """[]Chiffre d'affaire : {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-29 .
  ques:capital-29 ques:paragraph """Veuillez écrire votre réponse ici :""" .
   ques:capital-29 ques:paragraph """ """ .
   
-ques:capital-30 ques:header """[]Sites web de l'entreprise et sites liés à son activité {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-30 .
- ques:capital-30 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+ques:capital-30 ques:header """[]Marge brute annuelle : {.P1}""" .
+ques:capital-15 ques:subheader ques:capital-30 .
+ ques:capital-30 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
+  ques:capital-30 ques:paragraph """Total :  """ .
   ques:capital-30 ques:paragraph """ """ .
-  
-ques:capital-31 ques:header """[]Nombre d'employés {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-31 .
- ques:capital-31 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-31 ques:paragraph """ """ .
-  
-ques:capital-32 ques:header """[]Nombre de sites : {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-32 .
- ques:capital-32 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-32 ques:paragraph """ """ .
-  
-ques:capital-33 ques:header """[]Chiffre d'affaire : {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-33 .
- ques:capital-33 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-33 ques:paragraph """ """ .
-  
-ques:capital-34 ques:header """[]Marge brute annuelle : {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-34 .
- ques:capital-34 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
-  ques:capital-34 ques:item """Total :  """ .
- ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:item """Europe (EU) :  """ .
- ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:item """US/Canada :  """ .
- ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:item """Reste du monde :  
+  ques:capital-30 ques:paragraph """Europe (EU) :  """ .
+  ques:capital-30 ques:paragraph """ """ .
+  ques:capital-30 ques:paragraph """US/Canada :  """ .
+  ques:capital-30 ques:paragraph """ """ .
+  ques:capital-30 ques:paragraph """Reste du monde :  
  """ .
- ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:paragraph """ """ .
-  ques:capital-34 ques:paragraph """Totale et par région :""" .
-  
-ques:capital-35 ques:header """Personne à contacter {.P1}""" .
-ques:capital-27 ques:subheader ques:capital-35 .
- 
-ques:capital-36 ques:header """[]NOM et PRENOM {.P1}""" .
-ques:capital-35 ques:subheader ques:capital-36 .
- ques:capital-36 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-36 ques:paragraph """ """ .
-  
-ques:capital-37 ques:header """[]Qualité {.P1}""" .
-ques:capital-35 ques:subheader ques:capital-37 .
- ques:capital-37 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-37 ques:paragraph """ """ .
-  
-ques:capital-38 ques:header """[]Téléphone {.P1}""" .
-ques:capital-35 ques:subheader ques:capital-38 .
- ques:capital-38 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-38 ques:paragraph """ """ .
-  
-ques:capital-39 ques:header """[]Adresse courriel {.P1}""" .
-ques:capital-35 ques:subheader ques:capital-39 .
- ques:capital-39 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-39 ques:paragraph """ """ .
-  
-ques:capital-40 ques:header """[]Complété par : {.P1}""" .
-ques:capital-35 ques:subheader ques:capital-40 .
- ques:capital-40 ques:paragraph """Veuillez écrire votre réponse ici :""" .
-  ques:capital-40 ques:paragraph """ """ .
-  ques:capital-40 ques:paragraph """Envoyer votre questionnaire.
-Merci d'avoir complété ce questionnaire.""" .
-  ques:capital-40 ques:paragraph """ """ .
+  ques:capital-30 ques:paragraph """Totale et par région :""" .
   
