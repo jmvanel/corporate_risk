@@ -4,11 +4,11 @@ Evaluation du capital opérationnel {.P29}
 Ce questionnaire a pour but de permettre l'évaluation du capital
 opérationnel selon les thèmes suivants :
 
--Capital naturel 
+Capital naturel 
 
--capital sociétal 
+capital sociétal 
 
--capital de marque 
+capital de marque 
 
 Il y a 34 questions dans ce questionnaire
 
@@ -328,26 +328,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Globalement Oui
 -     Absolument
 
-Identification de l'entreprise {.P1}
-------------------------------
-
-### []Raison sociale : {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-### []N° SIREN : {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-### []Sites web de l'entreprise et sites liés à son activité {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
 
 ### []Nombre d'employés {.P1}
 
@@ -371,66 +351,21 @@ Veuillez écrire votre réponse ici :
 
 Veuillez écrire votre(vos) réponse(s) ici :
 
--Total :  
+Total :  
 
  
 
--Europe (EU) :  
+Europe (EU) :  
 
  
 
--US/Canada :  
+US/Canada :  
 
  
 
--Reste du monde :  
- 
-
-
- 
-
-
- 
-
-
+Reste du monde :  
  
 
 Totale et par région :
 
-Personne à contacter {.P1}
---------------------
 
-### []NOM et PRENOM {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-### []Qualité {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-### []Téléphone {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-### []Adresse courriel {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-### []Complété par : {.P1}
-
-Veuillez écrire votre réponse ici :
-
- 
-
-Envoyer votre questionnaire.
-Merci d'avoir complété ce questionnaire.
-
- 

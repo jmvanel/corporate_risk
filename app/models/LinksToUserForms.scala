@@ -15,7 +15,7 @@ trait LinksToUserFormsTrait[Rdf <: RDF, DATASET] extends UserVocab
   import ops._
 
   def linksToUserForms(user: User): xml.NodeSeq = {
-    val classesAndProperties = UserData.applicationClassesAndProperties()
+    val classesAndProperties = UserData.applicationClassesAndProperties().classesAndProperties
     val classes = classesAndProperties.map { cp => cp._1 }
     val uris = UserData.getUserData(user)
     // TODO get classes' labels

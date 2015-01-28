@@ -1,3 +1,4 @@
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
 @prefix eu: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
 @prefix fn:     <http://www.w3.org/2005/xpath-functions#>.
@@ -19,6 +20,7 @@
      { ?Q ques:item ?I }
      ?LIST
      ).
+     # ?I list:in ?LIST. _:d eu:log ( ?I "list:in" ). [ rdfs:label ?I] list:in ?LIST2.
 } => {
   ?Q a owl:DatatypeProperty ;
   rdfs:label ?L ;
@@ -27,7 +29,7 @@
 } .
 
 
-# Rassembler via ques:subheader pour faire une owl:Class et la propriété correspondante de :User
+# Rassembler via ques:subheader pour faire une owl:Class, la propriété correspondante de :User, et contribution au FormGroup
 { ?CLASS ques:subheader ?PROP ;
 	ques:header ?LAB .
   ?PROP ques:item ?ITEM .
@@ -35,5 +37,13 @@
   ?CLASS a owl:Class ; rdfs:label ?LAB .
   ?P a owl:ObjectProperty; rdfs:domain :User; rdfs:range ?CLASS .
   ?PROP rdfs:domain ?CLASS.
+  :risk-capital :properties ?P .
 }.
+
+# 
+:risk-capital a :FormGroup ;
+    rdfs:label "Questions sur le capital immatériel."@fr
+    # ; :properties :prop-5 , :prop-6 , :prop-7 , :prop-8 ,:prop-9 , :prop-10 , :prop-11 , :prop-12 , :prop-13 , :prop-14 , :prop-15
+.
+
 
