@@ -6,6 +6,8 @@ import deductions.runtime.html.{ CreationForm, TableView }
 import deductions.runtime.services.FormSaver
 import deductions.runtime.sparql_cache.RDFCache
 import java.net.URLDecoder
+import java.io.{ FileOutputStream, ByteArrayOutputStream }
+import org.xhtmlrenderer.pdf.ITextRenderer
 import scalax.chart.api._
 
 import models.UserData
@@ -53,6 +55,16 @@ object Application extends Controller with Secured with RDFCache {
       Ok(views.html.report(new TableView {}.htmlForm(uri).get))
   }
 
+  def exportPDF = withUser { implicit user =>
+    implicit request =>
+      val renderer = new ITextRenderer
+      val buffer = new ByteArrayOutputStream
+      renderer.setDocumentFromString(views.html.pdfreport.render(user).toString)
+      renderer.layout
+      renderer.createPDF(buffer)
+      Ok(buffer.toByteArray()).withHeaders(CONTENT_TYPE -> "application/pdf")
+  }
+
   def chart(charttype: String) = withUser { implicit user =>
     implicit request =>
       val content = charttype match {
@@ -60,7 +72,7 @@ object Application extends Controller with Secured with RDFCache {
         case "radar" => SpiderWebChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
       }
 
-      Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png");
+      Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 
 }

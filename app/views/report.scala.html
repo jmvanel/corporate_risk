@@ -3,6 +3,8 @@
 @main("Welcome to Corporate Risk!", Some(user)) {
     <h2>Rapport d'audit</h2>
     <a href="@routes.Application.index">Retour à mon tableau de bord</a>
+    <br />
+    <a href="@routes.Application.exportPDF">Exporter ce rapport en PDF</a>
     <div class="pull-right">
     	<img src="@routes.Application.chart("pie")" />
     	<br />

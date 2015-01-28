@@ -1,0 +1,12 @@
+@()(implicit user: User)
+<html>
+	<body>
+		<h2>Rapport d'audit</h2>
+		<img src="http://localhost:9000/@routes.Application.chart("pie")" />
+		<br />
+		<img src="http://localhost:9000/@routes.Application.chart("radar")" />
+		<div>
+			Ceci est le reste du rapport
+		</div>
+	</body>
+</html>

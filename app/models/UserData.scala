@@ -41,7 +41,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     // TODO read RDF configuration for this, like is done for classes themselves 
     rdfStore.rw(
       dataset, {
-        for (classAndPropURI <- applicationClassesAndProperties().classesAndProperties )
+        for (classAndPropURI <- applicationClassesAndProperties().classesAndProperties)
           createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
       })
   }
@@ -83,18 +83,17 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
-  def applicationClassesAndProperties(formGroup: String = "risk"):
-//  Seq[(Rdf#URI, Rdf#URI)] 
-  FormGroup
-  = {
+  def applicationClassesAndProperties(formGroup: String = "risk"): //  Seq[(Rdf#URI, Rdf#URI)] 
+  FormGroup = {
     formGroup match {
-      case "risk" => FormGroup( applicationClassesAndPropertiesRisk,
-          "Questions sur la gestion des risques." )
-//      case "nature" => applicationClassesAndPropertiesNature
-//      case "company" => applicationClassesAndPropertiesCompany
-//      case "brand" => applicationClassesAndPropertiesBrand
-      case _ => println(s"formGroup URI not expected: $formGroup");
-      FormGroup( Seq((URI(""), URI(""))), "" )
+      case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
+        "Questions sur la gestion des risques.")
+      //      case "nature" => applicationClassesAndPropertiesNature
+      //      case "company" => applicationClassesAndPropertiesCompany
+      //      case "brand" => applicationClassesAndPropertiesBrand
+      case _ =>
+        println(s"formGroup URI not expected: $formGroup");
+        FormGroup(Seq((URI(""), URI(""))), "")
     }
   }
 
@@ -147,13 +146,13 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       /* row is an Rdf#Solution, we can get an Rdf#Node from the variable name
        * both the #Rdf#Node projection and the transformation to Rdf#URI can fail
        * in the Try type */
-      ( row("LAB"). get.as[Rdf#Literal].get,
+      (row("LAB").get.as[Rdf#Literal].get,
         row("CLASS").get.as[Rdf#URI].get,
-        row("PROP").get.as[Rdf#URI].get )        
+        row("PROP").get.as[Rdf#URI].get)
     }
     println(variables.to[List].mkString("\n"))
-    val classesAndProperties = for ( v <- variables ) yield ( v._2, v._3 )
-    Seq(FormGroup( classesAndProperties.toSeq, fromLiteral( variables.next()._1 )._1 ))
+    val classesAndProperties = for (v <- variables) yield (v._2, v._3)
+    Seq(FormGroup(classesAndProperties.toSeq, fromLiteral(variables.next()._1)._1))
   }
 
   private def createEmptyClassInstanceForUser(userURI: Rdf#URI, classAndPropURI: (Rdf#URI, Rdf#URI)) = {
