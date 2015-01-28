@@ -6,6 +6,7 @@ import deductions.runtime.html.{ CreationForm, TableView }
 import deductions.runtime.services.FormSaver
 import deductions.runtime.sparql_cache.RDFCache
 import java.net.URLDecoder
+import scalax.chart.api._
 
 import models.UserData
 import Auth._
@@ -50,6 +51,16 @@ object Application extends Controller with Secured with RDFCache {
       }
 
       Ok(views.html.report(new TableView {}.htmlForm(uri).get))
+  }
+
+  def chart(charttype: String) = withUser { implicit user =>
+    implicit request =>
+      val content = charttype match {
+        case "pie" => PieChart(Vector(("oui", 254), ("non", 167), ("NSPP", 88)))
+        case "radar" => SpiderWebChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
+      }
+
+      Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png");
   }
 
 }

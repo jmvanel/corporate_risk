@@ -3,5 +3,10 @@
 @main("Welcome to Corporate Risk!", Some(user)) {
     <h2>Rapport d'audit</h2>
     <a href="@routes.Application.index">Retour à mon tableau de bord</a>
+    <div class="pull-right">
+    	<img src="@routes.Application.chart("pie")" />
+    	<br />
+    	<img src="@routes.Application.chart("radar")" />
+   	</div>
     @report
 }
