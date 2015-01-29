@@ -1,8 +1,7 @@
 /*
 ## Converting Markdown to Turtle ##
 
-The `Discounter` is what grabs the "knockoff" of a markdown string. For simple usage,
-you can use the `DefaultDiscounter` object.
+The `Discounter` is what grabs the "knockoff" of a markdown string.
 
     import jmvanel.markdown.RDFDiscounterApp._
     import com.tristanhunt.knockoff._

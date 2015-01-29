@@ -1,3 +1,4 @@
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
 @prefix eu: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
 @prefix fn:     <http://www.w3.org/2005/xpath-functions#>.
@@ -7,14 +8,17 @@
 @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 @prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
-{ ?Q :hasRubricId ?URI .
-} <= { # chaînage arrière
-  # créer un URI pour le thème = owl:Class
-  ?Q ques:a ?ID .
-  # _:d eu:trace ("ID " ?ID ).
-  ( ?ID "." ) fn:substring-before ?IDC .
-  # _:d eu:trace ("fn:substring-before " ?ID ).
-  ques: log:uri ?PREF .
-  ( ?PREF ?IDC ) string:concatenation ?C .
-  ?URI log:uri ?C .
-}.
+# lancer avec:
+# eye --nope Evaluation_capital_opérationnel.ttl --query questionnaire2owl.q.n3 > Evaluation_capital_opérationnel.owl.ttl
+
+{ ?Q ques:header ?L ;
+     ques:item ?LAB .
+     # {:s :p ?L. ?L list:member ?Y} => {?X rdfs:label ?Y}. 
+     # {?S e:findall (?X {?X rdfs:label ?Y} ?R)} => {?R a :Result}.
+} => {
+  ?ENUM rdfs:label ?LAB ;
+  :classForOneOf ?Q .
+} .
+
+
+
