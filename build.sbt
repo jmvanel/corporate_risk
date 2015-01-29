@@ -13,6 +13,8 @@ libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.0" % Test
 libraryDependencies += "deductions" %% "semantic_forms" % "1.0-SNAPSHOT"
 // "org.w3" %%  "jena"
 
+libraryDependencies += "com.github.wookietreiber" %% "scala-chart" % "latest.integration"
+
 javacOptions ++= Seq("-source","1.7", "-target","1.7")
 
 // resolvers += Resolver.mavenLocal

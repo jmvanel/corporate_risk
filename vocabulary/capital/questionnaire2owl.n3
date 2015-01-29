@@ -13,8 +13,6 @@
 
 { ?Q ques:header ?L ;
      ques:item ?LAB .
-     # {:s :p ?L. ?L list:member ?Y} => {?X rdfs:label ?Y}. 
-     # {?S e:findall (?X {?X rdfs:label ?Y} ?R)} => {?R a :Result}.
 } => {
   ?ENUM rdfs:label ?LAB ;
   :classForOneOf ?Q .

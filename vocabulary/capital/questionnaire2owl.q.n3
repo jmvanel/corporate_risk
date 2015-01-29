@@ -11,21 +11,28 @@
 # lancer avec:
 # eye --nope Evaluation_capital_opérationnel.ttl --query questionnaire2owl.q.n3 > Evaluation_capital_opérationnel.owl.ttl
 
-# Chaque question du fichier MD devient une owl:DatatypeProperty à valeurs énumérées
+# Chaque question du fichier Markdown devient une owl:DatatypeProperty à valeurs énumérées
 { ?Q ques:header ?L ;
      ques:paragraph ?C .
-     _:d eu:findall (
-     	     # { ?ENUM rdfs:label ?I }
-     	     ?I
-     { ?Q ques:item ?I }
-     ?LIST
+ } => {
+  ?Q a owl:ObjectProperty ;
+    rdfs:label ?L ;
+    rdfs:comment ?C ;
+} .
+
+{ ?Q ques:header ?L .
+  _:d eu:findall (
+       ?ENUM
+       { ?ENUM :classForOneOf ?Q . }
+       ?LIST
      ).
-     # ?I list:in ?LIST. _:d eu:log ( ?I "list:in" ). [ rdfs:label ?I] list:in ?LIST2.
 } => {
-  ?Q a owl:DatatypeProperty ;
-  rdfs:label ?L ;
-  rdfs:comment ?C ;
-  rdfs:range [ owl:oneOf ?LIST ] . # ?RANGE.
+   ?Q rdfs:range [ owl:oneOf ?LIST ] .
+} .
+
+{ ?ENUM rdfs:label ?LAB .
+ } => {
+  ?ENUM rdfs:label ?LAB .
 } .
 
 

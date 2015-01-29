@@ -4,6 +4,7 @@
 @prefix proj:  <http://eulergui.sf.net/ontology/project.owl.n3#>.
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix void:  <http://rdfs.org/ns/void#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <> a owl:Ontology .
 <> proj:hasN3Query <questionnaire2owl.q.n3> .
