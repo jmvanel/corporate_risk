@@ -27,18 +27,15 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   import ops._
 
   /**
-   * create Empty User Data : triples:
+   * create Empty User Data : the triples:
    *  <pre>
    *  <userURI> :prop-5 :v5 .
    *                    :v5 a ques:5 . # until ques:15
    *  </pre>
    *
-   * :prop-5     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :5 .
-   *
+   *  TODO create user data for all 4 Form Groups
    */
   def createEmptyUserData(user: User) = {
-    // enumerate classes in graph "vocabulary"
-    // TODO read RDF configuration for this, like is done for classes themselves 
     rdfStore.rw(
       dataset, {
         for (classAndPropURI <- applicationClassesAndProperties().classesAndProperties)
@@ -83,14 +80,14 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
-  def applicationClassesAndProperties(formGroup: String = "risk"): //  Seq[(Rdf#URI, Rdf#URI)] 
-  FormGroup = {
+  def applicationClassesAndProperties(formGroup: String = "risk" // TODO test: "operational"
+  ): FormGroup = {
     formGroup match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
-      //      case "nature" => applicationClassesAndPropertiesNature
-      //      case "company" => applicationClassesAndPropertiesCompany
-      //      case "brand" => applicationClassesAndPropertiesBrand
+      case "human" => applicationClassesAndPropertiesHuman()
+      case "structural" => applicationClassesAndPropertiesStructural
+      case "operational" => applicationClassesAndPropertiesOperational
       case _ =>
         println(s"formGroup URI not expected: $formGroup");
         FormGroup(Seq((URI(""), URI(""))), "")
@@ -103,18 +100,19 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       bizinnovQuestionsVocabPrefix("prop-" + i.toString()))
   }
 
-  def applicationClassesAndPropertiesNature(): Seq[(Rdf#URI, Rdf#URI)] = {
-    applicationClassesAndPropertiesGeneric
-    Seq((URI(""), URI(""))) // TODO <<<<<<<<<<<
+  def applicationClassesAndPropertiesHuman(): FormGroup = {
+    applicationClassesAndPropertiesGeneric(
+      fromUri(bizinnovQuestionsVocabPrefix("structural-fg")))
   }
 
-  def applicationClassesAndPropertiesCompany(): Seq[(Rdf#URI, Rdf#URI)] = {
-    applicationClassesAndPropertiesGeneric
-    Seq((URI(""), URI(""))) // TODO <<<<<<<<<<<
+  def applicationClassesAndPropertiesStructural(): FormGroup = {
+    applicationClassesAndPropertiesGeneric(
+      fromUri(bizinnovQuestionsVocabPrefix("structural-fg")))
   }
 
-  def applicationClassesAndPropertiesBrand(): Seq[(Rdf#URI, Rdf#URI)] = {
-    Seq((URI(""), URI(""))) // TODO <<<<<<<<<<<
+  def applicationClassesAndPropertiesOperational(): FormGroup = {
+    applicationClassesAndPropertiesGeneric(
+      fromUri(bizinnovQuestionsVocabPrefix("operational-fg")))
   }
 
   case class FormGroup(val classesAndProperties: Seq[(Rdf#URI, Rdf#URI)], label: String)
@@ -122,19 +120,19 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   /**
    * Detect RDF patterns like:
    * <pre>
-   * :risk-fg a :FormGroup ;
+   * <formgroup> a :FormGroup ;
    * rdfs:label "Questions sur la gestion des risques."@fr ;
    * :properties :p1, :p2 .
    * </pre>
    * and return a list of couples (:p1, rdfs:range of :p1) .
    */
-  def applicationClassesAndPropertiesGeneric(): Seq[FormGroup] = {
-    val queryString = """
+  def applicationClassesAndPropertiesGeneric(formgroup: String): FormGroup = {
+    val queryString = s"""
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       
       SELECT ?LAB ?PROP ?CLASS
       WHERE {
-      a :FormGroup ; rdfs:label ?LAB ;
+      $formgroup a :FormGroup ; rdfs:label ?LAB ;
       :properties ?PROP .
       ?PROP rdfs:range ?CLASS .
       }
@@ -152,7 +150,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     }
     println(variables.to[List].mkString("\n"))
     val classesAndProperties = for (v <- variables) yield (v._2, v._3)
-    Seq(FormGroup(classesAndProperties.toSeq, fromLiteral(variables.next()._1)._1))
+    FormGroup(classesAndProperties.toSeq, fromLiteral(variables.next()._1)._1)
   }
 
   private def createEmptyClassInstanceForUser(userURI: Rdf#URI, classAndPropURI: (Rdf#URI, Rdf#URI)) = {

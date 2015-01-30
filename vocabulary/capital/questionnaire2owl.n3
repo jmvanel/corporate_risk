@@ -8,9 +8,6 @@
 @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 @prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
-# lancer avec:
-# eye --nope Evaluation_capital_opérationnel.ttl --query questionnaire2owl.q.n3 > Evaluation_capital_opérationnel.owl.ttl
-
 { ?Q ques:header ?L ;
      ques:item ?LAB .
 } => {

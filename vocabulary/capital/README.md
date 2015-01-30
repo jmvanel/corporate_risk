@@ -12,3 +12,9 @@ Ensuite il convient d'enlever les images qui accompagnent les listes à boulette
 
 On  obtient les 3 fichiers Markdown qui sont sous git.
 
+Les fichiers Markdown sont ensuite traités par le programme Scala dans le répertoire converter/ ,
+pour obtenir:
+
+    Evaluation_capital_opérationnel.ttl
+etc.
+
