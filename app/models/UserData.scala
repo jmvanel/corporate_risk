@@ -14,6 +14,8 @@ import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.diesel._
+import org.apache.log4j.Logger
+import java.nio.file.StandardOpenOption
 
 /** Banana principle: refer to concrete implementation only in blocks without code */
 object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
@@ -38,6 +40,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   def createEmptyUserData(user: User) = {
     rdfStore.rw(
       dataset, {
+        println(s"createEmptyUserData $user ${applicationClassesAndProperties()}")
         for (classAndPropURI <- applicationClassesAndProperties().classesAndProperties)
           createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
       })
@@ -80,7 +83,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
-  def applicationClassesAndProperties(formGroup: String = "risk" // TODO test: "operational"
+  def applicationClassesAndProperties(formGroup: String = // 
+  "risk" // WIP : "operational"
   ): FormGroup = {
     formGroup match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
@@ -120,7 +124,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   /**
    * Detect RDF patterns like:
    * <pre>
-   * <formgroup> a :FormGroup ;
+   * &lt;formgroup> a :FormGroup ;
    * rdfs:label "Questions sur la gestion des risques."@fr ;
    * :properties :p1, :p2 .
    * </pre>
@@ -129,28 +133,49 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   def applicationClassesAndPropertiesGeneric(formgroup: String): FormGroup = {
     val queryString = s"""
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      
+      PREFIX : <${bizinnovQuestionsVocabPrefix.prefixIri}>
       SELECT ?LAB ?PROP ?CLASS
       WHERE {
-      $formgroup a :FormGroup ; rdfs:label ?LAB ;
-      :properties ?PROP .
-      ?PROP rdfs:range ?CLASS .
+#      GRAPH <vocabulary> {
+       GRAPH ?G {
+        <$formgroup> a :FormGroup ; rdfs:label ?LAB ;
+        :properties ?PROP .
+        ?PROP rdfs:range ?CLASS .
+       }
       }
     """
     import sparqlOps._
     val query = parseSelect(queryString).get
     val solutions = rdfStore.executeSelect(dataset, query, Map()).get
+    var label = Literal("")
     val variables: Iterator[(Rdf#Literal, Rdf#URI, Rdf#URI)] = solutions.iterator map { row =>
       /* row is an Rdf#Solution, we can get an Rdf#Node from the variable name
        * both the #Rdf#Node projection and the transformation to Rdf#URI can fail
        * in the Try type */
-      (row("LAB").get.as[Rdf#Literal].get,
+      label = row("LAB").get.as[Rdf#Literal].get
+      (label,
         row("CLASS").get.as[Rdf#URI].get,
         row("PROP").get.as[Rdf#URI].get)
     }
-    println(variables.to[List].mkString("\n"))
+    println("applicationClassesAndPropertiesGeneric")
+    //    println(queryString)
+    //    println("variables.size " + variables.size)
+    //    println(variables.to[List].mkString("\n"))
     val classesAndProperties = for (v <- variables) yield (v._2, v._3)
-    FormGroup(classesAndProperties.toSeq, fromLiteral(variables.next()._1)._1)
+    val fg = FormGroup(classesAndProperties.to[List], fromLiteral(label)._1
+    )
+    println("classesAndProperties " + classesAndProperties.mkString("\n"))
+    fg
+  }
+
+  def println(mess: String) = {
+    Logger.getRootLogger().info(mess)
+    val fileName = "bblog.txt"
+    import java.nio.file.{ Paths, Files }
+    import java.nio.charset.StandardCharsets
+    Files.write(Paths.get(fileName), (mess + "\n").getBytes(
+      StandardCharsets.UTF_8), StandardOpenOption.APPEND, StandardOpenOption.CREATE
+    )
   }
 
   private def createEmptyClassInstanceForUser(userURI: Rdf#URI, classAndPropURI: (Rdf#URI, Rdf#URI)) = {
@@ -158,6 +183,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val graph = makeGraph(List(
       makeTriple(userURI, classAndPropURI._2, newURI)))
     rdfStore.appendToGraph(dataset, userURI, graph)
+    println(s"createEmptyClassInstanceForUser $userURI $graph")
+    println(s"createEmptyClassInstanceForUser $classAndPropURI")
     createEmptyClassInstance(newURI, classAndPropURI._1, userURI)
   }
 

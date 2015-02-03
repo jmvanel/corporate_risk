@@ -1,3 +1,4 @@
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
 @prefix eu: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
@@ -12,8 +13,18 @@
      ques:item ?LAB .
 } => {
   ?ENUM rdfs:label ?LAB ;
-  :classForOneOf ?Q .
+        :classForOneOf ?Q .
 } .
 
+{ ?BASE_URI :newURI ?NEW } <= {
+  # (1000000) prolog:random ?RAND .
+  ( ?BASE_URI "-user-prop" ) string:concatenation ?NEW_URI .
+  ?NEW log:uri ?NEW_URI .
+}.
+
+
+# TODO put in another file
+:operational-fg a :FormGroup ;
+    rdfs:label "Questions sur le capital immatériel."@fr .
 
 

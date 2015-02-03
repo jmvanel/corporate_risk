@@ -13,22 +13,8 @@ import scala.collection.mutable.ListBuffer
 import scala.util.parsing.input.Position
 import scala.util.parsing.input.CharSequenceReader
 import com.tristanhunt.knockoff._
-
-/*
-
-### The RDF Discounter
-
-Provides an object along with a main method for the "good enough to script" kind of
-usage. Note that a major aim of this discounter is to mimic the usage of
-`Markdown.pl`.
-
-    Markdown.pl [ −−html4tags ] [ −−version ] [ −shortversion ] [ file ... ]
-
-The `--html4tags` argument will just do nothing, but not be processed as a file.
-
-*/
-
 import java.io.File
+import java.nio.file.StandardOpenOption
 
 object RDFDiscounterApp extends Discounter with RDFWriter {
   def main(args: Array[String]): Unit = try {
@@ -64,7 +50,10 @@ object RDFDiscounterApp extends Discounter with RDFWriter {
     val ttlFileName = fileName.replaceFirst("""\.md$""", ".ttl")
     import java.nio.file.{ Paths, Files }
     import java.nio.charset.StandardCharsets
-    Files.write(Paths.get(ttlFileName), ttl.getBytes(StandardCharsets.UTF_8))
+    Files.write(Paths.get(ttlFileName), ttl.getBytes(StandardCharsets.UTF_8)
+//        , StandardOpenOption.APPEND,
+//        StandardOpenOption.CREATE
+        )
     println(s"Writen ${ttl.length()} characters to file \n $ttlFileName")
   }
 

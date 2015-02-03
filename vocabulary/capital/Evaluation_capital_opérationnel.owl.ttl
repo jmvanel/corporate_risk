@@ -4,20 +4,47 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
 PREFIX list: <http://www.w3.org/2000/10/swap/list#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX fn: <http://www.w3.org/2005/xpath-functions#>
 PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 
-ques:capital-1 rdfs:label "Evaluation du capital opérationnel {.P29}".
+ques:capital-3 a owl:ObjectProperty.
+ques:capital-4 a owl:ObjectProperty.
+ques:capital-5 a owl:ObjectProperty.
+ques:capital-6 a owl:ObjectProperty.
+ques:capital-7 a owl:ObjectProperty.
+ques:capital-8 a owl:ObjectProperty.
+ques:capital-10 a owl:ObjectProperty.
+ques:capital-11 a owl:ObjectProperty.
+ques:capital-12 a owl:ObjectProperty.
+ques:capital-13 a owl:ObjectProperty.
+ques:capital-14 a owl:ObjectProperty.
+ques:capital-16 a owl:ObjectProperty.
+ques:capital-17 a owl:ObjectProperty.
+ques:capital-18 a owl:ObjectProperty.
+ques:capital-19 a owl:ObjectProperty.
+ques:capital-20 a owl:ObjectProperty.
+ques:capital-21 a owl:ObjectProperty.
+ques:capital-22 a owl:ObjectProperty.
+ques:capital-23 a owl:ObjectProperty.
+ques:capital-25 a owl:ObjectProperty.
+ques:capital-26 a owl:ObjectProperty.
+ques:operational-fg a ques:FormGroup.
+ques:capital-2 a owl:Class.
+<ques:capital-2-user-prop> a owl:ObjectProperty.
+ques:capital-9 a owl:Class.
+<ques:capital-9-user-prop> a owl:ObjectProperty.
+ques:capital-15 a owl:Class.
+<ques:capital-15-user-prop> a owl:ObjectProperty.
 ques:capital-3 rdfs:label "Qualité de la ressource (air) {.P1}".
 ques:capital-4 rdfs:label "Qualité de la ressource (eau) {.P1}".
 ques:capital-5 rdfs:label "Abondance de la ressource {.P1}".
 ques:capital-6 rdfs:label "Matières Premières {.P1}".
 ques:capital-7 rdfs:label "Evaluation du climat {.P1}".
 ques:capital-8 rdfs:label "Géographie et climat {.P1}".
-ques:capital-9 rdfs:label "Capital sociétal {.P1}".
 ques:capital-10 rdfs:label "Sport, Culture, loisirs {.P1}".
 ques:capital-11 rdfs:label "Partenaires publics {.P1}".
 ques:capital-12 rdfs:label "Accès et infrastructures {.P1}".
@@ -33,10 +60,7 @@ ques:capital-22 rdfs:label "Réputation de l’entreprise {.P1}".
 ques:capital-23 rdfs:label "Budgets de promotion de la marque (mesure de la notoriété) {.P1}".
 ques:capital-25 rdfs:label "Il s’agit de l’âge de la marque {.P1}".
 ques:capital-26 rdfs:label "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}".
-ques:capital-27 rdfs:label "[]Nombre d'employés {.P1}".
-ques:capital-28 rdfs:label "[]Nombre de sites : {.P1}".
-ques:capital-29 rdfs:label "[]Chiffre d'affaire : {.P1}".
-ques:capital-30 rdfs:label "[]Marge brute annuelle : {.P1}".
+ques:operational-fg rdfs:label "Questions sur le capital immatériel."@fr.
 _:sk0 rdfs:label "Les alertes sont très fréquentes et les niveaux atteints sont très élevés".
 _:sk1 rdfs:label " Les alertes sont fréquentes".
 _:sk2 rdfs:label " Les alertes sont assez fréquentes".
@@ -146,53 +170,15 @@ _:sk105 rdfs:label " Globalement Non".
 _:sk106 rdfs:label " Partiellement".
 _:sk107 rdfs:label " Globalement Oui".
 _:sk108 rdfs:label " Absolument".
-ques:operational-fg rdfs:label "Questions sur le capital immatériel."@fr.
-ques:capital-1 a owl:ObjectProperty.
-ques:capital-3 a owl:ObjectProperty.
-ques:capital-4 a owl:ObjectProperty.
-ques:capital-5 a owl:ObjectProperty.
-ques:capital-6 a owl:ObjectProperty.
-ques:capital-7 a owl:ObjectProperty.
-ques:capital-8 a owl:ObjectProperty.
-ques:capital-9 a owl:ObjectProperty.
-ques:capital-10 a owl:ObjectProperty.
-ques:capital-11 a owl:ObjectProperty.
-ques:capital-12 a owl:ObjectProperty.
-ques:capital-13 a owl:ObjectProperty.
-ques:capital-14 a owl:ObjectProperty.
-ques:capital-16 a owl:ObjectProperty.
-ques:capital-17 a owl:ObjectProperty.
-ques:capital-18 a owl:ObjectProperty.
-ques:capital-19 a owl:ObjectProperty.
-ques:capital-20 a owl:ObjectProperty.
-ques:capital-21 a owl:ObjectProperty.
-ques:capital-22 a owl:ObjectProperty.
-ques:capital-23 a owl:ObjectProperty.
-ques:capital-25 a owl:ObjectProperty.
-ques:capital-26 a owl:ObjectProperty.
-ques:capital-27 a owl:ObjectProperty.
-ques:capital-28 a owl:ObjectProperty.
-ques:capital-29 a owl:ObjectProperty.
-ques:capital-30 a owl:ObjectProperty.
-ques:operational-fg a ques:FormGroup.
-ques:capital-1 rdfs:comment "Ce questionnaire a pour but de permettre l'évaluation du capital\nopérationnel selon les thèmes suivants :".
-ques:capital-1 rdfs:comment "Capital naturel ".
-ques:capital-1 rdfs:comment "capital sociétal ".
-ques:capital-1 rdfs:comment "capital de marque ".
-ques:capital-1 rdfs:comment "Il y a 34 questions dans ce questionnaire".
+ques:capital-2 rdfs:label "Capital Naturel {.P1}".
+ques:capital-9 rdfs:label "Capital sociétal {.P1}".
+ques:capital-15 rdfs:label "Capital de Marque {.P1}".
 ques:capital-3 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-4 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-5 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-6 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-7 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-8 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-9 rdfs:comment "Sont regroupées les rubriques :".
-ques:capital-9 rdfs:comment "Sport, culture, loisirs".
-ques:capital-9 rdfs:comment "Partenaires publics".
-ques:capital-9 rdfs:comment "Accès et infrastructure".
-ques:capital-9 rdfs:comment "RH locales et services (services publics)".
-ques:capital-9 rdfs:comment "RH locales et services (potentiel local RH)".
-ques:capital-9 rdfs:comment " ".
 ques:capital-10 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-11 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-12 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
@@ -208,19 +194,33 @@ ques:capital-22 rdfs:comment "Veuillez sélectionner une seule des propositions 
 ques:capital-23 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-25 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
 ques:capital-26 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-27 rdfs:comment "Veuillez écrire votre réponse ici :".
-ques:capital-27 rdfs:comment " ".
-ques:capital-28 rdfs:comment "Veuillez écrire votre réponse ici :".
-ques:capital-28 rdfs:comment " ".
-ques:capital-29 rdfs:comment "Veuillez écrire votre réponse ici :".
-ques:capital-29 rdfs:comment " ".
-ques:capital-30 rdfs:comment "Veuillez écrire votre(vos) réponse(s) ici :".
-ques:capital-30 rdfs:comment "Total :  ".
-ques:capital-30 rdfs:comment " ".
-ques:capital-30 rdfs:comment "Europe (EU) :  ".
-ques:capital-30 rdfs:comment "US/Canada :  ".
-ques:capital-30 rdfs:comment "Reste du monde :  \n ".
-ques:capital-30 rdfs:comment "Totale et par région :".
+<ques:capital-2-user-prop> rdfs:domain ques:User.
+ques:capital-3 rdfs:domain ques:capital-2.
+ques:capital-4 rdfs:domain ques:capital-2.
+ques:capital-5 rdfs:domain ques:capital-2.
+ques:capital-6 rdfs:domain ques:capital-2.
+ques:capital-7 rdfs:domain ques:capital-2.
+ques:capital-8 rdfs:domain ques:capital-2.
+<ques:capital-9-user-prop> rdfs:domain ques:User.
+ques:capital-10 rdfs:domain ques:capital-9.
+ques:capital-11 rdfs:domain ques:capital-9.
+ques:capital-12 rdfs:domain ques:capital-9.
+ques:capital-13 rdfs:domain ques:capital-9.
+ques:capital-14 rdfs:domain ques:capital-9.
+<ques:capital-15-user-prop> rdfs:domain ques:User.
+ques:capital-16 rdfs:domain ques:capital-15.
+ques:capital-17 rdfs:domain ques:capital-15.
+ques:capital-18 rdfs:domain ques:capital-15.
+ques:capital-19 rdfs:domain ques:capital-15.
+ques:capital-20 rdfs:domain ques:capital-15.
+ques:capital-21 rdfs:domain ques:capital-15.
+ques:capital-22 rdfs:domain ques:capital-15.
+ques:capital-23 rdfs:domain ques:capital-15.
+ques:capital-25 rdfs:domain ques:capital-15.
+ques:capital-26 rdfs:domain ques:capital-15.
+<ques:capital-2-user-prop> rdfs:range ques:capital-2.
+<ques:capital-9-user-prop> rdfs:range ques:capital-9.
+<ques:capital-15-user-prop> rdfs:range ques:capital-15.
 ques:capital-1 rdfs:range _:sk109.
 ques:capital-2 rdfs:range _:sk110.
 ques:capital-3 rdfs:range _:sk111.
@@ -251,6 +251,9 @@ ques:capital-27 rdfs:range _:sk135.
 ques:capital-28 rdfs:range _:sk136.
 ques:capital-29 rdfs:range _:sk137.
 ques:capital-30 rdfs:range _:sk138.
+ques:operational-fg ques:properties <ques:capital-2-user-prop>.
+ques:operational-fg ques:properties <ques:capital-9-user-prop>.
+ques:operational-fg ques:properties <ques:capital-15-user-prop>.
 _:sk109 owl:oneOf ().
 _:sk110 owl:oneOf ().
 _:sk111 owl:oneOf (_:sk0 _:sk1 _:sk2 _:sk3 _:sk4).
@@ -282,5 +285,5 @@ _:sk136 owl:oneOf ().
 _:sk137 owl:oneOf ().
 _:sk138 owl:oneOf ().
 
-#ENDS 0.172 [sec] TC=296 TP=1124 BC=0 BP=0 PM=0 CM=0 FM=0 AM=0
+#ENDS 0.202 [sec] TC=292 TP=1812 BC=0 BP=0 PM=0 CM=0 FM=0 AM=0
 

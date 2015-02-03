@@ -11,11 +11,19 @@
 # lancer avec:
 # eye --nope Evaluation_capital_opérationnel.ttl questionnaire2owl.n3 --query questionnaire2owl.q.n3 > Evaluation_capital_opérationnel.owl.ttl
 
-# Chaque question du fichier Markdown devient une owl:DatatypeProperty à valeurs énumérées
-{ ?Q ques:header ?L ;
-     ques:paragraph ?C .
+# Chaque question du fichier Markdown devient une owl:ObjectProperty à valeurs énumérées
+
+# Détecter:
+# ques:capital-3 ques:header "Qualité de la ressource (air) {.P1}" .
+# ques:capital-2 ques:subheader ques:capital-3 .
+# ques:capital-3 ques:paragraph "Veuillez sélectionner une seule des propositions suivantes :" .
+#  ques:capital-3 ques:item "Les alertes sont très fréquentes et les niveaux atteints sont très élevés" .
+
+{ ?QUESTION ques:header ?L ;
+    ques:item ?IT ;
+    ques:paragraph ?C .
  } => {
-  ?Q a owl:ObjectProperty ;
+  ?QUESTION a owl:ObjectProperty ;
     rdfs:label ?L ;
     rdfs:comment ?C .
 }.
@@ -34,22 +42,26 @@
   ?ENUM rdfs:label ?LAB .
 } .
 
+{ ?FG a :FormGroup } => { ?FG a :FormGroup } .
 
-# Rassembler via ques:subheader pour faire une owl:Class, la propriété correspondante de :User, et contribution au FormGroup
+# Détecter:
+# ques:capital-1 ques:subheader ques:capital-2 . 
+# ques:capital-2 ques:header "Capital Naturel {.P1}" .
+# ques:capital-2 ques:subheader ques:capital-3 .
+# ques:capital-3 ques:header "Qualité de la ressource (air) {.P1}" .
+
+# Rassembler via ques:subheader pour faire une owl:Class ?CLASS, la propriété correspondante de :User vers ?CLASS, et contribution au FormGroup
 { ?CLASS ques:subheader ?PROP ;
 	 ques:header ?LAB .
   ?PROP ques:item ?ITEM .
-  ?FORM_GROUP a :FormGroup ;
+  ?FORM_GROUP a :FormGroup .
+  ?CLASS :newURI ?USER_PROP . 
 } => {
   ?CLASS a owl:Class ; rdfs:label ?LAB .
-  ?P a owl:ObjectProperty; rdfs:domain :User; rdfs:range ?CLASS .
+  ?USER_PROP a owl:ObjectProperty; rdfs:domain :User; rdfs:range ?CLASS .
   ?PROP rdfs:domain ?CLASS.
-  ?FORM_GROUP :properties ?P .
+  ?FORM_GROUP :properties ?USER_PROP .
 }.
 
-# TODO put in another file
-:operational-fg a :FormGroup ;
-    rdfs:label "Questions sur le capital immatériel."@fr
-.
 
 
