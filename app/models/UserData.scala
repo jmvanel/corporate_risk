@@ -28,21 +28,28 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
 
   import ops._
 
+  /* TODO should be read from RDF database */
+  val formsGroups = List("risk", "human", "structural", "operational" )
+  val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
+  
   /**
    * create Empty User Data : the triples:
    *  <pre>
-   *  <userURI> :prop-5 :v5 .
+   *  &lt; userURI> :prop-5 :v5 .
    *                    :v5 a ques:5 . # until ques:15
    *  </pre>
    *
-   *  TODO create user data for all 4 Form Groups
+   * create user data for all 4 Form Groups
    */
   def createEmptyUserData(user: User) = {
     rdfStore.rw(
       dataset, {
-        println(s"createEmptyUserData $user ${applicationClassesAndProperties()}")
-        for (classAndPropURI <- applicationClassesAndProperties().classesAndProperties)
-          createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
+        for (fg <- formsGroups) {
+          val cp = applicationClassesAndProperties(fg)
+          println(s"createEmptyUserData $user $fg")
+          for (classAndPropURI <- cp.classesAndProperties)
+            createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
+        }
       })
   }
 
@@ -54,7 +61,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    * The configuration is gotten by function #applicationClassesAndProperties() .
    */
-  def getUserData(user: User): Seq[(Rdf#URI, String)] = {
+  def getUserData(user: User,
+      formGroup: Rdf#URI=bizinnovQuestionsVocabPrefix("risk")):
+      Seq[(Rdf#URI, String)] = {
     val nodes = rdfStore.r(
       dataset, {
         val userURI = getURI(user)
@@ -62,7 +71,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
         implicit val graphForVocabulary = rdfStore.getGraph(dataset,
           URI("vocabulary")).get
         for {
-          (cl, prop) <- applicationClassesAndProperties().classesAndProperties
+          (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
           triple <- find(graph, userURI, prop, ANY)
         } yield {
           (triple.objectt, instanceLabel(cl))
@@ -83,15 +92,20 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
+  def applicationClassesAndProperties(formGroup: Rdf#URI ): FormGroup = {
+    applicationClassesAndProperties(
+        bizinnovQuestionsVocabPrefix.unapply(formGroup).getOrElse("") )
+  }
+  
   def applicationClassesAndProperties(formGroup: String = // 
-  "risk" // WIP : "operational"
+    "risk" // WIP : "operational"
   ): FormGroup = {
     formGroup match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
-      case "human" => applicationClassesAndPropertiesHuman()
-      case "structural" => applicationClassesAndPropertiesStructural
-      case "operational" => applicationClassesAndPropertiesOperational
+      case "human" =>  classesAndProperties( "structural-fg" )
+      case "structural" => classesAndProperties("structural-fg")
+      case "operational" => classesAndProperties("operational-fg")
       case _ =>
         println(s"formGroup URI not expected: $formGroup");
         FormGroup(Seq((URI(""), URI(""))), "")
@@ -103,21 +117,11 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     for (i <- range) yield (bizinnovQuestionsVocabPrefix(i.toString()),
       bizinnovQuestionsVocabPrefix("prop-" + i.toString()))
   }
-
-  def applicationClassesAndPropertiesHuman(): FormGroup = {
-    applicationClassesAndPropertiesGeneric(
-      fromUri(bizinnovQuestionsVocabPrefix("structural-fg")))
-  }
-
-  def applicationClassesAndPropertiesStructural(): FormGroup = {
-    applicationClassesAndPropertiesGeneric(
-      fromUri(bizinnovQuestionsVocabPrefix("structural-fg")))
-  }
-
-  def applicationClassesAndPropertiesOperational(): FormGroup = {
-    applicationClassesAndPropertiesGeneric(
-      fromUri(bizinnovQuestionsVocabPrefix("operational-fg")))
-  }
+  
+  /** fg is URI ending for forms group */
+  private def classesAndProperties( fg:String ): FormGroup = { 
+      applicationClassesAndPropertiesGeneric(
+      fromUri(bizinnovQuestionsVocabPrefix(fg))) }
 
   case class FormGroup(val classesAndProperties: Seq[(Rdf#URI, Rdf#URI)], label: String)
 
@@ -158,13 +162,11 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
         row("PROP").get.as[Rdf#URI].get)
     }
     println("applicationClassesAndPropertiesGeneric")
-    //    println(queryString)
-    //    println("variables.size " + variables.size)
-    //    println(variables.to[List].mkString("\n"))
     val classesAndProperties = for (v <- variables) yield (v._2, v._3)
     val fg = FormGroup(classesAndProperties.to[List], fromLiteral(label)._1
     )
-    println("classesAndProperties " + classesAndProperties.mkString("\n"))
+//    println("classesAndProperties " + classesAndProperties.mkString("\n"))
+    println(s"$formgroup $fg")
     fg
   }
 
