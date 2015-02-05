@@ -17,7 +17,7 @@ body {
 }
 
 #header {
-	background: #011936;
+	background: #1C1862;
 	height: 138px;
 	text-align: center;
 	border-bottom: solid white;
@@ -40,7 +40,7 @@ body {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background: #011936;
+	background: #1C1862;
 	height: 48px;
 	padding-top: 20px;
 	color: white;
@@ -63,4 +63,12 @@ body {
 }
 .index-col-right {
 	padding-right: 2em;
+}
+
+.form {
+	margin: 0 18px;	
+}
+.form .input label {
+	width: 15%;
+	padding-left: 1em;	
 }
