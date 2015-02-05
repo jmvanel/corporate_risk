@@ -158,7 +158,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
        * both the #Rdf#Node projection and the transformation to Rdf#URI can fail
        * in the Try type */
       label = row("LAB").get.as[Rdf#Literal].get
-      (label,
+      (
+        label, // TODO remove label in tuple
         row("CLASS").get.as[Rdf#URI].get,
         row("PROP").get.as[Rdf#URI].get)
     }
