@@ -29,9 +29,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   import ops._
 
   /* TODO should be read from RDF database */
-  val formsGroups = List("risk", "human", "structural", "operational" )
+  val formsGroups = List("risk", "human", "structural", "operational")
   val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
-  
+
   /**
    * create Empty User Data : the triples:
    *  <pre>
@@ -62,8 +62,10 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * The configuration is gotten by function #applicationClassesAndProperties() .
    */
   def getUserData(user: User,
-      formGroup: Rdf#URI=bizinnovQuestionsVocabPrefix("risk")):
-      Seq[(Rdf#URI, String)] = {
+    formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix(
+      //      "operational"
+      "risk"
+    )): Seq[(Rdf#URI, String)] = {
     val nodes = rdfStore.r(
       dataset, {
         val userURI = getURI(user)
@@ -92,18 +94,16 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
-  def applicationClassesAndProperties(formGroup: Rdf#URI ): FormGroup = {
+  def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
     applicationClassesAndProperties(
-        bizinnovQuestionsVocabPrefix.unapply(formGroup).getOrElse("") )
+      bizinnovQuestionsVocabPrefix.unapply(formGroup).getOrElse(""))
   }
-  
-  def applicationClassesAndProperties(formGroup: String = // 
-    "risk" // WIP : "operational"
-  ): FormGroup = {
+
+  def applicationClassesAndProperties(formGroup: String): FormGroup = {
     formGroup match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
-      case "human" =>  classesAndProperties( "structural-fg" )
+      case "human" => classesAndProperties("structural-fg")
       case "structural" => classesAndProperties("structural-fg")
       case "operational" => classesAndProperties("operational-fg")
       case _ =>
@@ -117,11 +117,12 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     for (i <- range) yield (bizinnovQuestionsVocabPrefix(i.toString()),
       bizinnovQuestionsVocabPrefix("prop-" + i.toString()))
   }
-  
+
   /** fg is URI ending for forms group */
-  private def classesAndProperties( fg:String ): FormGroup = { 
-      applicationClassesAndPropertiesGeneric(
-      fromUri(bizinnovQuestionsVocabPrefix(fg))) }
+  private def classesAndProperties(fg: String): FormGroup = {
+    applicationClassesAndPropertiesGeneric(
+      fromUri(bizinnovQuestionsVocabPrefix(fg)))
+  }
 
   case class FormGroup(val classesAndProperties: Seq[(Rdf#URI, Rdf#URI)], label: String)
 
@@ -165,7 +166,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val classesAndProperties = for (v <- variables) yield (v._2, v._3)
     val fg = FormGroup(classesAndProperties.to[List], fromLiteral(label)._1
     )
-//    println("classesAndProperties " + classesAndProperties.mkString("\n"))
+    //    println("classesAndProperties " + classesAndProperties.mkString("\n"))
     println(s"$formgroup $fg")
     fg
   }
