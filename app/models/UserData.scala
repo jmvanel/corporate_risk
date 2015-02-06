@@ -2,9 +2,8 @@ package models
 
 import org.w3.banana.jena.JenaModule
 import org.w3.banana.RDFOpsModule
-import deductions.runtime.jena.RDFStoreLocalProvider
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
-import deductions.runtime.jena.RDFStoreLocalProvider2
+import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.w3.banana.RDF
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
@@ -21,7 +20,7 @@ import java.nio.file.StandardOpenOption
 object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
 
 trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
-    with RDFStoreLocalProvider2[Rdf, DATASET]
+    with RDFStoreLocalProvider[Rdf, DATASET]
     with InstanceLabelsInference2[Rdf]
     with SparqlGraphModule
     with SparqlOpsModule {

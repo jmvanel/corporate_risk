@@ -13,7 +13,7 @@ import com.hp.hpl.jena.query.Dataset
 
 import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
-import deductions.runtime.jena.RDFStoreLocalProvider2
+import deductions.runtime.dataset.RDFStoreLocalProvider
 
 /**
  * Responses Analysis:
