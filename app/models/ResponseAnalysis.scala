@@ -6,7 +6,7 @@ import org.w3.banana.RDF
 import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.XSDPrefix
-import org.w3.banana.diesel.toPointedGraphW
+import org.w3.banana.diesel._
 import org.w3.banana.jena.Jena
 
 import com.hp.hpl.jena.query.Dataset
