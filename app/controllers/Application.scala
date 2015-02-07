@@ -15,12 +15,15 @@ import Auth._
 
 object Application extends Controller with Secured with RDFCache {
   lazy val tableView = new TableView {}
+  import ops._
 
   def index = withUser { implicit user =>
     implicit request =>
-      //      Ok(views.html.index(UserData.getUserData(user).map(_.getURI))) // NOTE: getURI is Jena stuff
       Ok(views.html.index(UserData.getUserData(user).map {
-        case (uri, label) => (ops.fromUri(uri), label)
+        case (uri, label) =>
+          (fromUri(uri), label,
+            models.ResponseAnalysis.responsesCount(user, fromUri(uri))
+          )
       }))
   }
 
