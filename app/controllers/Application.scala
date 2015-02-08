@@ -10,19 +10,28 @@ import java.io.ByteArrayOutputStream
 import org.xhtmlrenderer.pdf.ITextRenderer
 import scalax.chart.api._
 
-import models.{ UserData, ResponseAnalysis }
+import models.{ UserData, UserVocab, ResponseAnalysis }
 import Auth._
 
-object Application extends Controller with Secured with RDFCache {
+object Application extends Controller with Secured with RDFCache with UserVocab {
   lazy val tableView = new TableView {}
   import ops._
 
   def index = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.index(UserData.getUserData(user).map {
-        case (uri, label) =>
-          (fromUri(uri), label,
-            models.ResponseAnalysis.responsesCount(user, fromUri(uri))
+      Ok(views.html.index(Seq(
+        ("Pré-diagnostique", fromUri(bizinnovQuestionsVocabPrefix("risk"))),
+        ("Diagnostique", fromUri(bizinnovQuestionsVocabPrefix("operational")))
+      )))
+  }
+
+  /**  */
+  def formgroup(groupUri: String) = withUser { implicit user =>
+    implicit request =>
+      Ok(views.html.formgroup(UserData.getUserData(user, URI(groupUri)).map {
+        case (formUri, label) =>
+          (fromUri(formUri), label,
+            models.ResponseAnalysis.responsesCount(user, fromUri(formUri))
           )
       }))
   }
@@ -55,7 +64,12 @@ object Application extends Controller with Secured with RDFCache {
         case _ => throw new IllegalArgumentException
       }
 
-      Ok(views.html.report(ResponseAnalysis.averagePerForm(user, uri)));
+      Redirect(routes.Application.index.url);
+  }
+
+  def report = withUser { implicit user =>
+    implicit request =>
+      Ok(views.html.report(ResponseAnalysis.report(user)))
   }
 
   def exportPDF = withUser { implicit user =>
