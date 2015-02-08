@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream
 import org.xhtmlrenderer.pdf.ITextRenderer
 import scalax.chart.api._
 
-import models.UserData
+import models.{ UserData, ResponseAnalysis }
 import Auth._
 
 object Application extends Controller with Secured with RDFCache {
@@ -52,7 +52,7 @@ object Application extends Controller with Secured with RDFCache {
         case _ => throw new IllegalArgumentException
       }
 
-      Ok(views.html.report(new TableView {}.htmlForm(uri).get))
+      Ok(views.html.report(ResponseAnalysis.averagePerForm(user, uri)));
   }
 
   def exportPDF = withUser { implicit user =>
