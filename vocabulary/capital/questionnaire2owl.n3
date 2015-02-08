@@ -24,7 +24,7 @@
 
 
 # TODO put in another file
-:operational-fg a :FormGroup ;
+:capital-fg a :FormGroup ;
     rdfs:label "Questions sur le capital immatériel."@fr .
 
 

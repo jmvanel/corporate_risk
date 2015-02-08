@@ -32,7 +32,7 @@ ques:capital-22 a owl:ObjectProperty.
 ques:capital-23 a owl:ObjectProperty.
 ques:capital-25 a owl:ObjectProperty.
 ques:capital-26 a owl:ObjectProperty.
-ques:operational-fg a ques:FormGroup.
+ques:capital-fg a ques:FormGroup.
 ques:capital-2 a owl:Class.
 <ques:capital-2-user-prop> a owl:ObjectProperty.
 ques:capital-9 a owl:Class.
@@ -60,7 +60,7 @@ ques:capital-22 rdfs:label "Réputation de l’entreprise {.P1}".
 ques:capital-23 rdfs:label "Budgets de promotion de la marque (mesure de la notoriété) {.P1}".
 ques:capital-25 rdfs:label "Il s’agit de l’âge de la marque {.P1}".
 ques:capital-26 rdfs:label "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}".
-ques:operational-fg rdfs:label "Questions sur le capital immatériel."@fr.
+ques:capital-fg rdfs:label "Questions sur le capital immatériel."@fr.
 _:sk0 rdfs:label "Les alertes sont très fréquentes et les niveaux atteints sont très élevés".
 _:sk1 rdfs:label " Les alertes sont fréquentes".
 _:sk2 rdfs:label " Les alertes sont assez fréquentes".
@@ -251,9 +251,9 @@ ques:capital-27 rdfs:range _:sk135.
 ques:capital-28 rdfs:range _:sk136.
 ques:capital-29 rdfs:range _:sk137.
 ques:capital-30 rdfs:range _:sk138.
-ques:operational-fg ques:properties <ques:capital-2-user-prop>.
-ques:operational-fg ques:properties <ques:capital-9-user-prop>.
-ques:operational-fg ques:properties <ques:capital-15-user-prop>.
+ques:capital-fg ques:properties <ques:capital-2-user-prop>.
+ques:capital-fg ques:properties <ques:capital-9-user-prop>.
+ques:capital-fg ques:properties <ques:capital-15-user-prop>.
 _:sk109 owl:oneOf ().
 _:sk110 owl:oneOf ().
 _:sk111 owl:oneOf (_:sk0 _:sk1 _:sk2 _:sk3 _:sk4).

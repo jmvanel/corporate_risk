@@ -16,6 +16,9 @@ import org.w3.banana.diesel._
 import org.apache.log4j.Logger
 import java.nio.file.StandardOpenOption
 
+/** see function getUserData() */
+case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
+
 /** Banana principle: refer to concrete implementation only in blocks without code */
 object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
 
@@ -27,8 +30,11 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
 
   import ops._
 
-  /* TODO should be read from RDF database */
-  val formsGroups = List("risk", "human", "structural", "operational")
+  /**
+   * values for arguments to applicationClassesAndProperties(formGroup: String)
+   *  TODO should be read from RDF database
+   */
+  val formsGroups = List("risk", "capital") // human", "structural", "operational")
   val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
 
   /**
@@ -61,10 +67,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * The configuration is gotten by function #applicationClassesAndProperties() .
    */
   def getUserData(user: User,
-    formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix(
-      //      "operational"
-      "risk"
-    )): Seq[(Rdf#URI, String)] = {
+    formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
     val nodes = rdfStore.r(
       dataset, {
         val userURI = getURI(user)
@@ -83,11 +86,12 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
         uri => Some(uri, il),
         x => None, x => None)
     }
-    uriOptions collect { case Some((uri, il)) => (uri, il) }
+    val v = uriOptions collect { case Some((uri, il)) => (uri, il) }
+    v.map(e => FormUserData(e._1, e._2))
   }
 
   /**
-   * return a sequence of URI couples:
+   * return a FormGroup, that is a sequence of URI couples:
    *  - an OWL class C,
    *  - and a property whose domain is :User and range C
    *
@@ -98,31 +102,31 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       bizinnovQuestionsVocabPrefix.unapply(formGroup).getOrElse(""))
   }
 
+  /** */
   def applicationClassesAndProperties(formGroup: String): FormGroup = {
     formGroup match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
-      case "human" => classesAndProperties("structural-fg")
-      case "structural" => classesAndProperties("structural-fg")
-      case "operational" => classesAndProperties("operational-fg")
+      case name => classesAndProperties(name + "-fg")
       case _ =>
         println(s"formGroup URI not expected: $formGroup");
         FormGroup(Seq((URI(""), URI(""))), "")
     }
   }
 
-  def applicationClassesAndPropertiesRisk(): Seq[(Rdf#URI, Rdf#URI)] = {
+  private def applicationClassesAndPropertiesRisk(): Seq[(Rdf#URI, Rdf#URI)] = {
     val range = 5 until 16
     for (i <- range) yield (bizinnovQuestionsVocabPrefix(i.toString()),
       bizinnovQuestionsVocabPrefix("prop-" + i.toString()))
   }
 
-  /** fg is URI ending for forms group */
+  /** @param fg is URI ending for forms group */
   private def classesAndProperties(fg: String): FormGroup = {
     applicationClassesAndPropertiesGeneric(
       fromUri(bizinnovQuestionsVocabPrefix(fg)))
   }
 
+  /** see #applicationClassesAndProperties() */
   case class FormGroup(val classesAndProperties: Seq[(Rdf#URI, Rdf#URI)], label: String)
 
   /**
@@ -134,7 +138,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * </pre>
    * and return a list of couples (:p1, rdfs:range of :p1) .
    */
-  def applicationClassesAndPropertiesGeneric(formgroup: String): FormGroup = {
+  private def applicationClassesAndPropertiesGeneric(formgroup: String): FormGroup = {
     val queryString = s"""
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX : <${bizinnovQuestionsVocabPrefix.prefixIri}>

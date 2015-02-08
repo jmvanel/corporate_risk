@@ -21,14 +21,8 @@ import deductions.runtime.dataset.RDFStoreLocalProvider
  */
 object ResponseAnalysis extends RDFStoreLocalJena1Provider with ResponseAnalysisTrait[Jena, Dataset]
 
-trait ResponseAnalysisTrait[Rdf <: RDF, DATASET] extends //UserVocab
-//with 
-UserDataTrait[Rdf, DATASET] //    with RDFStoreLocalProvider2[Rdf, DATASET]
-//    with InstanceLabelsInference2[Rdf]
-//    with SparqlGraphModule
-//    with SparqlOpsModule 
-{
-
+trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
+    extends UserDataTrait[Rdf, DATASET] {
   val xsd = XSDPrefix[Rdf]
   val zero = ops.makeLiteral("0", xsd.integer)
   import ops._

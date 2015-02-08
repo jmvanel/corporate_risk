@@ -4,25 +4,39 @@ import play.api._
 import play.api.mvc._
 import deductions.runtime.html.{ CreationForm, TableView }
 import deductions.runtime.services.FormSaver
+import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCache
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
 import org.xhtmlrenderer.pdf.ITextRenderer
 import scalax.chart.api._
+import deductions.runtime.dataset.RDFStoreLocalProvider
+import org.w3.banana.RDF
+import org.w3.banana.jena.Jena
+import com.hp.hpl.jena.query.Dataset
 
 import models.UserData
-import Auth._
+import models.FormUserData
+import models.UserDataTrait
 
-object Application extends Controller with Secured with RDFCache {
+import Auth._
+import org.w3.banana.SparqlOpsModule
+import org.w3.banana.RDFOpsModule
+
+object Application extends ApplicationTrait[Jena, Dataset]
+  with RDFStoreLocalJena1Provider
+
+trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
+    with UserDataTrait[Rdf, DATASET] {
   lazy val tableView = new TableView {}
   import ops._
 
   def index = withUser { implicit user =>
     implicit request =>
       Ok(views.html.index(UserData.getUserData(user).map {
-        case (uri, label) =>
-          (fromUri(uri), label,
-            models.ResponseAnalysis.responsesCount(user, fromUri(uri))
+        case FormUserData(uri, label) =>
+          (uri.toString(), label,
+            models.ResponseAnalysis.responsesCount(user, uri.toString)
           )
       }))
   }
@@ -47,7 +61,8 @@ object Application extends Controller with Secured with RDFCache {
     implicit request =>
       val uri = request.body match {
         case form: AnyContentAsFormUrlEncoded =>
-          new FormSaver().saveTriples(form.data)
+          // new FormSaver().saveTriples(form.data)
+          deductions.runtime.services.FormSaverObject.saveTriples(form.data)
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => URLDecoder.decode(url, "utf-8")
             case _ => throw new IllegalArgumentException
