@@ -15,10 +15,10 @@ import org.w3.banana.RDF
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
 
-import models.UserData
 import models.FormUserData
 import models.UserDataTrait
 
+import models.{ UserData, UserVocab, ResponseAnalysis }
 import Auth._
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
@@ -26,17 +26,37 @@ import org.w3.banana.RDFOpsModule
 object Application extends ApplicationTrait[Jena, Dataset]
   with RDFStoreLocalJena1Provider
 
+//<<<<<<< HEAD
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with UserDataTrait[Rdf, DATASET] {
+  //=======
+  //object Application extends Controller with Secured with RDFCache with UserVocab {
+  //>>>>>>> 61bd3ea59a9bb3b2fb11b356c019904dbd1d07b0
   lazy val tableView = new TableView {}
   import ops._
 
   def index = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.index(UserData.getUserData(user).map {
-        case FormUserData(uri, label) =>
-          (uri.toString(), label,
-            models.ResponseAnalysis.responsesCount(user, uri.toString)
+      //<<<<<<< HEAD
+      //      Ok(views.html.index(UserData.getUserData(user).map {
+      //        case FormUserData(uri, label) =>
+      //          (uri.toString(), label,
+      //            models.ResponseAnalysis.responsesCount(user, uri.toString)
+      //=======
+      Ok(views.html.index(Seq(
+        ("Pré-diagnostique", fromUri(bizinnovQuestionsVocabPrefix("risk"))),
+        ("Diagnostique", fromUri(bizinnovQuestionsVocabPrefix("operational")))
+      )))
+  }
+
+  /**  */
+  def formgroup(groupUri: String) = withUser { implicit user =>
+    implicit request =>
+      Ok(views.html.formgroup(getUserData(user, URI(groupUri)).map {
+        case FormUserData(formUri, label) =>
+          (fromUri(formUri), label,
+            models.ResponseAnalysis.responsesCount(user, fromUri(formUri))
+          //>>>>>>> 61bd3ea59a9bb3b2fb11b356c019904dbd1d07b0
           )
       }))
   }
@@ -70,7 +90,12 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
         case _ => throw new IllegalArgumentException
       }
 
-      Ok(views.html.report(new TableView {}.htmlForm(uri).get))
+      Redirect(routes.Application.index.url);
+  }
+
+  def report = withUser { implicit user =>
+    implicit request =>
+      Ok(views.html.report(ResponseAnalysis.report(user)))
   }
 
   def exportPDF = withUser { implicit user =>

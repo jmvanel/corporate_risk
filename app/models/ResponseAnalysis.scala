@@ -125,19 +125,21 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    *  TODO : prendre en compte les choix multiples pour les transformer en nombre entre 1 et 5
    */
   def report(user: User): Elem = {
-    <div>
-      <p>Rapport de synthèse pour l'utilisateur { user.email }</p>
-      {
-        var weightedSum = 0
-        var coefSumGlobal = 0
-        for (fg <- formsGroupsURIs) {
-          val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
-          weightedSum += av * coefSum
-          coefSumGlobal += coefSum
-          <p> { fg } moyenne pondérée: { av } </p>
+    rdfStore.r(dataset, {
+      <div>
+        <p>Rapport de synthèse pour l'utilisateur { user.email }</p>
+        {
+          var weightedSum = 0
+          var coefSumGlobal = 0
+          for (fg <- formsGroupsURIs) {
+            val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
+            weightedSum += av * coefSum
+            coefSumGlobal += coefSum
+            <p> { fg } moyenne pondérée: { av } </p>
+          }
+          <p> Moyenne globale: { weightedSum / coefSumGlobal } </p>
         }
-        <p> Moyenne globale: { weightedSum / coefSumGlobal } </p>
-      }
-    </div>
+      </div>
+    }).get
   }
 }

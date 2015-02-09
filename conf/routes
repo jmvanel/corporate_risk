@@ -4,8 +4,10 @@
 
 # Home page
 GET     /                           controllers.Application.index
+GET     /formgroup                  controllers.Application.formgroup(url: String)
 GET     /form                       controllers.Application.form(url: String)
 POST    /save                       controllers.Application.save
+GET     /report                     controllers.Application.report
 GET		/chart.png					controllers.Application.chart(charttype: String)
 GET		/pdfreport					controllers.Application.exportPDF
 

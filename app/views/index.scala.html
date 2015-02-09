@@ -1,20 +1,11 @@
-@(forms: Seq[(String, String, Int)] )(implicit user: User)
+@(formgroups: Seq[(String, String)])(implicit user: User)
 
 @main("Welcome to Corporate Risk!", Some(user)) {
-    <table class="table">
-    	<tr>
-    		<th class="index-col-left">Mes formulaires</th>
-    		<th class="index-col-right">Questions</th>
-    	</tr>
-    	@for(form <- forms) {
-    	<tr>
-    		<td class="index-col-left">
-    			<a href="@routes.Application.form(form._1.toString)">@form._2</a>
-    		</td>
-    		<td class="index-col-right">
-    			@form._3 question(s) remplie(s)
-    		</td>
-   		</tr>
-   		}
- 	</table>
+   	@for(formgroup <- formgroups) {
+   		<h3>@formgroup._1</h3>
+   		<a href="@routes.Application.formgroup(formgroup._2)">
+   			Accéder aux formulaires
+		</a>
+	}
+	<a href="@routes.Application.report">Consulter le rapport</a>
 }
