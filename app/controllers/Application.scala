@@ -65,8 +65,8 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
       println("editURI: " + request)
-      Ok(views.html.form(tableView.htmlForm(uri, editable = true
-      //        lang = chooseLanguage(request)
+      Ok(views.html.form(tableView.htmlForm(uri, editable = true, graphURI = user.getURI().toString() // fromUri(user.getURI())
+      //       lang = chooseLanguage(request)
       ).get))
 
   }

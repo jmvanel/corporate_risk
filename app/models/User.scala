@@ -76,14 +76,14 @@ case class User(var email: String, var password: String, var passwordHash: Strin
 trait UserVocab extends RDFOpsModule {
   import ops._
   /** users' prefix */
-  val bizinnovUserPrefix = Prefix("usr",
+  lazy val bizinnovUserPrefix = Prefix("usr",
     "http://bizinnov.com/ontologies/users/")
-  val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
+  lazy val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
   /** user vocabulary */
-  val bizinnovUserVocabPrefix = Prefix("user",
+  lazy val bizinnovUserVocabPrefix = Prefix("user",
     "http://bizinnov.com/ontologies/users.owl.ttl#")
   /** Questionnaire vocabulary */
-  val bizinnovQuestionsVocabPrefix = Prefix("ques",
+  lazy val bizinnovQuestionsVocabPrefix = Prefix("ques",
     "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
   // TODO Add props & classes to Prefix objects
   def getURI(user: User) = bizinnovUserPrefix(user.email)

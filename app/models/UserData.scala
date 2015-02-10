@@ -34,8 +34,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * values for arguments to applicationClassesAndProperties(formGroup: String)
    *  TODO should be read from RDF database
    */
-  val formsGroups = List("risk", "capital") // human", "structural", "operational")
-  val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
+  lazy val formsGroups = List("risk", "capital") // human", "structural", "operational")
+  lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
 
   /**
    * create Empty User Data : the triples:
