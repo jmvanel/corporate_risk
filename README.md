@@ -25,11 +25,10 @@ For more details, see [in semantic\_forms the paragraph "How to run"](https://gi
 
 - Preloading vocabularies, and pre-defined form specifications : in activator shell type:
 ```
-    runMain tdb.tdbloader --loc=TDB --graph=vocabulary \
-      vocabulary/risk/risk_questions.owl.ttl \
-      vocabulary/capital/Evaluation_capital_opérationnel.owl.ttl \
-      vocabulary/capital/Evaluation_capital_Structurel.owl.ttl \
-      vocabulary/capital/Evaluation_du_capital_humain.owl.ttl
+    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/risk/risk_questions.owl.ttl
+    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/capital/Evaluation_capital_opérationnel.owl.ttl
+    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/capital/Evaluation_capital_Structurel.owl.ttl
+    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/capital/Evaluation_du_capital_humain.owl.ttl
 ```
 
 ## Note on the data model

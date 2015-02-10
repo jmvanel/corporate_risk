@@ -59,7 +59,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   /**
-   * return a sequence of couples:
+   * return User Data: a sequence of couples:
    * - an URI <u1> associated with the user <user> through one of the RDF properties <prop> in configuration :
    *     <user> <prop> <u1> .
    * - a label string associated to the class of <u1> in configuration.
@@ -68,19 +68,18 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    */
   def getUserData(user: User,
     formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
-    val nodes = rdfStore.r(
-      dataset, {
-        val userURI = getURI(user)
-        val graph = rdfStore.getGraph(dataset, userURI).get
-        implicit val graphForVocabulary = rdfStore.getGraph(dataset,
-          URI("vocabulary")).get
-        for {
-          (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
-          triple <- find(graph, userURI, prop, ANY)
-        } yield {
-          (triple.objectt, instanceLabel(cl))
-        }
-      })
+    val nodes = rdfStore.r(dataset, {
+      val userURI = getURI(user)
+      val userGraph = rdfStore.getGraph(dataset, userURI).get
+      implicit val graphForVocabulary = rdfStore.getGraph(dataset,
+        URI("vocabulary")).get
+      for {
+        (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
+        triple <- find(userGraph, userURI, prop, ANY)
+      } yield {
+        (triple.objectt, instanceLabel(cl))
+      }
+    })
     val uriOptions = nodes.get.map {
       case (n, il) => foldNode(n)(
         uri => Some(uri, il),
@@ -98,21 +97,31 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
-    applicationClassesAndProperties(
-      bizinnovQuestionsVocabPrefix.unapply(formGroup).getOrElse(""))
+    applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
-  /** */
+  /** like before, different argument type */
   def applicationClassesAndProperties(formGroup: String): FormGroup = {
     formGroup match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
       case name => classesAndProperties(name + "-fg")
-      case _ =>
-        println(s"formGroup URI not expected: $formGroup");
-        FormGroup(Seq((URI(""), URI(""))), "")
+      //      case _ =>
+      //        println(s"formGroup URI not expected: $formGroup");
+      //        FormGroup(Seq((URI(""), URI(""))), "")
     }
   }
+
+  //  def getPropertiesInFormGroup(formGroup: String): Seq[String] = {
+  //    val nodes = rdfStore.r(dataset, {
+  //      val graphForVocabulary = rdfStore.getGraph(dataset, URI("vocabulary")).get
+  //      val triples = find(graphForVocabulary, bizinnovQuestionsVocabPrefix(formGroup), bizinnovQuestionsVocabPrefix("properties"), ANY)
+  //      triples.map { triple => triple.toString() }.toSeq
+  //    })
+  //    nodes.get
+  //  }
+
+  private def questionsVocabURI2String(uri: Rdf#URI): String = bizinnovQuestionsVocabPrefix.unapply(uri).getOrElse("")
 
   private def applicationClassesAndPropertiesRisk(): Seq[(Rdf#URI, Rdf#URI)] = {
     val range = 5 until 16

@@ -31,7 +31,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * fonction qui compte les réponses pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème)
    */
-  def responsesCount(user: User, propURI: String): Int = {
+  def responsesCount0(user: User, propURI: String): Int = {
     val countTry = rdfStore.r(dataset, {
       val userURI = getURI(user)
       // NOTE: could have used find() like in UserData.getUserData()
@@ -45,6 +45,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           } """
       import sparqlOps._
       import ops._
+      println("responsesCount " + queryString)
       val query = parseSelect(queryString).get
       val solutions = rdfStore.executeSelect(dataset, query, Map()).get
       val res = solutions.iterator map { row =>
@@ -53,6 +54,39 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       res.next()
     })
     val lit = countTry.getOrElse(zero)
+    println("responsesCount " + lit)
+    lit2Int(lit)
+  }
+
+  /**
+   * fonction qui compte les réponses pour une propriété de User,
+   *  c'est à dire un formulaire, alias une rubrique (alias thème)
+   */
+  def responsesCount(user: User, dataURI: String): Int = {
+    val countTry = rdfStore.r(dataset, {
+      val userURI = getURI(user)
+      // NOTE: could have used find() like in UserData.getUserData()
+      val queryString = s"""
+          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          SELECT DISTINCT (COUNT(?OBJ) AS ?count) 
+          WHERE {
+           GRAPH <$userURI> {
+             <$dataURI> ?PROP ?OBJ .
+             FILTER( ?PROP != rdf:type )
+           }
+          } """
+      import sparqlOps._
+      import ops._
+      //      println("responsesCount " + queryString)
+      val query = parseSelect(queryString).get
+      val solutions = rdfStore.executeSelect(dataset, query, Map()).get
+      val res = solutions.iterator map { row =>
+        row("count").get.as[Rdf#Literal].get
+      }
+      res.next()
+    })
+    val lit = countTry.getOrElse(zero)
+    println("responsesCount " + lit)
     lit2Int(lit)
   }
 

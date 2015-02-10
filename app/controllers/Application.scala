@@ -45,20 +45,20 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
       //=======
       Ok(views.html.index(Seq(
         ("Pré-diagnostique", fromUri(bizinnovQuestionsVocabPrefix("risk"))),
-        ("Diagnostique", fromUri(bizinnovQuestionsVocabPrefix("operational")))
+        ("Diagnostique", fromUri(bizinnovQuestionsVocabPrefix("capital"))) // 
       )))
   }
 
   /**  */
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.formgroup(getUserData(user, URI(groupUri)).map {
-        case FormUserData(formUri, label) =>
-          (fromUri(formUri), label,
-            models.ResponseAnalysis.responsesCount(user, fromUri(formUri))
-          //>>>>>>> 61bd3ea59a9bb3b2fb11b356c019904dbd1d07b0
-          )
-      }))
+      Ok(views.html.formgroup(getUserData(
+        user, URI(groupUri)).map {
+          case FormUserData(formUri, label) =>
+            (fromUri(formUri), label,
+              models.ResponseAnalysis.responsesCount(user, fromUri(formUri))
+            )
+        }))
   }
 
   /** edit given URI */
