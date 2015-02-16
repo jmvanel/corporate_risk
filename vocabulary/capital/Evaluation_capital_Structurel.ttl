@@ -1,0 +1,828 @@
+
+      @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+      @prefix owl:  <http://www.w3.org/2002/07/owl#>.
+      @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+      @prefix     : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+ques:capital-1000 ques:paragraph """ {.P81}""" .
+  ques:capital-1000 ques:paragraph """Evaluation capital Structurel""" .
+  ques:capital-1000 ques:paragraph """Evaluation capital Structurel""" .
+  ques:capital-1000 ques:paragraph """Ce questionnaire permet de recueillir les informations nécessaires à l'évaluation du capital Structurel.""" .
+  ques:capital-1000 ques:paragraph """Ce capital regroupe les aspects""" .
+  ques:capital-1000 ques:item """ACTIONNAIRE """ .
+ques:capital-1000 ques:item """PARTENAIRES """ .
+ques:capital-1000 ques:item """ORGANISATIONNEL """ .
+ques:capital-1000 ques:item """﻿CLIENT """ .
+ ques:capital-1000 ques:paragraph """Il y a 89 questions dans ce questionnaire""" .
+  
+ques:capital-1001 ques:header """Capital Actionnaire""" .
+ques:capital-0 ques:subheader ques:capital-1001 .
+ 
+ques:capital-1002 ques:header """Action de l’actionnariat pour les affaires de l’entreprise""" .
+ques:capital-1001 ques:subheader ques:capital-1002 .
+ ques:capital-1002 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1002 ques:item """L’actionnariat joue un rôle négatif pour l’entreprise dans l’un des domaines suivants : levée de fonds, apport d’affaires, partenariat stratégique, recrutement d’hommes clés""" .
+ques:capital-1002 ques:item """L’actionnariat n’aide pas l’entreprise""" .
+ques:capital-1002 ques:item """L’aide que l’actionnariat peut apporter à l’entreprise est très limitée""" .
+ques:capital-1002 ques:item """L’actionnariat a déjà joué un rôle dans l’un des domaines suivants : levée de fonds, apport d’affaires, partenariats stratégiques, recrutement d’hommes clés""" .
+ques:capital-1002 ques:item """L’actionnariat joue un rôle de tout premier plan pour l’entreprise dans l’un des domaines suivants : levée de fonds, apport d’affaires, partenariats stratégiques, recrutement d’hommes clés""" .
+ 
+ques:capital-1003 ques:header """Notoriété de l’actionnariat""" .
+ques:capital-1001 ques:subheader ques:capital-1003 .
+ ques:capital-1003 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1003 ques:item """Un des actionnaires a une réelle notoriété mais sa réputation est négative
+Un des actionnaires a une réelle notoriété mais sa réputation est négative """ .
+ques:capital-1003 ques:item """Les actionnaires n’ont pas de notoriété""" .
+ques:capital-1003 ques:item """Au moins un actionnaire est une personne physique de notoriété régionale""" .
+ques:capital-1003 ques:item """Au moins un actionnaire est une personne morale qui a une réelle notoriété régionale ou bien au moins un des actionnaires personne physique a une notoriété nationale en tant qu’acteur économique""" .
+ques:capital-1003 ques:item """Au moins un actionnaire est une personne morale qui a une réelle notoriété internationale""" .
+ 
+ques:capital-1004 ques:header """Compétence de l’actionnariat""" .
+ques:capital-1001 ques:subheader ques:capital-1004 .
+ ques:capital-1004 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1004 ques:item """Les administrateurs sont incompétents et actifs""" .
+ques:capital-1004 ques:item """Les administrateurs sont incompétents et dormants""" .
+ques:capital-1004 ques:item """Le conseil est actif. Les administrateurs suivent depuis longtemps l’activité de l’entreprise mais pour l’essentiel ne sont ni des dirigeants ni des experts du secteur mais font preuve de bon sens""" .
+ques:capital-1004 ques:item """Le conseil est actif. Plusieurs dirigeants ayant fait leurs preuves dans des secteurs autres que celui de l’entreprise pour des activités de taille comparable sont présentes dans le conseil de surveillance ou le conseil d’administration. Le président est l'un d'eux""" .
+ 
+ques:capital-1005 ques:header """Fidélité de l’actionnariat""" .
+ques:capital-1001 ques:subheader ques:capital-1005 .
+ ques:capital-1005 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1005 ques:item """Actionnariat très volatile : les actionnaires tournent à 80 % tous les 3 à 5 ans voire moins""" .
+ques:capital-1005 ques:item """Actionnariat volatile : le noyau stable représente moins de 35 % du capital et peut évoluer sur une période de 5 ans""" .
+ques:capital-1005 ques:item """Actionnariat moyennement fidèle: 35 % du capital est détenu par les mêmes actionnaires depuis plus de 5 ans et projection à 5 ans analogue""" .
+ques:capital-1005 ques:item """Actionnariat fidèle : plus de 50 % du capital est détenu par les mêmes actionnaires depuis plus de 5 ans et projection à 5 ans analogue""" .
+ques:capital-1005 ques:item """Actionnariat très stable: 80 % du capital est détenu par les mêmes actionnaires depuis plus de 5 ans et projection à 5 ans analogue""" .
+ 
+ques:capital-1006 ques:header """Réserves Financières""" .
+ques:capital-1001 ques:subheader ques:capital-1006 .
+ ques:capital-1006 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1006 ques:item """Augmentation de capital très difficile ou impossible même en recherchant des fonds à l’extérieur du tour de table actuel""" .
+ques:capital-1006 ques:item """Une augmentation de capital est possible mais en faisant entrer de nouveaux actionnaires""" .
+ques:capital-1006 ques:item """Une augmentation de capital est possible avec l’actionnariat actuel mais sera limitée à quelques pourcents""" .
+ques:capital-1006 ques:item """Aucune difficulté pour réaliser une augmentation de capital de 10 à 20 %""" .
+ques:capital-1006 ques:item """Aucune difficulté pour augmenter son capital de plus de 30 %, si besoin, avec les actionnaires actuels ou le marché (entreprise cotée)""" .
+ 
+ques:capital-1007 ques:header """Type d’actionnariat""" .
+ques:capital-1001 ques:subheader ques:capital-1007 .
+ ques:capital-1007 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1007 ques:item """Actionnariat atomisé, hétérogène et opportuniste""" .
+ques:capital-1007 ques:item """Entreprise contrôlée par des fonds à court terme exigeants""" .
+ques:capital-1007 ques:item """Entreprise contrôlée par des fonds d’investissement à long terme. Si une famille et ou les managers ont une participation supérieure à 35 % mettre une note supérieure)""" .
+ques:capital-1007 ques:item """Entreprise familiale (si, en plus, les managers et les salariés ont accès au capital, mettre une note supérieure)""" .
+ques:capital-1007 ques:item """Entreprise contrôlée par son dirigeant, ses managers et ses salariés""" .
+ 
+ques:capital-1008 ques:header """Capital Partenaire""" .
+ques:capital-1001 ques:subheader ques:capital-1008 .
+ 
+ques:capital-1009 ques:header """Lourdeur de gestion des fournisseurs des produits vendus""" .
+ques:capital-1008 ques:subheader ques:capital-1009 .
+ ques:capital-1009 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1009 ques:item """On travaille avec tout le monde (plus de 15 fournisseurs)
+On travaille avec tout le monde (plus de 15 fournisseurs) """ .
+ques:capital-1009 ques:item """15 fournisseurs""" .
+ques:capital-1009 ques:item """6 fournisseurs""" .
+ques:capital-1009 ques:item """4 fournisseurs""" .
+ques:capital-1009 ques:item """3 fournisseurs (ou nombre de fournisseurs jugé idéal)""" .
+ 
+ques:capital-1010 ques:header """Risque de rupture d’approvisionnement""" .
+ques:capital-1008 ques:subheader ques:capital-1010 .
+ ques:capital-1010 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1010 ques:item """Un fournisseur, les ruptures sont fréquentes""" .
+ques:capital-1010 ques:item """Un fournisseur, des ruptures""" .
+ques:capital-1010 ques:item """Un fournisseur, pas de rupture à ce jour""" .
+ques:capital-1010 ques:item """2 fournisseurs, pas de rupture à ce jour""" .
+ques:capital-1010 ques:item """3 fournisseurs, pas de rupture à ce jour""" .
+ 
+ques:capital-1011 ques:header """Notation des fournisseurs""" .
+ques:capital-1008 ques:subheader ques:capital-1011 .
+ ques:capital-1011 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1011 ques:paragraph """La Notation est sur 20.""" .
+  ques:capital-1011 ques:item """Moins de 6""" .
+ques:capital-1011 ques:item """6 à 10""" .
+ques:capital-1011 ques:item """10 à 12""" .
+ques:capital-1011 ques:item """12 à 14""" .
+ques:capital-1011 ques:item """14 et +""" .
+ 
+ques:capital-1012 ques:header """Fidélité (fournisseur depuis ?)""" .
+ques:capital-1008 ques:subheader ques:capital-1012 .
+ ques:capital-1012 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1012 ques:item """De 0 à 6 mois
+De 0 à 6 mois """ .
+ques:capital-1012 ques:item """De 6 mois à 1 an""" .
+ques:capital-1012 ques:item """De 1 an à 3 ans""" .
+ques:capital-1012 ques:item """De 3 ans à 7 ans""" .
+ques:capital-1012 ques:item """De 7 ans à 10 ans""" .
+ 
+ques:capital-1013 ques:header """Santé financière (note Coface moyenne)""" .
+ques:capital-1012 ques:subheader ques:capital-1013 .
+ ques:capital-1013 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1013 ques:paragraph """Il s’agit d’estimation de la santé de l’entreprise attribué par la Coface""" .
+  ques:capital-1013 ques:item """5""" .
+ques:capital-1013 ques:item """10""" .
+ques:capital-1013 ques:item """15""" .
+ques:capital-1013 ques:item """20""" .
+ 
+ques:capital-1014 ques:header """Contact (Qualité de la relation : Mesure de la qualité de la relation entre collègue)""" .
+ques:capital-1012 ques:subheader ques:capital-1014 .
+ ques:capital-1014 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1014 ques:item """Relation conflictuelle""" .
+ques:capital-1014 ques:item """Relation tendue""" .
+ques:capital-1014 ques:item """Relation neutre, ni bonne, ni mauvaise""" .
+ques:capital-1014 ques:item """Bonne relation""" .
+ques:capital-1014 ques:item """Excellente relation
+Excellente relation """ .
+ 
+ques:capital-1015 ques:header """Rapport qualité prix (Evaluation du prix)""" .
+ques:capital-1012 ques:subheader ques:capital-1015 .
+ ques:capital-1015 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1015 ques:item """La plus cher du marché""" .
+ques:capital-1015 ques:item """Produit coûteux""" .
+ques:capital-1015 ques:item """Moyenne du marché""" .
+ques:capital-1015 ques:item """Produit bon marché""" .
+ques:capital-1015 ques:item """Meilleur prix du marché""" .
+ 
+ques:capital-1016 ques:header """Rapport qualité prix (Evaluation de la qualité)""" .
+ques:capital-1012 ques:subheader ques:capital-1016 .
+ ques:capital-1016 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1016 ques:item """A retirer de la vente""" .
+ques:capital-1016 ques:item """Basse qualité""" .
+ques:capital-1016 ques:item """Qualité moyenne par rapport aux produits concurrents""" .
+ques:capital-1016 ques:item """Bon produit""" .
+ques:capital-1016 ques:item """Produit de référence""" .
+ 
+ques:capital-1017 ques:header """Niveau de service (Efficacité SAV)""" .
+ques:capital-1012 ques:subheader ques:capital-1017 .
+ ques:capital-1017 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1017 ques:item """Pas de SAV""" .
+ques:capital-1017 ques:item """Nombreux problèmes posés sans solution ou délais très longs""" .
+ques:capital-1017 ques:item """Délais d’attente existent mais la réponse/ solution vient toujours""" .
+ques:capital-1017 ques:item """La solution ou la réponse se fait rarement attendre""" .
+ques:capital-1017 ques:item """Problèmes et requêtes traitées très rapidement""" .
+ 
+ques:capital-1018 ques:header """Niveau de service (Qualité SAV)""" .
+ques:capital-1012 ques:subheader ques:capital-1018 .
+ ques:capital-1018 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1018 ques:item """Pas de SAV""" .
+ques:capital-1018 ques:item """Accueil déshumanisé et prise en compte lente""" .
+ques:capital-1018 ques:item """Pas toujours réactif – délais de prise en compte de la demande parfois longs
+Pas toujours réactif – délais de prise en compte de la demande parfois longs """ .
+ques:capital-1018 ques:item """Attentes rares bon accueil""" .
+ques:capital-1018 ques:item """Demandes prises en compte sans délai, accueil attentionné""" .
+ 
+ques:capital-1019 ques:header """Niveau de service (Délais qualité des livraisons)""" .
+ques:capital-1012 ques:subheader ques:capital-1019 .
+ ques:capital-1019 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1019 ques:item """Pas fiable du tout sur les délais""" .
+ques:capital-1019 ques:item """Retards fréquents""" .
+ques:capital-1019 ques:item """Le nombre de retards est un peu gênant""" .
+ques:capital-1019 ques:item """Retard rares""" .
+ques:capital-1019 ques:item """Toujours respectés""" .
+ 
+ques:capital-1020 ques:header """Niveau de service (Défauts à la livraison)""" .
+ques:capital-1012 ques:subheader ques:capital-1020 .
+ ques:capital-1020 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1020 ques:item """Très fréquents""" .
+ques:capital-1020 ques:item """Fréquents""" .
+ques:capital-1020 ques:item """Leur nombre est un peu gênant""" .
+ques:capital-1020 ques:item """Rares""" .
+ques:capital-1020 ques:item """Jamais""" .
+ 
+ques:capital-1021 ques:header """Capital Organisationnel""" .
+ques:capital-1012 ques:subheader ques:capital-1021 .
+ 
+ques:capital-1022 ques:header """Maîtrise par l’entreprise de sa gestion de projets""" .
+ques:capital-1021 ques:subheader ques:capital-1022 .
+ ques:capital-1022 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1022 ques:item """Concept inconnu de l’entreprise (nombreux échecs – projets avortés)""" .
+ques:capital-1022 ques:item """Lorsqu’un projet est lancé un chef de projet est nommé - dépassements systématiques (budget et délais)""" .
+ques:capital-1022 ques:item """Lorsqu’un projet est lancé une équipe projet est constituée – dépassement fréquents (budgets et délais)""" .
+ques:capital-1022 ques:item """Lorsqu’un projet est lancé une équipe projet est constituée. Le chef de projet maîtrise la gestion de projet, l’entreprise dispose d’une méthode rédigée : les dépassements sont rares (budgets – délais)""" .
+ques:capital-1022 ques:item """Forte culture de la gestion de projet, maîtrise par les chefs de projet de la méthode de l’entreprise, les membres de l’équipe sont vraiment détachés au projet pendant sa durée et ne rapportent plus à leur manager habituel mais au chef de projet.""" .
+ 
+ques:capital-1023 ques:header """Flexibilité""" .
+ques:capital-1021 ques:subheader ques:capital-1023 .
+ ques:capital-1023 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1023 ques:item """Preuve par l’exemple""" .
+ques:capital-1023 ques:item """Entreprise immobile, rigide, capacité de se transformer proche de zéro""" .
+ques:capital-1023 ques:item """L’entreprise évite de se transformer ou le fait dans la douleur, avec des séquelles""" .
+ques:capital-1023 ques:item """Les grandes réformes conduites par l’entreprise ont été difficiles mais ont fini par réussir""" .
+ques:capital-1023 ques:item """L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent
+L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent """ .
+ques:capital-1023 ques:item """Au cours des dernières années l’entreprise à réussi plusieurs tours de force en matière d’adaptation (grande réorganisation, fusion vraiment réussie…)""" .
+ 
+ques:capital-1024 ques:header """Centralisation""" .
+ques:capital-1023 ques:subheader ques:capital-1024 .
+ ques:capital-1024 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1024 ques:item """Organisation poussiéreuse et procédurière incapable de se réformer""" .
+ques:capital-1024 ques:item """Entreprise très centralisée et adepte de procédures strictes. Le respect des procédures fait partie de la culture d’entreprise""" .
+ques:capital-1024 ques:item """Entreprise assez centralisée, le système de reporting et de contrôle est lourd.""" .
+ques:capital-1024 ques:item """L’autonomie fait partie de la culture de l’entreprise. Les dirigeants de Business Unit ont de réelles marges de manœuvre""" .
+ques:capital-1024 ques:item """Entreprise très décentralisée composée de petites unités autonomes, système de reporting et de contrôle léger""" .
+ 
+ques:capital-1025 ques:header """Autres processus importants (Achats, R&D, Supply Chain…)""" .
+ques:capital-1023 ques:subheader ques:capital-1025 .
+ ques:capital-1025 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1025 ques:item """Absents""" .
+ques:capital-1025 ques:item """Homogènes, par tradition orale mais documents obsolètes""" .
+ques:capital-1025 ques:item """Rédigée selon principes de Taylor (optimisation de la productivité individuelle)""" .
+ques:capital-1025 ques:item """Processus orientés, réduction du délai et productivité collective: progrès visibles""" .
+ques:capital-1025 ques:item """Suivi de performance par un tableau de bord et amélioration permanente : forte progression sur plusieurs années""" .
+ 
+ques:capital-1026 ques:header """Processus de production""" .
+ques:capital-1023 ques:subheader ques:capital-1026 .
+ ques:capital-1026 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1026 ques:item """Absents""" .
+ques:capital-1026 ques:item """Homogènes, par tradition orale mais documents obsolètes""" .
+ques:capital-1026 ques:item """Rédigée selon principes de Taylor (optimisation de la productivité individuelle)""" .
+ques:capital-1026 ques:item """Processus orientés, réduction du délai et productivité collective: progrès visibles""" .
+ques:capital-1026 ques:item """Suivi de performance par un tableau de bord et amélioration permanente : forte progression sur plusieurs années""" .
+ 
+ques:capital-1027 ques:header """Contrôle de Remontée des données comptables depuis les services""" .
+ques:capital-1023 ques:subheader ques:capital-1027 .
+ ques:capital-1027 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1027 ques:item """Il y a de nombreuses erreurs chaque mois ou jour""" .
+ques:capital-1027 ques:item """Il y a quelques erreurs tous les mois/jours
+Il y a quelques erreurs tous les mois/jours """ .
+ques:capital-1027 ques:item """Quelques erreurs un mois / de temps en temps""" .
+ques:capital-1027 ques:item """Erreurs rares""" .
+ques:capital-1027 ques:item """Zéro défaut ou presque""" .
+ 
+ques:capital-1028 ques:header """Contrôle de Suivi budgétaire""" .
+ques:capital-1023 ques:subheader ques:capital-1028 .
+ ques:capital-1028 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1028 ques:item """Pas de contrôle du suivi des directions""" .
+ques:capital-1028 ques:item """Contrôle du suivi de certaines directions""" .
+ques:capital-1028 ques:item """Contrôle de tous les budgets, écarts assez fréquents""" .
+ques:capital-1028 ques:item """Contrôle de tous budgets – peu d’écart significatif""" .
+ques:capital-1028 ques:item """Tous les budgets sont suivis et pas d’écarts""" .
+ 
+ques:capital-1029 ques:header """Autres Contrôles""" .
+ques:capital-1023 ques:subheader ques:capital-1029 .
+ ques:capital-1029 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1029 ques:item """Pas d’autres contrôles""" .
+ques:capital-1029 ques:item """Contrôle paiements des clients trop légers""" .
+ques:capital-1029 ques:item """Contrôle paiements clients, contrôle fournisseurs trop léger""" .
+ques:capital-1029 ques:item """Contrôle paiements clients, fournisseurs et RH""" .
+ques:capital-1029 ques:item """Contrôle complet et très efficace""" .
+ 
+ques:capital-1030 ques:header """Comptabilité Analytique""" .
+ques:capital-1023 ques:subheader ques:capital-1030 .
+ ques:capital-1030 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1030 ques:item """Absente""" .
+ques:capital-1030 ques:item """Embryonnaire mais pas fiable""" .
+ques:capital-1030 ques:item """Ratio de marge brute / produit""" .
+ques:capital-1030 ques:item """Rentabilité par produit et par client""" .
+ques:capital-1030 ques:item """ActivityBasedCost
+ActivityBasedCost """ .
+ 
+ques:capital-1031 ques:header """Comptabilité Trésorerie""" .
+ques:capital-1023 ques:subheader ques:capital-1031 .
+ ques:capital-1031 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1031 ques:item """Aucune gestion""" .
+ques:capital-1031 ques:item """Placement sicav de temps en temps""" .
+ques:capital-1031 ques:item """Placement sicav optimisé""" .
+ques:capital-1031 ques:item """Gestion prévisionnelle de la trésorerie""" .
+ques:capital-1031 ques:item """Gestion avancée (affacturage, cash pooling…)""" .
+ 
+ques:capital-1032 ques:header """Comptabilité générale""" .
+ques:capital-1023 ques:subheader ques:capital-1032 .
+ ques:capital-1032 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1032 ques:item """Problèmes réguliers à la clôture – difficultés de certification par auditeurs""" .
+ques:capital-1032 ques:item """Clôture très lente (plus de 3 mois)""" .
+ques:capital-1032 ques:item """Clôture rapide – une situation par semestre""" .
+ques:capital-1032 ques:item """Une situation par trimestre""" .
+ques:capital-1032 ques:item """Une situation mensuelle""" .
+ 
+ques:capital-1033 ques:header """Formation des managers""" .
+ques:capital-1023 ques:subheader ques:capital-1033 .
+ ques:capital-1033 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1033 ques:item """Absente""" .
+ques:capital-1033 ques:item """Partielle""" .
+ques:capital-1033 ques:item """Pour tous – externalisée""" .
+ques:capital-1033 ques:item """École de management interne""" .
+ques:capital-1033 ques:item """Coaching des managers""" .
+ 
+ques:capital-1034 ques:header """Baromètre social""" .
+ques:capital-1023 ques:subheader ques:capital-1034 .
+ ques:capital-1034 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1034 ques:item """Absent""" .
+ques:capital-1034 ques:item """Des éléments ou irrégulier""" .
+ques:capital-1034 ques:item """Annuel ou tous les deux ans""" .
+ques:capital-1034 ques:item """Complet avec plan d’action correctif""" .
+ques:capital-1034 ques:item """Complet avec plan de progrès global""" .
+ 
+ques:capital-1035 ques:header """Entretien annuel (fréquence d’entretien individuel avec le personnel)""" .
+ques:capital-1023 ques:subheader ques:capital-1035 .
+ ques:capital-1035 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1035 ques:item """Absent""" .
+ques:capital-1035 ques:item """Irrégulier""" .
+ques:capital-1035 ques:item """Régulier mais peu ou pas exploité""" .
+ques:capital-1035 ques:item """Exploité pour la personne""" .
+ques:capital-1035 ques:item """Exploité pour améliorer le capital humain""" .
+ 
+ques:capital-1036 ques:header """Valeurs et culture""" .
+ques:capital-1023 ques:subheader ques:capital-1036 .
+ ques:capital-1036 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1036 ques:item """Rien""" .
+ques:capital-1036 ques:item """Statiques, peu considérées
+Statiques, peu considérées """ .
+ques:capital-1036 ques:item """Existent et sont promues""" .
+ques:capital-1036 ques:item """Résultent d’un travail collectif partagé""" .
+ques:capital-1036 ques:item """Travail collectif, partagées et améliorées""" .
+ 
+ques:capital-1037 ques:header """Style général""" .
+ques:capital-1023 ques:subheader ques:capital-1037 .
+ ques:capital-1037 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1037 ques:item """Laxiste""" .
+ques:capital-1037 ques:item """Collégial""" .
+ques:capital-1037 ques:item """Autoritaire""" .
+ques:capital-1037 ques:item """Participatif""" .
+ques:capital-1037 ques:item """Participatif et responsable""" .
+ 
+ques:capital-1038 ques:header """Politique sécurité""" .
+ques:capital-1023 ques:subheader ques:capital-1038 .
+ ques:capital-1038 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1038 ques:item """Rien, le taux d’accident est très élevé ou il est inconnu""" .
+ques:capital-1038 ques:item """Une politique sécurité existe, elle est rédigée par une fonction support – le taux d’accident est plus élevé que dans le reste de la profession""" .
+ques:capital-1038 ques:item """Une politique sécurité existe, elle est rédigée par un responsable sécurité – le taux d’accident est dans la moyenne du secteur""" .
+ques:capital-1038 ques:item """La politique est éprouvée, les salariés y sont formés et ils la respectent – le taux d’accident est faible pour le secteur""" .
+ques:capital-1038 ques:item """Niveau d’accident du travail est dans les meilleurs de la profession – réputation sécurité est très forte""" .
+ 
+ques:capital-1039 ques:header """Enquête satisfaction""" .
+ques:capital-1023 ques:subheader ques:capital-1039 .
+ ques:capital-1039 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1039 ques:item """Absent""" .
+ques:capital-1039 ques:item """De temps à autre""" .
+ques:capital-1039 ques:item """Annuelle""" .
+ques:capital-1039 ques:item """Plan d’action post-enquête""" .
+ques:capital-1039 ques:item """Suivi des progrès – amélioration permanente""" .
+ 
+ques:capital-1040 ques:header """Dispositif de fidélisation""" .
+ques:capital-1023 ques:subheader ques:capital-1040 .
+ ques:capital-1040 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1040 ques:item """Absent""" .
+ques:capital-1040 ques:item """Quelques éléments""" .
+ques:capital-1040 ques:item """Existe – classique dans le secteur""" .
+ques:capital-1040 ques:item """Innovant et suivi""" .
+ques:capital-1040 ques:item """Exemplaire – très efficace""" .
+ 
+ques:capital-1041 ques:header """Formation des commerciaux""" .
+ques:capital-1023 ques:subheader ques:capital-1041 .
+ ques:capital-1041 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1041 ques:item """Absente
+Absente """ .
+ques:capital-1041 ques:item """Partielle""" .
+ques:capital-1041 ques:item """Pour tous – externalisée""" .
+ques:capital-1041 ques:item """École de vente interne""" .
+ques:capital-1041 ques:item """Base de connaissance (proposition type, guides,…)""" .
+ 
+ques:capital-1042 ques:header """GRC (gestion de relation client) si pas étudiée dans Système d’Information""" .
+ques:capital-1023 ques:subheader ques:capital-1042 .
+ ques:capital-1042 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1042 ques:item """Absent""" .
+ques:capital-1042 ques:item """Logiciel existe – contenu incomplet ou non fiable""" .
+ques:capital-1042 ques:item """Base de données clients complètes""" .
+ques:capital-1042 ques:item """Base de donnée clients et prospects à jour""" .
+ques:capital-1042 ques:item """Grande connaissance clients et prospects""" .
+ 
+ques:capital-1043 ques:header """Plan commercial annuel""" .
+ques:capital-1023 ques:subheader ques:capital-1043 .
+ ques:capital-1043 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1043 ques:item """Absent""" .
+ques:capital-1043 ques:item """Suivi des ventes""" .
+ques:capital-1043 ques:item """Rédigé par le directeur – suivi sommaire""" .
+ques:capital-1043 ques:item """Rédaction collective, tableau de bord et suivi mensuel""" .
+ques:capital-1043 ques:item """Grande fiabilité des prévisions""" .
+ 
+ques:capital-1044 ques:header """Maturité de la politique Qualité""" .
+ques:capital-1023 ques:subheader ques:capital-1044 .
+ ques:capital-1044 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1044 ques:item """Le niveau de qualité de l’entreprise est très faible(parmi les moins bons du secteur)""" .
+ques:capital-1044 ques:item """Rien n’est formalisé et managé""" .
+ques:capital-1044 ques:item """Une politique qualité existe, elle est rédigée et contrôlée""" .
+ques:capital-1044 ques:item """La politique est ancienne et totalement intégrée dans les processus de l’entreprise (elle a le niveau Iso 9001), EFQM ou équivalent""" .
+ques:capital-1044 ques:item """Niveau de non qualité dans les meilleurs de la profession – réputation qualité très forte""" .
+ 
+ques:capital-1045 ques:header """Cette partie traite de la structure micro et macro-économique de l’entreprise""" .
+ques:capital-1023 ques:subheader ques:capital-1045 .
+ 
+ques:capital-1046 ques:header """Tâches/fonctions orphelines""" .
+ques:capital-1023 ques:subheader ques:capital-1046 .
+ ques:capital-1046 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1046 ques:item """Nombreuses / ne sait pas""" .
+ques:capital-1046 ques:item """Peu nombreuses""" .
+ques:capital-1046 ques:item """Assez rares""" .
+ques:capital-1046 ques:item """Rares""" .
+ques:capital-1046 ques:item """Rares, recherchées et supprimées""" .
+ 
+ques:capital-1047 ques:header """Redondance fonctionnelle""" .
+ques:capital-1023 ques:subheader ques:capital-1047 .
+ ques:capital-1047 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1047 ques:item """Forte et transversale""" .
+ques:capital-1047 ques:item """Forte et confinée""" .
+ques:capital-1047 ques:item """Absente""" .
+ques:capital-1047 ques:item """Ajustée et confinée""" .
+ques:capital-1047 ques:item """Ajustée, confinée et solidaire
+Ajustée, confinée et solidaire """ .
+ 
+ques:capital-1048 ques:header """Centralisation et règles""" .
+ques:capital-1023 ques:subheader ques:capital-1048 .
+ ques:capital-1048 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1048 ques:item """Décentralisé sans règles""" .
+ques:capital-1048 ques:item """Décentralisé avec règles non appliquées""" .
+ques:capital-1048 ques:item """Centralisé""" .
+ques:capital-1048 ques:item """Décentralisé contrôlée""" .
+ques:capital-1048 ques:item """Décentralisé avec règles appliquées""" .
+ 
+ques:capital-1049 ques:header """Définition de mission des entités""" .
+ques:capital-1023 ques:subheader ques:capital-1049 .
+ ques:capital-1049 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1049 ques:item """Absence""" .
+ques:capital-1049 ques:item """Obsolète""" .
+ques:capital-1049 ques:item """Une ligne""" .
+ques:capital-1049 ques:item """Claire et synthétique mais confinée""" .
+ques:capital-1049 ques:item """Connue de tous""" .
+ 
+ques:capital-1050 ques:header """Organigramme""" .
+ques:capital-1023 ques:subheader ques:capital-1050 .
+ ques:capital-1050 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1050 ques:item """Absence""" .
+ques:capital-1050 ques:item """Obsolète""" .
+ques:capital-1050 ques:item """A jour mais confiné""" .
+ques:capital-1050 ques:item """A jour et diffusé mais complexe""" .
+ques:capital-1050 ques:item """A jour, diffusé et simple""" .
+ 
+ques:capital-1051 ques:header """Distance partenaires""" .
+ques:capital-1023 ques:subheader ques:capital-1051 .
+ ques:capital-1051 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1051 ques:item """Hors zone""" .
+ques:capital-1051 ques:item """Excentré""" .
+ques:capital-1051 ques:item """Centré""" .
+ques:capital-1051 ques:item """Barycentre (centre de gravité)
+Barycentre (centre de gravité) """ .
+ques:capital-1051 ques:item """Optimisée ou sans objet""" .
+ 
+ques:capital-1052 ques:header """Distance clientèle""" .
+ques:capital-1023 ques:subheader ques:capital-1052 .
+ ques:capital-1052 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1052 ques:item """Hors zone""" .
+ques:capital-1052 ques:item """Excentré""" .
+ques:capital-1052 ques:item """Centré""" .
+ques:capital-1052 ques:item """Barycentre""" .
+ques:capital-1052 ques:item """Optimisée ou sans objet""" .
+ 
+ques:capital-1053 ques:header """Au sein de l’organigramme les fonctions suivantes apparaissent clairement en fonction de leur importance stratégique : R&D, Marketing, Supply Chain, SI""" .
+ques:capital-1023 ques:subheader ques:capital-1053 .
+ ques:capital-1053 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1053 ques:item """Pas du tout""" .
+ques:capital-1053 ques:item """Plutôt pas (peu)
+Plutôt pas (peu) """ .
+ques:capital-1053 ques:item """Partiellement""" .
+ques:capital-1053 ques:item """Quasiment""" .
+ques:capital-1053 ques:item """Absolument""" .
+ 
+ques:capital-1054 ques:header """Au sein de l’organigramme les fonctions suivantes apparaissent clairement : direction, commercial, production, support""" .
+ques:capital-1023 ques:subheader ques:capital-1054 .
+ ques:capital-1054 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1054 ques:item """Pas du tout""" .
+ques:capital-1054 ques:item """Plutôt pas (peu)
+Plutôt pas (peu) """ .
+ques:capital-1054 ques:item """Partiellement""" .
+ques:capital-1054 ques:item """Quasiment""" .
+ques:capital-1054 ques:item """Absolument""" .
+ 
+ques:capital-1055 ques:header """Capital Client""" .
+ques:capital-1023 ques:subheader ques:capital-1055 .
+ 
+ques:capital-1056 ques:header """Fidélité des clients""" .
+ques:capital-1055 ques:subheader ques:capital-1056 .
+ ques:capital-1056 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1056 ques:item """Très peu de clients fidèles""" .
+ques:capital-1056 ques:item """20 % de clients fidèles""" .
+ques:capital-1056 ques:item """40 % de clients fidèles""" .
+ques:capital-1056 ques:item """60 % de clients fidèles""" .
+ques:capital-1056 ques:item """80 % de clients fidèles""" .
+ 
+ques:capital-1057 ques:header """Fidélités des clients (fidélité des clients ayant moins de 65 ans)""" .
+ques:capital-1055 ques:subheader ques:capital-1057 .
+ ques:capital-1057 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1057 ques:item """0%""" .
+ques:capital-1057 ques:item """25%""" .
+ques:capital-1057 ques:item """50%""" .
+ques:capital-1057 ques:item """80%""" .
+ques:capital-1057 ques:item """100 % de – 65 ans""" .
+ 
+ques:capital-1058 ques:header """Satisfaction des clients""" .
+ques:capital-1055 ques:subheader ques:capital-1058 .
+ ques:capital-1058 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1058 ques:item """Moins de 30%
+Moins de 30% """ .
+ques:capital-1058 ques:item """Entre 30 et 50% """ .
+ques:capital-1058 ques:item """Entre 50% et 80% """ .
+ques:capital-1058 ques:item """Entre 80% et 90% """ .
+ques:capital-1058 ques:item """Plus de 95 % """ .
+ 
+ques:capital-1059 ques:header """Impayés(les impayés en pourcentage du chiffre d’affaire)""" .
+ques:capital-1055 ques:subheader ques:capital-1059 .
+ ques:capital-1059 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1059 ques:item """De 2 à 5 % CA
+De 2 à 5 % CA """ .
+ques:capital-1059 ques:item """De 0,5 à 2 % CA
+De 0,5 à 2 % CA """ .
+ques:capital-1059 ques:item """De 0,25 à 0,5 % CA
+De 0,25 à 0,5 % CA """ .
+ques:capital-1059 ques:item """De 0 à 0,25 % CA
+De 0 à 0,25 % CA """ .
+ques:capital-1059 ques:item """0 % CA""" .
+ 
+ques:capital-1060 ques:header """Clientèle aux revenus fragiles (entreprises en difficulté dans la région, etc.)""" .
+ques:capital-1055 ques:subheader ques:capital-1060 .
+ ques:capital-1060 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1060 ques:item """90%""" .
+ques:capital-1060 ques:item """60%""" .
+ques:capital-1060 ques:item """30%""" .
+ques:capital-1060 ques:item """10%""" .
+ques:capital-1060 ques:item """0%""" .
+ 
+ques:capital-1061 ques:header """Analyse géomarketing ou relevés CRM ou Interview dirigeants""" .
+ques:capital-1055 ques:subheader ques:capital-1061 .
+ ques:capital-1061 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1061 ques:item """0%""" .
+ques:capital-1061 ques:item """25%""" .
+ques:capital-1061 ques:item """50%""" .
+ques:capital-1061 ques:item """80%""" .
+ques:capital-1061 ques:item """100 % de CSP +""" .
+ 
+ques:capital-1062 ques:header """Analyse des revendications de la clientèle""" .
+ques:capital-1055 ques:subheader ques:capital-1062 .
+ ques:capital-1062 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1062 ques:item """Clientèle complaisante""" .
+ques:capital-1062 ques:item """Clientèle passive""" .
+ques:capital-1062 ques:item """Clientèle assez exigeante""" .
+ques:capital-1062 ques:item """Clientèle exigeante""" .
+ques:capital-1062 ques:item """La clientèle tire fortement l’entreprise vers le haut : réclamations constructives, demande de nouvelles prestations, forums…)""" .
+ 
+ques:capital-1063 ques:header """Étude des comportements délictueux de la clientèle""" .
+ques:capital-1055 ques:subheader ques:capital-1063 .
+ ques:capital-1063 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1063 ques:item """Allant jusqu’au braquage""" .
+ques:capital-1063 ques:item """Démarque et impayés importants""" .
+ques:capital-1063 ques:item """Moyen""" .
+ques:capital-1063 ques:item """Très peu""" .
+ques:capital-1063 ques:item """Pas de démarque ni d’impayés""" .
+ 
+ques:capital-1064 ques:header """Les comportements collectifs (tendance sociétale, mode, …) sont favorables à l’entreprise et à ses produits""" .
+ques:capital-1055 ques:subheader ques:capital-1064 .
+ ques:capital-1064 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1064 ques:item """Forte divergence""" .
+ques:capital-1064 ques:item """Divergence""" .
+ques:capital-1064 ques:item """Comportement neutre""" .
+ques:capital-1064 ques:item """Convergence importante""" .
+ques:capital-1064 ques:item """Très forte convergence""" .
+ 
+ques:capital-1065 ques:header """Stabilité du marché si la croissance économique du pays est négative ou nulle""" .
+ques:capital-1055 ques:subheader ques:capital-1065 .
+ ques:capital-1065 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1065 ques:item """Stable à long terme""" .
+ques:capital-1065 ques:item """Stable à moyen terme""" .
+ques:capital-1065 ques:item """Stable à court terme (instable)""" .
+ques:capital-1065 ques:item """Chaotique et imprévisible""" .
+ques:capital-1065 ques:item """En retournement""" .
+ 
+ques:capital-1066 ques:header """Stabilité du marché si la croissance est positive""" .
+ques:capital-1055 ques:subheader ques:capital-1066 .
+ ques:capital-1066 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1066 ques:item """En retournement (sous performance)
+En retournement (sous performance) """ .
+ques:capital-1066 ques:item """Chaotique et imprévisible""" .
+ques:capital-1066 ques:item """Stable à court terme (instable)""" .
+ques:capital-1066 ques:item """Stable à moyen terme""" .
+ques:capital-1066 ques:item """Stable à long terme""" .
+ 
+ques:capital-1067 ques:header """Dynamique de marché""" .
+ques:capital-1055 ques:subheader ques:capital-1067 .
+ ques:capital-1067 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1067 ques:item """En décroissance""" .
+ques:capital-1067 ques:item """Stable""" .
+ques:capital-1067 ques:item """Croissance faible
+Croissance faible """ .
+ques:capital-1067 ques:item """croissance entre 3% et 10%
+croissance entre 3% et 10% """ .
+ques:capital-1067 ques:item """Plus de 10 %""" .
+ 
+ques:capital-1068 ques:header """Taille du marché accessible""" .
+ques:capital-1055 ques:subheader ques:capital-1068 .
+ ques:capital-1068 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1068 ques:item """Absent (inéxistant)
+Absent (inéxistant) """ .
+ques:capital-1068 ques:item """Local""" .
+ques:capital-1068 ques:item """Régional""" .
+ques:capital-1068 ques:item """National""" .
+ques:capital-1068 ques:item """Mondial""" .
+ 
+ques:capital-1069 ques:header """Satisfaction des clients (client très satisfaits et satisfaits)""" .
+ques:capital-1055 ques:subheader ques:capital-1069 .
+ ques:capital-1069 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1069 ques:item """Moins de 30%
+Moins de 30% """ .
+ques:capital-1069 ques:item """Entre 30 et 50%
+Entre 30 et 50% """ .
+ques:capital-1069 ques:item """Entre 50% et 80%
+Entre 50% et 80% """ .
+ques:capital-1069 ques:item """Entre 80% et 90%
+Entre 80% et 90% """ .
+ques:capital-1069 ques:item """Plus de 95 %
+Plus de 95 % """ .
+ 
+ques:capital-1070 ques:header """Fidélité""" .
+ques:capital-1055 ques:subheader ques:capital-1070 .
+ ques:capital-1070 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1070 ques:item """Moins de 30%
+Moins de 30% """ .
+ques:capital-1070 ques:item """Entre 30 et 50%
+Entre 30 et 50% """ .
+ques:capital-1070 ques:item """Entre 50% et 80%
+Entre 50% et 80% """ .
+ques:capital-1070 ques:item """Entre 80% et 90%
+Entre 80% et 90% """ .
+ques:capital-1070 ques:item """Plus de 95 %
+Plus de 95 % """ .
+ 
+ques:capital-1071 ques:header """Notre taux de marge nette (équivalent EBE) chez le client""" .
+ques:capital-1055 ques:subheader ques:capital-1071 .
+ ques:capital-1071 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1071 ques:item """Nul ou négatif""" .
+ques:capital-1071 ques:item """2%""" .
+ques:capital-1071 ques:item """5%""" .
+ques:capital-1071 ques:item """10%""" .
+ques:capital-1071 ques:item """15%""" .
+ 
+ques:capital-1072 ques:header """% de clients à forte notoriété""" .
+ques:capital-1055 ques:subheader ques:capital-1072 .
+ ques:capital-1072 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1072 ques:item """Tous les clients de l’entreprise ont une mauvaise réputation""" .
+ques:capital-1072 ques:item """Certains clients de l’entreprise ont une mauvaise réputation (notoriété négative)""" .
+ques:capital-1072 ques:item """L’entreprise travaille avec des clients qui (pour l’essentiel) n’ont pas de notoriété particulière""" .
+ques:capital-1072 ques:item """Une majorité des clients sont leaders sur leur marché""" .
+ques:capital-1072 ques:item """Tous les clients sont leaders sur leur marché""" .
+ 
+ques:capital-1073 ques:header """Note Coface moyenne""" .
+ques:capital-1055 ques:subheader ques:capital-1073 .
+ ques:capital-1073 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1073 ques:item """5""" .
+ques:capital-1073 ques:item """10""" .
+ques:capital-1073 ques:item """15""" .
+ques:capital-1073 ques:item """20""" .
+ 
+ques:capital-1074 ques:header """Rentabilité d’exploitation moyenne""" .
+ques:capital-1055 ques:subheader ques:capital-1074 .
+ ques:capital-1074 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1074 ques:item """Nulle ou négative""" .
+ques:capital-1074 ques:item """2%""" .
+ques:capital-1074 ques:item """5%""" .
+ques:capital-1074 ques:item """10%""" .
+ques:capital-1074 ques:item """15%""" .
+ 
+ques:capital-1075 ques:header """Si pas de données sectorielles, en moyenne le volume du portefeuille est de :""" .
+ques:capital-1055 ques:subheader ques:capital-1075 .
+ ques:capital-1075 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1075 ques:item """Vide""" .
+ques:capital-1075 ques:item """Un mois de CA""" .
+ques:capital-1075 ques:item """3 mois""" .
+ques:capital-1075 ques:item """6 mois""" .
+ques:capital-1075 ques:item """1 an et plus""" .
+ 
+ques:capital-1076 ques:header """En moyenne le volume du portefeuille est de :""" .
+ques:capital-1055 ques:subheader ques:capital-1076 .
+ ques:capital-1076 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1076 ques:item """0.5 fois volume moyen du secteur""" .
+ques:capital-1076 ques:item """Volume moyen du secteur""" .
+ques:capital-1076 ques:item """1,5 fois volume moyen du secteur""" .
+ques:capital-1076 ques:item """2 fois le volume moyen du secteur""" .
+ 
+ques:capital-1077 ques:header """Poids du premier client dans le CA""" .
+ques:capital-1055 ques:subheader ques:capital-1077 .
+ ques:capital-1077 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1077 ques:item """50% et plus""" .
+ques:capital-1077 ques:item """30% et plus""" .
+ques:capital-1077 ques:item """20%""" .
+ques:capital-1077 ques:item """10%""" .
+ques:capital-1077 ques:item """5%""" .
+ 
+ques:capital-1078 ques:header """Stabilité du marché B to B si la croissance est négative ou nulle :""" .
+ques:capital-1055 ques:subheader ques:capital-1078 .
+ ques:capital-1078 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1078 ques:item """En retournement (sous performance)
+En retournement (sous performance) """ .
+ques:capital-1078 ques:item """Chaotique et imprévisible""" .
+ques:capital-1078 ques:item """Stable a court terme (instable)""" .
+ques:capital-1078 ques:item """Stable à moyen terme""" .
+ques:capital-1078 ques:item """Stable à long terme""" .
+ 
+ques:capital-1079 ques:header """Stabilité du marché B to B si la croissance est positive :""" .
+ques:capital-1055 ques:subheader ques:capital-1079 .
+ ques:capital-1079 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1079 ques:item """En retournement (sous performance)
+En retournement (sous performance) """ .
+ques:capital-1079 ques:item """Chaotique et imprévisible""" .
+ques:capital-1079 ques:item """Stable à court terme (instable)""" .
+ques:capital-1079 ques:item """Stable à moyen terme""" .
+ques:capital-1079 ques:item """Stable à long terme""" .
+ 
+ques:capital-1080 ques:header """Impact de la réglementation sur la croissance :""" .
+ques:capital-1055 ques:subheader ques:capital-1080 .
+ ques:capital-1080 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1080 ques:item """Fort impact négatif confirmé""" .
+ques:capital-1080 ques:item """Pas d’impact et marché stable""" .
+ques:capital-1080 ques:item """Faible impact (quelques %)""" .
+ques:capital-1080 ques:item """Impact positif (10 % de croissance attendue)""" .
+ques:capital-1080 ques:item """Fort impact positif (plus de 10 % de croissance attendue)""" .
+ 
+ques:capital-1081 ques:header """Croissance :""" .
+ques:capital-1055 ques:subheader ques:capital-1081 .
+ ques:capital-1081 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-1081 ques:item """En décroissance""" .
+ques:capital-1081 ques:item """Stable""" .
+ques:capital-1081 ques:item """Quelques %""" .
+ques:capital-1081 ques:item """10%""" .
+ques:capital-1081 ques:item """Plus de 10 %""" .
+ 
+ques:capital-1082 ques:header """Identification de l'entreprise""" .
+ques:capital-1055 ques:subheader ques:capital-1082 .
+ 
+ques:capital-1083 ques:header """Raison sociale :""" .
+ques:capital-1082 ques:subheader ques:capital-1083 .
+ ques:capital-1083 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1083 ques:paragraph """ """ .
+  
+ques:capital-1084 ques:header """N° SIREN :""" .
+ques:capital-1082 ques:subheader ques:capital-1084 .
+ ques:capital-1084 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1084 ques:paragraph """ """ .
+  
+ques:capital-1085 ques:header """Sites web de l'entreprise et sites liés à son activité""" .
+ques:capital-1082 ques:subheader ques:capital-1085 .
+ ques:capital-1085 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1085 ques:paragraph """ """ .
+  
+ques:capital-1086 ques:header """Nombre d'employés""" .
+ques:capital-1082 ques:subheader ques:capital-1086 .
+ ques:capital-1086 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1086 ques:paragraph """ """ .
+  
+ques:capital-1087 ques:header """Nombre de sites :""" .
+ques:capital-1082 ques:subheader ques:capital-1087 .
+ ques:capital-1087 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1087 ques:paragraph """ """ .
+  
+ques:capital-1088 ques:header """Chiffre d'affaire :""" .
+ques:capital-1082 ques:subheader ques:capital-1088 .
+ ques:capital-1088 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1088 ques:paragraph """ """ .
+  
+ques:capital-1089 ques:header """Marge brute annuelle :""" .
+ques:capital-1082 ques:subheader ques:capital-1089 .
+ ques:capital-1089 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
+  ques:capital-1089 ques:item """Total :""" .
+ ques:capital-1089 ques:paragraph """ """ .
+  ques:capital-1089 ques:item """Europe (EU) :""" .
+ ques:capital-1089 ques:paragraph """ """ .
+  ques:capital-1089 ques:item """US/Canada :""" .
+ ques:capital-1089 ques:paragraph """ """ .
+  ques:capital-1089 ques:item """Reste du monde :""" .
+ ques:capital-1089 ques:paragraph """ """ .
+  ques:capital-1089 ques:paragraph """Totale et par région :""" .
+  
+ques:capital-1090 ques:header """Personne à contacter""" .
+ques:capital-1082 ques:subheader ques:capital-1090 .
+ 
+ques:capital-1091 ques:header """NOM et PRENOM""" .
+ques:capital-1090 ques:subheader ques:capital-1091 .
+ ques:capital-1091 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1091 ques:paragraph """ """ .
+  
+ques:capital-1092 ques:header """Qualité""" .
+ques:capital-1090 ques:subheader ques:capital-1092 .
+ ques:capital-1092 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1092 ques:paragraph """ """ .
+  
+ques:capital-1093 ques:header """Téléphone""" .
+ques:capital-1090 ques:subheader ques:capital-1093 .
+ ques:capital-1093 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1093 ques:paragraph """ """ .
+  
+ques:capital-1094 ques:header """Adresse courriel""" .
+ques:capital-1090 ques:subheader ques:capital-1094 .
+ ques:capital-1094 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1094 ques:paragraph """ """ .
+  
+ques:capital-1095 ques:header """Complété par :""" .
+ques:capital-1090 ques:subheader ques:capital-1095 .
+ ques:capital-1095 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-1095 ques:paragraph """ """ .
+  ques:capital-1095 ques:paragraph """
+Envoyer votre questionnaire.
+Merci d'avoir complété ce questionnaire.""" .
+  ques:capital-1095 ques:paragraph """ """ .
+  

@@ -35,10 +35,13 @@ object RDFDiscounterApp extends Discounter with RDFWriter {
       } while (line != null)
       println(toTTL(knockoff(sb.toString)).toString)
     } else {
-      args.filter(_ != "--html4tags").foreach {
-        fileName =>
-          printTurtleFile(toTTL(knockoff(readText(fileName))), fileName )
-      }
+//      args.filter(_ != "--html4tags").foreach {
+//        fileName =>
+      val fileName = args(0)
+      val initialIndex = if( args.size > 1 ) args(1).toInt else 0
+      index = initialIndex
+    	printTurtleFile(toTTL(knockoff(readText(fileName))), fileName )
+//      }
     }
   } catch {
     case th: Throwable => {

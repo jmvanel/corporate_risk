@@ -1,0 +1,864 @@
+
+      @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+      @prefix owl:  <http://www.w3.org/2002/07/owl#>.
+      @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+      @prefix     : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+
+ques:capital-2001 ques:header """Evaluation du capital humain {.P54}""" .
+ques:capital-0 ques:subheader ques:capital-2001 .
+ ques:capital-2001 ques:paragraph """Ce questionnaire regroupe les thèmes :""" .
+  ques:capital-2001 ques:item """capital humain (collaborateurs et dirigeants """ .
+ques:capital-2001 ques:item """capital de savoir """ .
+ ques:capital-2001 ques:paragraph """Il y a 59 questions dans ce questionnaire""" .
+  
+ques:capital-2002 ques:header """Capital Humain""" .
+ques:capital-2001 ques:subheader ques:capital-2002 .
+ 
+ques:capital-2003 ques:header """[]""" .
+ques:capital-2002 ques:subheader ques:capital-2003 .
+ 
+ques:capital-2004 ques:header """Gestion des remplacements (turn over ou retraite)""" .
+ques:capital-2003 ques:subheader ques:capital-2004 .
+ ques:capital-2004 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2004 ques:item """Le système fonctionne mal""" .
+ques:capital-2004 ques:item """Le système de gestion de la relève existe mais ne fonctionne pas
+très bien
+Le système de gestion de la relève existe mais ne fonctionne pas
+très bien""" .
+ques:capital-2004 ques:item """Malgré un dispositif efficace, la durée des transitions est parfois
+trop courte
+Malgré un dispositif efficace, la durée des transitions est parfois
+trop courte""" .
+ques:capital-2004 ques:item """L’organigramme de remplacement et les périodes de transition
+marchent à merveille
+L’organigramme de remplacement et les périodes de transition
+marchent à merveille""" .
+ 
+ques:capital-2005 ques:header """[]""" .
+ques:capital-2003 ques:subheader ques:capital-2005 .
+ 
+ques:capital-2006 ques:header """Turn over (sur 3 ans écoulés) + taux de plus de 62 ans dans les 3 ans""" .
+ques:capital-2005 ques:subheader ques:capital-2006 .
+ ques:capital-2006 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2006 ques:item """2 fois la moyenne secteur""" .
+ques:capital-2006 ques:item """Moyenne secteur""" .
+ques:capital-2006 ques:item """(8 % + moyenne secteur)/2""" .
+ques:capital-2006 ques:item """8%""" .
+ 
+ques:capital-2007 ques:header """[]""" .
+ques:capital-2005 ques:subheader ques:capital-2007 .
+ 
+ques:capital-2008 ques:header """Compétence des managers""" .
+ques:capital-2007 ques:subheader ques:capital-2008 .
+ 
+ques:capital-2009 ques:header """Il s’agit de noter le manager de 1 à 5, 5 étant la meilleur note.""" .
+ques:capital-2007 ques:subheader ques:capital-2009 .
+ ques:capital-2009 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2009 ques:item """1""" .
+ques:capital-2009 ques:item """2""" .
+ques:capital-2009 ques:item """3""" .
+ques:capital-2009 ques:item """4""" .
+ques:capital-2009 ques:item """5""" .
+ 
+ques:capital-2010 ques:header """[]""" .
+ques:capital-2007 ques:subheader ques:capital-2010 .
+ 
+ques:capital-2011 ques:header """Quantitatif hiérarchique""" .
+ques:capital-2010 ques:subheader ques:capital-2011 .
+ ques:capital-2011 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2011 ques:item """Un manager pour plus de 100 ou pour moins de 5""" .
+ques:capital-2011 ques:item """Un manager pour plus de 50 ou pour moins de 10""" .
+ques:capital-2011 ques:item """Un manager pour plus de 30 ou pour moins de 15""" .
+ques:capital-2011 ques:item """Un manager pour 20 à 30""" .
+ques:capital-2011 ques:item """Un manager pour 20""" .
+ 
+ques:capital-2012 ques:header """[]""" .
+ques:capital-2010 ques:subheader ques:capital-2012 .
+ 
+ques:capital-2013 ques:header """Indicateurs de stress collectif et de climat : plans sociaux, précarité, turn-over, arrêts maladie, taux d’accident, suicides, conflits sociaux pour ces raisons""" .
+ques:capital-2012 ques:subheader ques:capital-2013 .
+ ques:capital-2013 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2013 ques:item """Forte souffrance perceptible, très fort absentéisme, fort turn over,
+suicides
+Forte souffrance perceptible, très fort absentéisme, fort turn over,
+suicides""" .
+ques:capital-2013 ques:item """Souffrance, conflits sociaux fréquents, plan sociaux fréquents""" .
+ques:capital-2013 ques:item """Sujet peu évoqué, ni en positif ni en négatif""" .
+ques:capital-2013 ques:item """Bonne image employeur, entreprise où il fait bon vivre (réputation
+persistante et connue)
+Bonne image employeur, entreprise où il fait bon vivre (réputation
+persistante et connue)""" .
+ques:capital-2013 ques:item """Entreprise exemplaire à cet égard (top 10 great place to work par
+exemple)
+Entreprise exemplaire à cet égard (top 10 great place to work par
+exemple)""" .
+ 
+ques:capital-2014 ques:header """[]""" .
+ques:capital-2012 ques:subheader ques:capital-2014 .
+ 
+ques:capital-2015 ques:header """Votre niveau de stress est acceptable""" .
+ques:capital-2014 ques:subheader ques:capital-2015 .
+ ques:capital-2015 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2015 ques:item """Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord »
+Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord » """ .
+ques:capital-2015 ques:item """Entre 60% à 80 % de « plutôt pas d’accord » et de « pas d’accord »""" .
+ques:capital-2015 ques:item """Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord »
+Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord » """ .
+ques:capital-2015 ques:item """Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord »
+Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord » """ .
+ques:capital-2015 ques:item """Entre 0% à 20% de « plutôt pas d’accord » et de « pas d’accord »""" .
+ 
+ques:capital-2016 ques:header """[]""" .
+ques:capital-2014 ques:subheader ques:capital-2016 .
+ 
+ques:capital-2017 ques:header """Indicateurs de tensions sociales (prud’hommes, grèves, dialogue social dégradé avec représentants)""" .
+ques:capital-2016 ques:subheader ques:capital-2017 .
+ ques:capital-2017 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2017 ques:item """Nombreux et permanents""" .
+ques:capital-2017 ques:item """Fréquents""" .
+ques:capital-2017 ques:item """Existants""" .
+ques:capital-2017 ques:item """Rares""" .
+ques:capital-2017 ques:item """Absence depuis très longtemps""" .
+ 
+ques:capital-2018 ques:header """[]""" .
+ques:capital-2016 ques:subheader ques:capital-2018 .
+ 
+ques:capital-2019 ques:header """Absentéisme""" .
+ques:capital-2018 ques:subheader ques:capital-2019 .
+ ques:capital-2019 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2019 ques:item """13%""" .
+ques:capital-2019 ques:item """6%""" .
+ques:capital-2019 ques:item """4%""" .
+ques:capital-2019 ques:item """2%""" .
+ques:capital-2019 ques:item """0%""" .
+ 
+ques:capital-2020 ques:header """[]""" .
+ques:capital-2018 ques:subheader ques:capital-2020 .
+ 
+ques:capital-2021 ques:header """Turn over""" .
+ques:capital-2020 ques:subheader ques:capital-2021 .
+ ques:capital-2021 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2021 ques:item """3 fois""" .
+ques:capital-2021 ques:item """2 fois la moyenne secteur""" .
+ques:capital-2021 ques:item """Moyenne secteur""" .
+ques:capital-2021 ques:item """(8 % + moyenne secteur)/2""" .
+ques:capital-2021 ques:item """8%""" .
+ 
+ques:capital-2022 ques:header """[]""" .
+ques:capital-2020 ques:subheader ques:capital-2022 .
+ 
+ques:capital-2023 ques:header """Baromètre social""" .
+ques:capital-2022 ques:subheader ques:capital-2023 .
+ ques:capital-2023 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2023 ques:item """De 0% à 20%
+De 0% à 20% """ .
+ques:capital-2023 ques:item """De 20% à 40%
+De 20% à 40% """ .
+ques:capital-2023 ques:item """De 40% à 70%
+De 40% à 70% """ .
+ques:capital-2023 ques:item """De 70% à 80%
+De 70% à 80% """ .
+ques:capital-2023 ques:item """De 80% à 100 % de motivés""" .
+ 
+ques:capital-2024 ques:header """[]""" .
+ques:capital-2022 ques:subheader ques:capital-2024 .
+ 
+ques:capital-2025 ques:header """Politique de formation de maintien dans l’emploi""" .
+ques:capital-2024 ques:subheader ques:capital-2025 .
+ ques:capital-2025 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2025 ques:item """L’entreprise ne forme pas ses salariés""" .
+ques:capital-2025 ques:item """L’entreprise consacre 1%""" .
+ques:capital-2025 ques:item """L’entreprise consacre 3% de la masse salariale à la formation""" .
+ques:capital-2025 ques:item """Budget formation = 4% MS (masse salariale), la plupart des salariés
+sont formés
+Budget formation = 4% MS (masse salariale), la plupart des salariés
+sont formés""" .
+ques:capital-2025 ques:item """L’entreprise consacre plus de 6 % de sa masse salariale à la
+formation, tous les collaborateurs sont formés
+L’entreprise consacre plus de 6 % de sa masse salariale à la
+formation, tous les collaborateurs sont formés""" .
+ 
+ques:capital-2026 ques:header """[]""" .
+ques:capital-2024 ques:subheader ques:capital-2026 .
+ 
+ques:capital-2027 ques:header """Diversité""" .
+ques:capital-2026 ques:subheader ques:capital-2027 .
+ ques:capital-2027 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2027 ques:item """Discrimination perceptible""" .
+ques:capital-2027 ques:item """Pas de politique""" .
+ques:capital-2027 ques:item """Politique de diversité mais peu de résultat visible
+Politique de diversité mais peu de résultat visible """ .
+ques:capital-2027 ques:item """Très forte diversité mais insuffisance dans le codir (codir= comité
+de direction)
+Très forte diversité mais insuffisance dans le codir (codir= comité
+de direction) """ .
+ques:capital-2027 ques:item """Très forte diversité y compris dans le comité de direction""" .
+ 
+ques:capital-2028 ques:header """[]""" .
+ques:capital-2026 ques:subheader ques:capital-2028 .
+ 
+ques:capital-2029 ques:header """Moyenne des notes de compétence aux entretiens individuels""" .
+ques:capital-2028 ques:subheader ques:capital-2029 .
+ ques:capital-2029 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2029 ques:paragraph """Il s’agit de la moyenne des notes de compétence aux entretiens
+individuels de 1 à 5, 5 étant la note maximale""" .
+  ques:capital-2029 ques:item """1""" .
+ques:capital-2029 ques:item """2""" .
+ques:capital-2029 ques:item """3""" .
+ques:capital-2029 ques:item """4""" .
+ques:capital-2029 ques:item """5""" .
+ 
+ques:capital-2030 ques:header """[]""" .
+ques:capital-2028 ques:subheader ques:capital-2030 .
+ 
+ques:capital-2031 ques:header """Existence d’une gestion prévisionnelle des emplois et des compétences""" .
+ques:capital-2030 ques:subheader ques:capital-2031 .
+ ques:capital-2031 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2031 ques:item """Absence d’entretien d’évaluation""" .
+ques:capital-2031 ques:item """Il n’y a pas de GPEC""" .
+ques:capital-2031 ques:item """Il y a un déficit de compétence pour certaines fonctions clés""" .
+ques:capital-2031 ques:item """Pour toutes les fonctions clés il y a des experts mais il manque des
+remplaçants pour certaines
+Pour toutes les fonctions clés il y a des experts mais il manque des
+remplaçants pour certaines""" .
+ques:capital-2031 ques:item """Pour toutes les fonctions clés de l’entreprise il y a des
+collaborateurs experts et des remplaçants experts
+Pour toutes les fonctions clés de l’entreprise il y a des
+collaborateurs experts et des remplaçants experts""" .
+ 
+ques:capital-2032 ques:header """[]""" .
+ques:capital-2030 ques:subheader ques:capital-2032 .
+ 
+ques:capital-2033 ques:header """Surcoût du travail""" .
+ques:capital-2032 ques:subheader ques:capital-2033 .
+ ques:capital-2033 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2033 ques:item """70%""" .
+ques:capital-2033 ques:item """45%""" .
+ques:capital-2033 ques:item """30%""" .
+ques:capital-2033 ques:item """20%""" .
+ques:capital-2033 ques:item """10%""" .
+ 
+ques:capital-2034 ques:header """[]""" .
+ques:capital-2032 ques:subheader ques:capital-2034 .
+ 
+ques:capital-2035 ques:header """ETP productifs (*) / ETP totaux""" .
+ques:capital-2034 ques:subheader ques:capital-2035 .
+ ques:capital-2035 ques:paragraph """ETP = Equivalent Temps Plein""" .
+  ques:capital-2035 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2035 ques:item """55%""" .
+ques:capital-2035 ques:item """65%""" .
+ques:capital-2035 ques:item """75%""" .
+ques:capital-2035 ques:item """80%""" .
+ 
+ques:capital-2036 ques:header """[]""" .
+ques:capital-2034 ques:subheader ques:capital-2036 .
+ 
+ques:capital-2037 ques:header """Sous-effectif""" .
+ques:capital-2036 ques:subheader ques:capital-2037 .
+ ques:capital-2037 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2037 ques:item """Le rythme de travail est excessif comme le montre le volume d’heures
+supplémentaires
+Le rythme de travail est excessif comme le montre le volume d’heures
+supplémentaires""" .
+ques:capital-2037 ques:item """Le recours au travail temporaire et les heures supplémentaires sont
+assez fréquents
+Le recours au travail temporaire et les heures supplémentaires sont
+assez fréquents""" .
+ques:capital-2037 ques:item """Tous les postes sont pourvus, la charge de travail très soutenue
+(les heures supplémentaires et l’intérim sont substantiels
+ponctuellement)
+Tous les postes sont pourvus, la charge de travail très soutenue
+(les heures supplémentaires et l’intérim sont substantiels
+ponctuellement)""" .
+ques:capital-2037 ques:item """Tous les postes sont pourvus, la charge de travail est soutenue mais
+sans excès (pas d’heures supplémentaires ou d’intérim)
+Tous les postes sont pourvus, la charge de travail est soutenue mais
+sans excès (pas d’heures supplémentaires ou d’intérim)""" .
+ 
+ques:capital-2038 ques:header """[]""" .
+ques:capital-2036 ques:subheader ques:capital-2038 .
+ 
+ques:capital-2039 ques:header """Sureffectif""" .
+ques:capital-2038 ques:subheader ques:capital-2039 .
+ ques:capital-2039 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2039 ques:item """Le taux d’occupation des salariés est faible""" .
+ques:capital-2039 ques:item """Le taux d’occupation des salariés est faible par moment dans l’année""" .
+ques:capital-2039 ques:item """Le taux d’occupation des salariés est bon en permanence""" .
+ques:capital-2039 ques:item """Le taux d’occupation des salariés est idéal""" .
+ 
+ques:capital-2040 ques:header """[]""" .
+ques:capital-2038 ques:subheader ques:capital-2040 .
+ 
+ques:capital-2041 ques:header """Gestion des remplacements (turn over ou retraite) des dirigeants""" .
+ques:capital-2040 ques:subheader ques:capital-2041 .
+ ques:capital-2041 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2041 ques:item """Rien n’est prévu à cet égard""" .
+ques:capital-2041 ques:item """Le système fonctionne mal""" .
+ques:capital-2041 ques:item """Le système de gestion de la relève existe mais ne fonctionne pas
+très bien
+Le système de gestion de la relève existe mais ne fonctionne pas
+très bien""" .
+ques:capital-2041 ques:item """Malgré un dispositif efficace, la durée des transitions est parfois
+trop courte
+Malgré un dispositif efficace, la durée des transitions est parfois
+trop courte""" .
+ques:capital-2041 ques:item """L’organigramme de remplacement et les périodes de transition
+marchent à merveille
+L’organigramme de remplacement et les périodes de transition
+marchent à merveille""" .
+ 
+ques:capital-2042 ques:header """[]""" .
+ques:capital-2040 ques:subheader ques:capital-2042 .
+ 
+ques:capital-2043 ques:header """Turn over (des dirigeants) correspondant""" .
+ques:capital-2042 ques:subheader ques:capital-2043 .
+ ques:capital-2043 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2043 ques:item """100%""" .
+ques:capital-2043 ques:item """50%""" .
+ques:capital-2043 ques:item """20%""" .
+ques:capital-2043 ques:item """10%""" .
+ques:capital-2043 ques:item """Moins de 6,6 %""" .
+ 
+ques:capital-2044 ques:header """[]""" .
+ques:capital-2042 ques:subheader ques:capital-2044 .
+ 
+ques:capital-2045 ques:header """Durée moyenne de collaboration""" .
+ques:capital-2044 ques:subheader ques:capital-2045 .
+ ques:capital-2045 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2045 ques:item """1 an""" .
+ques:capital-2045 ques:item """2 ans""" .
+ques:capital-2045 ques:item """5 ans""" .
+ques:capital-2045 ques:item """10 ans""" .
+ques:capital-2045 ques:item """Plus de 15 ans""" .
+ 
+ques:capital-2046 ques:header """[]""" .
+ques:capital-2044 ques:subheader ques:capital-2046 .
+ 
+ques:capital-2047 ques:header """Confiance""" .
+ques:capital-2046 ques:subheader ques:capital-2047 .
+ ques:capital-2047 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2047 ques:item """Le capital humain n’a pas confiance dans son dirigeant""" .
+ques:capital-2047 ques:item """Le niveau de confiance est faible""" .
+ques:capital-2047 ques:item """La confiance est moyenne""" .
+ques:capital-2047 ques:item """Le capital humain a confiance dans son dirigeant""" .
+ques:capital-2047 ques:item """Le capital humain de l’entreprise a une confiance totale dans son
+dirigeant
+Le capital humain de l’entreprise a une confiance totale dans son
+dirigeant""" .
+ 
+ques:capital-2048 ques:header """[]""" .
+ques:capital-2046 ques:subheader ques:capital-2048 .
+ 
+ques:capital-2049 ques:header """Sensibilité sociale""" .
+ques:capital-2048 ques:subheader ques:capital-2049 .
+ ques:capital-2049 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2049 ques:item """Le dirigeant n’a pas de qualité de management des RH""" .
+ques:capital-2049 ques:item """L’aptitude à manager est insuffisante""" .
+ques:capital-2049 ques:item """L’aptitude à manager est moyenne""" .
+ques:capital-2049 ques:item """Le dirigeant est un bon manager""" .
+ques:capital-2049 ques:item """Le dirigeant écoute ses collaborateurs, il est exigeant et
+bienveillant. Il excelle dans ce domaine
+Le dirigeant écoute ses collaborateurs, il est exigeant et
+bienveillant. Il excelle dans ce domaine""" .
+ 
+ques:capital-2050 ques:header """[]""" .
+ques:capital-2048 ques:subheader ques:capital-2050 .
+ 
+ques:capital-2051 ques:header """L’entreprise est engagée dans la RSE""" .
+ques:capital-2050 ques:subheader ques:capital-2051 .
+ ques:capital-2051 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2051 ques:item """Entreprise peu recommandable""" .
+ques:capital-2051 ques:item """Entreprise en infraction avec la réglementation""" .
+ques:capital-2051 ques:item """Une sensibilité au sujet""" .
+ques:capital-2051 ques:item """L’engagement est réel et sérieux""" .
+ques:capital-2051 ques:item """Certifié QSE, labellisée ISO 26 000, …""" .
+ 
+ques:capital-2052 ques:header """[]""" .
+ques:capital-2050 ques:subheader ques:capital-2052 .
+ 
+ques:capital-2053 ques:header """Prises de décision""" .
+ques:capital-2052 ques:subheader ques:capital-2053 .
+ ques:capital-2053 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2053 ques:item """Le comité ne prend pas de décisions, l’entreprise est à la dérive""" .
+ques:capital-2053 ques:item """Le dirigeant ne prend pas les décisions en temps et en heure ou est
+flou dans ce qu’il décide
+Le dirigeant ne prend pas les décisions en temps et en heure ou est
+flou dans ce qu’il décide""" .
+ques:capital-2053 ques:item """Des décisions importantes ne sont pas prises à temps ou sont
+instables
+Des décisions importantes ne sont pas prises à temps ou sont
+instables""" .
+ques:capital-2053 ques:item """Sur quelques sujets de moindre importance, les décisions peuvent
+tarder
+Sur quelques sujets de moindre importance, les décisions peuvent
+tarder""" .
+ques:capital-2053 ques:item """Les décisions sont sûres, rapides et couvrent tous les sujets""" .
+ 
+ques:capital-2054 ques:header """[]""" .
+ques:capital-2052 ques:subheader ques:capital-2054 .
+ 
+ques:capital-2055 ques:header """Prise de risques""" .
+ques:capital-2054 ques:subheader ques:capital-2055 .
+ ques:capital-2055 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2055 ques:item """La prise de risque est inconsidérée ou totalement absente""" .
+ques:capital-2055 ques:item """Le dirigeant est timoré (prise de risque insuffisante) ou un peu
+casse-cou
+Le dirigeant est timoré (prise de risque insuffisante) ou un peu
+casse-cou""" .
+ques:capital-2055 ques:item """Le dirigeant est prudent""" .
+ques:capital-2055 ques:item """La prise de risque est bonne, quelques défauts en évaluation (au
+préalable) ou en gestion (à posteriori)
+La prise de risque est bonne, quelques défauts en évaluation (au
+préalable) ou en gestion (à posteriori)""" .
+ques:capital-2055 ques:item """Le dirigeant est un entrepreneur parfait qui sait prendre des
+risques importants quand il le faut en les mesurant et en les gérant
+Le dirigeant est un entrepreneur parfait qui sait prendre des
+risques importants quand il le faut en les mesurant et en les gérant""" .
+ 
+ques:capital-2056 ques:header """[]""" .
+ques:capital-2054 ques:subheader ques:capital-2056 .
+ 
+ques:capital-2057 ques:header """Charisme""" .
+ques:capital-2056 ques:subheader ques:capital-2057 .
+ ques:capital-2057 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2057 ques:item """Absence totale de légitimité""" .
+ques:capital-2057 ques:item """La personnalité du dirigeant est en retrait""" .
+ques:capital-2057 ques:item """L’autorité du dirigeant est suffisante""" .
+ques:capital-2057 ques:item """Une réelle personnalité""" .
+ques:capital-2057 ques:item """Très fort charisme""" .
+ 
+ques:capital-2058 ques:header """[]""" .
+ques:capital-2056 ques:subheader ques:capital-2058 .
+ 
+ques:capital-2059 ques:header """Compétence sur les différents domaines d’activité""" .
+ques:capital-2058 ques:subheader ques:capital-2059 .
+ ques:capital-2059 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2059 ques:item """Dirigeant aux nombreuses lacunes""" .
+ques:capital-2059 ques:item """2 domaines clés non maîtrisés""" .
+ques:capital-2059 ques:item """Un domaine clé n’est pas maîtrisé""" .
+ques:capital-2059 ques:item """Quelques fragilités à la marge""" .
+ques:capital-2059 ques:item """La finance, le commercial, la création et la production sont
+parfaitement maitrisés par le dirigeant
+La finance, le commercial, la création et la production sont
+parfaitement maitrisés par le dirigeant""" .
+ 
+ques:capital-2060 ques:header """[]""" .
+ques:capital-2058 ques:subheader ques:capital-2060 .
+ 
+ques:capital-2061 ques:header """Parcours du dirigeant""" .
+ques:capital-2060 ques:subheader ques:capital-2061 .
+ ques:capital-2061 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2061 ques:item """Le parcours est totalement inadapté à la fonction""" .
+ques:capital-2061 ques:item """Le parcours présente des lacunes réelles pour la fonction""" .
+ques:capital-2061 ques:item """Le parcours est moyen au regard du poste""" .
+ques:capital-2061 ques:item """Quelques écarts à l’idéal dans le parcours""" .
+ques:capital-2061 ques:item """A un parcours de haut niveau (diplômes, postes antérieurs) en phase
+avec sa fonction à 100 %
+A un parcours de haut niveau (diplômes, postes antérieurs) en phase
+avec sa fonction à 100 %""" .
+ 
+ques:capital-2062 ques:header """[]""" .
+ques:capital-2060 ques:subheader ques:capital-2062 .
+ 
+ques:capital-2063 ques:header """Ancienneté moyenne du dirigeant à son poste""" .
+ques:capital-2062 ques:subheader ques:capital-2063 .
+ ques:capital-2063 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2063 ques:item """1 an et moins""" .
+ques:capital-2063 ques:item """2 ans et moins""" .
+ques:capital-2063 ques:item """4 ans""" .
+ques:capital-2063 ques:item """6 ans""" .
+ques:capital-2063 ques:item """8 ans""" .
+ 
+ques:capital-2064 ques:header """[]""" .
+ques:capital-2062 ques:subheader ques:capital-2064 .
+ 
+ques:capital-2065 ques:header """Par ses décisions et réalisations passées (le dirigeant ou le comité de direction)""" .
+ques:capital-2064 ques:subheader ques:capital-2065 .
+ ques:capital-2065 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2065 ques:item """Mène l’entreprise à sa perte""" .
+ques:capital-2065 ques:item """A fait des erreurs sérieuses de stratégie ou de management""" .
+ques:capital-2065 ques:item """Gère à court terme de façon assez opportuniste""" .
+ques:capital-2065 ques:item """Se montre pertinent dans ses décisions mais pas toujours dans sa
+vision
+Se montre pertinent dans ses décisions mais pas toujours dans sa
+vision""" .
+ques:capital-2065 ques:item """A fait la preuve de ses qualités de stratège et de management
+(bonnes décisions à long et court terme)
+A fait la preuve de ses qualités de stratège et de management
+(bonnes décisions à long et court terme)""" .
+ 
+ques:capital-2066 ques:header """[]""" .
+ques:capital-2064 ques:subheader ques:capital-2066 .
+ 
+ques:capital-2067 ques:header """Cohésion""" .
+ques:capital-2066 ques:subheader ques:capital-2067 .
+ ques:capital-2067 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2067 ques:item """Des tensions existent ou bien, les tensions n’existent pas parce que
+le management est très ferme
+Des tensions existent ou bien, les tensions n’existent pas parce que
+le management est très ferme""" .
+ques:capital-2067 ques:item """Il y a des conflits dans le groupe ou la cohésion est assez faible
+et le management manque de leadership (décisions collégiales,
+dilution des responsabilités)
+Il y a des conflits dans le groupe ou la cohésion est assez faible
+et le management manque de leadership (décisions collégiales,
+dilution des responsabilités)""" .
+ques:capital-2067 ques:item """Forte proximité, liberté de parole, management participatif""" .
+ques:capital-2067 ques:item """Tensions rares et le management est participatif""" .
+ 
+ques:capital-2068 ques:header """Capital de savoir""" .
+ques:capital-2066 ques:subheader ques:capital-2068 .
+ 
+ques:capital-2069 ques:header """[]""" .
+ques:capital-2068 ques:subheader ques:capital-2069 .
+ 
+ques:capital-2070 ques:header """Y a-t-il nouveauté ou innovation ?""" .
+ques:capital-2069 ques:subheader ques:capital-2070 .
+ ques:capital-2070 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2070 ques:item """L’entreprise n’innove pas du tout.""" .
+ques:capital-2070 ques:item """Les projets de R&D concernent des améliorations mineures de l’offre.
+Lorsque l’entreprise propose des nouveautés au niveau de son offre,
+celles-ci ne font pas l’objet au préalable d’une analyse de la
+demande
+Les projets de R&D concernent des améliorations mineures de l’offre.
+Lorsque l’entreprise propose des nouveautés au niveau de son offre,
+celles-ci ne font pas l’objet au préalable d’une analyse de la
+demande""" .
+ques:capital-2070 ques:item """Les projets de R&D en cours sont peu innovants. Par ailleurs des
+études de marché précèdent la R&D
+Les projets de R&D en cours sont peu innovants. Par ailleurs des
+études de marché précèdent la R&D""" .
+ques:capital-2070 ques:item """Les projets de R&D en cours sont prometteurs. En outre, plutôt que
+de regarder et d’écouter le marché, l’entreprise a mis au point des
+démarches pour le « sentir » étudier les besoins préconscients de sa
+clientèle et y répondre.
+Les projets de R&D en cours sont prometteurs. En outre, plutôt que
+de regarder et d’écouter le marché, l’entreprise a mis au point des
+démarches pour le « sentir » étudier les besoins préconscients de sa
+clientèle et y répondre.""" .
+ques:capital-2070 ques:item """Les projets de R&D en cours sont à très haut potentiel. En outre, la
+politique d’innovation a fait ses preuves, l’entreprise a déjà par
+le passé produit de grandes innovations couronnées de succès
+commercial.
+Les projets de R&D en cours sont à très haut potentiel. En outre, la
+politique d’innovation a fait ses preuves, l’entreprise a déjà par
+le passé produit de grandes innovations couronnées de succès
+commercial.""" .
+ 
+ques:capital-2071 ques:header """[]""" .
+ques:capital-2069 ques:subheader ques:capital-2071 .
+ 
+ques:capital-2072 ques:header """La politique de R&D est-elle cohérente par rapport à la stratégie ?""" .
+ques:capital-2071 ques:subheader ques:capital-2072 .
+ ques:capital-2072 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2072 ques:item """Les domaines de R&D sont sans rapport avec l’offre et le
+positionnement de l’entreprise et la relève produit est assurée à 0
+%
+Les domaines de R&D sont sans rapport avec l’offre et le
+positionnement de l’entreprise et la relève produit est assurée à 0
+%""" .
+ques:capital-2072 ques:item """La relève produit est assurée à moins de 50 %""" .
+ques:capital-2072 ques:item """La relève est assurée""" .
+ques:capital-2072 ques:item """La relève produit est assurée, des nouveaux produits vont sortir""" .
+ques:capital-2072 ques:item """Les investissements vont permettre d’assurer la relève des produits
+vieillissants et de lancer de nombreux nouveaux produits en phase
+avec la stratégie de l’entreprise
+Les investissements vont permettre d’assurer la relève des produits
+vieillissants et de lancer de nombreux nouveaux produits en phase
+avec la stratégie de l’entreprise""" .
+ 
+ques:capital-2073 ques:header """[]""" .
+ques:capital-2071 ques:subheader ques:capital-2073 .
+ 
+ques:capital-2074 ques:header """Participants à la politique d’innovation produit""" .
+ques:capital-2073 ques:subheader ques:capital-2074 .
+ ques:capital-2074 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2074 ques:item """Personne""" .
+ques:capital-2074 ques:item """Une équipe réduite non dédiée et isolée ou des actions diffuses""" .
+ques:capital-2074 ques:item """Un responsable de l’innovation est identifié, ses moyens sont
+limités
+Un responsable de l’innovation est identifié, ses moyens sont
+limités""" .
+ques:capital-2074 ques:item """Une équipe structurée dédiée avec des partenariats externes actifs""" .
+ques:capital-2074 ques:item """Equipe spécialisée et importante, nombreuses sollicitations et
+propositions internes alimentent la R&D. Les partenariats externes
+sont nombreux et productifs
+Equipe spécialisée et importante, nombreuses sollicitations et
+propositions internes alimentent la R&D. Les partenariats externes
+sont nombreux et productifs""" .
+ 
+ques:capital-2075 ques:header """[]""" .
+ques:capital-2073 ques:subheader ques:capital-2075 .
+ 
+ques:capital-2076 ques:header """Budget R&D (interne ou sous-traité)""" .
+ques:capital-2075 ques:subheader ques:capital-2076 .
+ ques:capital-2076 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2076 ques:item """Pas de R&D""" .
+ques:capital-2076 ques:item """La moitié des confrères""" .
+ques:capital-2076 ques:item """Un peu en retrait par rapport aux confrères""" .
+ques:capital-2076 ques:item """Dans les meilleurs du secteur""" .
+ques:capital-2076 ques:item """Best in class secteur""" .
+ 
+ques:capital-2077 ques:header """[]""" .
+ques:capital-2075 ques:subheader ques:capital-2077 .
+ 
+ques:capital-2078 ques:header """Services (Valeur des savoirs actuels)""" .
+ques:capital-2077 ques:subheader ques:capital-2078 .
+ ques:capital-2078 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2078 ques:item """Aucune précaution n’est prise pour protéger les procédés et savoirs
+critiques
+Aucune précaution n’est prise pour protéger les procédés et savoirs
+critiques""" .
+ques:capital-2078 ques:item """Il y a une clause de non concurrence dans les contrats de travail
+des hommes clés
+Il y a une clause de non concurrence dans les contrats de travail
+des hommes clés""" .
+ques:capital-2078 ques:item """L’entreprise a développé une culture du secret et de lutte contre
+l’espionnage industriel (signatures fréquentes de clause de
+confidentialité aux tiers, règles de destruction de documents avant
+poubelle…)
+L’entreprise a développé une culture du secret et de lutte contre
+l’espionnage industriel (signatures fréquentes de clause de
+confidentialité aux tiers, règles de destruction de documents avant
+poubelle…)""" .
+ques:capital-2078 ques:item """Les codes source informatique, méthodes, savoir-faire et lignes de
+services sont déposées (notaire, société des gens de lettres….)
+Les codes source informatique, méthodes, savoir-faire et lignes de
+services sont déposées (notaire, société des gens de lettres….)""" .
+ques:capital-2078 ques:item """Politique éprouvée de protection des savoir-faire (dépôts nombreux,
+au niveau mondial, veille et lutte contre la contrefaçon…)
+Politique éprouvée de protection des savoir-faire (dépôts nombreux,
+au niveau mondial, veille et lutte contre la contrefaçon…)""" .
+ 
+ques:capital-2079 ques:header """[]""" .
+ques:capital-2077 ques:subheader ques:capital-2079 .
+ 
+ques:capital-2080 ques:header """Produits""" .
+ques:capital-2079 ques:subheader ques:capital-2080 .
+ ques:capital-2080 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2080 ques:item """Aucune précaution n’est prise pour protéger les procédés et savoirs
+critiques
+Aucune précaution n’est prise pour protéger les procédés et savoirs
+critiques""" .
+ques:capital-2080 ques:item """Il y a une clause de non concurrence dans les contrats de travail
+des hommes clés
+Il y a une clause de non concurrence dans les contrats de travail
+des hommes clés""" .
+ques:capital-2080 ques:item """L’entreprise a développé une culture du secret et de lutte contre
+l’espionnage industriel (signatures fréquentes de clause de
+confidentialité aux tiers, règles de destruction de documents avant
+poubelle…)
+L’entreprise a développé une culture du secret et de lutte contre
+l’espionnage industriel (signatures fréquentes de clause de
+confidentialité aux tiers, règles de destruction de documents avant
+poubelle…)""" .
+ques:capital-2080 ques:item """Gestion interne des secrets de fabrication selon une procédure
+rigoureuse ou politique de dépôts de brevets
+Gestion interne des secrets de fabrication selon une procédure
+rigoureuse ou politique de dépôts de brevets""" .
+ques:capital-2080 ques:item """Politique éprouvée de protection des savoir-faire (dépôts nombreux,
+au niveau mondial, veille et lutte contre la contrefaçon…)
+Politique éprouvée de protection des savoir-faire (dépôts nombreux,
+au niveau mondial, veille et lutte contre la contrefaçon…)""" .
+ 
+ques:capital-2081 ques:header """[]""" .
+ques:capital-2079 ques:subheader ques:capital-2081 .
+ 
+ques:capital-2082 ques:header """Ordre de grandeur des investissements requis pour un concurrent qui entend entrer sur ce marché (concevoir et fabriquer un produit concurrent)""" .
+ques:capital-2081 ques:subheader ques:capital-2082 .
+ ques:capital-2082 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2082 ques:item """Négligeables (quelques k€)""" .
+ques:capital-2082 ques:item """100 K€""" .
+ques:capital-2082 ques:item """Quelques millions""" .
+ques:capital-2082 ques:item """100 millions""" .
+ques:capital-2082 ques:item """Un milliard d’euros et plus""" .
+ 
+ques:capital-2083 ques:header """[]""" .
+ques:capital-2081 ques:subheader ques:capital-2083 .
+ 
+ques:capital-2084 ques:header """Ligne de fabrication ou moyens de productions""" .
+ques:capital-2083 ques:subheader ques:capital-2084 .
+ ques:capital-2084 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2084 ques:item """Ré-engineering produit impossible""" .
+ques:capital-2084 ques:item """Documentation absente ou obsolète mais ré-engineering produit
+possible
+Documentation absente ou obsolète mais ré-engineering produit
+possible""" .
+ques:capital-2084 ques:item """Il manque des documents descriptifs du produit ou permettant la
+formation
+Il manque des documents descriptifs du produit ou permettant la
+formation""" .
+ques:capital-2084 ques:item """Quelques manques à la marge""" .
+ques:capital-2084 ques:item """100 % documentation à jour et 100 % des cours existent""" .
+ 
+ques:capital-2085 ques:header """[]""" .
+ques:capital-2083 ques:subheader ques:capital-2085 .
+ 
+ques:capital-2086 ques:header """Produit ou service""" .
+ques:capital-2085 ques:subheader ques:capital-2086 .
+ ques:capital-2086 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2086 ques:item """Ré-engineering produit impossible""" .
+ques:capital-2086 ques:item """Documentation absente ou obsolète mais ré-engineering produit
+possible
+Documentation absente ou obsolète mais ré-engineering produit
+possible""" .
+ques:capital-2086 ques:item """Il manque des documents descriptifs du produit ou permettant la
+formation
+Il manque des documents descriptifs du produit ou permettant la
+formation""" .
+ques:capital-2086 ques:item """Quelques manques à la marge""" .
+ques:capital-2086 ques:item """100 % documentation à jour et 100 % des cours existent""" .
+ 
+ques:capital-2087 ques:header """[]""" .
+ques:capital-2085 ques:subheader ques:capital-2087 .
+ 
+ques:capital-2088 ques:header """Obsolescence de l’offre""" .
+ques:capital-2087 ques:subheader ques:capital-2088 .
+ ques:capital-2088 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2088 ques:item """Dans quelques mois""" .
+ques:capital-2088 ques:item """Dans 1 an""" .
+ques:capital-2088 ques:item """Dans 3 ans""" .
+ques:capital-2088 ques:item """Dans 7 ans""" .
+ques:capital-2088 ques:item """Dans 15 ans et plus""" .
+ 
+ques:capital-2089 ques:header """[]""" .
+ques:capital-2087 ques:subheader ques:capital-2089 .
+ 
+ques:capital-2090 ques:header """Notre avantage concurrentiel (vous estimez que vous êtes :)""" .
+ques:capital-2089 ques:subheader ques:capital-2090 .
+ ques:capital-2090 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2090 ques:item """Distancé""" .
+ques:capital-2090 ques:item """Inconnu""" .
+ques:capital-2090 ques:item """Connu""" .
+ques:capital-2090 ques:item """Top 5
+Top 5 """ .
+ques:capital-2090 ques:item """Leader""" .
+ 
+ques:capital-2091 ques:header """[]""" .
+ques:capital-2089 ques:subheader ques:capital-2091 .
+ 
+ques:capital-2092 ques:header """Intensité concurrentielle""" .
+ques:capital-2091 ques:subheader ques:capital-2092 .
+ ques:capital-2092 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2092 ques:item """Extrême (+ 1000)""" .
+ques:capital-2092 ques:item """Très sérieuse (+ 100)""" .
+ques:capital-2092 ques:item """Sérieuse (+ de 10)""" .
+ques:capital-2092 ques:item """Oligopole""" .
+ques:capital-2092 ques:item """Seul / monopole""" .
+ 
+ques:capital-2093 ques:header """[]""" .
+ques:capital-2091 ques:subheader ques:capital-2093 .
+ 
+ques:capital-2094 ques:header """Degré d’innovation""" .
+ques:capital-2093 ques:subheader ques:capital-2094 .
+ ques:capital-2094 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2094 ques:item """Fait défaut sur certaines fonctions""" .
+ques:capital-2094 ques:item """Fait défaut sur une fonction""" .
+ques:capital-2094 ques:item """Ne fait défaut sur aucune fonction
+Ne fait défaut sur aucune fonction """ .
+ques:capital-2094 ques:item """Apporte des plus sur certaines fonctions""" .
+ques:capital-2094 ques:item """Apporte des innovations majeures sur plusieurs fonctions""" .
+ 
+ques:capital-2095 ques:header """[]""" .
+ques:capital-2093 ques:subheader ques:capital-2095 .
+ 
+ques:capital-2096 ques:header """Croissance de la demande""" .
+ques:capital-2095 ques:subheader ques:capital-2096 .
+ ques:capital-2096 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2096 ques:item """Négative""" .
+ques:capital-2096 ques:item """0%""" .
+ques:capital-2096 ques:item """5%""" .
+ques:capital-2096 ques:item """A deux chiffres à MT""" .
+ques:capital-2096 ques:item """À deux chiffres à LT""" .
+ 
+ques:capital-2097 ques:header """[]""" .
+ques:capital-2095 ques:subheader ques:capital-2097 .
+ 
+ques:capital-2098 ques:header """Taille du marché accessible (mesure de la demande)""" .
+ques:capital-2097 ques:subheader ques:capital-2098 .
+ ques:capital-2098 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
+  ques:capital-2098 ques:item """En millions""" .
+ques:capital-2098 ques:item """En dizaine de millions""" .
+ques:capital-2098 ques:item """En centaines de millions""" .
+ques:capital-2098 ques:item """En milliards""" .
+ques:capital-2098 ques:item """En dizaine de milliards""" .
+ 
+ques:capital-2099 ques:header """Identification de l'entreprise""" .
+ques:capital-2097 ques:subheader ques:capital-2099 .
+ 
+ques:capital-2100 ques:header """[]Raison sociale :""" .
+ques:capital-2099 ques:subheader ques:capital-2100 .
+ ques:capital-2100 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2100 ques:paragraph """ """ .
+  
+ques:capital-2101 ques:header """[]N° SIREN :""" .
+ques:capital-2099 ques:subheader ques:capital-2101 .
+ ques:capital-2101 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2101 ques:paragraph """ """ .
+  
+ques:capital-2102 ques:header """[]Sites web de l'entreprise et sites liés à son activité""" .
+ques:capital-2099 ques:subheader ques:capital-2102 .
+ ques:capital-2102 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2102 ques:paragraph """ """ .
+  
+ques:capital-2103 ques:header """[]Nombre d'employés""" .
+ques:capital-2099 ques:subheader ques:capital-2103 .
+ ques:capital-2103 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2103 ques:paragraph """ """ .
+  
+ques:capital-2104 ques:header """[]Nombre de sites :""" .
+ques:capital-2099 ques:subheader ques:capital-2104 .
+ ques:capital-2104 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2104 ques:paragraph """ """ .
+  
+ques:capital-2105 ques:header """[]Chiffre d'affaire :""" .
+ques:capital-2099 ques:subheader ques:capital-2105 .
+ ques:capital-2105 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2105 ques:paragraph """ """ .
+  
+ques:capital-2106 ques:header """[]Marge brute annuelle :""" .
+ques:capital-2099 ques:subheader ques:capital-2106 .
+ ques:capital-2106 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
+  ques:capital-2106 ques:item """Total :""" .
+ ques:capital-2106 ques:paragraph """ """ .
+  ques:capital-2106 ques:item """Europe (EU) :""" .
+ ques:capital-2106 ques:paragraph """ """ .
+  ques:capital-2106 ques:item """US/Canada :""" .
+ ques:capital-2106 ques:paragraph """ """ .
+  ques:capital-2106 ques:item """Reste du monde :""" .
+ ques:capital-2106 ques:paragraph """ """ .
+  ques:capital-2106 ques:paragraph """Totale et par région :""" .
+  
+ques:capital-2107 ques:header """Personne à contacter""" .
+ques:capital-2099 ques:subheader ques:capital-2107 .
+ 
+ques:capital-2108 ques:header """[]NOM et PRENOM""" .
+ques:capital-2107 ques:subheader ques:capital-2108 .
+ ques:capital-2108 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2108 ques:paragraph """ """ .
+  
+ques:capital-2109 ques:header """[]Qualité""" .
+ques:capital-2107 ques:subheader ques:capital-2109 .
+ ques:capital-2109 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2109 ques:paragraph """ """ .
+  
+ques:capital-2110 ques:header """[]Téléphone""" .
+ques:capital-2107 ques:subheader ques:capital-2110 .
+ ques:capital-2110 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2110 ques:paragraph """ """ .
+  
+ques:capital-2111 ques:header """[]Adresse courriel""" .
+ques:capital-2107 ques:subheader ques:capital-2111 .
+ ques:capital-2111 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2111 ques:paragraph """ """ .
+  
+ques:capital-2112 ques:header """[]Complété par :""" .
+ques:capital-2107 ques:subheader ques:capital-2112 .
+ ques:capital-2112 ques:paragraph """Veuillez écrire votre réponse ici :""" .
+  ques:capital-2112 ques:paragraph """ """ .
+  ques:capital-2112 ques:paragraph """
+Envoyer votre questionnaire.
+Merci d'avoir complété ce questionnaire.""" .
+  ques:capital-2112 ques:paragraph """ """ .
+  

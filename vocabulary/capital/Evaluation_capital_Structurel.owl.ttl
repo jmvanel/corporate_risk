@@ -1,0 +1,2022 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+ques:capital-1001
+    a owl:Class ;
+    rdfs:label "Capital Actionnaire" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1002
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1001 ;
+    rdfs:label "Action de l’actionnariat pour les affaires de l’entreprise" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "L’actionnariat joue un rôle négatif pour l’entreprise dans l’un des domaines suivants : levée de fonds, apport d’affaires, partenariat stratégique, recrutement d’hommes clés"
+            ]
+            [
+                rdfs:label "L’actionnariat n’aide pas l’entreprise"
+            ]
+            [
+                rdfs:label "L’aide que l’actionnariat peut apporter à l’entreprise est très limitée"
+            ]
+            [
+                rdfs:label "L’actionnariat a déjà joué un rôle dans l’un des domaines suivants : levée de fonds, apport d’affaires, partenariats stratégiques, recrutement d’hommes clés"
+            ]
+            [
+                rdfs:label "L’actionnariat joue un rôle de tout premier plan pour l’entreprise dans l’un des domaines suivants : levée de fonds, apport d’affaires, partenariats stratégiques, recrutement d’hommes clés"
+            ]
+        )
+    ] .
+
+ques:capital-1003
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1001 ;
+    rdfs:label "Notoriété de l’actionnariat" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """Un des actionnaires a une réelle notoriété mais sa réputation est négative
+Un des actionnaires a une réelle notoriété mais sa réputation est négative """
+            ]
+            [
+                rdfs:label "Les actionnaires n’ont pas de notoriété"
+            ]
+            [
+                rdfs:label "Au moins un actionnaire est une personne physique de notoriété régionale"
+            ]
+            [
+                rdfs:label "Au moins un actionnaire est une personne morale qui a une réelle notoriété régionale ou bien au moins un des actionnaires personne physique a une notoriété nationale en tant qu’acteur économique"
+            ]
+            [
+                rdfs:label "Au moins un actionnaire est une personne morale qui a une réelle notoriété internationale"
+            ]
+        )
+    ] .
+
+ques:capital-1004
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1001 ;
+    rdfs:label "Compétence de l’actionnariat" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Les administrateurs sont incompétents et actifs"
+            ]
+            [
+                rdfs:label "Les administrateurs sont incompétents et dormants"
+            ]
+            [
+                rdfs:label "Le conseil est actif. Les administrateurs suivent depuis longtemps l’activité de l’entreprise mais pour l’essentiel ne sont ni des dirigeants ni des experts du secteur mais font preuve de bon sens"
+            ]
+            [
+                rdfs:label "Le conseil est actif. Plusieurs dirigeants ayant fait leurs preuves dans des secteurs autres que celui de l’entreprise pour des activités de taille comparable sont présentes dans le conseil de surveillance ou le conseil d’administration. Le président est l'un d'eux"
+            ]
+        )
+    ] .
+
+ques:capital-1005
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1001 ;
+    rdfs:label "Fidélité de l’actionnariat" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Actionnariat très volatile : les actionnaires tournent à 80 % tous les 3 à 5 ans voire moins"
+            ]
+            [
+                rdfs:label "Actionnariat volatile : le noyau stable représente moins de 35 % du capital et peut évoluer sur une période de 5 ans"
+            ]
+            [
+                rdfs:label "Actionnariat moyennement fidèle: 35 % du capital est détenu par les mêmes actionnaires depuis plus de 5 ans et projection à 5 ans analogue"
+            ]
+            [
+                rdfs:label "Actionnariat fidèle : plus de 50 % du capital est détenu par les mêmes actionnaires depuis plus de 5 ans et projection à 5 ans analogue"
+            ]
+            [
+                rdfs:label "Actionnariat très stable: 80 % du capital est détenu par les mêmes actionnaires depuis plus de 5 ans et projection à 5 ans analogue"
+            ]
+        )
+    ] .
+
+ques:capital-1006
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1001 ;
+    rdfs:label "Réserves Financières" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Augmentation de capital très difficile ou impossible même en recherchant des fonds à l’extérieur du tour de table actuel"
+            ]
+            [
+                rdfs:label "Une augmentation de capital est possible mais en faisant entrer de nouveaux actionnaires"
+            ]
+            [
+                rdfs:label "Une augmentation de capital est possible avec l’actionnariat actuel mais sera limitée à quelques pourcents"
+            ]
+            [
+                rdfs:label "Aucune difficulté pour réaliser une augmentation de capital de 10 à 20 %"
+            ]
+            [
+                rdfs:label "Aucune difficulté pour augmenter son capital de plus de 30 %, si besoin, avec les actionnaires actuels ou le marché (entreprise cotée)"
+            ]
+        )
+    ] .
+
+ques:capital-1007
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1001 ;
+    rdfs:label "Type d’actionnariat" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Actionnariat atomisé, hétérogène et opportuniste"
+            ]
+            [
+                rdfs:label "Entreprise contrôlée par des fonds à court terme exigeants"
+            ]
+            [
+                rdfs:label "Entreprise contrôlée par des fonds d’investissement à long terme. Si une famille et ou les managers ont une participation supérieure à 35 % mettre une note supérieure)"
+            ]
+            [
+                rdfs:label "Entreprise familiale (si, en plus, les managers et les salariés ont accès au capital, mettre une note supérieure)"
+            ]
+            [
+                rdfs:label "Entreprise contrôlée par son dirigeant, ses managers et ses salariés"
+            ]
+        )
+    ] .
+
+ques:capital-1008
+    a owl:Class ;
+    rdfs:label "Capital Partenaire" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1009
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1008 ;
+    rdfs:label "Lourdeur de gestion des fournisseurs des produits vendus" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """On travaille avec tout le monde (plus de 15 fournisseurs)
+On travaille avec tout le monde (plus de 15 fournisseurs) """
+            ]
+            [
+                rdfs:label "15 fournisseurs"
+            ]
+            [
+                rdfs:label "6 fournisseurs"
+            ]
+            [
+                rdfs:label "4 fournisseurs"
+            ]
+            [
+                rdfs:label "3 fournisseurs (ou nombre de fournisseurs jugé idéal)"
+            ]
+        )
+    ] .
+
+ques:capital-1010
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1008 ;
+    rdfs:label "Risque de rupture d’approvisionnement" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Un fournisseur, les ruptures sont fréquentes"
+            ]
+            [
+                rdfs:label "Un fournisseur, des ruptures"
+            ]
+            [
+                rdfs:label "Un fournisseur, pas de rupture à ce jour"
+            ]
+            [
+                rdfs:label "2 fournisseurs, pas de rupture à ce jour"
+            ]
+            [
+                rdfs:label "3 fournisseurs, pas de rupture à ce jour"
+            ]
+        )
+    ] .
+
+ques:capital-1011
+    a owl:ObjectProperty ;
+    rdfs:comment "La Notation est sur 20.", "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1008 ;
+    rdfs:label "Notation des fournisseurs" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Moins de 6"
+            ]
+            [
+                rdfs:label "6 à 10"
+            ]
+            [
+                rdfs:label "10 à 12"
+            ]
+            [
+                rdfs:label "12 à 14"
+            ]
+            [
+                rdfs:label "14 et +"
+            ]
+        )
+    ] .
+
+ques:capital-1012
+    a owl:Class, owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1008 ;
+    rdfs:label "Fidélité (fournisseur depuis ?)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """De 0 à 6 mois
+De 0 à 6 mois """
+            ]
+            [
+                rdfs:label "De 6 mois à 1 an"
+            ]
+            [
+                rdfs:label "De 1 an à 3 ans"
+            ]
+            [
+                rdfs:label "De 3 ans à 7 ans"
+            ]
+            [
+                rdfs:label "De 7 ans à 10 ans"
+            ]
+        )
+    ] .
+
+ques:capital-1013
+    a owl:ObjectProperty ;
+    rdfs:comment "Il s’agit d’estimation de la santé de l’entreprise attribué par la Coface", "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Santé financière (note Coface moyenne)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "5"
+            ]
+            [
+                rdfs:label "10"
+            ]
+            [
+                rdfs:label "15"
+            ]
+            [
+                rdfs:label "20"
+            ]
+        )
+    ] .
+
+ques:capital-1014
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Contact (Qualité de la relation : Mesure de la qualité de la relation entre collègue)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Relation conflictuelle"
+            ]
+            [
+                rdfs:label "Relation tendue"
+            ]
+            [
+                rdfs:label "Relation neutre, ni bonne, ni mauvaise"
+            ]
+            [
+                rdfs:label "Bonne relation"
+            ]
+            [
+                rdfs:label """Excellente relation
+Excellente relation """
+            ]
+        )
+    ] .
+
+ques:capital-1015
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Rapport qualité prix (Evaluation du prix)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "La plus cher du marché"
+            ]
+            [
+                rdfs:label "Produit coûteux"
+            ]
+            [
+                rdfs:label "Moyenne du marché"
+            ]
+            [
+                rdfs:label "Produit bon marché"
+            ]
+            [
+                rdfs:label "Meilleur prix du marché"
+            ]
+        )
+    ] .
+
+ques:capital-1016
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Rapport qualité prix (Evaluation de la qualité)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "A retirer de la vente"
+            ]
+            [
+                rdfs:label "Basse qualité"
+            ]
+            [
+                rdfs:label "Qualité moyenne par rapport aux produits concurrents"
+            ]
+            [
+                rdfs:label "Bon produit"
+            ]
+            [
+                rdfs:label "Produit de référence"
+            ]
+        )
+    ] .
+
+ques:capital-1017
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Niveau de service (Efficacité SAV)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas de SAV"
+            ]
+            [
+                rdfs:label "Nombreux problèmes posés sans solution ou délais très longs"
+            ]
+            [
+                rdfs:label "Délais d’attente existent mais la réponse/ solution vient toujours"
+            ]
+            [
+                rdfs:label "La solution ou la réponse se fait rarement attendre"
+            ]
+            [
+                rdfs:label "Problèmes et requêtes traitées très rapidement"
+            ]
+        )
+    ] .
+
+ques:capital-1018
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Niveau de service (Qualité SAV)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas de SAV"
+            ]
+            [
+                rdfs:label "Accueil déshumanisé et prise en compte lente"
+            ]
+            [
+                rdfs:label """Pas toujours réactif – délais de prise en compte de la demande parfois longs
+Pas toujours réactif – délais de prise en compte de la demande parfois longs """
+            ]
+            [
+                rdfs:label "Attentes rares bon accueil"
+            ]
+            [
+                rdfs:label "Demandes prises en compte sans délai, accueil attentionné"
+            ]
+        )
+    ] .
+
+ques:capital-1019
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Niveau de service (Délais qualité des livraisons)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas fiable du tout sur les délais"
+            ]
+            [
+                rdfs:label "Retards fréquents"
+            ]
+            [
+                rdfs:label "Le nombre de retards est un peu gênant"
+            ]
+            [
+                rdfs:label "Retard rares"
+            ]
+            [
+                rdfs:label "Toujours respectés"
+            ]
+        )
+    ] .
+
+ques:capital-1020
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1012 ;
+    rdfs:label "Niveau de service (Défauts à la livraison)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Très fréquents"
+            ]
+            [
+                rdfs:label "Fréquents"
+            ]
+            [
+                rdfs:label "Leur nombre est un peu gênant"
+            ]
+            [
+                rdfs:label "Rares"
+            ]
+            [
+                rdfs:label "Jamais"
+            ]
+        )
+    ] .
+
+ques:capital-1021
+    a owl:Class ;
+    rdfs:label "Capital Organisationnel" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1022
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1021 ;
+    rdfs:label "Maîtrise par l’entreprise de sa gestion de projets" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Concept inconnu de l’entreprise (nombreux échecs – projets avortés)"
+            ]
+            [
+                rdfs:label "Lorsqu’un projet est lancé un chef de projet est nommé - dépassements systématiques (budget et délais)"
+            ]
+            [
+                rdfs:label "Lorsqu’un projet est lancé une équipe projet est constituée – dépassement fréquents (budgets et délais)"
+            ]
+            [
+                rdfs:label "Lorsqu’un projet est lancé une équipe projet est constituée. Le chef de projet maîtrise la gestion de projet, l’entreprise dispose d’une méthode rédigée : les dépassements sont rares (budgets – délais)"
+            ]
+            [
+                rdfs:label "Forte culture de la gestion de projet, maîtrise par les chefs de projet de la méthode de l’entreprise, les membres de l’équipe sont vraiment détachés au projet pendant sa durée et ne rapportent plus à leur manager habituel mais au chef de projet."
+            ]
+        )
+    ] .
+
+ques:capital-1023
+    a owl:Class, owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1021 ;
+    rdfs:label "Flexibilité" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Preuve par l’exemple"
+            ]
+            [
+                rdfs:label "Entreprise immobile, rigide, capacité de se transformer proche de zéro"
+            ]
+            [
+                rdfs:label "L’entreprise évite de se transformer ou le fait dans la douleur, avec des séquelles"
+            ]
+            [
+                rdfs:label "Les grandes réformes conduites par l’entreprise ont été difficiles mais ont fini par réussir"
+            ]
+            [
+                rdfs:label """L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent
+L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent """
+            ]
+            [
+                rdfs:label "Au cours des dernières années l’entreprise à réussi plusieurs tours de force en matière d’adaptation (grande réorganisation, fusion vraiment réussie…)"
+            ]
+        )
+    ] .
+
+ques:capital-1024
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Centralisation" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Organisation poussiéreuse et procédurière incapable de se réformer"
+            ]
+            [
+                rdfs:label "Entreprise très centralisée et adepte de procédures strictes. Le respect des procédures fait partie de la culture d’entreprise"
+            ]
+            [
+                rdfs:label "Entreprise assez centralisée, le système de reporting et de contrôle est lourd."
+            ]
+            [
+                rdfs:label "L’autonomie fait partie de la culture de l’entreprise. Les dirigeants de Business Unit ont de réelles marges de manœuvre"
+            ]
+            [
+                rdfs:label "Entreprise très décentralisée composée de petites unités autonomes, système de reporting et de contrôle léger"
+            ]
+        )
+    ] .
+
+ques:capital-1025
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Autres processus importants (Achats, R&D, Supply Chain…)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absents"
+            ]
+            [
+                rdfs:label "Homogènes, par tradition orale mais documents obsolètes"
+            ]
+            [
+                rdfs:label "Rédigée selon principes de Taylor (optimisation de la productivité individuelle)"
+            ]
+            [
+                rdfs:label "Processus orientés, réduction du délai et productivité collective: progrès visibles"
+            ]
+            [
+                rdfs:label "Suivi de performance par un tableau de bord et amélioration permanente : forte progression sur plusieurs années"
+            ]
+        )
+    ] .
+
+ques:capital-1026
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Processus de production" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absents"
+            ]
+            [
+                rdfs:label "Homogènes, par tradition orale mais documents obsolètes"
+            ]
+            [
+                rdfs:label "Rédigée selon principes de Taylor (optimisation de la productivité individuelle)"
+            ]
+            [
+                rdfs:label "Processus orientés, réduction du délai et productivité collective: progrès visibles"
+            ]
+            [
+                rdfs:label "Suivi de performance par un tableau de bord et amélioration permanente : forte progression sur plusieurs années"
+            ]
+        )
+    ] .
+
+ques:capital-1027
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Contrôle de Remontée des données comptables depuis les services" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Il y a de nombreuses erreurs chaque mois ou jour"
+            ]
+            [
+                rdfs:label """Il y a quelques erreurs tous les mois/jours
+Il y a quelques erreurs tous les mois/jours """
+            ]
+            [
+                rdfs:label "Quelques erreurs un mois / de temps en temps"
+            ]
+            [
+                rdfs:label "Erreurs rares"
+            ]
+            [
+                rdfs:label "Zéro défaut ou presque"
+            ]
+        )
+    ] .
+
+ques:capital-1028
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Contrôle de Suivi budgétaire" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas de contrôle du suivi des directions"
+            ]
+            [
+                rdfs:label "Contrôle du suivi de certaines directions"
+            ]
+            [
+                rdfs:label "Contrôle de tous les budgets, écarts assez fréquents"
+            ]
+            [
+                rdfs:label "Contrôle de tous budgets – peu d’écart significatif"
+            ]
+            [
+                rdfs:label "Tous les budgets sont suivis et pas d’écarts"
+            ]
+        )
+    ] .
+
+ques:capital-1029
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Autres Contrôles" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas d’autres contrôles"
+            ]
+            [
+                rdfs:label "Contrôle paiements des clients trop légers"
+            ]
+            [
+                rdfs:label "Contrôle paiements clients, contrôle fournisseurs trop léger"
+            ]
+            [
+                rdfs:label "Contrôle paiements clients, fournisseurs et RH"
+            ]
+            [
+                rdfs:label "Contrôle complet et très efficace"
+            ]
+        )
+    ] .
+
+ques:capital-1030
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Comptabilité Analytique" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absente"
+            ]
+            [
+                rdfs:label "Embryonnaire mais pas fiable"
+            ]
+            [
+                rdfs:label "Ratio de marge brute / produit"
+            ]
+            [
+                rdfs:label "Rentabilité par produit et par client"
+            ]
+            [
+                rdfs:label """ActivityBasedCost
+ActivityBasedCost """
+            ]
+        )
+    ] .
+
+ques:capital-1031
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Comptabilité Trésorerie" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Aucune gestion"
+            ]
+            [
+                rdfs:label "Placement sicav de temps en temps"
+            ]
+            [
+                rdfs:label "Placement sicav optimisé"
+            ]
+            [
+                rdfs:label "Gestion prévisionnelle de la trésorerie"
+            ]
+            [
+                rdfs:label "Gestion avancée (affacturage, cash pooling…)"
+            ]
+        )
+    ] .
+
+ques:capital-1032
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Comptabilité générale" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Problèmes réguliers à la clôture – difficultés de certification par auditeurs"
+            ]
+            [
+                rdfs:label "Clôture très lente (plus de 3 mois)"
+            ]
+            [
+                rdfs:label "Clôture rapide – une situation par semestre"
+            ]
+            [
+                rdfs:label "Une situation par trimestre"
+            ]
+            [
+                rdfs:label "Une situation mensuelle"
+            ]
+        )
+    ] .
+
+ques:capital-1033
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Formation des managers" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absente"
+            ]
+            [
+                rdfs:label "Partielle"
+            ]
+            [
+                rdfs:label "Pour tous – externalisée"
+            ]
+            [
+                rdfs:label "École de management interne"
+            ]
+            [
+                rdfs:label "Coaching des managers"
+            ]
+        )
+    ] .
+
+ques:capital-1034
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Baromètre social" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absent"
+            ]
+            [
+                rdfs:label "Des éléments ou irrégulier"
+            ]
+            [
+                rdfs:label "Annuel ou tous les deux ans"
+            ]
+            [
+                rdfs:label "Complet avec plan d’action correctif"
+            ]
+            [
+                rdfs:label "Complet avec plan de progrès global"
+            ]
+        )
+    ] .
+
+ques:capital-1035
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Entretien annuel (fréquence d’entretien individuel avec le personnel)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absent"
+            ]
+            [
+                rdfs:label "Irrégulier"
+            ]
+            [
+                rdfs:label "Régulier mais peu ou pas exploité"
+            ]
+            [
+                rdfs:label "Exploité pour la personne"
+            ]
+            [
+                rdfs:label "Exploité pour améliorer le capital humain"
+            ]
+        )
+    ] .
+
+ques:capital-1036
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Valeurs et culture" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Rien"
+            ]
+            [
+                rdfs:label """Statiques, peu considérées
+Statiques, peu considérées """
+            ]
+            [
+                rdfs:label "Existent et sont promues"
+            ]
+            [
+                rdfs:label "Résultent d’un travail collectif partagé"
+            ]
+            [
+                rdfs:label "Travail collectif, partagées et améliorées"
+            ]
+        )
+    ] .
+
+ques:capital-1037
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Style général" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Laxiste"
+            ]
+            [
+                rdfs:label "Collégial"
+            ]
+            [
+                rdfs:label "Autoritaire"
+            ]
+            [
+                rdfs:label "Participatif"
+            ]
+            [
+                rdfs:label "Participatif et responsable"
+            ]
+        )
+    ] .
+
+ques:capital-1038
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Politique sécurité" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Rien, le taux d’accident est très élevé ou il est inconnu"
+            ]
+            [
+                rdfs:label "Une politique sécurité existe, elle est rédigée par une fonction support – le taux d’accident est plus élevé que dans le reste de la profession"
+            ]
+            [
+                rdfs:label "Une politique sécurité existe, elle est rédigée par un responsable sécurité – le taux d’accident est dans la moyenne du secteur"
+            ]
+            [
+                rdfs:label "La politique est éprouvée, les salariés y sont formés et ils la respectent – le taux d’accident est faible pour le secteur"
+            ]
+            [
+                rdfs:label "Niveau d’accident du travail est dans les meilleurs de la profession – réputation sécurité est très forte"
+            ]
+        )
+    ] .
+
+ques:capital-1039
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Enquête satisfaction" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absent"
+            ]
+            [
+                rdfs:label "De temps à autre"
+            ]
+            [
+                rdfs:label "Annuelle"
+            ]
+            [
+                rdfs:label "Plan d’action post-enquête"
+            ]
+            [
+                rdfs:label "Suivi des progrès – amélioration permanente"
+            ]
+        )
+    ] .
+
+ques:capital-1040
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Dispositif de fidélisation" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absent"
+            ]
+            [
+                rdfs:label "Quelques éléments"
+            ]
+            [
+                rdfs:label "Existe – classique dans le secteur"
+            ]
+            [
+                rdfs:label "Innovant et suivi"
+            ]
+            [
+                rdfs:label "Exemplaire – très efficace"
+            ]
+        )
+    ] .
+
+ques:capital-1041
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Formation des commerciaux" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """Absente
+Absente """
+            ]
+            [
+                rdfs:label "Partielle"
+            ]
+            [
+                rdfs:label "Pour tous – externalisée"
+            ]
+            [
+                rdfs:label "École de vente interne"
+            ]
+            [
+                rdfs:label "Base de connaissance (proposition type, guides,…)"
+            ]
+        )
+    ] .
+
+ques:capital-1042
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "GRC (gestion de relation client) si pas étudiée dans Système d’Information" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absent"
+            ]
+            [
+                rdfs:label "Logiciel existe – contenu incomplet ou non fiable"
+            ]
+            [
+                rdfs:label "Base de données clients complètes"
+            ]
+            [
+                rdfs:label "Base de donnée clients et prospects à jour"
+            ]
+            [
+                rdfs:label "Grande connaissance clients et prospects"
+            ]
+        )
+    ] .
+
+ques:capital-1043
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Plan commercial annuel" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absent"
+            ]
+            [
+                rdfs:label "Suivi des ventes"
+            ]
+            [
+                rdfs:label "Rédigé par le directeur – suivi sommaire"
+            ]
+            [
+                rdfs:label "Rédaction collective, tableau de bord et suivi mensuel"
+            ]
+            [
+                rdfs:label "Grande fiabilité des prévisions"
+            ]
+        )
+    ] .
+
+ques:capital-1044
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Maturité de la politique Qualité" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Le niveau de qualité de l’entreprise est très faible(parmi les moins bons du secteur)"
+            ]
+            [
+                rdfs:label "Rien n’est formalisé et managé"
+            ]
+            [
+                rdfs:label "Une politique qualité existe, elle est rédigée et contrôlée"
+            ]
+            [
+                rdfs:label "La politique est ancienne et totalement intégrée dans les processus de l’entreprise (elle a le niveau Iso 9001), EFQM ou équivalent"
+            ]
+            [
+                rdfs:label "Niveau de non qualité dans les meilleurs de la profession – réputation qualité très forte"
+            ]
+        )
+    ] .
+
+ques:capital-1045
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1046
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Tâches/fonctions orphelines" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Nombreuses / ne sait pas"
+            ]
+            [
+                rdfs:label "Peu nombreuses"
+            ]
+            [
+                rdfs:label "Assez rares"
+            ]
+            [
+                rdfs:label "Rares"
+            ]
+            [
+                rdfs:label "Rares, recherchées et supprimées"
+            ]
+        )
+    ] .
+
+ques:capital-1047
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Redondance fonctionnelle" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Forte et transversale"
+            ]
+            [
+                rdfs:label "Forte et confinée"
+            ]
+            [
+                rdfs:label "Absente"
+            ]
+            [
+                rdfs:label "Ajustée et confinée"
+            ]
+            [
+                rdfs:label """Ajustée, confinée et solidaire
+Ajustée, confinée et solidaire """
+            ]
+        )
+    ] .
+
+ques:capital-1048
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Centralisation et règles" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Décentralisé sans règles"
+            ]
+            [
+                rdfs:label "Décentralisé avec règles non appliquées"
+            ]
+            [
+                rdfs:label "Centralisé"
+            ]
+            [
+                rdfs:label "Décentralisé contrôlée"
+            ]
+            [
+                rdfs:label "Décentralisé avec règles appliquées"
+            ]
+        )
+    ] .
+
+ques:capital-1049
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Définition de mission des entités" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absence"
+            ]
+            [
+                rdfs:label "Obsolète"
+            ]
+            [
+                rdfs:label "Une ligne"
+            ]
+            [
+                rdfs:label "Claire et synthétique mais confinée"
+            ]
+            [
+                rdfs:label "Connue de tous"
+            ]
+        )
+    ] .
+
+ques:capital-1050
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Organigramme" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Absence"
+            ]
+            [
+                rdfs:label "Obsolète"
+            ]
+            [
+                rdfs:label "A jour mais confiné"
+            ]
+            [
+                rdfs:label "A jour et diffusé mais complexe"
+            ]
+            [
+                rdfs:label "A jour, diffusé et simple"
+            ]
+        )
+    ] .
+
+ques:capital-1051
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Distance partenaires" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Hors zone"
+            ]
+            [
+                rdfs:label "Excentré"
+            ]
+            [
+                rdfs:label "Centré"
+            ]
+            [
+                rdfs:label """Barycentre (centre de gravité)
+Barycentre (centre de gravité) """
+            ]
+            [
+                rdfs:label "Optimisée ou sans objet"
+            ]
+        )
+    ] .
+
+ques:capital-1052
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Distance clientèle" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Hors zone"
+            ]
+            [
+                rdfs:label "Excentré"
+            ]
+            [
+                rdfs:label "Centré"
+            ]
+            [
+                rdfs:label "Barycentre"
+            ]
+            [
+                rdfs:label "Optimisée ou sans objet"
+            ]
+        )
+    ] .
+
+ques:capital-1053
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Au sein de l’organigramme les fonctions suivantes apparaissent clairement en fonction de leur importance stratégique : R&D, Marketing, Supply Chain, SI" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas du tout"
+            ]
+            [
+                rdfs:label """Plutôt pas (peu)
+Plutôt pas (peu) """
+            ]
+            [
+                rdfs:label "Partiellement"
+            ]
+            [
+                rdfs:label "Quasiment"
+            ]
+            [
+                rdfs:label "Absolument"
+            ]
+        )
+    ] .
+
+ques:capital-1054
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1023 ;
+    rdfs:label "Au sein de l’organigramme les fonctions suivantes apparaissent clairement : direction, commercial, production, support" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Pas du tout"
+            ]
+            [
+                rdfs:label """Plutôt pas (peu)
+Plutôt pas (peu) """
+            ]
+            [
+                rdfs:label "Partiellement"
+            ]
+            [
+                rdfs:label "Quasiment"
+            ]
+            [
+                rdfs:label "Absolument"
+            ]
+        )
+    ] .
+
+ques:capital-1055
+    a owl:Class ;
+    rdfs:label "Capital Client" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1056
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Fidélité des clients" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Très peu de clients fidèles"
+            ]
+            [
+                rdfs:label "20 % de clients fidèles"
+            ]
+            [
+                rdfs:label "40 % de clients fidèles"
+            ]
+            [
+                rdfs:label "60 % de clients fidèles"
+            ]
+            [
+                rdfs:label "80 % de clients fidèles"
+            ]
+        )
+    ] .
+
+ques:capital-1057
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Fidélités des clients (fidélité des clients ayant moins de 65 ans)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "0%"
+            ]
+            [
+                rdfs:label "25%"
+            ]
+            [
+                rdfs:label "50%"
+            ]
+            [
+                rdfs:label "80%"
+            ]
+            [
+                rdfs:label "100 % de – 65 ans"
+            ]
+        )
+    ] .
+
+ques:capital-1058
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Satisfaction des clients" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """Moins de 30%
+Moins de 30% """
+            ]
+            [
+                rdfs:label "Entre 30 et 50% "
+            ]
+            [
+                rdfs:label "Entre 50% et 80% "
+            ]
+            [
+                rdfs:label "Entre 80% et 90% "
+            ]
+            [
+                rdfs:label "Plus de 95 % "
+            ]
+        )
+    ] .
+
+ques:capital-1059
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Impayés(les impayés en pourcentage du chiffre d’affaire)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """De 2 à 5 % CA
+De 2 à 5 % CA """
+            ]
+            [
+                rdfs:label """De 0,5 à 2 % CA
+De 0,5 à 2 % CA """
+            ]
+            [
+                rdfs:label """De 0,25 à 0,5 % CA
+De 0,25 à 0,5 % CA """
+            ]
+            [
+                rdfs:label """De 0 à 0,25 % CA
+De 0 à 0,25 % CA """
+            ]
+            [
+                rdfs:label "0 % CA"
+            ]
+        )
+    ] .
+
+ques:capital-1060
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Clientèle aux revenus fragiles (entreprises en difficulté dans la région, etc.)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "90%"
+            ]
+            [
+                rdfs:label "60%"
+            ]
+            [
+                rdfs:label "30%"
+            ]
+            [
+                rdfs:label "10%"
+            ]
+            [
+                rdfs:label "0%"
+            ]
+        )
+    ] .
+
+ques:capital-1061
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Analyse géomarketing ou relevés CRM ou Interview dirigeants" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "0%"
+            ]
+            [
+                rdfs:label "25%"
+            ]
+            [
+                rdfs:label "50%"
+            ]
+            [
+                rdfs:label "80%"
+            ]
+            [
+                rdfs:label "100 % de CSP +"
+            ]
+        )
+    ] .
+
+ques:capital-1062
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Analyse des revendications de la clientèle" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Clientèle complaisante"
+            ]
+            [
+                rdfs:label "Clientèle passive"
+            ]
+            [
+                rdfs:label "Clientèle assez exigeante"
+            ]
+            [
+                rdfs:label "Clientèle exigeante"
+            ]
+            [
+                rdfs:label "La clientèle tire fortement l’entreprise vers le haut : réclamations constructives, demande de nouvelles prestations, forums…)"
+            ]
+        )
+    ] .
+
+ques:capital-1063
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Étude des comportements délictueux de la clientèle" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Allant jusqu’au braquage"
+            ]
+            [
+                rdfs:label "Démarque et impayés importants"
+            ]
+            [
+                rdfs:label "Moyen"
+            ]
+            [
+                rdfs:label "Très peu"
+            ]
+            [
+                rdfs:label "Pas de démarque ni d’impayés"
+            ]
+        )
+    ] .
+
+ques:capital-1064
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Les comportements collectifs (tendance sociétale, mode, …) sont favorables à l’entreprise et à ses produits" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Forte divergence"
+            ]
+            [
+                rdfs:label "Divergence"
+            ]
+            [
+                rdfs:label "Comportement neutre"
+            ]
+            [
+                rdfs:label "Convergence importante"
+            ]
+            [
+                rdfs:label "Très forte convergence"
+            ]
+        )
+    ] .
+
+ques:capital-1065
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Stabilité du marché si la croissance économique du pays est négative ou nulle" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Stable à long terme"
+            ]
+            [
+                rdfs:label "Stable à moyen terme"
+            ]
+            [
+                rdfs:label "Stable à court terme (instable)"
+            ]
+            [
+                rdfs:label "Chaotique et imprévisible"
+            ]
+            [
+                rdfs:label "En retournement"
+            ]
+        )
+    ] .
+
+ques:capital-1066
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Stabilité du marché si la croissance est positive" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """En retournement (sous performance)
+En retournement (sous performance) """
+            ]
+            [
+                rdfs:label "Chaotique et imprévisible"
+            ]
+            [
+                rdfs:label "Stable à court terme (instable)"
+            ]
+            [
+                rdfs:label "Stable à moyen terme"
+            ]
+            [
+                rdfs:label "Stable à long terme"
+            ]
+        )
+    ] .
+
+ques:capital-1067
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Dynamique de marché" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "En décroissance"
+            ]
+            [
+                rdfs:label "Stable"
+            ]
+            [
+                rdfs:label """Croissance faible
+Croissance faible """
+            ]
+            [
+                rdfs:label """croissance entre 3% et 10%
+croissance entre 3% et 10% """
+            ]
+            [
+                rdfs:label "Plus de 10 %"
+            ]
+        )
+    ] .
+
+ques:capital-1068
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Taille du marché accessible" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """Absent (inéxistant)
+Absent (inéxistant) """
+            ]
+            [
+                rdfs:label "Local"
+            ]
+            [
+                rdfs:label "Régional"
+            ]
+            [
+                rdfs:label "National"
+            ]
+            [
+                rdfs:label "Mondial"
+            ]
+        )
+    ] .
+
+ques:capital-1069
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Satisfaction des clients (client très satisfaits et satisfaits)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """Moins de 30%
+Moins de 30% """
+            ]
+            [
+                rdfs:label """Entre 30 et 50%
+Entre 30 et 50% """
+            ]
+            [
+                rdfs:label """Entre 50% et 80%
+Entre 50% et 80% """
+            ]
+            [
+                rdfs:label """Entre 80% et 90%
+Entre 80% et 90% """
+            ]
+            [
+                rdfs:label """Plus de 95 %
+Plus de 95 % """
+            ]
+        )
+    ] .
+
+ques:capital-1070
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Fidélité" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """Moins de 30%
+Moins de 30% """
+            ]
+            [
+                rdfs:label """Entre 30 et 50%
+Entre 30 et 50% """
+            ]
+            [
+                rdfs:label """Entre 50% et 80%
+Entre 50% et 80% """
+            ]
+            [
+                rdfs:label """Entre 80% et 90%
+Entre 80% et 90% """
+            ]
+            [
+                rdfs:label """Plus de 95 %
+Plus de 95 % """
+            ]
+        )
+    ] .
+
+ques:capital-1071
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Notre taux de marge nette (équivalent EBE) chez le client" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Nul ou négatif"
+            ]
+            [
+                rdfs:label "2%"
+            ]
+            [
+                rdfs:label "5%"
+            ]
+            [
+                rdfs:label "10%"
+            ]
+            [
+                rdfs:label "15%"
+            ]
+        )
+    ] .
+
+ques:capital-1072
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "% de clients à forte notoriété" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Tous les clients de l’entreprise ont une mauvaise réputation"
+            ]
+            [
+                rdfs:label "Certains clients de l’entreprise ont une mauvaise réputation (notoriété négative)"
+            ]
+            [
+                rdfs:label "L’entreprise travaille avec des clients qui (pour l’essentiel) n’ont pas de notoriété particulière"
+            ]
+            [
+                rdfs:label "Une majorité des clients sont leaders sur leur marché"
+            ]
+            [
+                rdfs:label "Tous les clients sont leaders sur leur marché"
+            ]
+        )
+    ] .
+
+ques:capital-1073
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Note Coface moyenne" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "5"
+            ]
+            [
+                rdfs:label "10"
+            ]
+            [
+                rdfs:label "15"
+            ]
+            [
+                rdfs:label "20"
+            ]
+        )
+    ] .
+
+ques:capital-1074
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Rentabilité d’exploitation moyenne" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Nulle ou négative"
+            ]
+            [
+                rdfs:label "2%"
+            ]
+            [
+                rdfs:label "5%"
+            ]
+            [
+                rdfs:label "10%"
+            ]
+            [
+                rdfs:label "15%"
+            ]
+        )
+    ] .
+
+ques:capital-1075
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Si pas de données sectorielles, en moyenne le volume du portefeuille est de :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Vide"
+            ]
+            [
+                rdfs:label "Un mois de CA"
+            ]
+            [
+                rdfs:label "3 mois"
+            ]
+            [
+                rdfs:label "6 mois"
+            ]
+            [
+                rdfs:label "1 an et plus"
+            ]
+        )
+    ] .
+
+ques:capital-1076
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "En moyenne le volume du portefeuille est de :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "0.5 fois volume moyen du secteur"
+            ]
+            [
+                rdfs:label "Volume moyen du secteur"
+            ]
+            [
+                rdfs:label "1,5 fois volume moyen du secteur"
+            ]
+            [
+                rdfs:label "2 fois le volume moyen du secteur"
+            ]
+        )
+    ] .
+
+ques:capital-1077
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Poids du premier client dans le CA" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "50% et plus"
+            ]
+            [
+                rdfs:label "30% et plus"
+            ]
+            [
+                rdfs:label "20%"
+            ]
+            [
+                rdfs:label "10%"
+            ]
+            [
+                rdfs:label "5%"
+            ]
+        )
+    ] .
+
+ques:capital-1078
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Stabilité du marché B to B si la croissance est négative ou nulle :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """En retournement (sous performance)
+En retournement (sous performance) """
+            ]
+            [
+                rdfs:label "Chaotique et imprévisible"
+            ]
+            [
+                rdfs:label "Stable a court terme (instable)"
+            ]
+            [
+                rdfs:label "Stable à moyen terme"
+            ]
+            [
+                rdfs:label "Stable à long terme"
+            ]
+        )
+    ] .
+
+ques:capital-1079
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Stabilité du marché B to B si la croissance est positive :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """En retournement (sous performance)
+En retournement (sous performance) """
+            ]
+            [
+                rdfs:label "Chaotique et imprévisible"
+            ]
+            [
+                rdfs:label "Stable à court terme (instable)"
+            ]
+            [
+                rdfs:label "Stable à moyen terme"
+            ]
+            [
+                rdfs:label "Stable à long terme"
+            ]
+        )
+    ] .
+
+ques:capital-1080
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Impact de la réglementation sur la croissance :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Fort impact négatif confirmé"
+            ]
+            [
+                rdfs:label "Pas d’impact et marché stable"
+            ]
+            [
+                rdfs:label "Faible impact (quelques %)"
+            ]
+            [
+                rdfs:label "Impact positif (10 % de croissance attendue)"
+            ]
+            [
+                rdfs:label "Fort impact positif (plus de 10 % de croissance attendue)"
+            ]
+        )
+    ] .
+
+ques:capital-1081
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-1055 ;
+    rdfs:label "Croissance :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "En décroissance"
+            ]
+            [
+                rdfs:label "Stable"
+            ]
+            [
+                rdfs:label "Quelques %"
+            ]
+            [
+                rdfs:label "10%"
+            ]
+            [
+                rdfs:label "Plus de 10 %"
+            ]
+        )
+    ] .
+
+ques:capital-1082
+    a owl:Class ;
+    rdfs:label "Identification de l'entreprise" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1083
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1084
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1085
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1086
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1087
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1088
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1089
+    a owl:ObjectProperty ;
+    rdfs:comment "Totale et par région :", "Veuillez écrire votre(vos) réponse(s) ici :", " " ;
+    rdfs:domain ques:capital-1082 ;
+    rdfs:label "Marge brute annuelle :" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Total :"
+            ]
+            [
+                rdfs:label "Europe (EU) :"
+            ]
+            [
+                rdfs:label "US/Canada :"
+            ]
+            [
+                rdfs:label "Reste du monde :"
+            ]
+        )
+    ] .
+
+ques:capital-1090
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1091
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1092
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1093
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1094
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-1095
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-fg
+    ques:properties <ques:capital-1001-user-prop>, <ques:capital-1008-user-prop>, <ques:capital-1012-user-prop>, <ques:capital-1021-user-prop>, <ques:capital-1023-user-prop>, <ques:capital-1055-user-prop>, <ques:capital-1082-user-prop> ;
+    a ques:FormGroup ;
+    rdfs:label "Questions sur le capital immatériel."@fr .
+
+<ques:capital-1001-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1001 .
+
+<ques:capital-1008-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1008 .
+
+<ques:capital-1012-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1012 .
+
+<ques:capital-1021-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1021 .
+
+<ques:capital-1023-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1023 .
+
+<ques:capital-1055-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1055 .
+
+<ques:capital-1082-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1082 .
+

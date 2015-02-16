@@ -16,6 +16,7 @@ trait RDFWriter {
   val prefix = "ques:" // http://www.bizinnov.com/ontologies/quest.owl.ttl#"
   /** current index for created URI's */
   var index=0
+  
   /** last header for each level */
   val headers = scala.collection.mutable.ArrayBuffer.fill(20)("")
   headers(0) = "ques:capital-0"
@@ -30,7 +31,8 @@ trait RDFWriter {
   /** Creates a Group representation of the document. */
   def toTTL(blocks: Seq[Block]): String = {
     implicit val writer = new StringWriter
-    if (index == 0) writer.write("""
+//    if (index == 0) 
+    writer.write("""
       @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
       @prefix owl:  <http://www.w3.org/2002/07/owl#>.
       @prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
@@ -84,7 +86,6 @@ trait RDFWriter {
         writeTriple(uri, prefix+"header", t)
         if( h.level >0 )
           writeTripleURI( lastHeader.uri, prefix+"subheader", uri)
-//          writeTripleURI( headers(h.level-1), prefix+"subheader", uri)
         precedingHeader = new HeaderResource(h, uri)
       case _ =>
     }
@@ -100,8 +101,14 @@ trait RDFWriter {
   }
   
   /** write a literal Triple; subject and pred are with an Turtle prefix */
-  def writeTriple(subject:String, pred:String, objet:String ) ( implicit writer : Writer ) =
-    writer.write( s"""$subject $pred ""\"${objet.replaceFirst("\n$", "")}""\" .\n""")        
+  def writeTriple(subject:String, pred:String, objet:String ) ( implicit writer : Writer ) = {
+    if( objet.contains("\\"))
+      println(""" objet.contains("\\") """)
+      val o2 = objet.replaceFirst("""\n$""", "")
+      val o3 = """(?s)\\""".r replaceAllIn ( o2, "" )
+      // .replaceAll("\\\n", "\n")
+    writer.write( s"""$subject $pred ""\"${o3}""\" .\n""")
+  }
 
   /** write a URI Triple; subject and pred are with an Turtle prefix */
   def writeTripleURI(subject:String, pred:String, objet:String ) ( implicit writer : Writer ) =
