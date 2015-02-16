@@ -1,3 +1,4 @@
+# Transformation des données
 
 Les fichiers originels pour LimeSurvey sont traités par pandoc pour obtenir des fichiers Markdown UFT-8 :
 
@@ -9,6 +10,8 @@ Ensuite il convient d'enlever les images qui accompagnent les listes à boulette
 
     1,$s/!\[\](data:image.*)//
     1,$s/   //
+    1,$s/ {.P1}//
+    1,$s/ {.P29}//
 
 On  obtient les 3 fichiers Markdown qui sont sous git.
 
@@ -17,4 +20,12 @@ pour obtenir:
 
     Evaluation_capital_opérationnel.ttl
 etc.
+
+Ensuite on utilise une base de règles (questionnaire2owl.q.n3) avec Euler / EYE pour transformer afin de créer le vocabulaire OWL et le groupe de formulaires pour sematic\_forms .
+
+Enfin, on utilise rapper (installer raptor2-utils sur Linux) pour reformater joliment le vocabulaire OWL obtenu:
+    Evaluation_capital_opérationnel.owl.ttl
+
+
+Tout cela est rassemblé dans un script: `generate_form.sh` , qui prend en argument un fichier Markdown.
 

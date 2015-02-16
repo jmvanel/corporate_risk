@@ -26,23 +26,14 @@ import org.w3.banana.RDFOpsModule
 object Application extends ApplicationTrait[Jena, Dataset]
   with RDFStoreLocalJena1Provider
 
-//<<<<<<< HEAD
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with UserDataTrait[Rdf, DATASET] {
-  //=======
-  //object Application extends Controller with Secured with RDFCache with UserVocab {
-  //>>>>>>> 61bd3ea59a9bb3b2fb11b356c019904dbd1d07b0
+
   lazy val tableView = new TableView {}
   import ops._
 
   def index = withUser { implicit user =>
     implicit request =>
-      //<<<<<<< HEAD
-      //      Ok(views.html.index(UserData.getUserData(user).map {
-      //        case FormUserData(uri, label) =>
-      //          (uri.toString(), label,
-      //            models.ResponseAnalysis.responsesCount(user, uri.toString)
-      //=======
       Ok(views.html.index(Seq(
         ("Pré-diagnostique", fromUri(bizinnovQuestionsVocabPrefix("risk"))),
         ("Diagnostique", fromUri(bizinnovQuestionsVocabPrefix("capital"))) // 
@@ -65,8 +56,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
       println("editURI: " + request)
-      Ok(views.html.form(tableView.htmlForm(uri, editable = true, graphURI = user.getURI().toString() // fromUri(user.getURI())
-      //       lang = chooseLanguage(request)
+      Ok(views.html.form(tableView.htmlForm(uri, editable = true, graphURI = user.getURI().toString()
       ).get))
 
   }
@@ -89,7 +79,6 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
           }
         case _ => throw new IllegalArgumentException
       }
-
       Redirect(routes.Application.index.url);
   }
 
@@ -114,7 +103,6 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
       case "pie" => PieChart(Vector(("oui", 254), ("non", 167), ("NSPP", 88)))
       case "radar" => SpiderWebChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
     }
-
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 

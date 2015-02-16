@@ -1,4 +1,4 @@
-Evaluation du capital opérationnel {.P29}
+Evaluation du capital opérationnel
 ==================================
 
 Ce questionnaire a pour but de permettre l'évaluation du capital
@@ -12,11 +12,11 @@ capital de marque 
 
 Il y a 34 questions dans ce questionnaire
 
-Capital Naturel {.P1}
+Capital Naturel
 ---------------
 
 
-#### Qualité de la ressource (air) {.P1}
+#### Qualité de la ressource (air)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -27,7 +27,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     L’air n’est jamais pollué
 
 
-#### Qualité de la ressource (eau) {.P1}
+#### Qualité de la ressource (eau)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -40,7 +40,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Grande pureté tant en surface que dans les nappes phréatiques
 
 
-#### Abondance de la ressource {.P1}
+#### Abondance de la ressource
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -51,7 +51,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Ressource abondante en permanence
 
 
-#### Matières Premières {.P1}
+#### Matières Premières
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -67,7 +67,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     grande qualité et bon marché à long terme
 
 
-#### Evaluation du climat {.P1}
+#### Evaluation du climat
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -80,7 +80,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     Les sites de l’entreprise sont implantés dans des régions très
 
 
-#### Géographie et climat {.P1}
+#### Géographie et climat
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -95,7 +95,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     attractives du point de vue géographique. Exemple: Bretagne, Alpes,
     Côte d’Azur…
 
-Capital sociétal {.P1}
+Capital sociétal
 ----------------
 
 Sont regroupées les rubriques :
@@ -113,7 +113,7 @@ RH locales et services (potentiel local RH)
  
 
 
-#### Sport, Culture, loisirs {.P1}
+#### Sport, Culture, loisirs
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -129,7 +129,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     riches sur le plan culturel, sportif ou de loisirs
 
 
-#### Partenaires publics {.P1}
+#### Partenaires publics
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -147,7 +147,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     liés à ses métiers
 
 
-#### Accès et infrastructures {.P1}
+#### Accès et infrastructures
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -158,7 +158,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Autoroute, gare TGV, aéroport à 20KM
 
 
-#### RH locales et Services (Services Publics) {.P1}
+#### RH locales et Services (Services Publics)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -173,7 +173,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     les salariés (hôpitaux, écoles,…) sont d’excellente qualité
 
 
-#### RH locales et Services (Potentiel local RH) {.P1}
+#### RH locales et Services (Potentiel local RH)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -192,10 +192,10 @@ Veuillez sélectionner une seule des propositions suivantes :
     phase avec les métiers de l’entreprise. Le recrutement ne pose
     jamais de problèmes
 
-Capital de Marque {.P1}
+Capital de Marque
 -----------------
 
-#### Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}
+#### Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -206,7 +206,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Il n’y a aucun problème de ce type
 
 
-#### Protection juridique des noms de produits ou d’offre {.P1}
+#### Protection juridique des noms de produits ou d’offre
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -219,7 +219,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     veille
 
 
-#### Protections des noms de domaine internet {.P1}
+#### Protections des noms de domaine internet
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -232,7 +232,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     domaines, la veille est assurée
 
 
-#### Protection juridique du nom de l’entreprise {.P1}
+#### Protection juridique du nom de l’entreprise
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -245,7 +245,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     veille
 
 
-#### La marque peut-elle être confondue avec une autre marque ? {.P1}
+#### La marque peut-elle être confondue avec une autre marque ?
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -259,7 +259,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     autre
 
 
-#### La marque apporte-t-elle un supplément d’image à ses clients ? (Influence) {.P1}
+#### La marque apporte-t-elle un supplément d’image à ses clients ? (Influence)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -272,7 +272,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     nombreux films à dessein
 
 
-#### Réputation de l’entreprise {.P1}
+#### Réputation de l’entreprise
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -284,7 +284,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Excellente image de la marque : toujours très positive, partout
 
 
-#### Budgets de promotion de la marque (mesure de la notoriété) {.P1}
+#### Budgets de promotion de la marque (mesure de la notoriété)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -295,9 +295,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Budget énorme: sponsoring voile, F1, pub télé, affichage
 
 
-#### Age (mesure de la notoriété) {.P1}
+#### Age (mesure de la notoriété)
 
-#### Il s’agit de l’âge de la marque {.P1}
+#### Il s’agit de l’âge de la marque
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -318,7 +318,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Marque leader
 
 
-#### La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}
+#### La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance))
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -329,25 +329,25 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Absolument
 
 
-### []Nombre d'employés {.P1}
+### []Nombre d'employés
 
 Veuillez écrire votre réponse ici :
 
  
 
-### []Nombre de sites : {.P1}
+### []Nombre de sites :
 
 Veuillez écrire votre réponse ici :
 
  
 
-### []Chiffre d'affaire : {.P1}
+### []Chiffre d'affaire :
 
 Veuillez écrire votre réponse ici :
 
  
 
-### []Marge brute annuelle : {.P1}
+### []Marge brute annuelle :
 
 Veuillez écrire votre(vos) réponse(s) ici :
 

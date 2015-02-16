@@ -1,289 +1,650 @@
-#Processed by Id: euler.yap 7602 2014-12-10 20:26:19Z josd
-#eye --nope Evaluation_capital_opérationnel.ttl questionnaire2owl.n3 --query questionnaire2owl.q.n3
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
-PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
-PREFIX list: <http://www.w3.org/2000/10/swap/list#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX fn: <http://www.w3.org/2005/xpath-functions#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+ques:capital-1
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
 
-ques:capital-3 a owl:ObjectProperty.
-ques:capital-4 a owl:ObjectProperty.
-ques:capital-5 a owl:ObjectProperty.
-ques:capital-6 a owl:ObjectProperty.
-ques:capital-7 a owl:ObjectProperty.
-ques:capital-8 a owl:ObjectProperty.
-ques:capital-10 a owl:ObjectProperty.
-ques:capital-11 a owl:ObjectProperty.
-ques:capital-12 a owl:ObjectProperty.
-ques:capital-13 a owl:ObjectProperty.
-ques:capital-14 a owl:ObjectProperty.
-ques:capital-16 a owl:ObjectProperty.
-ques:capital-17 a owl:ObjectProperty.
-ques:capital-18 a owl:ObjectProperty.
-ques:capital-19 a owl:ObjectProperty.
-ques:capital-20 a owl:ObjectProperty.
-ques:capital-21 a owl:ObjectProperty.
-ques:capital-22 a owl:ObjectProperty.
-ques:capital-23 a owl:ObjectProperty.
-ques:capital-25 a owl:ObjectProperty.
-ques:capital-26 a owl:ObjectProperty.
-ques:capital-fg a ques:FormGroup.
-ques:capital-2 a owl:Class.
-<ques:capital-2-user-prop> a owl:ObjectProperty.
-ques:capital-9 a owl:Class.
-<ques:capital-9-user-prop> a owl:ObjectProperty.
-ques:capital-15 a owl:Class.
-<ques:capital-15-user-prop> a owl:ObjectProperty.
-ques:capital-3 rdfs:label "Qualité de la ressource (air) {.P1}".
-ques:capital-4 rdfs:label "Qualité de la ressource (eau) {.P1}".
-ques:capital-5 rdfs:label "Abondance de la ressource {.P1}".
-ques:capital-6 rdfs:label "Matières Premières {.P1}".
-ques:capital-7 rdfs:label "Evaluation du climat {.P1}".
-ques:capital-8 rdfs:label "Géographie et climat {.P1}".
-ques:capital-10 rdfs:label "Sport, Culture, loisirs {.P1}".
-ques:capital-11 rdfs:label "Partenaires publics {.P1}".
-ques:capital-12 rdfs:label "Accès et infrastructures {.P1}".
-ques:capital-13 rdfs:label "RH locales et Services (Services Publics) {.P1}".
-ques:capital-14 rdfs:label "RH locales et Services (Potentiel local RH) {.P1}".
-ques:capital-16 rdfs:label "Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif) {.P1}".
-ques:capital-17 rdfs:label "Protection juridique des noms de produits ou d’offre {.P1}".
-ques:capital-18 rdfs:label "Protections des noms de domaine internet {.P1}".
-ques:capital-19 rdfs:label "Protection juridique du nom de l’entreprise {.P1}".
-ques:capital-20 rdfs:label "La marque peut-elle être confondue avec une autre marque ? {.P1}".
-ques:capital-21 rdfs:label "La marque apporte-t-elle un supplément d’image à ses clients ? (Influence) {.P1}".
-ques:capital-22 rdfs:label "Réputation de l’entreprise {.P1}".
-ques:capital-23 rdfs:label "Budgets de promotion de la marque (mesure de la notoriété) {.P1}".
-ques:capital-25 rdfs:label "Il s’agit de l’âge de la marque {.P1}".
-ques:capital-26 rdfs:label "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance)) {.P1}".
-ques:capital-fg rdfs:label "Questions sur le capital immatériel."@fr.
-_:sk0 rdfs:label "Les alertes sont très fréquentes et les niveaux atteints sont très élevés".
-_:sk1 rdfs:label " Les alertes sont fréquentes".
-_:sk2 rdfs:label " Les alertes sont assez fréquentes".
-_:sk3 rdfs:label " Les alertes sont très rares".
-_:sk4 rdfs:label " L’air n’est jamais pollué".
-_:sk5 rdfs:label " L’eau est de très mauvaise qualité en surface et en profondeur, les\nteneurs en nitrates, hydrocarbures, pesticides…sont très élevées".
-_:sk6 rdfs:label " L’eau est polluée en surface et en profondeur (nitrates,\nhydrocarbures, pesticides)".
-_:sk7 rdfs:label " L’eau est de qualité acceptable en profondeur mais pas en surface".
-_:sk8 rdfs:label " Bonne qualité en surface et en profondeur".
-_:sk9 rdfs:label " Grande pureté tant en surface que dans les nappes phréatiques".
-_:sk10 rdfs:label " Il y a des restrictions d’eau très fréquentes dans l’année".
-_:sk11 rdfs:label " Il y a des restrictions d’eau souvent en été".
-_:sk12 rdfs:label " Il y a des restrictions d’eau de temps en temps en été".
-_:sk13 rdfs:label " Des risques de restriction ont déjà été évoqués mais n’ont pas eu lieu".
-_:sk14 rdfs:label " Ressource abondante en permanence".
-_:sk15 rdfs:label " La ressource est devenue rare et le métier de l’entreprise est de ce\nfait en danger".
-_:sk16 rdfs:label " L’approvisionnement fait régulièrement question, l’entreprise a déjà\nsouffert de ruptures".
-_:sk17 rdfs:label " La qualité et le prix posent des problèmes réguliers qui iront en\ns’intensifiant".
-_:sk18 rdfs:label " Quelques petits problèmes de qualité ou de prix peuvent se\nmanifester à 5 ans".
-_:sk19 rdfs:label " Les matières premières que l’entreprise emploie sont abondantes, de\ngrande qualité et bon marché à long terme".
-_:sk20 rdfs:label " Nord".
-_:sk21 rdfs:label " Bretagne, Est, Massif Central, Normandie".
-_:sk22 rdfs:label " Ile de France".
-_:sk23 rdfs:label " Aquitaine, Rhône Alpes".
-_:sk24 rdfs:label " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue climat : Région PACA, Midi Pyrénées\nLes sites de l’entreprise sont implantés dans des régions très".
-_:sk25 rdfs:label " L’entreprise est implantée dans des régions ou peu de personnes\nsouhaitent s’installer : Creuse, Allier, Ardennes".
-_:sk26 rdfs:label " L’entreprise est implantée dans des régions jugées peu attractives\n(Nord, Picardie,…)".
-_:sk27 rdfs:label " L’attractivité de la région est moyenne compte tenu de la géographie\nphysique (Île de France, Lorraine,…)".
-_:sk28 rdfs:label " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…".
-_:sk29 rdfs:label " Les sites de l’entreprise sont implantés dans des régions très\nattractives du point de vue géographique. Exemple: Bretagne, Alpes,\nCôte d’Azur…".
-_:sk30 rdfs:label " Toutes les régions d’implantation de l’entreprise sont très pauvres\nsur le plan sportif, culturel ou des loisirs".
-_:sk31 rdfs:label " Les trois quarts des implantations sont dans des régions pauvres\ndans ce domaine".
-_:sk32 rdfs:label " La moitié des implantations présente peu de potentiel dans ce\ndomaine".
-_:sk33 rdfs:label " Les régions d’implantation sont pour la plupart riches sur le plan\ndu sport, de la culture et des loisirs".
-_:sk34 rdfs:label " Tous les sites de l’entreprise sont implantés dans des régions très\nriches sur le plan culturel, sportif ou de loisirs".
-_:sk35 rdfs:label " L’entreprise est très éloignée de ses partenaires publics (à plus de".
-_:sk36 rdfs:label " L’entreprise est éloignée de ses partenaires publics (à plus de 200\nkm)".
-_:sk37 rdfs:label " Les partenaires publics importants pour l’entreprise sont présents\ndans la région (à 100 km)".
-_:sk38 rdfs:label " L’entreprise a un accès facile (moins de 50 km) aux partenaires\npublics importants pour elle".
-_:sk39 rdfs:label " L’entreprise est implantée à proximité de partenaires publics\nimportants pour elle. Exemple: pôles de compétitivité, de\ntechnopôles, de centres de recherche ou de formation professionnelle\nliés à ses métiers".
-_:sk40 rdfs:label " Autoroute à + de 50 KM, pas de gare".
-_:sk41 rdfs:label " Autoroute à + de 50 KM, Gare TER à 20 KM".
-_:sk42 rdfs:label " Autoroute proche".
-_:sk43 rdfs:label " Autoroute et gare TGV à 20 KM".
-_:sk44 rdfs:label " Autoroute, gare TGV, aéroport à 20KM".
-_:sk45 rdfs:label " Les zones ou l’entreprise est implantée sont très pauvres en service\npublics".
-_:sk46 rdfs:label " Les services publics lorsqu’ils existent sont de mauvaise qualité".
-_:sk47 rdfs:label " Certains services publics manquent (accès à 50 km) ou sont de\nqualité moyenne".
-_:sk48 rdfs:label " Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour\nles salariés (hôpitaux, écoles,…) sont bons".
-_:sk49 rdfs:label " Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour\nles salariés (hôpitaux, écoles,…) sont d’excellente qualité".
-_:sk50 rdfs:label " Les différents sites de l’entreprise sont implantés dans des zones\nrurales très éloignées de centres urbains. Les problèmes de\nrecrutement qui en résultent sont très sérieux".
-_:sk51 rdfs:label " Le recrutement est difficile à cause de l’implantation de\nl’entreprise majoritairement dans des petites agglomérations".
-_:sk52 rdfs:label " La démographie des régions d’implantation de l’entreprise fait que\ndes problèmes de recrutement significatifs se posent".
-_:sk53 rdfs:label " Certains sites de l’entreprise sont implantés dans des villes de\ntaille moyenne (50 000 habitants). Le recrutement pose parfois\nquelques problèmes de ce fait mais à la marge".
-_:sk54 rdfs:label " Tous les sites de l’entreprise sont implantés à proximité de grands\ncentres urbains où il existe des écoles ou centres de formation en\nphase avec les métiers de l’entreprise. Le recrutement ne pose\njamais de problèmes".
-_:sk55 rdfs:label " Les produits ou services actuels ont une influence négative sur la\nmarque".
-_:sk56 rdfs:label " Les produits ou services ont une influence très négative sur la\nmarque".
-_:sk57 rdfs:label " Il n’y a aucun problème de ce type".
-_:sk58 rdfs:label " Pas de dépôt INPI, pas de veille".
-_:sk59 rdfs:label " Mauvaise qualité du dépôt de la marque, pas de veille.".
-_:sk60 rdfs:label " Marque protégée, pas de cluster, marque assez jeune, pas de veille.".
-_:sk61 rdfs:label " Veille insuffisante, reste comme ci-dessus".
-_:sk62 rdfs:label " Marque protégée, par un cluster de dépôts, large périmètre de\nprotection, forte ancienneté, aucun plagiat, bon dispositif de\nveille".
-_:sk63 rdfs:label " Marque absente sur internet".
-_:sk64 rdfs:label " Le nom de domaine est différent du nom de l’entreprise".
-_:sk65 rdfs:label " Pas de cluster , pas de veille".
-_:sk66 rdfs:label " La veille est insuffisante, reste comme ci-dessus".
-_:sk67 rdfs:label " Le nom de domaine principal est égal au nom de l’entreprise ou de la\nmarque commerciale phare, il est protégé par un cluster de nom de\ndomaines, la veille est assurée".
-_:sk68 rdfs:label " Pas de dépôt INPI, pas de veille".
-_:sk69 rdfs:label " Mauvaise qualité du dépôt de la marque, pas de veille.".
-_:sk70 rdfs:label " Marque protégée, pas de cluster, marque assez jeune, pas de veille.".
-_:sk71 rdfs:label " Veille insuffisante, reste comme ci-dessus".
-_:sk72 rdfs:label " Marque protégée, par un cluster de dépôts, large périmètre de\nprotection, forte ancienneté, aucun plagiat, bon dispositif de\nveille".
-_:sk73 rdfs:label " Pas de marque : produit générique".
-_:sk74 rdfs:label " Marque peu singulière souvent prise pour une autre".
-_:sk75 rdfs:label " 10 % des consommateurs confondent notre marque avec celle d’un\nconcurrent".
-_:sk76 rdfs:label " Des confusions rares peuvent exister avec une autre marque dans un\nsecteur très distant".
-_:sk77 rdfs:label " Forte personnalité de la marque - n’est jamais confondue avec une\nautre".
-_:sk78 rdfs:label " Les clients cachent le fait qu’ils achètent cette marque".
-_:sk79 rdfs:label " Les clients ne montrent pas qu’ils achètent cette marque".
-_:sk80 rdfs:label " La marque n’a pas d’influence sur l’ego de ses clients".
-_:sk81 rdfs:label " En général les clients aiment montrer qu’ils possèdent un produit\nayant cette marque".
-_:sk82 rdfs:label " La marque est une référence socioculturelle utilisée dans de\nnombreux films à dessein".
-_:sk83 rdfs:label " La marque en sursis : a souffert de crises graves et largement\nmédiatisées".
-_:sk84 rdfs:label " La marque rencontre des problèmes de réputation ou d’image".
-_:sk85 rdfs:label " Réputation neutre".
-_:sk86 rdfs:label " Bonne réputation".
-_:sk87 rdfs:label " Excellente image de la marque : toujours très positive, partout".
-_:sk88 rdfs:label " Aucun investissement".
-_:sk89 rdfs:label " Documentation marketing diffusée par l’entreprise".
-_:sk90 rdfs:label " Presse écrite".
-_:sk91 rdfs:label " Affichage, pub télé, presse écrite".
-_:sk92 rdfs:label " Budget énorme: sponsoring voile, F1, pub télé, affichage".
-_:sk93 rdfs:label " 6 mois".
-_:sk94 rdfs:label " 5 ans".
-_:sk95 rdfs:label " 10 ans".
-_:sk96 rdfs:label " 50 ans".
-_:sk97 rdfs:label " Marque centenaire".
-_:sk98 rdfs:label " Notoriété directe".
-_:sk99 rdfs:label " Marque inconnue".
-_:sk100 rdfs:label " Sort parfois dans les enquêtes de notoriété assistée".
-_:sk101 rdfs:label " Sort souvent dans les enquêtes de notoriété assistée".
-_:sk102 rdfs:label " Sort presque toujours dans les enquêtes de notoriété spontanée".
-_:sk103 rdfs:label " Marque leader".
-_:sk104 rdfs:label " Pas du tout".
-_:sk105 rdfs:label " Globalement Non".
-_:sk106 rdfs:label " Partiellement".
-_:sk107 rdfs:label " Globalement Oui".
-_:sk108 rdfs:label " Absolument".
-ques:capital-2 rdfs:label "Capital Naturel {.P1}".
-ques:capital-9 rdfs:label "Capital sociétal {.P1}".
-ques:capital-15 rdfs:label "Capital de Marque {.P1}".
-ques:capital-3 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-4 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-5 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-6 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-7 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-8 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-10 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-11 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-12 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-13 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-14 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-16 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-17 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-18 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-19 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-20 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-21 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-22 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-23 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-25 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-ques:capital-26 rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :".
-<ques:capital-2-user-prop> rdfs:domain ques:User.
-ques:capital-3 rdfs:domain ques:capital-2.
-ques:capital-4 rdfs:domain ques:capital-2.
-ques:capital-5 rdfs:domain ques:capital-2.
-ques:capital-6 rdfs:domain ques:capital-2.
-ques:capital-7 rdfs:domain ques:capital-2.
-ques:capital-8 rdfs:domain ques:capital-2.
-<ques:capital-9-user-prop> rdfs:domain ques:User.
-ques:capital-10 rdfs:domain ques:capital-9.
-ques:capital-11 rdfs:domain ques:capital-9.
-ques:capital-12 rdfs:domain ques:capital-9.
-ques:capital-13 rdfs:domain ques:capital-9.
-ques:capital-14 rdfs:domain ques:capital-9.
-<ques:capital-15-user-prop> rdfs:domain ques:User.
-ques:capital-16 rdfs:domain ques:capital-15.
-ques:capital-17 rdfs:domain ques:capital-15.
-ques:capital-18 rdfs:domain ques:capital-15.
-ques:capital-19 rdfs:domain ques:capital-15.
-ques:capital-20 rdfs:domain ques:capital-15.
-ques:capital-21 rdfs:domain ques:capital-15.
-ques:capital-22 rdfs:domain ques:capital-15.
-ques:capital-23 rdfs:domain ques:capital-15.
-ques:capital-25 rdfs:domain ques:capital-15.
-ques:capital-26 rdfs:domain ques:capital-15.
-<ques:capital-2-user-prop> rdfs:range ques:capital-2.
-<ques:capital-9-user-prop> rdfs:range ques:capital-9.
-<ques:capital-15-user-prop> rdfs:range ques:capital-15.
-ques:capital-1 rdfs:range _:sk109.
-ques:capital-2 rdfs:range _:sk110.
-ques:capital-3 rdfs:range _:sk111.
-ques:capital-4 rdfs:range _:sk112.
-ques:capital-5 rdfs:range _:sk113.
-ques:capital-6 rdfs:range _:sk114.
-ques:capital-7 rdfs:range _:sk115.
-ques:capital-8 rdfs:range _:sk116.
-ques:capital-9 rdfs:range _:sk117.
-ques:capital-10 rdfs:range _:sk118.
-ques:capital-11 rdfs:range _:sk119.
-ques:capital-12 rdfs:range _:sk120.
-ques:capital-13 rdfs:range _:sk121.
-ques:capital-14 rdfs:range _:sk122.
-ques:capital-15 rdfs:range _:sk123.
-ques:capital-16 rdfs:range _:sk124.
-ques:capital-17 rdfs:range _:sk125.
-ques:capital-18 rdfs:range _:sk126.
-ques:capital-19 rdfs:range _:sk127.
-ques:capital-20 rdfs:range _:sk128.
-ques:capital-21 rdfs:range _:sk129.
-ques:capital-22 rdfs:range _:sk130.
-ques:capital-23 rdfs:range _:sk131.
-ques:capital-24 rdfs:range _:sk132.
-ques:capital-25 rdfs:range _:sk133.
-ques:capital-26 rdfs:range _:sk134.
-ques:capital-27 rdfs:range _:sk135.
-ques:capital-28 rdfs:range _:sk136.
-ques:capital-29 rdfs:range _:sk137.
-ques:capital-30 rdfs:range _:sk138.
-ques:capital-fg ques:properties <ques:capital-2-user-prop>.
-ques:capital-fg ques:properties <ques:capital-9-user-prop>.
-ques:capital-fg ques:properties <ques:capital-15-user-prop>.
-_:sk109 owl:oneOf ().
-_:sk110 owl:oneOf ().
-_:sk111 owl:oneOf (_:sk0 _:sk1 _:sk2 _:sk3 _:sk4).
-_:sk112 owl:oneOf (_:sk5 _:sk6 _:sk7 _:sk8 _:sk9).
-_:sk113 owl:oneOf (_:sk10 _:sk11 _:sk12 _:sk13 _:sk14).
-_:sk114 owl:oneOf (_:sk15 _:sk16 _:sk17 _:sk18 _:sk19).
-_:sk115 owl:oneOf (_:sk20 _:sk21 _:sk22 _:sk23 _:sk24).
-_:sk116 owl:oneOf (_:sk25 _:sk26 _:sk27 _:sk28 _:sk29).
-_:sk117 owl:oneOf ().
-_:sk118 owl:oneOf (_:sk30 _:sk31 _:sk32 _:sk33 _:sk34).
-_:sk119 owl:oneOf (_:sk35 _:sk36 _:sk37 _:sk38 _:sk39).
-_:sk120 owl:oneOf (_:sk40 _:sk41 _:sk42 _:sk43 _:sk44).
-_:sk121 owl:oneOf (_:sk45 _:sk46 _:sk47 _:sk48 _:sk49).
-_:sk122 owl:oneOf (_:sk50 _:sk51 _:sk52 _:sk53 _:sk54).
-_:sk123 owl:oneOf ().
-_:sk124 owl:oneOf (_:sk55 _:sk56 _:sk57).
-_:sk125 owl:oneOf (_:sk58 _:sk59 _:sk60 _:sk61 _:sk62).
-_:sk126 owl:oneOf (_:sk63 _:sk64 _:sk65 _:sk66 _:sk67).
-_:sk127 owl:oneOf (_:sk68 _:sk69 _:sk70 _:sk71 _:sk72).
-_:sk128 owl:oneOf (_:sk73 _:sk74 _:sk75 _:sk76 _:sk77).
-_:sk129 owl:oneOf (_:sk78 _:sk79 _:sk80 _:sk81 _:sk82).
-_:sk130 owl:oneOf (_:sk83 _:sk84 _:sk85 _:sk86 _:sk87).
-_:sk131 owl:oneOf (_:sk88 _:sk89 _:sk90 _:sk91 _:sk92).
-_:sk132 owl:oneOf ().
-_:sk133 owl:oneOf (_:sk93 _:sk94 _:sk95 _:sk96 _:sk97 _:sk98 _:sk99 _:sk100 _:sk101 _:sk102 _:sk103).
-_:sk134 owl:oneOf (_:sk104 _:sk105 _:sk106 _:sk107 _:sk108).
-_:sk135 owl:oneOf ().
-_:sk136 owl:oneOf ().
-_:sk137 owl:oneOf ().
-_:sk138 owl:oneOf ().
+ques:capital-10
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-9 ;
+    rdfs:label "Sport, Culture, loisirs" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ Toutes les régions d’implantation de l’entreprise sont très pauvres
+sur le plan sportif, culturel ou des loisirs"""
+            ]
+            [
+                rdfs:label """ Les trois quarts des implantations sont dans des régions pauvres
+dans ce domaine"""
+            ]
+            [
+                rdfs:label """ La moitié des implantations présente peu de potentiel dans ce
+domaine"""
+            ]
+            [
+                rdfs:label """ Les régions d’implantation sont pour la plupart riches sur le plan
+du sport, de la culture et des loisirs"""
+            ]
+            [
+                rdfs:label """ Tous les sites de l’entreprise sont implantés dans des régions très
+riches sur le plan culturel, sportif ou de loisirs"""
+            ]
+        )
+    ] .
 
-#ENDS 0.202 [sec] TC=292 TP=1812 BC=0 BP=0 PM=0 CM=0 FM=0 AM=0
+ques:capital-11
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-9 ;
+    rdfs:label "Partenaires publics" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " L’entreprise est très éloignée de ses partenaires publics (à plus de"
+            ]
+            [
+                rdfs:label """ L’entreprise est éloignée de ses partenaires publics (à plus de 200
+km)"""
+            ]
+            [
+                rdfs:label """ Les partenaires publics importants pour l’entreprise sont présents
+dans la région (à 100 km)"""
+            ]
+            [
+                rdfs:label """ L’entreprise a un accès facile (moins de 50 km) aux partenaires
+publics importants pour elle"""
+            ]
+            [
+                rdfs:label """ L’entreprise est implantée à proximité de partenaires publics
+importants pour elle. Exemple: pôles de compétitivité, de
+technopôles, de centres de recherche ou de formation professionnelle
+liés à ses métiers"""
+            ]
+        )
+    ] .
+
+ques:capital-12
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-9 ;
+    rdfs:label "Accès et infrastructures" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Autoroute à + de 50 KM, pas de gare"
+            ]
+            [
+                rdfs:label " Autoroute à + de 50 KM, Gare TER à 20 KM"
+            ]
+            [
+                rdfs:label " Autoroute proche"
+            ]
+            [
+                rdfs:label " Autoroute et gare TGV à 20 KM"
+            ]
+            [
+                rdfs:label " Autoroute, gare TGV, aéroport à 20KM"
+            ]
+        )
+    ] .
+
+ques:capital-13
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-9 ;
+    rdfs:label "RH locales et Services (Services Publics)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ Les zones ou l’entreprise est implantée sont très pauvres en service
+publics"""
+            ]
+            [
+                rdfs:label " Les services publics lorsqu’ils existent sont de mauvaise qualité"
+            ]
+            [
+                rdfs:label """ Certains services publics manquent (accès à 50 km) ou sont de
+qualité moyenne"""
+            ]
+            [
+                rdfs:label """ Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour
+les salariés (hôpitaux, écoles,…) sont bons"""
+            ]
+            [
+                rdfs:label """ Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour
+les salariés (hôpitaux, écoles,…) sont d’excellente qualité"""
+            ]
+        )
+    ] .
+
+ques:capital-14
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-9 ;
+    rdfs:label "RH locales et Services (Potentiel local RH)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ Les différents sites de l’entreprise sont implantés dans des zones
+rurales très éloignées de centres urbains. Les problèmes de
+recrutement qui en résultent sont très sérieux"""
+            ]
+            [
+                rdfs:label """ Le recrutement est difficile à cause de l’implantation de
+l’entreprise majoritairement dans des petites agglomérations"""
+            ]
+            [
+                rdfs:label """ La démographie des régions d’implantation de l’entreprise fait que
+des problèmes de recrutement significatifs se posent"""
+            ]
+            [
+                rdfs:label """ Certains sites de l’entreprise sont implantés dans des villes de
+taille moyenne (50 000 habitants). Le recrutement pose parfois
+quelques problèmes de ce fait mais à la marge"""
+            ]
+            [
+                rdfs:label """ Tous les sites de l’entreprise sont implantés à proximité de grands
+centres urbains où il existe des écoles ou centres de formation en
+phase avec les métiers de l’entreprise. Le recrutement ne pose
+jamais de problèmes"""
+            ]
+        )
+    ] .
+
+ques:capital-15
+    a owl:Class ;
+    rdfs:label "Capital de Marque" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-16
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ Les produits ou services actuels ont une influence négative sur la
+marque"""
+            ]
+            [
+                rdfs:label """ Les produits ou services ont une influence très négative sur la
+marque"""
+            ]
+            [
+                rdfs:label " Il n’y a aucun problème de ce type"
+            ]
+        )
+    ] .
+
+ques:capital-17
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Protection juridique des noms de produits ou d’offre" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Pas de dépôt INPI, pas de veille"
+            ]
+            [
+                rdfs:label " Mauvaise qualité du dépôt de la marque, pas de veille."
+            ]
+            [
+                rdfs:label " Marque protégée, pas de cluster, marque assez jeune, pas de veille."
+            ]
+            [
+                rdfs:label " Veille insuffisante, reste comme ci-dessus"
+            ]
+            [
+                rdfs:label """ Marque protégée, par un cluster de dépôts, large périmètre de
+protection, forte ancienneté, aucun plagiat, bon dispositif de
+veille"""
+            ]
+        )
+    ] .
+
+ques:capital-18
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Protections des noms de domaine internet" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Marque absente sur internet"
+            ]
+            [
+                rdfs:label " Le nom de domaine est différent du nom de l’entreprise"
+            ]
+            [
+                rdfs:label " Pas de cluster , pas de veille"
+            ]
+            [
+                rdfs:label " La veille est insuffisante, reste comme ci-dessus"
+            ]
+            [
+                rdfs:label """ Le nom de domaine principal est égal au nom de l’entreprise ou de la
+marque commerciale phare, il est protégé par un cluster de nom de
+domaines, la veille est assurée"""
+            ]
+        )
+    ] .
+
+ques:capital-19
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Protection juridique du nom de l’entreprise" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Pas de dépôt INPI, pas de veille"
+            ]
+            [
+                rdfs:label " Mauvaise qualité du dépôt de la marque, pas de veille."
+            ]
+            [
+                rdfs:label " Marque protégée, pas de cluster, marque assez jeune, pas de veille."
+            ]
+            [
+                rdfs:label " Veille insuffisante, reste comme ci-dessus"
+            ]
+            [
+                rdfs:label """ Marque protégée, par un cluster de dépôts, large périmètre de
+protection, forte ancienneté, aucun plagiat, bon dispositif de
+veille"""
+            ]
+        )
+    ] .
+
+ques:capital-2
+    a owl:Class ;
+    rdfs:label "Capital Naturel" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-20
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "La marque peut-elle être confondue avec une autre marque ?" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Pas de marque : produit générique"
+            ]
+            [
+                rdfs:label " Marque peu singulière souvent prise pour une autre"
+            ]
+            [
+                rdfs:label """ 10 % des consommateurs confondent notre marque avec celle d’un
+concurrent"""
+            ]
+            [
+                rdfs:label """ Des confusions rares peuvent exister avec une autre marque dans un
+secteur très distant"""
+            ]
+            [
+                rdfs:label """ Forte personnalité de la marque - n’est jamais confondue avec une
+autre"""
+            ]
+        )
+    ] .
+
+ques:capital-21
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "La marque apporte-t-elle un supplément d’image à ses clients ? (Influence)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Les clients cachent le fait qu’ils achètent cette marque"
+            ]
+            [
+                rdfs:label " Les clients ne montrent pas qu’ils achètent cette marque"
+            ]
+            [
+                rdfs:label " La marque n’a pas d’influence sur l’ego de ses clients"
+            ]
+            [
+                rdfs:label """ En général les clients aiment montrer qu’ils possèdent un produit
+ayant cette marque"""
+            ]
+            [
+                rdfs:label """ La marque est une référence socioculturelle utilisée dans de
+nombreux films à dessein"""
+            ]
+        )
+    ] .
+
+ques:capital-22
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Réputation de l’entreprise" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ La marque en sursis : a souffert de crises graves et largement
+médiatisées"""
+            ]
+            [
+                rdfs:label " La marque rencontre des problèmes de réputation ou d’image"
+            ]
+            [
+                rdfs:label " Réputation neutre"
+            ]
+            [
+                rdfs:label " Bonne réputation"
+            ]
+            [
+                rdfs:label " Excellente image de la marque : toujours très positive, partout"
+            ]
+        )
+    ] .
+
+ques:capital-23
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Budgets de promotion de la marque (mesure de la notoriété)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Aucun investissement"
+            ]
+            [
+                rdfs:label " Documentation marketing diffusée par l’entreprise"
+            ]
+            [
+                rdfs:label " Presse écrite"
+            ]
+            [
+                rdfs:label " Affichage, pub télé, presse écrite"
+            ]
+            [
+                rdfs:label " Budget énorme: sponsoring voile, F1, pub télé, affichage"
+            ]
+        )
+    ] .
+
+ques:capital-24
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-25
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "Il s’agit de l’âge de la marque" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " 6 mois"
+            ]
+            [
+                rdfs:label " 5 ans"
+            ]
+            [
+                rdfs:label " 10 ans"
+            ]
+            [
+                rdfs:label " 50 ans"
+            ]
+            [
+                rdfs:label " Marque centenaire"
+            ]
+            [
+                rdfs:label " Notoriété directe"
+            ]
+            [
+                rdfs:label " Marque inconnue"
+            ]
+            [
+                rdfs:label " Sort parfois dans les enquêtes de notoriété assistée"
+            ]
+            [
+                rdfs:label " Sort souvent dans les enquêtes de notoriété assistée"
+            ]
+            [
+                rdfs:label " Sort presque toujours dans les enquêtes de notoriété spontanée"
+            ]
+            [
+                rdfs:label " Marque leader"
+            ]
+        )
+    ] .
+
+ques:capital-26
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-15 ;
+    rdfs:label "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance))" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Pas du tout"
+            ]
+            [
+                rdfs:label " Globalement Non"
+            ]
+            [
+                rdfs:label " Partiellement"
+            ]
+            [
+                rdfs:label " Globalement Oui"
+            ]
+            [
+                rdfs:label " Absolument"
+            ]
+        )
+    ] .
+
+ques:capital-27
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-28
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-29
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-3
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-2 ;
+    rdfs:label "Qualité de la ressource (air)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label "Les alertes sont très fréquentes et les niveaux atteints sont très élevés"
+            ]
+            [
+                rdfs:label " Les alertes sont fréquentes"
+            ]
+            [
+                rdfs:label " Les alertes sont assez fréquentes"
+            ]
+            [
+                rdfs:label " Les alertes sont très rares"
+            ]
+            [
+                rdfs:label " L’air n’est jamais pollué"
+            ]
+        )
+    ] .
+
+ques:capital-30
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-4
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-2 ;
+    rdfs:label "Qualité de la ressource (eau)" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ L’eau est de très mauvaise qualité en surface et en profondeur, les
+teneurs en nitrates, hydrocarbures, pesticides…sont très élevées"""
+            ]
+            [
+                rdfs:label """ L’eau est polluée en surface et en profondeur (nitrates,
+hydrocarbures, pesticides)"""
+            ]
+            [
+                rdfs:label " L’eau est de qualité acceptable en profondeur mais pas en surface"
+            ]
+            [
+                rdfs:label " Bonne qualité en surface et en profondeur"
+            ]
+            [
+                rdfs:label " Grande pureté tant en surface que dans les nappes phréatiques"
+            ]
+        )
+    ] .
+
+ques:capital-5
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-2 ;
+    rdfs:label "Abondance de la ressource" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Il y a des restrictions d’eau très fréquentes dans l’année"
+            ]
+            [
+                rdfs:label " Il y a des restrictions d’eau souvent en été"
+            ]
+            [
+                rdfs:label " Il y a des restrictions d’eau de temps en temps en été"
+            ]
+            [
+                rdfs:label " Des risques de restriction ont déjà été évoqués mais n’ont pas eu lieu"
+            ]
+            [
+                rdfs:label " Ressource abondante en permanence"
+            ]
+        )
+    ] .
+
+ques:capital-6
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-2 ;
+    rdfs:label "Matières Premières" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ La ressource est devenue rare et le métier de l’entreprise est de ce
+fait en danger"""
+            ]
+            [
+                rdfs:label """ L’approvisionnement fait régulièrement question, l’entreprise a déjà
+souffert de ruptures"""
+            ]
+            [
+                rdfs:label """ La qualité et le prix posent des problèmes réguliers qui iront en
+s’intensifiant"""
+            ]
+            [
+                rdfs:label """ Quelques petits problèmes de qualité ou de prix peuvent se
+manifester à 5 ans"""
+            ]
+            [
+                rdfs:label """ Les matières premières que l’entreprise emploie sont abondantes, de
+grande qualité et bon marché à long terme"""
+            ]
+        )
+    ] .
+
+ques:capital-7
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-2 ;
+    rdfs:label "Evaluation du climat" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label " Nord"
+            ]
+            [
+                rdfs:label " Bretagne, Est, Massif Central, Normandie"
+            ]
+            [
+                rdfs:label " Ile de France"
+            ]
+            [
+                rdfs:label " Aquitaine, Rhône Alpes"
+            ]
+            [
+                rdfs:label """ Les sites de l’entreprise sont implantés dans des régions très
+attractives du point de vue climat : Région PACA, Midi Pyrénées
+Les sites de l’entreprise sont implantés dans des régions très"""
+            ]
+        )
+    ] .
+
+ques:capital-8
+    a owl:ObjectProperty ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:domain ques:capital-2 ;
+    rdfs:label "Géographie et climat" ;
+    rdfs:range [
+        owl:oneOf ([
+                rdfs:label """ L’entreprise est implantée dans des régions ou peu de personnes
+souhaitent s’installer : Creuse, Allier, Ardennes"""
+            ]
+            [
+                rdfs:label """ L’entreprise est implantée dans des régions jugées peu attractives
+(Nord, Picardie,…)"""
+            ]
+            [
+                rdfs:label """ L’attractivité de la région est moyenne compte tenu de la géographie
+physique (Île de France, Lorraine,…)"""
+            ]
+            [
+                rdfs:label " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…"
+            ]
+            [
+                rdfs:label """ Les sites de l’entreprise sont implantés dans des régions très
+attractives du point de vue géographique. Exemple: Bretagne, Alpes,
+Côte d’Azur…"""
+            ]
+        )
+    ] .
+
+ques:capital-9
+    a owl:Class ;
+    rdfs:label "Capital sociétal" ;
+    rdfs:range [
+        owl:oneOf rdf:nil
+    ] .
+
+ques:capital-fg
+    ques:properties <ques:capital-15-user-prop>, <ques:capital-2-user-prop>, <ques:capital-9-user-prop> ;
+    a ques:FormGroup ;
+    rdfs:label "Questions sur le capital immatériel."@fr .
+
+<ques:capital-15-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-15 .
+
+<ques:capital-2-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-2 .
+
+<ques:capital-9-user-prop>
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-9 .
 
