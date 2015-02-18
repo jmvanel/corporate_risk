@@ -1,5 +1,6 @@
 **/*.class
 **/*.log
+bblog.txt
 
 # sbt specific
 **/.cache
