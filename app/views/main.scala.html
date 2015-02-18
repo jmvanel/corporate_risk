@@ -35,6 +35,9 @@
         	
 		@if(!userOption.isEmpty) {
 		<div class="formmenu">
+			<div class="formmenuitem selected">
+				<a href="@routes.Application.index">Profil</a>
+			</div>
 		   	@for(formgroup <- UserData.formGroupList) {
 		   	<div class="formmenuitem">
 		   		<a href="@routes.Application.formgroup(formgroup._2)">@formgroup._1</a>

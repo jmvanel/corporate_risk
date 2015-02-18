@@ -81,9 +81,27 @@ body {
 	border: #1C1862 solid;
 }
 .formmenuitem {
+	position: relative;
 	float: left;
-	width: 25%;
-	padding: .5em;
+	width: 110px;
+	padding: 7px;
+	padding-left: 25px;
+	text-align: center;
+	font-weight: bold;
+}
+.formmenuitem.selected {
+	background-color: #1C1862;
+}
+.formmenuitem.selected a {
+	color: white;
+}
+.formmenuitem.selected:after {
+	content: " ";
+	border: 19px solid;
+	border-color: transparent transparent transparent #1C1862;
+	position: absolute;
+	top: -2px;
+	left: 110px;
 }
 .form {
 	margin: 0 18px;	
@@ -91,4 +109,10 @@ body {
 .form .input label {
 	width: 15%;
 	padding-left: 1em;	
+}
+
+.report {
+	width: 640px;
+	margin: auto;
+	background: white;
 }
