@@ -1,6 +1,3 @@
-@prefix idf: <http://localhost:9091/project/idf> .
-@prefix la-ruche: <http://localhost:9091/project/la-ruche> .
-@prefix bizi-risk: <http://localhost:9091/project/bizi-risk> .
 
 <http://www.bizinnov.com/ontologies/quest.owl.ttl#5-1> a <http://www.bizinnov.com/ontologies/quest.owl.ttl#Question> ;
 	<http://www.bizinnov.com/ontologies/quest.owl.ttl#a> "5.1" ;

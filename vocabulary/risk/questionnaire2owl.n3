@@ -4,17 +4,40 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl:  <http://www.w3.org/2002/07/owl#>.
 @prefix log:  <http://www.w3.org/2000/10/swap/log#>.
-@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix ques:  <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 @prefix      : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix user:  <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
 { ?Q :hasRubricId ?URI .
 } <= { # chaînage arrière
-  # créer un URI pour le thème = owl:Class
+  # créer un URI pour le thème = owl:Class:
+  # e.g. à partir de "10.1" , produit ques:10 .
   ?Q ques:a ?ID .
   # _:d eu:trace ("ID " ?ID ).
   ( ?ID "." ) fn:substring-before ?IDC .
   # _:d eu:trace ("fn:substring-before " ?ID ).
-  ques: log:uri ?PREF .
-  ( ?PREF ?IDC ) string:concatenation ?C .
+  ques: log:uri ?PREFIX .
+  ( ?PREFIX ?IDC ) string:concatenation ?C .
   ?URI log:uri ?C .
 }.
+
+user:User a owl:Class; rdfs:label "Utilisateur"@fr .
+
+# TODO : should be made by rule
+    :prop-5     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :5 .
+    :prop-6     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :6 .
+    :prop-7     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :7 .
+    :prop-8     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :8 .
+    :prop-9     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :9 .
+    :prop-10     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :10 .
+    :prop-11     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :11 .
+    :prop-12     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :12 .
+    :prop-13     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :13 .
+    :prop-14     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :14 .
+    :prop-15     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :15 .
+
+# TODO : should be made by rule
+:risk-fg a :FormGroup ;
+    rdfs:label "Questions sur la gestion des risques."@fr ;
+    :properties :prop-5 , :prop-6 , :prop-7 , :prop-8 ,:prop-9 , :prop-10 , :prop-11 , :prop-12 , :prop-13 , :prop-14 , :prop-15
+.

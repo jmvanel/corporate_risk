@@ -13,18 +13,21 @@
 # Chaque question du fichier de tableur devient une owl:DatatypeProperty à valeurs entre 1 et 5
 { ?Q a ques:Question ;
   ques:questions ?L ;
-  ques:commentaires ?C ;
-  ques:coef ?CO .
+  ques:coef ?COEF .
 } => {
  ?Q a owl:DatatypeProperty ;
  rdfs:label ?L ;
- rdfs:comment ?C ;
- # rdfs:domain ques:BusinessFeature ;
  rdfs:range ques:interval-1-5 ;
- ques:coef ?CO .
+ ques:coef ?COEF .
 } .
 
-
+# ques:commentaires est facultatif:
+{ ?Q a ques:Question ;
+  ques:commentaires ?COMM ;
+ } => {
+  ?Q rdfs:comment ?COMM .
+ }.
+ 
 # Rassembler par theme pour faire une owl:Class et la propriété correspondante
 { ?Q a ques:Question ;
   ques:theme ?T ;

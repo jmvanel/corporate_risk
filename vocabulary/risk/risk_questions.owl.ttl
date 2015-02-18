@@ -1,18 +1,15 @@
-#Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp 
-        #    using base file:///home/jmv/src/corporate_risk/vocabulary/risk_questions.owl0.ttl
-        
-#  Notation3 generation by
-#       notation3.py,v 1.200 2007/12/11 21:18:08 syosi Exp
+@prefix :      <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:    <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix e:     <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix idf:   <http://localhost:9091/project/idf> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix log:   <http://www.w3.org/2000/10/swap/log#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix ques:  <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
 
-#   Base was: file:///home/jmv/src/corporate_risk/vocabulary/risk_questions.owl0.ttl
-
-    @prefix :     <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
-    @prefix user: <http://bizinnov.com/ontologies/users.owl.ttl#> .
-    @prefix XML: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix owl: <http://www.w3.org/2002/07/owl#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-user:User a owl:Class; rdfs:label "Utilisateur"@fr .
+:User a owl:Class; rdfs:label "Utilisateur"@fr .
 
     :prop-5     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :5 .
     :prop-6     a owl:ObjectProperty; rdfs:domain :User; rdfs:range :6 .
@@ -30,326 +27,424 @@ user:User a owl:Class; rdfs:label "Utilisateur"@fr .
     rdfs:label "Questions sur la gestion des risques."@fr ;
     :properties :prop-5 , :prop-6 , :prop-7 , :prop-8 ,:prop-9 , :prop-10 , :prop-11 , :prop-12 , :prop-13 , :prop-14 , :prop-15
 .
-    
-    :10     a owl:Class;
-         rdfs:label "EXPLOITATION ET RESEAUX" .
-    
-    :10-1     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Cette dimension relève à la fois de la sécurité et de la qualité. L'objectif essentiel est de s'assurer que les différents processus ont une autonomie propre.";
-         rdfs:domain :10;
-         rdfs:label "Est-ce que les activités de développement, d'exploitation et de production sont basées sur des processus établis (gestion des changements, maîtrise des compétences, séparation des environnements)?";
-         rdfs:range :interval-1-5 .
-    
-    :10-2     a owl:DatatypeProperty;
-         :coef "15"^^XML:int;
-         rdfs:comment "Les limitations de privilèges doivent répondre à des fonctions techniques (administration, supervision…) mais aussi aux rôles dans l'entreprise (ex: cumuls de droits entre les achats et le paiement). Les aspects métiers doivent être instanciés sur la base d'échanges avec la direction.";
-         rdfs:domain :10;
-         rdfs:label "Existe-t-il une politique effective de limitation des cumuls de privilèges (administration système, données, sécurité, gestion des habilitations etc.…)?";
-         rdfs:range :interval-1-5 .
-    
-    :10-3     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Les démarches doivent être à la fois techniques et organisationnelles (sensibilisation des personnes, veille active, moteurs antivirus différents, MAJ forcées, vérification des postes au retour, existence d'une DMZ de MAJ, détection spécifique des mouchards, maîtrise des navigateurs Internet…).";
-         rdfs:domain :10;
-         rdfs:label "Existe-t-il une politique de lutte contre les virus et autres codes malveillants pour les serveurs et les postes de travail?";
-         rdfs:range :interval-1-5 .
-    
-    :10-4     a owl:DatatypeProperty;
-         :coef "15"^^XML:int;
-         rdfs:comment "Cette politique doit préciser les cibles, les supports, les fréquences et les durées de conservation des sauvegarde. Des tests partiels ou complets doivent être menés annuellement ou plus fréquemment si nécessaire.";
-         rdfs:domain :10;
-         rdfs:label "Existe-t-il une politique de sauvegarde (sauvegardes et tests) appliquée systématiquement ?";
-         rdfs:range :interval-1-5 .
-    
-    :10-5     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "La politique de sécurité réseau doit cibler le réseau local, et être complémentaire par rapport à la politique de sécurité du Groupe. Elle doit traiter des conditions d'accès au LAN, des moyens de protection locaux spécifiques, des règles de cloisonnement, de la supervision...";
-         rdfs:domain :10;
-         rdfs:label "Existe-t-il une politique de sécurité réseau efficace (moyens de sécurité implémentés et suivis) ?";
-         rdfs:range :interval-1-5 .
-    
-    :10-6     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Le monitoring (intrusions, erreurs, infections, abus de droits…) doit être adapté à la sensibilité des ressources. Il peut être plus ou moins profond, synchrone ou asynchrone.";
-         rdfs:domain :10;
-         rdfs:label "Les activités de monitoring sur les SI (réseau, applications, systèmes, mécanismes de sécurité) sont-elles définies et mises en œuvre?";
-         rdfs:range :interval-1-5 .
-    
-    :10-7     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Ce point peut se traduire, par exemple, par l'activation de protocoles sécurisés entre les messageries, ou encore l'utilisation d'outils tels que PGP.";
-         rdfs:domain :10;
-         rdfs:label "Les échanges d'informations par voie électronique ou physique sont-ils maîtrisés, s'inscrivent-ils dans des protocoles d'autorisation formels ?";
-         rdfs:range :interval-1-5 .
-    
-    :10-8     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Sont dans la cible des applications telles que les places de marché, les commandes en ligne….";
-         rdfs:domain :10;
-         rdfs:label "Les applications de dématérialisation (procédures, e-commerce, …) sont-elles spécifiquement sécurisées en tenant compte de l'évolution des menaces?";
-         rdfs:range :interval-1-5 .
-    
-    :10-9     rdfs:domain :10 .
-    
-    :11     a owl:Class;
-         rdfs:label "CONTRÔLE D'ACCES" .
-    
-    :11-1     a owl:DatatypeProperty;
-         :coef "15"^^XML:int;
-         rdfs:comment "Les attributions de droits doivent notamment s'appuyer sur des démarches d'autorisation par les métiers. Les échanges afférents doivent être tracés.";
-         rdfs:domain :11;
-         rdfs:label "Avez-vous des procédures écrites d'attribution des droits rigoureuses ? S'appuient-elles sur une traçabilité indéfectible de l'origine des demandes ?";
-         rdfs:range :interval-1-5 .
-    
-    :11-10     rdfs:domain :11 .
-    
-    :11-2     a owl:DatatypeProperty;
-         :coef "5"^^XML:int;
-         rdfs:comment "La pertinence des droits implémentés dans les systèmes doit être estimée régulièrement, avec une implication des métiers dans ces opérations de contrôle.";
-         rdfs:domain :11;
-         rdfs:label "Les droits des utilisateurs sont-ils à jour et en cohérence avec les besoins métiers ?";
-         rdfs:range :interval-1-5 .
-    
-    :11-3     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Les contrôles d'accès au réseau doivent être adaptés à la sensibilité des données et des applications du réseau (ex de moyens mobilisables : adresses MAC, configuration du poste, mise à jour des fonctions des sécurité sur l'équipement, absence de vulnérabilités critiques, moyens de chiffrement…)";
-         rdfs:domain :11;
-         rdfs:label "Le contrôle d'accès au réseau s'appuie-t-il sur des mécanismes autorisant les seuls personnes et équipements légitimes?";
-         rdfs:range :interval-1-5 .
-    
-    :11-4     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "L'authentification doit être renforcée pour les applications et fonctions sensibles (certificats, changements de mots de passe, etc.)";
-         rdfs:domain :11;
-         rdfs:label "Existe-t-il des mécanismes de sécurité suffisamment renforcés pour les applications sensibles (vérification de la qualité des mdp, changements forcés des mdp, authentification forte, sécurisation des logs d'accès…)";
-         rdfs:range :interval-1-5 .
-    
-    :11-5     rdfs:domain :11 .
-    
-    :11-6     rdfs:domain :11 .
-    
-    :11-7     rdfs:domain :11 .
-    
-    :11-8     rdfs:domain :11 .
-    
-    :11-9     a owl:DatatypeProperty;
-         :coef "5"^^XML:int;
-         rdfs:comment "Ces mesures peuvent imposer des connexions réseau exclusives, un firewall personnel, le verrouillage des bases de registre, le renforcement de la sécurité des navigateurs, une authentification forte associée à un VPN…";
-         rdfs:domain :11;
-         rdfs:label "Existe-t-il des mesures supplémentaires pour l'informatique nomade, non exclusivement les postes VIP ?";
-         rdfs:range :interval-1-5 .
-    
-    :12     a owl:Class;
-         rdfs:label "DEVELOPPEMENTS et MCO" .
-    
-    :12-1     a owl:DatatypeProperty;
-         :coef "30"^^XML:int;
-         rdfs:comment "Pour chaque projet ayant des besoins de sécurité spécifiques, il est nécessaire que le responsable métier exprime ce besoin sur les critères de Disponibilité, d'Intégrité ou de confidentialité. Des besoins spécifiques de conservation des traces et des preuves peuvent aussi être exprimés.";
-         rdfs:domain :12;
-         rdfs:label "Les aspects de sécurité sont-ils intégrés systématiquement dans tous les nouveaux projets ?";
-         rdfs:range :interval-1-5 .
-    
-    :12-2     a owl:DatatypeProperty;
-         :coef "25"^^XML:int;
-         rdfs:comment "Les recettes de sécurité peuvent aller de la simple vérification de la prise en compte fonctionnelle des besoins à une évaluation technique des moyens mis en œuvre.";
-         rdfs:domain :12;
-         rdfs:label "Existe-t-il des phases de recettes fonctionnelles et techniques de sécurité en fonction de la sensibilité des applications?";
-         rdfs:range :interval-1-5 .
-    
-    :12-3     a owl:DatatypeProperty;
-         :coef "15"^^XML:int;
-         rdfs:comment "Les moyens cryptographiques peuvent contribuer au chiffrement, au calcul d'empreintes (Hash), à l'authentification forte, à la signature électronique ou encore à l'horodatage sécurisé.";
-         rdfs:domain :12;
-         rdfs:label "Existe-t-il des moyens spécifiques, notamment cryptographiques, adaptés aux ressources les plus sensibles ?";
-         rdfs:range :interval-1-5 .
-    
-    :12-4     a owl:DatatypeProperty;
-         :coef "30"^^XML:int;
-         rdfs:comment "Les métiers devraient être impliqués dans la validation des contrats de maintenance, pour ce qui les concerne directement (ex: possibilité de gérer rapidement des évolutions fonctionnelles ou techniques en cas de problème).";
-         rdfs:domain :12;
-         rdfs:label "Les contrats de maintenance sont-ils établis en cohérence avec les besoins des applications?";
-         rdfs:range :interval-1-5 .
-    
-    :13     a owl:Class;
-         rdfs:label "ALERTES ET CRISES" .
-    
-    :13-1     a owl:DatatypeProperty;
-         :coef "35"^^XML:int;
-         rdfs:comment "Les moyens peuvent viser un suivi synchrone ou asynchrone.";
-         rdfs:domain :13;
-         rdfs:label "Des moyens (techniques et organisationnels) sont-ils en œuvre pour identifier les incidents de sécurité au plus tôt?";
-         rdfs:range :interval-1-5 .
-    
-    :13-2     a owl:DatatypeProperty;
-         :coef "35"^^XML:int;
-         rdfs:comment "De manière concrète, ceci prend la forme de processus et procédures de gestion des crises, incluant une cellule de crise locale avec des passerelles préétablies vers les acteurs légitimes du Groupe.";
-         rdfs:domain :13;
-         rdfs:label "Des procédures et processus de mobilisation des acteurs concernés par le traitement des incidents sont-ils définis, documentés et effectifs (personnes connues, téléphones mobiles, audio pré-réservée…)?";
-         rdfs:range :interval-1-5 .
-    
-    :13-3     a owl:DatatypeProperty;
-         :coef "30"^^XML:int;
-         rdfs:comment "La capitalisation est essentielle pour réduire les incidents au plus tôt, mais aussi pour favoriser l'apprentissage au sein de l'ensemble de l'organisation.";
-         rdfs:domain :13;
-         rdfs:label "Les événements de sécurité impliquent-ils la DSI Groupe, tant dans la phase de résolution que dans la phase de reporting a posteriori?";
-         rdfs:range :interval-1-5 .
-    
-    :14     a owl:Class;
-         rdfs:label "CONTINUITE D'ACTIVITE" .
-    
-    :14-1     a owl:DatatypeProperty;
-         :coef "45"^^XML:int;
-         rdfs:comment "Ces besoins de continuité peuvent aussi être connus sous les appellations dîtes PTO (Point Time Objective) et RTO (Recovery Time Objective)";
-         rdfs:domain :14;
-         rdfs:label "Est-ce que les besoins métiers de continuité sont exprimés pour les principales applications (PCA) et précisent les durées d'indisponibilité et les durées de perte maximale de données?";
-         rdfs:range :interval-1-5 .
-    
-    :14-2     rdfs:domain :14 .
-    
-    :14-3     a owl:DatatypeProperty;
-         :coef "25"^^XML:int;
-         rdfs:comment "Suite à un sinistre, il faut pouvoir redémarrer les systèmes et applications, mais il convient de bien maîtriser les délais pour recharger les données dans les systèmes.";
-         rdfs:domain :14;
-         rdfs:label "Les délais pour réinjecter les différents types de données sont-ils connus ?";
-         rdfs:range :interval-1-5 .
-    
-    :15     a owl:Class;
-         rdfs:label "CONFORMITE" .
-    
-    :15-1     a owl:DatatypeProperty;
-         :coef "50"^^XML:int;
-         rdfs:comment "La prise en compte de la législation locale est essentielle, ce peut être le cas pour des sujets comme les moyens de chiffrement, la protection des données personnelles, les droits des salariés…";
-         rdfs:domain :15;
-         rdfs:label "Avez-vous fait l'inventaire des exigences légales auxquelles votre organisation est soumise et quelles sont les mesures prises en conséquence (propriété intellectuelle, données personnelles...)? Y a-t-il des spécificités significatives à prendre en compte (règlements interprofessionnels, décrets spécifiques, ex: BALE2/SOLVENCY...)?";
-         rdfs:range :interval-1-5 .
-    
-    :15-2     a owl:DatatypeProperty;
-         :coef "50"^^XML:int;
-         rdfs:comment "La conformité s'exprime sur plusieurs niveau : la loi (elle supplante tous les autres), la politique de sécurité en œuvre, les exigences spécifiques, les référentiels d'audit externes éventuellement reconnus.";
-         rdfs:domain :15;
-         rdfs:label "Quels sont les moyens mis en place pour évaluer la conformité de la sécurité du système d'information par rapport à la politique de sécurité (ou autre référentiel si elle n'existe pas) ?";
-         rdfs:range :interval-1-5 .
-    
-    :5     a owl:Class;
-         rdfs:label "POLITIQUE DE SECURITE" .
-    
-    :5-1     a owl:DatatypeProperty;
-         :coef "50"^^XML:int;
-         rdfs:comment "La politique de sécurité peut prendre des formes diverses, l'essentiel étant qu'elle décrive les objectifs prioritaires de sécurité, les principes d'organisation et les grandes règles dans des domaines tels que ceux explorés par le présent questionnaire.";
-         rdfs:domain :5;
-         rdfs:label "Existe-t-il une politique de sécurité locale spécifique (formelle ou informelle) ? Sur quelle base méthodologique a-t-elle été développée ? Les domaines non techniques (RH, crises, continuité, etc.) sont-ils couverts?";
-         rdfs:range :interval-1-5 .
-    
-    :5-2     a owl:DatatypeProperty;
-         :coef "50"^^XML:int;
-         rdfs:comment "Le management devrait démontrer son intérêt et son soutien (ex: inviter la sécurité dans les ordres du jour de certains comités décisionnels, publier une lettre d'intention, fixer certains objectifs aux cadres dirigeants…).";
-         rdfs:domain :5;
-         rdfs:label "La démarche de politique de sécurité (ou pour le moins les pratiques de sécurité) est-elle soutenue par le management ?";
-         rdfs:range :interval-1-5 .
-    
-    :6     a owl:Class;
-         rdfs:label "ORGANISATION DE LA SECURITE" .
-    
-    :6-1     a owl:DatatypeProperty;
-         :coef "20"^^XML:int;
-         rdfs:comment "La fonction sécurité mobilise plusieurs strates, du stratégique à la mise en œuvre et jusqu'au suivi. Au minimum il doit y avoir un RSSI (Responsable de la Sécurité des SI) ou une fonction équivalente. Les acteurs concernés doivent y consacrer une part suffisante de leur temps de travail.";
-         rdfs:domain :6;
-         rdfs:label "Comment est organisée la sécurité des SI au sein de XXX et de ses processus? Les acteurs sont-ils désignés et connus (par la DG et au sein de l'entreprise) et par la même sont-ils légitimes?";
-         rdfs:range :interval-1-5 .
-    
-    :6-2     a owl:DatatypeProperty;
-         :coef "15"^^XML:int;
-         rdfs:comment "Plus généralement, il doit un avoir une fonction reconnue d'administrateur sécurité. L'administrateur de sécurité est celui qui gère les privilèges des personnes et des ressources.";
-         rdfs:domain :6;
-         rdfs:label "Existe-t-il un correspondant ou un point unique d'entrée pour la gestion des règles techniques qui ont trait à la sécurité (ouverture de comptes sur internet, gestion des ports des firewalls, etc.…)?";
-         rdfs:range :interval-1-5 .
-    
-    :6-3     a owl:DatatypeProperty;
-         :coef "30"^^XML:int;
-         rdfs:comment "Les audits menés à ce niveau peuvent être techniques, mais ils doivent aussi aborder des problématiques organisationnelles ou fonctionnelles qui témoignent de la maturité atteinte. Ils peuvent aussi être commandités par le groupe.";
-         rdfs:domain :6;
-         rdfs:label "Des audits de sécurité indépendants sont-ils menés régulièrement à l'initiative de la direction générale ou de la direction de l'audit?";
-         rdfs:range :interval-1-5 .
-    
-    :6-4     rdfs:domain :6 .
-    
-    :6-5     a owl:DatatypeProperty;
-         :coef "20"^^XML:int;
-         rdfs:comment "Une classification est définie pour les biens de l'entreprise, les personnes sont habilitées en fonction des niveau de classification des informations qu'elles gèrent, les responsables des biens sont identifiés";
-         rdfs:domain :6;
-         rdfs:label "Existe-t-il une classification portant sur la confidentialité pour les biens de l'entreprise ?";
-         rdfs:range :interval-1-5 .
-    
-    :7     a owl:Class;
-         rdfs:label "BIENS SENSIBLES" .
-    
-    :7-1     a owl:DatatypeProperty;
-         :coef "40"^^XML:int;
-         rdfs:comment "Il s'agit ici d'être en mesure de connaître les biens les plus sensibles (applications, machines, bases de données…) sur les critères de Confidentialité, d'Intégrité, de Disponibilité et de Preuve.";
-         rdfs:domain :7;
-         rdfs:label "Existe-t-il un inventaire formalisé des ressources des SI (données traitées, équipements matériels et logiciels…) précisant les propriétaires et les niveaux de besoin en sécurité?";
-         rdfs:range :interval-1-5 .
-    
-    :7-2     a owl:DatatypeProperty;
-         :coef "40"^^XML:int;
-         rdfs:comment "Les ressources sensibles peuvent être soumises à des risques spécifiques à l'entité. (Par exemple, indisponibilité du centre de secours suite un conflit social bloquant le quartier).";
-         rdfs:domain :7;
-         rdfs:label "Les exigences associées à la manipulation des ressources sensibles sont-elles établies en connaissance des scénarios de risque ?";
-         rdfs:range :interval-1-5 .
-    
-    :7-3     a owl:DatatypeProperty;
-         :coef "20"^^XML:int;
-         rdfs:comment "Le marquage de l'information s'entend aussi bien pour l'information papier (impression sécurisée, plan de classement, tampon CONFIDENTIEL…) que pour l'information électronique (chiffrement, destruction sécurisée…).";
-         rdfs:domain :7;
-         rdfs:label "Des pratiques de classification, de marquage et de manipulation de l'information confidentielle sont-elles définies et rigoureusement appliquées?";
-         rdfs:range :interval-1-5 .
-    
-    :8     a owl:Class;
-         rdfs:label "SECURITE ET PERSONNEL" .
-    
-    :8-1     rdfs:domain :8 .
-    
-    :8-2     a owl:DatatypeProperty;
-         :coef "20"^^XML:int;
-         rdfs:comment "Le point essentiel est que l'information soit remontée de manière systématique, et surtout au plus tôt. L'information doit être fournie par la DRH sur la base d'un processus traçable (ex: mail, note…).";
-         rdfs:domain :8;
-         rdfs:label "Les conséquences en termes de sécurité de l'évolution professionnelle des personnes sont-elles appréhendées (nouvelles responsabilités, changement de poste, départ volontaire, licenciement…)?";
-         rdfs:range :interval-1-5 .
-    
-    :8-3     rdfs:domain :8 .
-    
-    :8-4     a owl:DatatypeProperty;
-         :coef "25"^^XML:int;
-         rdfs:comment "La table des droits d'accès doit être mise à jour lors de départ de personnel interne ou externe à l'entreprise ou de changement de fonction.";
-         rdfs:domain :8;
-         rdfs:label "Existe-t-il une gestion des entrées et sorties des utilisateurs internes et externes ?";
-         rdfs:range :interval-1-5 .
-    
-    :9     a owl:Class;
-         rdfs:label "SECURITE PHYSIQUE" .
-    
-    :9-1     a owl:DatatypeProperty;
-         :coef "10"^^XML:int;
-         rdfs:comment "Il s'agit ici de gérer des périmètres de sécurité. Les conventions de nommage sont libres et peuvent être partagées avec des conventions qui ne sont pas spécifiques à l'informatique.";
-         rdfs:domain :9;
-         rdfs:label "Existe-t-il des règles de zonages en fonction de la sensibilité des ressources (ex : gestion des archives, serveurs de secours…)?";
-         rdfs:range :interval-1-5 .
-    
-    :9-2     rdfs:domain :9 .
-    
-    :9-3     a owl:DatatypeProperty;
-         :coef "30"^^XML:int;
-         rdfs:comment "L'idée est ici d'identifier si les principaux moyens (détection, extincteurs testés régulièrement, extinction automatique, faux plafonds, sous planchers sécurisés, pompes d'évacuation…) sont présents et nécessaires eut égard au contexte et aux enjeux de sécurité.";
-         rdfs:domain :9;
-         rdfs:label "Est ce que les menaces liées à la sécurité environnementale  (incendie, dégât des eaux, surtension…) sont étudiées et couvertes ?";
-         rdfs:range :interval-1-5 .
-    
-    :9-4     a owl:DatatypeProperty;
-         :coef "30"^^XML:int;
-         rdfs:comment "Les moyens électriques peuvent être : double armoire électrique, onduleurs, groupes de batteries, groupe électrogène...";
-         rdfs:domain :9;
-         rdfs:label "Les moyens de climatisation (climatisation de secours, puissance, redondance et contrats d'entretien) et d'alimentation électrique sont-ils adaptés?";
-         rdfs:range :interval-1-5 .
-    
-#ENDS
+
+
+ques:10-1  a          owl:DatatypeProperty ;
+        rdfs:comment  "Cette dimension relève à la fois de la sécurité et de la qualité. L'objectif essentiel est de s'assurer que les différents processus ont une autonomie propre." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Est-ce que les activités de développement, d'exploitation et de production sont basées sur des processus établis (gestion des changements, maîtrise des compétences, séparation des environnements)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:13
+] .
+
+ques:9-2  a          owl:DatatypeProperty ;
+        rdfs:domain  ques:9 ;
+        rdfs:label   "Existe-t-il des principes de protection renforcée des zones sensibles (contrôles par badge, accompagnement des tiers, vidéosurveillance…)?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:8-2  a           owl:DatatypeProperty ;
+        rdfs:comment  "Le point essentiel est que l'information soit remontée de manière systématique, et surtout au plus tôt. L'information doit être fournie par la DRH sur la base d'un processus traçable (ex: mail, note…)." ;
+        rdfs:domain   ques:8 ;
+        rdfs:label    "Les conséquences en termes de sécurité de l'évolution professionnelle des personnes sont-elles appréhendées (nouvelles responsabilités, changement de poste, départ volontaire, licenciement…)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "20"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:9  a           owl:Class ;
+        rdfs:label  "SECURITE PHYSIQUE" .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:8
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:6
+] .
+
+ques:11-6  a         owl:DatatypeProperty ;
+        rdfs:domain  ques:11 ;
+        rdfs:label   "Des contrôles automatisés ont-ils été mis en place pour assurer le maintien de l'intégrité des éléments sensibles ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:7-2  a           owl:DatatypeProperty ;
+        rdfs:comment  "Les ressources sensibles peuvent être soumises à des risques spécifiques à l'entité. (Par exemple, indisponibilité du centre de secours suite un conflit social bloquant le quartier)." ;
+        rdfs:domain   ques:7 ;
+        rdfs:label    "Les exigences associées à la manipulation des ressources sensibles sont-elles établies en connaissance des scénarios de risque ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "40"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:10-6  a          owl:DatatypeProperty ;
+        rdfs:comment  "Le monitoring (intrusions, erreurs, infections, abus de droits…) doit être adapté à la sensibilité des ressources. Il peut être plus ou moins profond, synchrone ou asynchrone." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Les activités de monitoring sur les SI (réseau, applications, systèmes, mécanismes de sécurité) sont-elles définies et mises en œuvre?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:6-2  a           owl:DatatypeProperty ;
+        rdfs:comment  "Plus généralement, il doit un avoir une fonction reconnue d'administrateur sécurité. L'administrateur de sécurité est celui qui gère les privilèges des personnes et des ressources." ;
+        rdfs:domain   ques:6 ;
+        rdfs:label    "Existe-t-il un correspondant ou un point unique d'entrée pour la gestion des règles techniques qui ont trait à la sécurité (ouverture de comptes sur internet, gestion des ports des firewalls, etc.…)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-10  a        owl:DatatypeProperty ;
+        rdfs:domain  ques:11 ;
+        rdfs:label   "Les utilisateurs sont-ils incités à ne pas laisser de documents ou biens sensibles lorsqu'ils quitent leur bureau en fin de journée ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "5"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:10  a          owl:Class ;
+        rdfs:label  "EXPLOITATION ET RESEAUX" .
+
+ques:5-2  a           owl:DatatypeProperty ;
+        rdfs:comment  "Le management devrait démontrer son intérêt et son soutien (ex: inviter la sécurité dans les ordres du jour de certains comités décisionnels, publier une lettre d'intention, fixer certains objectifs aux cadres dirigeants…)." ;
+        rdfs:domain   ques:5 ;
+        rdfs:label    "La démarche de politique de sécurité (ou pour le moins les pratiques de sécurité) est-elle soutenue par le management ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "50"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:9-1  a           owl:DatatypeProperty ;
+        rdfs:comment  "Il s'agit ici de gérer des périmètres de sécurité. Les conventions de nommage sont libres et peuvent être partagées avec des conventions qui ne sont pas spécifiques à l'informatique." ;
+        rdfs:domain   ques:9 ;
+        rdfs:label    "Existe-t-il des règles de zonages en fonction de la sensibilité des ressources (ex : gestion des archives, serveurs de secours…)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:8-1  a          owl:DatatypeProperty ;
+        rdfs:domain  ques:8 ;
+        rdfs:label   "Est-ce que les processus RH intègrent les aspects essentiels de sécurité (responsabilités, clauses de confidentialité, formation, sensibilisation) ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "25"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:8  a           owl:Class ;
+        rdfs:label  "SECURITE ET PERSONNEL" .
+
+ques:11-5  a         owl:DatatypeProperty ;
+        rdfs:domain  ques:11 ;
+        rdfs:label   "Le nombre d'essais de connexion est-il limité ? Les comptes sont-ils bloqués après plusieurs accès infructueux ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:7-1  a           owl:DatatypeProperty ;
+        rdfs:comment  "Il s'agit ici d'être en mesure de connaître les biens les plus sensibles (applications, machines, bases de données…) sur les critères de Confidentialité, d'Intégrité, de Disponibilité et de Preuve." ;
+        rdfs:domain   ques:7 ;
+        rdfs:label    "Existe-t-il un inventaire formalisé des ressources des SI (données traitées, équipements matériels et logiciels…) précisant les propriétaires et les niveaux de besoin en sécurité?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "40"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:15  a          owl:Class ;
+        rdfs:label  "CONFORMITE" .
+
+ques:10-5  a          owl:DatatypeProperty ;
+        rdfs:comment  "La politique de sécurité réseau doit cibler le réseau local, et être complémentaire par rapport à la politique de sécurité du Groupe. Elle doit traiter des conditions d'accès au LAN, des moyens de protection locaux spécifiques, des règles de cloisonnement, de la supervision..." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Existe-t-il une politique de sécurité réseau efficace (moyens de sécurité implémentés et suivis) ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:6-1  a           owl:DatatypeProperty ;
+        rdfs:comment  "La fonction sécurité mobilise plusieurs strates, du stratégique à la mise en œuvre et jusqu'au suivi. Au minimum il doit y avoir un RSSI (Responsable de la Sécurité des SI) ou une fonction équivalente. Les acteurs concernés doivent y consacrer une part suffisante de leur temps de travail." ;
+        rdfs:domain   ques:6 ;
+        rdfs:label    "Comment est organisée la sécurité des SI au sein de XXX et de ses processus? Les acteurs sont-ils désignés et connus (par la DG et au sein de l'entreprise) et par la même sont-ils légitimes?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "20"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:5-1  a           owl:DatatypeProperty ;
+        rdfs:comment  "La politique de sécurité peut prendre des formes diverses, l'essentiel étant qu'elle décrive les objectifs prioritaires de sécurité, les principes d'organisation et les grandes règles dans des domaines tels que ceux explorés par le présent questionnaire." ;
+        rdfs:domain   ques:5 ;
+        rdfs:label    "Existe-t-il une politique de sécurité locale spécifique (formelle ou informelle) ? Sur quelle base méthodologique a-t-elle été développée ? Les domaines non techniques (RH, crises, continuité, etc.) sont-ils couverts?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "50"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:12-4  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les métiers devraient être impliqués dans la validation des contrats de maintenance, pour ce qui les concerne directement (ex: possibilité de gérer rapidement des évolutions fonctionnelles ou techniques en cas de problème)." ;
+        rdfs:domain   ques:12 ;
+        rdfs:label    "Les contrats de maintenance sont-ils établis en cohérence avec les besoins des applications?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:7
+] .
+
+ques:7  a           owl:Class ;
+        rdfs:label  "BIENS SENSIBLES" .
+
+ques:11-4  a          owl:DatatypeProperty ;
+        rdfs:comment  "L'authentification doit être renforcée pour les applications et fonctions sensibles (certificats, changements de mots de passe, etc.)" ;
+        rdfs:domain   ques:11 ;
+        rdfs:label    "Existe-t-il des mécanismes de sécurité suffisamment renforcés pour les applications sensibles (vérification de la qualité des mdp, changements forcés des mdp, authentification forte, sécurisation des logs d'accès…)" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:14  a          owl:Class ;
+        rdfs:label  "CONTINUITE D'ACTIVITE" .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:11
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:10
+] .
+
+ques:10-4  a          owl:DatatypeProperty ;
+        rdfs:comment  "Cette politique doit préciser les cibles, les supports, les fréquences et les durées de conservation des sauvegarde. Des tests partiels ou complets doivent être menés annuellement ou plus fréquemment si nécessaire." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Existe-t-il une politique de sauvegarde (sauvegardes et tests) appliquée systématiquement ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:14-3  a          owl:DatatypeProperty ;
+        rdfs:comment  "Suite à un sinistre, il faut pouvoir redémarrer les systèmes et applications, mais il convient de bien maîtriser les délais pour recharger les données dans les systèmes." ;
+        rdfs:domain   ques:14 ;
+        rdfs:label    "Les délais pour réinjecter les différents types de données sont-ils connus ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "25"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:13-3  a          owl:DatatypeProperty ;
+        rdfs:comment  "La capitalisation est essentielle pour réduire les incidents au plus tôt, mais aussi pour favoriser l'apprentissage au sein de l'ensemble de l'organisation." ;
+        rdfs:domain   ques:13 ;
+        rdfs:label    "Les événements de sécurité impliquent-ils la DSI Groupe, tant dans la phase de résolution que dans la phase de reporting a posteriori?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-9  a          owl:DatatypeProperty ;
+        rdfs:comment  "Ces mesures peuvent imposer des connexions réseau exclusives, un firewall personnel, le verrouillage des bases de registre, le renforcement de la sécurité des navigateurs, une authentification forte associée à un VPN…" ;
+        rdfs:domain   ques:11 ;
+        rdfs:label    "Existe-t-il des mesures supplémentaires pour l'informatique nomade, non exclusivement les postes VIP ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "5"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:12-3  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les moyens cryptographiques peuvent contribuer au chiffrement, au calcul d'empreintes (Hash), à l'authentification forte, à la signature électronique ou encore à l'horodatage sécurisé." ;
+        rdfs:domain   ques:12 ;
+        rdfs:label    "Existe-t-il des moyens spécifiques, notamment cryptographiques, adaptés aux ressources les plus sensibles ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:6  a           owl:Class ;
+        rdfs:label  "ORGANISATION DE LA SECURITE" .
+
+ques:10-9  a         owl:DatatypeProperty ;
+        rdfs:domain  ques:10 ;
+        rdfs:label   "La sécurité des accès Internet est-elle soumise à des règles rigoureuses pour : la prévention des accès par des lignes directes, le contrôle de la légitimité des sites, la traçabilité des accès par utilisateurs, la sensibilisation face à des interdits." ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:6-5  a           owl:DatatypeProperty ;
+        rdfs:comment  "Une classification est définie pour les biens de l'entreprise, les personnes sont habilitées en fonction des niveau de classification des informations qu'elles gèrent, les responsables des biens sont identifiés" ;
+        rdfs:domain   ques:6 ;
+        rdfs:label    "Existe-t-il une classification portant sur la confidentialité pour les biens de l'entreprise ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "20"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-3  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les contrôles d'accès au réseau doivent être adaptés à la sensibilité des données et des applications du réseau (ex de moyens mobilisables : adresses MAC, configuration du poste, mise à jour des fonctions des sécurité sur l'équipement, absence de vulnérabilités critiques, moyens de chiffrement…)" ;
+        rdfs:domain   ques:11 ;
+        rdfs:label    "Le contrôle d'accès au réseau s'appuie-t-il sur des mécanismes autorisant les seuls personnes et équipements légitimes?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:13  a          owl:Class ;
+        rdfs:label  "ALERTES ET CRISES" .
+
+ques:15-2  a          owl:DatatypeProperty ;
+        rdfs:comment  "La conformité s'exprime sur plusieurs niveau : la loi (elle supplante tous les autres), la politique de sécurité en œuvre, les exigences spécifiques, les référentiels d'audit externes éventuellement reconnus." ;
+        rdfs:domain   ques:15 ;
+        rdfs:label    "Quels sont les moyens mis en place pour évaluer la conformité de la sécurité du système d'information par rapport à la politique de sécurité (ou autre référentiel si elle n'existe pas) ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "50"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:10-3  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les démarches doivent être à la fois techniques et organisationnelles (sensibilisation des personnes, veille active, moteurs antivirus différents, MAJ forcées, vérification des postes au retour, existence d'une DMZ de MAJ, détection spécifique des mouchards, maîtrise des navigateurs Internet…)." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Existe-t-il une politique de lutte contre les virus et autres codes malveillants pour les serveurs et les postes de travail?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:9-4  a           owl:DatatypeProperty ;
+        rdfs:comment  "Les moyens électriques peuvent être : double armoire électrique, onduleurs, groupes de batteries, groupe électrogène..." ;
+        rdfs:domain   ques:9 ;
+        rdfs:label    "Les moyens de climatisation (climatisation de secours, puissance, redondance et contrats d'entretien) et d'alimentation électrique sont-ils adaptés?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:14-2  a         owl:DatatypeProperty ;
+        rdfs:domain  ques:14 ;
+        rdfs:label   "Existe-t-il des moyens pour assurer la reprise en cas d'incident ou de sinistre majeur (PRA, Plan secours) ? Si oui, sont-ils régulièrement testés ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:8-4  a           owl:DatatypeProperty ;
+        rdfs:comment  "La table des droits d'accès doit être mise à jour lors de départ de personnel interne ou externe à l'entreprise ou de changement de fonction." ;
+        rdfs:domain   ques:8 ;
+        rdfs:label    "Existe-t-il une gestion des entrées et sorties des utilisateurs internes et externes ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "25"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:13-2  a          owl:DatatypeProperty ;
+        rdfs:comment  "De manière concrète, ceci prend la forme de processus et procédures de gestion des crises, incluant une cellule de crise locale avec des passerelles préétablies vers les acteurs légitimes du Groupe." ;
+        rdfs:domain   ques:13 ;
+        rdfs:label    "Des procédures et processus de mobilisation des acteurs concernés par le traitement des incidents sont-ils définis, documentés et effectifs (personnes connues, téléphones mobiles, audio pré-réservée…)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "35"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-8  a         owl:DatatypeProperty ;
+        rdfs:domain  ques:11 ;
+        rdfs:label   "Existe-t-il des alertes liées à la détection d'anomalies ? À la modification d'éléments sensibles ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:12-2  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les recettes de sécurité peuvent aller de la simple vérification de la prise en compte fonctionnelle des besoins à une évaluation technique des moyens mis en œuvre." ;
+        rdfs:domain   ques:12 ;
+        rdfs:label    "Existe-t-il des phases de recettes fonctionnelles et techniques de sécurité en fonction de la sensibilité des applications?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "25"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:5  a           owl:Class ;
+        rdfs:label  "POLITIQUE DE SECURITE" .
+
+ques:10-8  a          owl:DatatypeProperty ;
+        rdfs:comment  "Sont dans la cible des applications telles que les places de marché, les commandes en ligne…." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Les applications de dématérialisation (procédures, e-commerce, …) sont-elles spécifiquement sécurisées en tenant compte de l'évolution des menaces?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:6-4  a          owl:DatatypeProperty ;
+        rdfs:domain  ques:6 ;
+        rdfs:label   "La sécurité vis-à-vis des tiers est-elle maîtrisée (prestataires, partenaires, externalisation) et documentée au travers de contrats et conventions d'engagement (NDA, clauses…)?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-2  a          owl:DatatypeProperty ;
+        rdfs:comment  "La pertinence des droits implémentés dans les systèmes doit être estimée régulièrement, avec une implication des métiers dans ces opérations de contrôle." ;
+        rdfs:domain   ques:11 ;
+        rdfs:label    "Les droits des utilisateurs sont-ils à jour et en cohérence avec les besoins métiers ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "5"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:15
+] .
+
+ques:12  a          owl:Class ;
+        rdfs:label  "DEVELOPPEMENTS et MCO" .
+
+ques:15-1  a          owl:DatatypeProperty ;
+        rdfs:comment  "La prise en compte de la législation locale est essentielle, ce peut être le cas pour des sujets comme les moyens de chiffrement, la protection des données personnelles, les droits des salariés…" ;
+        rdfs:domain   ques:15 ;
+        rdfs:label    "Avez-vous fait l'inventaire des exigences légales auxquelles votre organisation est soumise et quelles sont les mesures prises en conséquence (propriété intellectuelle, données personnelles...)? Y a-t-il des spécificités significatives à prendre en compte (règlements interprofessionnels, décrets spécifiques, ex: BALE2/SOLVENCY...)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "50"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:10-2  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les limitations de privilèges doivent répondre à des fonctions techniques (administration, supervision…) mais aussi aux rôles dans l'entreprise (ex: cumuls de droits entre les achats et le paiement). Les aspects métiers doivent être instanciés sur la base d'échanges avec la direction." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Existe-t-il une politique effective de limitation des cumuls de privilèges (administration système, données, sécurité, gestion des habilitations etc.…)?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:9-3  a           owl:DatatypeProperty ;
+        rdfs:comment  "L'idée est ici d'identifier si les principaux moyens (détection, extincteurs testés régulièrement, extinction automatique, faux plafonds, sous planchers sécurisés, pompes d'évacuation…) sont présents et nécessaires eut égard au contexte et aux enjeux de sécurité." ;
+        rdfs:domain   ques:9 ;
+        rdfs:label    "Est ce que les menaces liées à la sécurité environnementale  (incendie, dégât des eaux, surtension…) sont étudiées et couvertes ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:14-1  a          owl:DatatypeProperty ;
+        rdfs:comment  "Ces besoins de continuité peuvent aussi être connus sous les appellations dîtes PTO (Point Time Objective) et RTO (Recovery Time Objective)" ;
+        rdfs:domain   ques:14 ;
+        rdfs:label    "Est-ce que les besoins métiers de continuité sont exprimés pour les principales applications (PCA) et précisent les durées d'indisponibilité et les durées de perte maximale de données?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "45"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:8-3  a          owl:DatatypeProperty ;
+        rdfs:domain  ques:8 ;
+        rdfs:label   "Existe-t-il une charte de sécurité (responsabilités, règles de mots de passe, activation des écrans de veille, protection de l'information…) connue et appliquée des utilisateurs ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:9
+] .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:5
+] .
+
+ques:13-1  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les moyens peuvent viser un suivi synchrone ou asynchrone." ;
+        rdfs:domain   ques:13 ;
+        rdfs:label    "Des moyens (techniques et organisationnels) sont-ils en œuvre pour identifier les incidents de sécurité au plus tôt?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "35"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-7  a         owl:DatatypeProperty ;
+        rdfs:domain  ques:11 ;
+        rdfs:label   "Existe-il des contrôles manuels a posteriori qui permettent vérifier l'intégrité des éléments sensibles ?" ;
+        rdfs:range   ques:interval-1-5 ;
+        ques:coef    "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:7-3  a           owl:DatatypeProperty ;
+        rdfs:comment  "Le marquage de l'information s'entend aussi bien pour l'information papier (impression sécurisée, plan de classement, tampon CONFIDENTIEL…) que pour l'information électronique (chiffrement, destruction sécurisée…)." ;
+        rdfs:domain   ques:7 ;
+        rdfs:label    "Des pratiques de classification, de marquage et de manipulation de l'information confidentielle sont-elles définies et rigoureusement appliquées?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "20"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:12
+] .
+
+ques:12-1  a          owl:DatatypeProperty ;
+        rdfs:comment  "Pour chaque projet ayant des besoins de sécurité spécifiques, il est nécessaire que le responsable métier exprime ce besoin sur les critères de Disponibilité, d'Intégrité ou de confidentialité. Des besoins spécifiques de conservation des traces et des preuves peuvent aussi être exprimés." ;
+        rdfs:domain   ques:12 ;
+        rdfs:label    "Les aspects de sécurité sont-ils intégrés systématiquement dans tous les nouveaux projets ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+[ a            owl:ObjectProperty ;
+  rdfs:domain  ques:User ;
+  rdfs:range   ques:14
+] .
+
+ques:10-7  a          owl:DatatypeProperty ;
+        rdfs:comment  "Ce point peut se traduire, par exemple, par l'activation de protocoles sécurisés entre les messageries, ou encore l'utilisation d'outils tels que PGP." ;
+        rdfs:domain   ques:10 ;
+        rdfs:label    "Les échanges d'informations par voie électronique ou physique sont-ils maîtrisés, s'inscrivent-ils dans des protocoles d'autorisation formels ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "10"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:6-3  a           owl:DatatypeProperty ;
+        rdfs:comment  "Les audits menés à ce niveau peuvent être techniques, mais ils doivent aussi aborder des problématiques organisationnelles ou fonctionnelles qui témoignent de la maturité atteinte. Ils peuvent aussi être commandités par le groupe." ;
+        rdfs:domain   ques:6 ;
+        rdfs:label    "Des audits de sécurité indépendants sont-ils menés régulièrement à l'initiative de la direction générale ou de la direction de l'audit?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "30"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11-1  a          owl:DatatypeProperty ;
+        rdfs:comment  "Les attributions de droits doivent notamment s'appuyer sur des démarches d'autorisation par les métiers. Les échanges afférents doivent être tracés." ;
+        rdfs:domain   ques:11 ;
+        rdfs:label    "Avez-vous des procédures écrites d'attribution des droits rigoureuses ? S'appuient-elles sur une traçabilité indéfectible de l'origine des demandes ?" ;
+        rdfs:range    ques:interval-1-5 ;
+        ques:coef     "15"^^<http://www.w3.org/2001/XMLSchema#int> .
+
+ques:11  a          owl:Class ;
+        rdfs:label  "CONTRÔLE D'ACCES" .
