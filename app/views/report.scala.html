@@ -1,14 +1,19 @@
 @(report: Any)(implicit user: User)
 
-@main("Welcome to Corporate Risk!", Some(user)) {
-    <h2>Rapport d'audit</h2>
-    <a href="@routes.Application.index">Retour à mon tableau de bord</a>
-    <br />
-    <a href="@routes.Application.exportPDF">Exporter ce rapport en PDF</a>
-    <div class="pull-right">
-    	<img src="@routes.Application.chart("pie")" />
-    	<br />
-    	<img src="@routes.Application.chart("radar")" />
-   	</div>
-    @report
+@main("Rapport d'audit", Some(user)) {
+    <a class="pull-right" href="@routes.Application.exportPDF">
+    	<span class="glyphicon glyphicon-save-file"></span>
+    	Exporter ce rapport en PDF
+    </a>
+    <div class="clearfix"></div>
+    
+    <div class="report">
+	    <div class="pull-right">
+	    	<img src="@routes.Application.chart("pie")" />
+	    	<br />
+	    	<img src="@routes.Application.chart("radar")" />
+	   	</div>
+	    @report
+    	<div class="clearfix"></div>
+	</div>
 }

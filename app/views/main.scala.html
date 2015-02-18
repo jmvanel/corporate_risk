@@ -4,7 +4,7 @@
 
 <html>
     <head>
-        <title>@title</title>
+        <title>@title - V.S.I.</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap-theme.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/main.css")">
@@ -29,12 +29,16 @@
     		}
     		<img src="@routes.Assets.at("images/logo.png")" />
     	</div>
+    	<div class="container text-center"><span id="pagetitle">@title</span></div>
     	<div id="content">
         	@content
         </div>
         	
 		@if(!userOption.isEmpty) {
 		<div class="formmenu">
+			<div class="formmenuitem selected">
+				<a href="@routes.Application.index">Profil</a>
+			</div>
 		   	@for(formgroup <- UserData.formGroupList) {
 		   	<div class="formmenuitem">
 		   		<a href="@routes.Application.formgroup(formgroup._2)">@formgroup._1</a>
@@ -46,6 +50,7 @@
 			<div class="clearfix"></div>
 		</div>
 		}
+		<div class="clearfix"></div>
 	
         <div class="footer container">
         	<div class="pull-left footerlink">
