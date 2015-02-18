@@ -34,10 +34,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
 
   def index = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.index(Seq(
-        ("Pré-diagnostique", fromUri(bizinnovQuestionsVocabPrefix("risk"))),
-        ("Diagnostique", fromUri(bizinnovQuestionsVocabPrefix("capital"))) // 
-      )))
+      Ok(views.html.index(implicitly))
   }
 
   /**  */
@@ -106,4 +103,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 
+  def contact() = Action {
+    Ok(views.html.contact())
+  }
 }

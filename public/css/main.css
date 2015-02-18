@@ -65,6 +65,26 @@ body {
 	padding-right: 2em;
 }
 
+.contact {
+	max-width: 500px;
+	margin: auto;
+}
+.contactimg {
+	width: 150px;
+	text-align: center;
+	margin: 50px;
+}
+
+.formmenu {
+	max-width: 500px;
+	margin: auto;
+	border: #1C1862 solid;
+}
+.formmenuitem {
+	float: left;
+	width: 25%;
+	padding: .5em;
+}
 .form {
 	margin: 0 18px;	
 }

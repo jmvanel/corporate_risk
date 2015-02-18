@@ -21,22 +21,40 @@
     				</div>
     				
    				}
-    			case None => {}
+    			case None => {
+    				<div class="username">
+    					<div><a href="@routes.Auth.login">Se connecter</a></div>
+    				</div>
+    			}
     		}
     		<img src="@routes.Assets.at("images/logo.png")" />
     	</div>
     	<div id="content">
         	@content
         </div>
-        <div class="footer">
+        	
+		@if(!userOption.isEmpty) {
+		<div class="formmenu">
+		   	@for(formgroup <- UserData.formGroupList) {
+		   	<div class="formmenuitem">
+		   		<a href="@routes.Application.formgroup(formgroup._2)">@formgroup._1</a>
+		   	</div>
+			}
+			<div class="formmenuitem">
+				<a href="@routes.Application.report">Rapport</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		}
+	
+        <div class="footer container">
         	<div class="pull-left footerlink">
-        		Informations Légales
+        		<img src="/assets/images/DGCIS DGE logo.png" />
+        		<img src="/assets/images/observatoire-logo.png" />
+        		<a>Informations Légales</a>
         	</div>
         	<div class="pull-right footerlink">
-        		À propos
-        	</div>
-        	<div class="pull-right footerlink">
-        		Contact
+        		<a href="@routes.Application.contact">Contact</a>
         	</div>
         </div>
     </body>

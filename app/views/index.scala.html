@@ -1,11 +1,21 @@
-@(formgroups: Seq[(String, String)])(implicit user: User)
+@(implicit user: User)
 
 @main("Welcome to Corporate Risk!", Some(user)) {
-   	@for(formgroup <- formgroups) {
-   		<h3>@formgroup._1</h3>
-   		<a href="@routes.Application.formgroup(formgroup._2)">
-   			Accéder aux formulaires
-		</a>
-	}
-	<a href="@routes.Application.report">Consulter le rapport</a>
+	<p>
+		Le capital immatériel est la richesse cachée des entreprises. La gestion du risque et 
+		la sécurisation du capital immatériel permet de mettre en lumière cette richesse inexploitée.
+		Cette plate-forme vosu permet d'illustrer le processus de création de valeur de votre capital
+		immatériel.
+	</p>
+	<p>
+		<strong>L'objectif de ce site est de connaître l'état de votre capital immatériel.</strong>
+	</p>
+	<p>
+		Pour commencer, vous allez d'abord faire un pré-diagnostic de votre capital immatériel. si
+		votre pré-diagnostic est concluant, vous allez pouvoir faire un diagnostic total de 
+		votre capital immatériel.
+	</p>
+	Connecté en tant que @user.email.
+	<div><a>Modifier le mot de passe.</a></div>
+	Questionnaire de catégorisation de l'entreprise.
 }
