@@ -1,7 +1,6 @@
 @(report: Any)(implicit user: User)
 
-@main("Welcome to Corporate Risk!", Some(user)) {
-    <h2>Rapport d'audit</h2>
+@main("Rapport d'audit", Some(user)) {
     <a href="@routes.Application.exportPDF">Exporter ce rapport en PDF</a>
     
     <div class="report">
