@@ -14,20 +14,20 @@ import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.w3.banana.RDF
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
-
 import models.FormUserData
 import models.UserDataTrait
-
 import models.{ UserData, UserVocab, ResponseAnalysis }
 import Auth._
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
+import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 
 object Application extends ApplicationTrait[Jena, Dataset]
   with RDFStoreLocalJena1Provider
 
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
-    with UserDataTrait[Rdf, DATASET] {
+    with UserDataTrait[Rdf, DATASET]
+    with InstanceLabelsInference2 {
 
   lazy val tableView = new TableView {}
   import ops._
@@ -53,9 +53,10 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
       println("editURI: " + request)
-      Ok(views.html.form(tableView.htmlForm(uri, editable = true, graphURI = user.getURI().toString()
-      ).get))
-
+      //      implicit graph : Rdf#Graph = allNamedGraph
+      //      instanceLabel(URI(uri))
+      //      Ok(views.html.form(tableView.htmlForm(uri, editable = true, graphURI = user.getURI().toString()).get))
+      Ok(views.html.form(tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString())))
   }
 
   /** create new instance of given class (unused) */
