@@ -13,7 +13,7 @@ html {
 	min-height: 100%;
 }
 body {
-	margin-bottom: 58px;
+	margin-bottom: 100px;
 }
 
 #header {
@@ -49,7 +49,7 @@ body {
 	bottom: 0px;
 	width: 100%;
 	background: #1C1862;
-	height: 48px;
+	height: 90px;
 	padding-top: 20px;
 	color: white;
 }
@@ -84,7 +84,7 @@ body {
 }
 
 .formmenu {
-	max-width: 500px;
+	max-width: 600px;
 	margin: auto;
 	border: #1C1862 solid;
 	margin-bottom: 70px;
@@ -92,7 +92,7 @@ body {
 .formmenuitem {
 	position: relative;
 	float: left;
-	width: 110px;
+	width: 140px;
 	padding: 7px;
 	padding-left: 25px;
 	text-align: center;
@@ -110,7 +110,7 @@ body {
 	border-color: transparent transparent transparent #1C1862;
 	position: absolute;
 	top: -2px;
-	left: 110px;
+	left: 140px;
 }
 .form {
 	margin: 0 18px;	
