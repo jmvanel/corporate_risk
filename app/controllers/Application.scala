@@ -18,12 +18,8 @@ import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
 import models.FormUserData
 import models.UserDataTrait
-<<<<<<< HEAD
 
 import models.{ User, UserData, UserVocab, ResponseAnalysis }
-=======
-import models.{ UserData, UserVocab, ResponseAnalysis }
->>>>>>> 78cd141ef93504d12f4ecd02ac65bfd92537ee9a
 import Auth._
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
