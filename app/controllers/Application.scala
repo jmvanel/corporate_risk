@@ -106,4 +106,8 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def contact() = Action {
     Ok(views.html.contact())
   }
+
+  def info() = Action {
+    Ok(views.html.info())
+  }
 }
