@@ -2,6 +2,8 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.api.data.Form
+import play.api.data.Forms._
 import deductions.runtime.html.{ CreationForm, TableView }
 import deductions.runtime.services.FormSaver
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
@@ -18,7 +20,7 @@ import com.hp.hpl.jena.query.Dataset
 import models.FormUserData
 import models.UserDataTrait
 
-import models.{ UserData, UserVocab, ResponseAnalysis }
+import models.{ User, UserData, UserVocab, ResponseAnalysis }
 import Auth._
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
@@ -37,6 +39,12 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
       Ok(views.html.index(implicitly))
   }
 
+  def saveinfo = withUser { implicit user =>
+    implicit request => {
+      Ok(views.html.index(implicitly))
+    }
+  }
+
   /**  */
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
@@ -52,7 +60,6 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** edit given URI */
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
-      println("editURI: " + request)
       Ok(views.html.form(tableView.htmlForm(uri, editable = true, graphURI = user.getURI().toString()
       ).get))
 
@@ -68,7 +75,6 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     implicit request =>
       val uri = request.body match {
         case form: AnyContentAsFormUrlEncoded =>
-          // new FormSaver().saveTriples(form.data)
           deductions.runtime.services.FormSaverObject.saveTriples(form.data)
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => URLDecoder.decode(url, "utf-8")

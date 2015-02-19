@@ -17,20 +17,19 @@ import javax.xml.bind.annotation.adapters.HexBinaryAdapter
 
 /** TODO indiquer le but de la classe */
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) // extends UserVocab
-    {
+  rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) extends { // UserVocab {
 
   val rdfStoreObject = RDFStoreObject
   import ops._
-
-  def hashPassword(password: String): String = {
-    new HexBinaryAdapter().marshal(MessageDigest.getInstance("MD5").digest(password.getBytes))
-  }
 
   // TODO duplicate with UserVocab
   val bizinnovUserPrefix = Prefix("usr", "http://bizinnov.com/ontologies/users/")
   val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
   val bizinnovUserVocabPrefix = Prefix("user", "http://bizinnov.com/ontologies/users.owl.ttl#")
+
+  def hashPassword(password: String): String = {
+    new HexBinaryAdapter().marshal(MessageDigest.getInstance("MD5").digest(password.getBytes))
+  }
 
   def checkPassword(user: User): Boolean = {
     User.find(user.email) match {
@@ -63,11 +62,18 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     }
   }
 
+  def saveInfo(department: String, naf: String, year: Int, isGroup: Boolean) = {
+
+  }
+  def getInfo() = {
+    ("", "", 0, false)
+  }
   def makeURI(user: User) = bizinnovUserPrefix(user.email)
 }
 
 /** Class representing the users of the application */
-case class User(var email: String, var password: String, var passwordHash: String = "")
+case class User(var email: String, var password: String, var passwordHash: String = "",
+  var department: Option[String] = None, var naf: Option[String] = None, var year: Option[Int] = None, var isGroup: Option[Boolean] = None)
     extends RDFUser[Jena] {
   def getURI() = bizinnovUserPrefix(email)
 }
