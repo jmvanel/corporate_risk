@@ -10,17 +10,8 @@
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
 
 ques:capital-2001
-    a owl:ObjectProperty ;
-    rdfs:comment "Ce questionnaire regroupe les thèmes :", "Il y a 59 questions dans ce questionnaire" ;
-    rdfs:label "Evaluation du capital humain {.P54}" ;
     rdfs:range [
-        owl:oneOf ([
-                rdfs:label "capital humain (collaborateurs et dirigeants "
-            ]
-            [
-                rdfs:label "capital de savoir "
-            ]
-        )
+        owl:oneOf rdf:nil
     ] .
 
 ques:capital-2002
@@ -45,22 +36,13 @@ ques:capital-2004
                 rdfs:label "Le système fonctionne mal"
             ]
             [
-                rdfs:label """Le système de gestion de la relève existe mais ne fonctionne pas
-très bien
-Le système de gestion de la relève existe mais ne fonctionne pas
-très bien"""
+                rdfs:label "Le système de gestion de la relève existe mais ne fonctionne pas très bien"
             ]
             [
-                rdfs:label """Malgré un dispositif efficace, la durée des transitions est parfois
-trop courte
-Malgré un dispositif efficace, la durée des transitions est parfois
-trop courte"""
+                rdfs:label "Malgré un dispositif efficace, la durée des transitions est parfois trop courte"
             ]
             [
-                rdfs:label """L’organigramme de remplacement et les périodes de transition
-marchent à merveille
-L’organigramme de remplacement et les périodes de transition
-marchent à merveille"""
+                rdfs:label "L’organigramme de remplacement et les périodes de transition marchent à merveille"
             ]
         )
     ] .
@@ -174,10 +156,7 @@ ques:capital-2013
     rdfs:label "Indicateurs de stress collectif et de climat : plans sociaux, précarité, turn-over, arrêts maladie, taux d’accident, suicides, conflits sociaux pour ces raisons" ;
     rdfs:range [
         owl:oneOf ([
-                rdfs:label """Forte souffrance perceptible, très fort absentéisme, fort turn over,
-suicides
-Forte souffrance perceptible, très fort absentéisme, fort turn over,
-suicides"""
+                rdfs:label "Forte souffrance perceptible, très fort absentéisme, fort turn over, suicides"
             ]
             [
                 rdfs:label "Souffrance, conflits sociaux fréquents, plan sociaux fréquents"
@@ -186,16 +165,10 @@ suicides"""
                 rdfs:label "Sujet peu évoqué, ni en positif ni en négatif"
             ]
             [
-                rdfs:label """Bonne image employeur, entreprise où il fait bon vivre (réputation
-persistante et connue)
-Bonne image employeur, entreprise où il fait bon vivre (réputation
-persistante et connue)"""
+                rdfs:label "Bonne image employeur, entreprise où il fait bon vivre (réputation persistante et connue)"
             ]
             [
-                rdfs:label """Entreprise exemplaire à cet égard (top 10 great place to work par
-exemple)
-Entreprise exemplaire à cet égard (top 10 great place to work par
-exemple)"""
+                rdfs:label "Entreprise exemplaire à cet égard (top 10 great place to work par exemple)"
             ]
         )
     ] .
@@ -385,16 +358,10 @@ ques:capital-2025
                 rdfs:label "L’entreprise consacre 3% de la masse salariale à la formation"
             ]
             [
-                rdfs:label """Budget formation = 4% MS (masse salariale), la plupart des salariés
-sont formés
-Budget formation = 4% MS (masse salariale), la plupart des salariés
-sont formés"""
+                rdfs:label "Budget formation = 4% MS (masse salariale), la plupart des salariés sont formés"
             ]
             [
-                rdfs:label """L’entreprise consacre plus de 6 % de sa masse salariale à la
-formation, tous les collaborateurs sont formés
-L’entreprise consacre plus de 6 % de sa masse salariale à la
-formation, tous les collaborateurs sont formés"""
+                rdfs:label "L’entreprise consacre plus de 6 % de sa masse salariale à la formation, tous les collaborateurs sont formés"
             ]
         )
     ] .
@@ -423,10 +390,8 @@ ques:capital-2027
 Politique de diversité mais peu de résultat visible """
             ]
             [
-                rdfs:label """Très forte diversité mais insuffisance dans le codir (codir= comité
-de direction)
-Très forte diversité mais insuffisance dans le codir (codir= comité
-de direction) """
+                rdfs:label """Très forte diversité mais insuffisance dans le codir (codir= comité de direction)
+Très forte diversité mais insuffisance dans le codir (codir= comité de direction) """
             ]
             [
                 rdfs:label "Très forte diversité y compris dans le comité de direction"
@@ -443,8 +408,7 @@ ques:capital-2028
 
 ques:capital-2029
     a owl:ObjectProperty ;
-    rdfs:comment """Il s’agit de la moyenne des notes de compétence aux entretiens
-individuels de 1 à 5, 5 étant la note maximale""", "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:comment "Il s’agit de la moyenne des notes de compétence aux entretiens individuels de 1 à 5, 5 étant la note maximale", "Veuillez sélectionner une seule des propositions suivantes :" ;
     rdfs:domain ques:capital-2028 ;
     rdfs:label "Moyenne des notes de compétence aux entretiens individuels" ;
     rdfs:range [
@@ -489,16 +453,10 @@ ques:capital-2031
                 rdfs:label "Il y a un déficit de compétence pour certaines fonctions clés"
             ]
             [
-                rdfs:label """Pour toutes les fonctions clés il y a des experts mais il manque des
-remplaçants pour certaines
-Pour toutes les fonctions clés il y a des experts mais il manque des
-remplaçants pour certaines"""
+                rdfs:label "Pour toutes les fonctions clés il y a des experts mais il manque des remplaçants pour certaines"
             ]
             [
-                rdfs:label """Pour toutes les fonctions clés de l’entreprise il y a des
-collaborateurs experts et des remplaçants experts
-Pour toutes les fonctions clés de l’entreprise il y a des
-collaborateurs experts et des remplaçants experts"""
+                rdfs:label "Pour toutes les fonctions clés de l’entreprise il y a des collaborateurs experts et des remplaçants experts"
             ]
         )
     ] .
@@ -576,30 +534,16 @@ ques:capital-2037
     rdfs:label "Sous-effectif" ;
     rdfs:range [
         owl:oneOf ([
-                rdfs:label """Le rythme de travail est excessif comme le montre le volume d’heures
-supplémentaires
-Le rythme de travail est excessif comme le montre le volume d’heures
-supplémentaires"""
+                rdfs:label "Le rythme de travail est excessif comme le montre le volume d’heures supplémentaires"
             ]
             [
-                rdfs:label """Le recours au travail temporaire et les heures supplémentaires sont
-assez fréquents
-Le recours au travail temporaire et les heures supplémentaires sont
-assez fréquents"""
+                rdfs:label "Le recours au travail temporaire et les heures supplémentaires sont assez fréquents"
             ]
             [
-                rdfs:label """Tous les postes sont pourvus, la charge de travail très soutenue
-(les heures supplémentaires et l’intérim sont substantiels
-ponctuellement)
-Tous les postes sont pourvus, la charge de travail très soutenue
-(les heures supplémentaires et l’intérim sont substantiels
-ponctuellement)"""
+                rdfs:label "Tous les postes sont pourvus, la charge de travail très soutenue (les heures supplémentaires et l’intérim sont substantiels ponctuellement)"
             ]
             [
-                rdfs:label """Tous les postes sont pourvus, la charge de travail est soutenue mais
-sans excès (pas d’heures supplémentaires ou d’intérim)
-Tous les postes sont pourvus, la charge de travail est soutenue mais
-sans excès (pas d’heures supplémentaires ou d’intérim)"""
+                rdfs:label "Tous les postes sont pourvus, la charge de travail est soutenue mais sans excès (pas d’heures supplémentaires ou d’intérim)"
             ]
         )
     ] .
@@ -652,22 +596,13 @@ ques:capital-2041
                 rdfs:label "Le système fonctionne mal"
             ]
             [
-                rdfs:label """Le système de gestion de la relève existe mais ne fonctionne pas
-très bien
-Le système de gestion de la relève existe mais ne fonctionne pas
-très bien"""
+                rdfs:label "Le système de gestion de la relève existe mais ne fonctionne pas très bien"
             ]
             [
-                rdfs:label """Malgré un dispositif efficace, la durée des transitions est parfois
-trop courte
-Malgré un dispositif efficace, la durée des transitions est parfois
-trop courte"""
+                rdfs:label "Malgré un dispositif efficace, la durée des transitions est parfois trop courte"
             ]
             [
-                rdfs:label """L’organigramme de remplacement et les périodes de transition
-marchent à merveille
-L’organigramme de remplacement et les périodes de transition
-marchent à merveille"""
+                rdfs:label "L’organigramme de remplacement et les périodes de transition marchent à merveille"
             ]
         )
     ] .
@@ -760,10 +695,7 @@ ques:capital-2047
                 rdfs:label "Le capital humain a confiance dans son dirigeant"
             ]
             [
-                rdfs:label """Le capital humain de l’entreprise a une confiance totale dans son
-dirigeant
-Le capital humain de l’entreprise a une confiance totale dans son
-dirigeant"""
+                rdfs:label "Le capital humain de l’entreprise a une confiance totale dans son dirigeant"
             ]
         )
     ] .
@@ -794,10 +726,7 @@ ques:capital-2049
                 rdfs:label "Le dirigeant est un bon manager"
             ]
             [
-                rdfs:label """Le dirigeant écoute ses collaborateurs, il est exigeant et
-bienveillant. Il excelle dans ce domaine
-Le dirigeant écoute ses collaborateurs, il est exigeant et
-bienveillant. Il excelle dans ce domaine"""
+                rdfs:label "Le dirigeant écoute ses collaborateurs, il est exigeant et bienveillant. Il excelle dans ce domaine"
             ]
         )
     ] .
@@ -850,22 +779,13 @@ ques:capital-2053
                 rdfs:label "Le comité ne prend pas de décisions, l’entreprise est à la dérive"
             ]
             [
-                rdfs:label """Le dirigeant ne prend pas les décisions en temps et en heure ou est
-flou dans ce qu’il décide
-Le dirigeant ne prend pas les décisions en temps et en heure ou est
-flou dans ce qu’il décide"""
+                rdfs:label "Le dirigeant ne prend pas les décisions en temps et en heure ou est flou dans ce qu’il décide"
             ]
             [
-                rdfs:label """Des décisions importantes ne sont pas prises à temps ou sont
-instables
-Des décisions importantes ne sont pas prises à temps ou sont
-instables"""
+                rdfs:label "Des décisions importantes ne sont pas prises à temps ou sont instables"
             ]
             [
-                rdfs:label """Sur quelques sujets de moindre importance, les décisions peuvent
-tarder
-Sur quelques sujets de moindre importance, les décisions peuvent
-tarder"""
+                rdfs:label "Sur quelques sujets de moindre importance, les décisions peuvent tarder"
             ]
             [
                 rdfs:label "Les décisions sont sûres, rapides et couvrent tous les sujets"
@@ -890,25 +810,16 @@ ques:capital-2055
                 rdfs:label "La prise de risque est inconsidérée ou totalement absente"
             ]
             [
-                rdfs:label """Le dirigeant est timoré (prise de risque insuffisante) ou un peu
-casse-cou
-Le dirigeant est timoré (prise de risque insuffisante) ou un peu
-casse-cou"""
+                rdfs:label "Le dirigeant est timoré (prise de risque insuffisante) ou un peu casse-cou"
             ]
             [
                 rdfs:label "Le dirigeant est prudent"
             ]
             [
-                rdfs:label """La prise de risque est bonne, quelques défauts en évaluation (au
-préalable) ou en gestion (à posteriori)
-La prise de risque est bonne, quelques défauts en évaluation (au
-préalable) ou en gestion (à posteriori)"""
+                rdfs:label "La prise de risque est bonne, quelques défauts en évaluation (au préalable) ou en gestion (à posteriori)"
             ]
             [
-                rdfs:label """Le dirigeant est un entrepreneur parfait qui sait prendre des
-risques importants quand il le faut en les mesurant et en les gérant
-Le dirigeant est un entrepreneur parfait qui sait prendre des
-risques importants quand il le faut en les mesurant et en les gérant"""
+                rdfs:label "Le dirigeant est un entrepreneur parfait qui sait prendre des risques importants quand il le faut en les mesurant et en les gérant"
             ]
         )
     ] .
@@ -970,10 +881,7 @@ ques:capital-2059
                 rdfs:label "Quelques fragilités à la marge"
             ]
             [
-                rdfs:label """La finance, le commercial, la création et la production sont
-parfaitement maitrisés par le dirigeant
-La finance, le commercial, la création et la production sont
-parfaitement maitrisés par le dirigeant"""
+                rdfs:label "La finance, le commercial, la création et la production sont parfaitement maitrisés par le dirigeant"
             ]
         )
     ] .
@@ -1004,10 +912,7 @@ ques:capital-2061
                 rdfs:label "Quelques écarts à l’idéal dans le parcours"
             ]
             [
-                rdfs:label """A un parcours de haut niveau (diplômes, postes antérieurs) en phase
-avec sa fonction à 100 %
-A un parcours de haut niveau (diplômes, postes antérieurs) en phase
-avec sa fonction à 100 %"""
+                rdfs:label "A un parcours de haut niveau (diplômes, postes antérieurs) en phase avec sa fonction à 100 %"
             ]
         )
     ] .
@@ -1066,16 +971,10 @@ ques:capital-2065
                 rdfs:label "Gère à court terme de façon assez opportuniste"
             ]
             [
-                rdfs:label """Se montre pertinent dans ses décisions mais pas toujours dans sa
-vision
-Se montre pertinent dans ses décisions mais pas toujours dans sa
-vision"""
+                rdfs:label "Se montre pertinent dans ses décisions mais pas toujours dans sa vision"
             ]
             [
-                rdfs:label """A fait la preuve de ses qualités de stratège et de management
-(bonnes décisions à long et court terme)
-A fait la preuve de ses qualités de stratège et de management
-(bonnes décisions à long et court terme)"""
+                rdfs:label "A fait la preuve de ses qualités de stratège et de management (bonnes décisions à long et court terme)"
             ]
         )
     ] .
@@ -1094,18 +993,10 @@ ques:capital-2067
     rdfs:label "Cohésion" ;
     rdfs:range [
         owl:oneOf ([
-                rdfs:label """Des tensions existent ou bien, les tensions n’existent pas parce que
-le management est très ferme
-Des tensions existent ou bien, les tensions n’existent pas parce que
-le management est très ferme"""
+                rdfs:label "Des tensions existent ou bien, les tensions n’existent pas parce que le management est très ferme"
             ]
             [
-                rdfs:label """Il y a des conflits dans le groupe ou la cohésion est assez faible
-et le management manque de leadership (décisions collégiales,
-dilution des responsabilités)
-Il y a des conflits dans le groupe ou la cohésion est assez faible
-et le management manque de leadership (décisions collégiales,
-dilution des responsabilités)"""
+                rdfs:label "Il y a des conflits dans le groupe ou la cohésion est assez faible et le management manque de leadership (décisions collégiales, dilution des responsabilités)"
             ]
             [
                 rdfs:label "Forte proximité, liberté de parole, management participatif"
@@ -1138,40 +1029,16 @@ ques:capital-2070
                 rdfs:label "L’entreprise n’innove pas du tout."
             ]
             [
-                rdfs:label """Les projets de R&D concernent des améliorations mineures de l’offre.
-Lorsque l’entreprise propose des nouveautés au niveau de son offre,
-celles-ci ne font pas l’objet au préalable d’une analyse de la
-demande
-Les projets de R&D concernent des améliorations mineures de l’offre.
-Lorsque l’entreprise propose des nouveautés au niveau de son offre,
-celles-ci ne font pas l’objet au préalable d’une analyse de la
-demande"""
+                rdfs:label "Les projets de R&D concernent des améliorations mineures de l’offre. Lorsque l’entreprise propose des nouveautés au niveau de son offre, celles-ci ne font pas l’objet au préalable d’une analyse de la demande"
             ]
             [
-                rdfs:label """Les projets de R&D en cours sont peu innovants. Par ailleurs des
-études de marché précèdent la R&D
-Les projets de R&D en cours sont peu innovants. Par ailleurs des
-études de marché précèdent la R&D"""
+                rdfs:label "Les projets de R&D en cours sont peu innovants. Par ailleurs des études de marché précèdent la R&D"
             ]
             [
-                rdfs:label """Les projets de R&D en cours sont prometteurs. En outre, plutôt que
-de regarder et d’écouter le marché, l’entreprise a mis au point des
-démarches pour le « sentir » étudier les besoins préconscients de sa
-clientèle et y répondre.
-Les projets de R&D en cours sont prometteurs. En outre, plutôt que
-de regarder et d’écouter le marché, l’entreprise a mis au point des
-démarches pour le « sentir » étudier les besoins préconscients de sa
-clientèle et y répondre."""
+                rdfs:label "Les projets de R&D en cours sont prometteurs. En outre, plutôt que de regarder et d’écouter le marché, l’entreprise a mis au point des démarches pour le « sentir » étudier les besoins préconscients de sa clientèle et y répondre."
             ]
             [
-                rdfs:label """Les projets de R&D en cours sont à très haut potentiel. En outre, la
-politique d’innovation a fait ses preuves, l’entreprise a déjà par
-le passé produit de grandes innovations couronnées de succès
-commercial.
-Les projets de R&D en cours sont à très haut potentiel. En outre, la
-politique d’innovation a fait ses preuves, l’entreprise a déjà par
-le passé produit de grandes innovations couronnées de succès
-commercial."""
+                rdfs:label "Les projets de R&D en cours sont à très haut potentiel. En outre, la politique d’innovation a fait ses preuves, l’entreprise a déjà par le passé produit de grandes innovations couronnées de succès commercial."
             ]
         )
     ] .
@@ -1190,12 +1057,7 @@ ques:capital-2072
     rdfs:label "La politique de R&D est-elle cohérente par rapport à la stratégie ?" ;
     rdfs:range [
         owl:oneOf ([
-                rdfs:label """Les domaines de R&D sont sans rapport avec l’offre et le
-positionnement de l’entreprise et la relève produit est assurée à 0
-%
-Les domaines de R&D sont sans rapport avec l’offre et le
-positionnement de l’entreprise et la relève produit est assurée à 0
-%"""
+                rdfs:label "Les domaines de R&D sont sans rapport avec l’offre et le positionnement de l’entreprise et la relève produit est assurée à 0 %"
             ]
             [
                 rdfs:label "La relève produit est assurée à moins de 50 %"
@@ -1207,12 +1069,7 @@ positionnement de l’entreprise et la relève produit est assurée à 0
                 rdfs:label "La relève produit est assurée, des nouveaux produits vont sortir"
             ]
             [
-                rdfs:label """Les investissements vont permettre d’assurer la relève des produits
-vieillissants et de lancer de nombreux nouveaux produits en phase
-avec la stratégie de l’entreprise
-Les investissements vont permettre d’assurer la relève des produits
-vieillissants et de lancer de nombreux nouveaux produits en phase
-avec la stratégie de l’entreprise"""
+                rdfs:label "Les investissements vont permettre d’assurer la relève des produits vieillissants et de lancer de nombreux nouveaux produits en phase avec la stratégie de l’entreprise"
             ]
         )
     ] .
@@ -1237,21 +1094,13 @@ ques:capital-2074
                 rdfs:label "Une équipe réduite non dédiée et isolée ou des actions diffuses"
             ]
             [
-                rdfs:label """Un responsable de l’innovation est identifié, ses moyens sont
-limités
-Un responsable de l’innovation est identifié, ses moyens sont
-limités"""
+                rdfs:label "Un responsable de l’innovation est identifié, ses moyens sont limités"
             ]
             [
                 rdfs:label "Une équipe structurée dédiée avec des partenariats externes actifs"
             ]
             [
-                rdfs:label """Equipe spécialisée et importante, nombreuses sollicitations et
-propositions internes alimentent la R&D. Les partenariats externes
-sont nombreux et productifs
-Equipe spécialisée et importante, nombreuses sollicitations et
-propositions internes alimentent la R&D. Les partenariats externes
-sont nombreux et productifs"""
+                rdfs:label "Equipe spécialisée et importante, nombreuses sollicitations et propositions internes alimentent la R&D. Les partenariats externes sont nombreux et productifs"
             ]
         )
     ] .
@@ -1301,38 +1150,19 @@ ques:capital-2078
     rdfs:label "Services (Valeur des savoirs actuels)" ;
     rdfs:range [
         owl:oneOf ([
-                rdfs:label """Aucune précaution n’est prise pour protéger les procédés et savoirs
-critiques
-Aucune précaution n’est prise pour protéger les procédés et savoirs
-critiques"""
+                rdfs:label "Aucune précaution n’est prise pour protéger les procédés et savoirs critiques"
             ]
             [
-                rdfs:label """Il y a une clause de non concurrence dans les contrats de travail
-des hommes clés
-Il y a une clause de non concurrence dans les contrats de travail
-des hommes clés"""
+                rdfs:label "Il y a une clause de non concurrence dans les contrats de travail des hommes clés"
             ]
             [
-                rdfs:label """L’entreprise a développé une culture du secret et de lutte contre
-l’espionnage industriel (signatures fréquentes de clause de
-confidentialité aux tiers, règles de destruction de documents avant
-poubelle…)
-L’entreprise a développé une culture du secret et de lutte contre
-l’espionnage industriel (signatures fréquentes de clause de
-confidentialité aux tiers, règles de destruction de documents avant
-poubelle…)"""
+                rdfs:label "L’entreprise a développé une culture du secret et de lutte contre l’espionnage industriel (signatures fréquentes de clause de confidentialité aux tiers, règles de destruction de documents avant poubelle…)"
             ]
             [
-                rdfs:label """Les codes source informatique, méthodes, savoir-faire et lignes de
-services sont déposées (notaire, société des gens de lettres….)
-Les codes source informatique, méthodes, savoir-faire et lignes de
-services sont déposées (notaire, société des gens de lettres….)"""
+                rdfs:label "Les codes source informatique, méthodes, savoir-faire et lignes de services sont déposées (notaire, société des gens de lettres….)"
             ]
             [
-                rdfs:label """Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-au niveau mondial, veille et lutte contre la contrefaçon…)
-Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-au niveau mondial, veille et lutte contre la contrefaçon…)"""
+                rdfs:label "Politique éprouvée de protection des savoir-faire (dépôts nombreux, au niveau mondial, veille et lutte contre la contrefaçon…)"
             ]
         )
     ] .
@@ -1351,38 +1181,19 @@ ques:capital-2080
     rdfs:label "Produits" ;
     rdfs:range [
         owl:oneOf ([
-                rdfs:label """Aucune précaution n’est prise pour protéger les procédés et savoirs
-critiques
-Aucune précaution n’est prise pour protéger les procédés et savoirs
-critiques"""
+                rdfs:label "Aucune précaution n’est prise pour protéger les procédés et savoirs critiques"
             ]
             [
-                rdfs:label """Il y a une clause de non concurrence dans les contrats de travail
-des hommes clés
-Il y a une clause de non concurrence dans les contrats de travail
-des hommes clés"""
+                rdfs:label "Il y a une clause de non concurrence dans les contrats de travail des hommes clés"
             ]
             [
-                rdfs:label """L’entreprise a développé une culture du secret et de lutte contre
-l’espionnage industriel (signatures fréquentes de clause de
-confidentialité aux tiers, règles de destruction de documents avant
-poubelle…)
-L’entreprise a développé une culture du secret et de lutte contre
-l’espionnage industriel (signatures fréquentes de clause de
-confidentialité aux tiers, règles de destruction de documents avant
-poubelle…)"""
+                rdfs:label "L’entreprise a développé une culture du secret et de lutte contre l’espionnage industriel (signatures fréquentes de clause de confidentialité aux tiers, règles de destruction de documents avant poubelle…)"
             ]
             [
-                rdfs:label """Gestion interne des secrets de fabrication selon une procédure
-rigoureuse ou politique de dépôts de brevets
-Gestion interne des secrets de fabrication selon une procédure
-rigoureuse ou politique de dépôts de brevets"""
+                rdfs:label "Gestion interne des secrets de fabrication selon une procédure rigoureuse ou politique de dépôts de brevets"
             ]
             [
-                rdfs:label """Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-au niveau mondial, veille et lutte contre la contrefaçon…)
-Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-au niveau mondial, veille et lutte contre la contrefaçon…)"""
+                rdfs:label "Politique éprouvée de protection des savoir-faire (dépôts nombreux, au niveau mondial, veille et lutte contre la contrefaçon…)"
             ]
         )
     ] .
@@ -1435,16 +1246,10 @@ ques:capital-2084
                 rdfs:label "Ré-engineering produit impossible"
             ]
             [
-                rdfs:label """Documentation absente ou obsolète mais ré-engineering produit
-possible
-Documentation absente ou obsolète mais ré-engineering produit
-possible"""
+                rdfs:label "Documentation absente ou obsolète mais ré-engineering produit possible"
             ]
             [
-                rdfs:label """Il manque des documents descriptifs du produit ou permettant la
-formation
-Il manque des documents descriptifs du produit ou permettant la
-formation"""
+                rdfs:label "Il manque des documents descriptifs du produit ou permettant la formation"
             ]
             [
                 rdfs:label "Quelques manques à la marge"
@@ -1472,16 +1277,10 @@ ques:capital-2086
                 rdfs:label "Ré-engineering produit impossible"
             ]
             [
-                rdfs:label """Documentation absente ou obsolète mais ré-engineering produit
-possible
-Documentation absente ou obsolète mais ré-engineering produit
-possible"""
+                rdfs:label "Documentation absente ou obsolète mais ré-engineering produit possible"
             ]
             [
-                rdfs:label """Il manque des documents descriptifs du produit ou permettant la
-formation
-Il manque des documents descriptifs du produit ou permettant la
-formation"""
+                rdfs:label "Il manque des documents descriptifs du produit ou permettant la formation"
             ]
             [
                 rdfs:label "Quelques manques à la marge"
