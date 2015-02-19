@@ -3,9 +3,9 @@ Evaluation du capital humain {.P54}
 
 Ce questionnaire regroupe les thèmes :
 
--capital humain (collaborateurs et dirigeants 
+1. -capital humain (collaborateurs et dirigeants 
 
--capital de savoir 
+1. -capital de savoir 
 
 Il y a 59 questions dans ce questionnaire
 
@@ -19,18 +19,9 @@ Capital Humain
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Le système fonctionne mal
-- Le système de gestion de la relève existe mais ne fonctionne pas
-    très bien
-    Le système de gestion de la relève existe mais ne fonctionne pas
-    très bien
-- Malgré un dispositif efficace, la durée des transitions est parfois
-    trop courte
-    Malgré un dispositif efficace, la durée des transitions est parfois
-    trop courte
-- L’organigramme de remplacement et les périodes de transition
-    marchent à merveille
-    L’organigramme de remplacement et les périodes de transition
-    marchent à merveille
+- Le système de gestion de la relève existe mais ne fonctionne pas très bien
+- Malgré un dispositif efficace, la durée des transitions est parfois trop courte
+- L’organigramme de remplacement et les périodes de transition marchent à merveille
 
 ### []
 
@@ -75,20 +66,11 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-- Forte souffrance perceptible, très fort absentéisme, fort turn over,
-    suicides
-    Forte souffrance perceptible, très fort absentéisme, fort turn over,
-    suicides
+- Forte souffrance perceptible, très fort absentéisme, fort turn over, suicides
 - Souffrance, conflits sociaux fréquents, plan sociaux fréquents
 - Sujet peu évoqué, ni en positif ni en négatif
-- Bonne image employeur, entreprise où il fait bon vivre (réputation
-    persistante et connue)
-    Bonne image employeur, entreprise où il fait bon vivre (réputation
-    persistante et connue)
-- Entreprise exemplaire à cet égard (top 10 great place to work par
-    exemple)
-    Entreprise exemplaire à cet égard (top 10 great place to work par
-    exemple)
+- Bonne image employeur, entreprise où il fait bon vivre (réputation persistante et connue)
+- Entreprise exemplaire à cet égard (top 10 great place to work par exemple)
 
 ### []
 
@@ -166,14 +148,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 - L’entreprise ne forme pas ses salariés
 - L’entreprise consacre 1%
 - L’entreprise consacre 3% de la masse salariale à la formation
-- Budget formation = 4% MS (masse salariale), la plupart des salariés
-    sont formés
-    Budget formation = 4% MS (masse salariale), la plupart des salariés
-    sont formés
-- L’entreprise consacre plus de 6 % de sa masse salariale à la
-    formation, tous les collaborateurs sont formés
-    L’entreprise consacre plus de 6 % de sa masse salariale à la
-    formation, tous les collaborateurs sont formés
+- Budget formation = 4% MS (masse salariale), la plupart des salariés sont formés
+- L’entreprise consacre plus de 6 % de sa masse salariale à la formation, tous les collaborateurs sont formés
 
 ### []
 
@@ -185,10 +161,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Pas de politique
 - Politique de diversité mais peu de résultat visible
     Politique de diversité mais peu de résultat visible 
-- Très forte diversité mais insuffisance dans le codir (codir= comité
-    de direction)
-    Très forte diversité mais insuffisance dans le codir (codir= comité
-    de direction) 
+- Très forte diversité mais insuffisance dans le codir (codir= comité de direction)
+    Très forte diversité mais insuffisance dans le codir (codir= comité de direction) 
 - Très forte diversité y compris dans le comité de direction
 
 ### []
@@ -197,8 +171,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-Il s’agit de la moyenne des notes de compétence aux entretiens
-individuels de 1 à 5, 5 étant la note maximale
+Il s’agit de la moyenne des notes de compétence aux entretiens individuels de 1 à 5, 5 étant la note maximale
 
 - 1
 - 2
@@ -215,14 +188,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Absence d’entretien d’évaluation
 - Il n’y a pas de GPEC
 - Il y a un déficit de compétence pour certaines fonctions clés
-- Pour toutes les fonctions clés il y a des experts mais il manque des
-    remplaçants pour certaines
-    Pour toutes les fonctions clés il y a des experts mais il manque des
-    remplaçants pour certaines
-- Pour toutes les fonctions clés de l’entreprise il y a des
-    collaborateurs experts et des remplaçants experts
-    Pour toutes les fonctions clés de l’entreprise il y a des
-    collaborateurs experts et des remplaçants experts
+- Pour toutes les fonctions clés il y a des experts mais il manque des remplaçants pour certaines
+- Pour toutes les fonctions clés de l’entreprise il y a des collaborateurs experts et des remplaçants experts
 
 ### []
 
@@ -255,24 +222,10 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-- Le rythme de travail est excessif comme le montre le volume d’heures
-    supplémentaires
-    Le rythme de travail est excessif comme le montre le volume d’heures
-    supplémentaires
-- Le recours au travail temporaire et les heures supplémentaires sont
-    assez fréquents
-    Le recours au travail temporaire et les heures supplémentaires sont
-    assez fréquents
-- Tous les postes sont pourvus, la charge de travail très soutenue
-    (les heures supplémentaires et l’intérim sont substantiels
-    ponctuellement)
-    Tous les postes sont pourvus, la charge de travail très soutenue
-    (les heures supplémentaires et l’intérim sont substantiels
-    ponctuellement)
-- Tous les postes sont pourvus, la charge de travail est soutenue mais
-    sans excès (pas d’heures supplémentaires ou d’intérim)
-    Tous les postes sont pourvus, la charge de travail est soutenue mais
-    sans excès (pas d’heures supplémentaires ou d’intérim)
+- Le rythme de travail est excessif comme le montre le volume d’heures supplémentaires
+- Le recours au travail temporaire et les heures supplémentaires sont assez fréquents
+- Tous les postes sont pourvus, la charge de travail très soutenue (les heures supplémentaires et l’intérim sont substantiels ponctuellement)
+- Tous les postes sont pourvus, la charge de travail est soutenue mais sans excès (pas d’heures supplémentaires ou d’intérim)
 
 ### []
 
@@ -282,7 +235,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Le taux d’occupation des salariés est faible
 - Le taux d’occupation des salariés est faible par moment dans l’année
-   
 - Le taux d’occupation des salariés est bon en permanence
 - Le taux d’occupation des salariés est idéal
 
@@ -294,18 +246,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Rien n’est prévu à cet égard
 - Le système fonctionne mal
-- Le système de gestion de la relève existe mais ne fonctionne pas
-    très bien
-    Le système de gestion de la relève existe mais ne fonctionne pas
-    très bien
-- Malgré un dispositif efficace, la durée des transitions est parfois
-    trop courte
-    Malgré un dispositif efficace, la durée des transitions est parfois
-    trop courte
-- L’organigramme de remplacement et les périodes de transition
-    marchent à merveille
-    L’organigramme de remplacement et les périodes de transition
-    marchent à merveille
+- Le système de gestion de la relève existe mais ne fonctionne pas très bien
+- Malgré un dispositif efficace, la durée des transitions est parfois trop courte
+- L’organigramme de remplacement et les périodes de transition marchent à merveille
 
 ### []
 
@@ -341,10 +284,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Le niveau de confiance est faible
 - La confiance est moyenne
 - Le capital humain a confiance dans son dirigeant
-- Le capital humain de l’entreprise a une confiance totale dans son
-    dirigeant
-    Le capital humain de l’entreprise a une confiance totale dans son
-    dirigeant
+- Le capital humain de l’entreprise a une confiance totale dans son dirigeant
 
 ### []
 
@@ -356,10 +296,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - L’aptitude à manager est insuffisante
 - L’aptitude à manager est moyenne
 - Le dirigeant est un bon manager
-- Le dirigeant écoute ses collaborateurs, il est exigeant et
-    bienveillant. Il excelle dans ce domaine
-    Le dirigeant écoute ses collaborateurs, il est exigeant et
-    bienveillant. Il excelle dans ce domaine
+- Le dirigeant écoute ses collaborateurs, il est exigeant et bienveillant. Il excelle dans ce domaine
 
 ### []
 
@@ -380,18 +317,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Le comité ne prend pas de décisions, l’entreprise est à la dérive
-- Le dirigeant ne prend pas les décisions en temps et en heure ou est
-    flou dans ce qu’il décide
-    Le dirigeant ne prend pas les décisions en temps et en heure ou est
-    flou dans ce qu’il décide
-- Des décisions importantes ne sont pas prises à temps ou sont
-    instables
-    Des décisions importantes ne sont pas prises à temps ou sont
-    instables
-- Sur quelques sujets de moindre importance, les décisions peuvent
-    tarder
-    Sur quelques sujets de moindre importance, les décisions peuvent
-    tarder
+- Le dirigeant ne prend pas les décisions en temps et en heure ou est flou dans ce qu’il décide
+- Des décisions importantes ne sont pas prises à temps ou sont instables
+- Sur quelques sujets de moindre importance, les décisions peuvent tarder
 - Les décisions sont sûres, rapides et couvrent tous les sujets
 
 ### []
@@ -401,20 +329,10 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - La prise de risque est inconsidérée ou totalement absente
-- Le dirigeant est timoré (prise de risque insuffisante) ou un peu
-    casse-cou
-    Le dirigeant est timoré (prise de risque insuffisante) ou un peu
-    casse-cou
+- Le dirigeant est timoré (prise de risque insuffisante) ou un peu casse-cou
 - Le dirigeant est prudent
-- La prise de risque est bonne, quelques défauts en évaluation (au
-    préalable) ou en gestion (à posteriori)
-    La prise de risque est bonne, quelques défauts en évaluation (au
-    préalable) ou en gestion (à posteriori)
-- Le dirigeant est un entrepreneur parfait qui sait prendre des
-    risques importants quand il le faut en les mesurant et en les gérant
-    Le dirigeant est un entrepreneur parfait qui sait prendre des
-    risques importants quand il le faut en les mesurant et en les gérant
-   
+- La prise de risque est bonne, quelques défauts en évaluation (au préalable) ou en gestion (à posteriori)
+- Le dirigeant est un entrepreneur parfait qui sait prendre des risques importants quand il le faut en les mesurant et en les gérant
 
 ### []
 
@@ -438,10 +356,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - 2 domaines clés non maîtrisés
 - Un domaine clé n’est pas maîtrisé
 - Quelques fragilités à la marge
-- La finance, le commercial, la création et la production sont
-    parfaitement maitrisés par le dirigeant
-    La finance, le commercial, la création et la production sont
-    parfaitement maitrisés par le dirigeant
+- La finance, le commercial, la création et la production sont parfaitement maitrisés par le dirigeant
 
 ### []
 
@@ -453,10 +368,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Le parcours présente des lacunes réelles pour la fonction
 - Le parcours est moyen au regard du poste
 - Quelques écarts à l’idéal dans le parcours
-- A un parcours de haut niveau (diplômes, postes antérieurs) en phase
-    avec sa fonction à 100 %
-    A un parcours de haut niveau (diplômes, postes antérieurs) en phase
-    avec sa fonction à 100 %
+- A un parcours de haut niveau (diplômes, postes antérieurs) en phase avec sa fonction à 100 %
 
 ### []
 
@@ -479,14 +391,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Mène l’entreprise à sa perte
 - A fait des erreurs sérieuses de stratégie ou de management
 - Gère à court terme de façon assez opportuniste
-- Se montre pertinent dans ses décisions mais pas toujours dans sa
-    vision
-    Se montre pertinent dans ses décisions mais pas toujours dans sa
-    vision
-- A fait la preuve de ses qualités de stratège et de management
-    (bonnes décisions à long et court terme)
-    A fait la preuve de ses qualités de stratège et de management
-    (bonnes décisions à long et court terme)
+- Se montre pertinent dans ses décisions mais pas toujours dans sa vision
+- A fait la preuve de ses qualités de stratège et de management (bonnes décisions à long et court terme)
 
 ### []
 
@@ -494,16 +400,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-- Des tensions existent ou bien, les tensions n’existent pas parce que
-    le management est très ferme
-    Des tensions existent ou bien, les tensions n’existent pas parce que
-    le management est très ferme
-- Il y a des conflits dans le groupe ou la cohésion est assez faible
-    et le management manque de leadership (décisions collégiales,
-    dilution des responsabilités)
-    Il y a des conflits dans le groupe ou la cohésion est assez faible
-    et le management manque de leadership (décisions collégiales,
-    dilution des responsabilités)
+- Des tensions existent ou bien, les tensions n’existent pas parce que le management est très ferme
+- Il y a des conflits dans le groupe ou la cohésion est assez faible et le management manque de leadership (décisions collégiales, dilution des responsabilités)
 - Forte proximité, liberté de parole, management participatif
 - Tensions rares et le management est participatif
 
@@ -517,34 +415,10 @@ Capital de savoir
 Veuillez sélectionner une seule des propositions suivantes :
 
 - L’entreprise n’innove pas du tout.
-- Les projets de R&D concernent des améliorations mineures de l’offre.
-    Lorsque l’entreprise propose des nouveautés au niveau de son offre,
-    celles-ci ne font pas l’objet au préalable d’une analyse de la
-    demande
-    Les projets de R&D concernent des améliorations mineures de l’offre.
-    Lorsque l’entreprise propose des nouveautés au niveau de son offre,
-    celles-ci ne font pas l’objet au préalable d’une analyse de la
-    demande
-- Les projets de R&D en cours sont peu innovants. Par ailleurs des
-    études de marché précèdent la R&D
-    Les projets de R&D en cours sont peu innovants. Par ailleurs des
-    études de marché précèdent la R&D
-- Les projets de R&D en cours sont prometteurs. En outre, plutôt que
-    de regarder et d’écouter le marché, l’entreprise a mis au point des
-    démarches pour le « sentir » étudier les besoins préconscients de sa
-    clientèle et y répondre.
-    Les projets de R&D en cours sont prometteurs. En outre, plutôt que
-    de regarder et d’écouter le marché, l’entreprise a mis au point des
-    démarches pour le « sentir » étudier les besoins préconscients de sa
-    clientèle et y répondre.
-- Les projets de R&D en cours sont à très haut potentiel. En outre, la
-    politique d’innovation a fait ses preuves, l’entreprise a déjà par
-    le passé produit de grandes innovations couronnées de succès
-    commercial.
-    Les projets de R&D en cours sont à très haut potentiel. En outre, la
-    politique d’innovation a fait ses preuves, l’entreprise a déjà par
-    le passé produit de grandes innovations couronnées de succès
-    commercial.
+- Les projets de R&D concernent des améliorations mineures de l’offre. Lorsque l’entreprise propose des nouveautés au niveau de son offre, celles-ci ne font pas l’objet au préalable d’une analyse de la demande
+- Les projets de R&D en cours sont peu innovants. Par ailleurs des études de marché précèdent la R&D
+- Les projets de R&D en cours sont prometteurs. En outre, plutôt que de regarder et d’écouter le marché, l’entreprise a mis au point des démarches pour le « sentir » étudier les besoins préconscients de sa clientèle et y répondre.
+- Les projets de R&D en cours sont à très haut potentiel. En outre, la politique d’innovation a fait ses preuves, l’entreprise a déjà par le passé produit de grandes innovations couronnées de succès commercial.
 
 ### []
 
@@ -552,21 +426,11 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-- Les domaines de R&D sont sans rapport avec l’offre et le
-    positionnement de l’entreprise et la relève produit est assurée à 0
-    %
-    Les domaines de R&D sont sans rapport avec l’offre et le
-    positionnement de l’entreprise et la relève produit est assurée à 0
-    %
+- Les domaines de R&D sont sans rapport avec l’offre et le positionnement de l’entreprise et la relève produit est assurée à 0 %
 - La relève produit est assurée à moins de 50 %
 - La relève est assurée
 - La relève produit est assurée, des nouveaux produits vont sortir
-- Les investissements vont permettre d’assurer la relève des produits
-    vieillissants et de lancer de nombreux nouveaux produits en phase
-    avec la stratégie de l’entreprise
-    Les investissements vont permettre d’assurer la relève des produits
-    vieillissants et de lancer de nombreux nouveaux produits en phase
-    avec la stratégie de l’entreprise
+- Les investissements vont permettre d’assurer la relève des produits vieillissants et de lancer de nombreux nouveaux produits en phase avec la stratégie de l’entreprise
 
 ### []
 
@@ -576,17 +440,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Personne
 - Une équipe réduite non dédiée et isolée ou des actions diffuses
-- Un responsable de l’innovation est identifié, ses moyens sont
-    limités
-    Un responsable de l’innovation est identifié, ses moyens sont
-    limités
+- Un responsable de l’innovation est identifié, ses moyens sont limités
 - Une équipe structurée dédiée avec des partenariats externes actifs
-- Equipe spécialisée et importante, nombreuses sollicitations et
-    propositions internes alimentent la R&D. Les partenariats externes
-    sont nombreux et productifs
-    Equipe spécialisée et importante, nombreuses sollicitations et
-    propositions internes alimentent la R&D. Les partenariats externes
-    sont nombreux et productifs
+- Equipe spécialisée et importante, nombreuses sollicitations et propositions internes alimentent la R&D. Les partenariats externes sont nombreux et productifs
 
 ### []
 
@@ -606,30 +462,11 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-- Aucune précaution n’est prise pour protéger les procédés et savoirs
-    critiques
-    Aucune précaution n’est prise pour protéger les procédés et savoirs
-    critiques
-- Il y a une clause de non concurrence dans les contrats de travail
-    des hommes clés
-    Il y a une clause de non concurrence dans les contrats de travail
-    des hommes clés
-- L’entreprise a développé une culture du secret et de lutte contre
-    l’espionnage industriel (signatures fréquentes de clause de
-    confidentialité aux tiers, règles de destruction de documents avant
-    poubelle…)
-    L’entreprise a développé une culture du secret et de lutte contre
-    l’espionnage industriel (signatures fréquentes de clause de
-    confidentialité aux tiers, règles de destruction de documents avant
-    poubelle…)
-- Les codes source informatique, méthodes, savoir-faire et lignes de
-    services sont déposées (notaire, société des gens de lettres….)
-    Les codes source informatique, méthodes, savoir-faire et lignes de
-    services sont déposées (notaire, société des gens de lettres….)
-- Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-    au niveau mondial, veille et lutte contre la contrefaçon…)
-    Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-    au niveau mondial, veille et lutte contre la contrefaçon…)
+- Aucune précaution n’est prise pour protéger les procédés et savoirs critiques
+- Il y a une clause de non concurrence dans les contrats de travail des hommes clés
+- L’entreprise a développé une culture du secret et de lutte contre l’espionnage industriel (signatures fréquentes de clause de confidentialité aux tiers, règles de destruction de documents avant poubelle…)
+- Les codes source informatique, méthodes, savoir-faire et lignes de services sont déposées (notaire, société des gens de lettres….)
+- Politique éprouvée de protection des savoir-faire (dépôts nombreux, au niveau mondial, veille et lutte contre la contrefaçon…)
 
 ### []
 
@@ -637,30 +474,11 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 Veuillez sélectionner une seule des propositions suivantes :
 
-- Aucune précaution n’est prise pour protéger les procédés et savoirs
-    critiques
-    Aucune précaution n’est prise pour protéger les procédés et savoirs
-    critiques
-- Il y a une clause de non concurrence dans les contrats de travail
-    des hommes clés
-    Il y a une clause de non concurrence dans les contrats de travail
-    des hommes clés
-- L’entreprise a développé une culture du secret et de lutte contre
-    l’espionnage industriel (signatures fréquentes de clause de
-    confidentialité aux tiers, règles de destruction de documents avant
-    poubelle…)
-    L’entreprise a développé une culture du secret et de lutte contre
-    l’espionnage industriel (signatures fréquentes de clause de
-    confidentialité aux tiers, règles de destruction de documents avant
-    poubelle…)
-- Gestion interne des secrets de fabrication selon une procédure
-    rigoureuse ou politique de dépôts de brevets
-    Gestion interne des secrets de fabrication selon une procédure
-    rigoureuse ou politique de dépôts de brevets
-- Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-    au niveau mondial, veille et lutte contre la contrefaçon…)
-    Politique éprouvée de protection des savoir-faire (dépôts nombreux,
-    au niveau mondial, veille et lutte contre la contrefaçon…)
+- Aucune précaution n’est prise pour protéger les procédés et savoirs critiques
+- Il y a une clause de non concurrence dans les contrats de travail des hommes clés
+- L’entreprise a développé une culture du secret et de lutte contre l’espionnage industriel (signatures fréquentes de clause de confidentialité aux tiers, règles de destruction de documents avant poubelle…)
+- Gestion interne des secrets de fabrication selon une procédure rigoureuse ou politique de dépôts de brevets
+- Politique éprouvée de protection des savoir-faire (dépôts nombreux, au niveau mondial, veille et lutte contre la contrefaçon…)
 
 ### []
 
@@ -681,14 +499,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Ré-engineering produit impossible
-- Documentation absente ou obsolète mais ré-engineering produit
-    possible
-    Documentation absente ou obsolète mais ré-engineering produit
-    possible
-- Il manque des documents descriptifs du produit ou permettant la
-    formation
-    Il manque des documents descriptifs du produit ou permettant la
-    formation
+- Documentation absente ou obsolète mais ré-engineering produit possible
+- Il manque des documents descriptifs du produit ou permettant la formation
 - Quelques manques à la marge
 - 100 % documentation à jour et 100 % des cours existent
 
@@ -699,14 +511,8 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Ré-engineering produit impossible
-- Documentation absente ou obsolète mais ré-engineering produit
-    possible
-    Documentation absente ou obsolète mais ré-engineering produit
-    possible
-- Il manque des documents descriptifs du produit ou permettant la
-    formation
-    Il manque des documents descriptifs du produit ou permettant la
-    formation
+- Documentation absente ou obsolète mais ré-engineering produit possible
+- Il manque des documents descriptifs du produit ou permettant la formation
 - Quelques manques à la marge
 - 100 % documentation à jour et 100 % des cours existent
 

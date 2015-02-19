@@ -4,17 +4,16 @@ Evaluation du capital opérationnel
 Ce questionnaire a pour but de permettre l'évaluation du capital
 opérationnel selon les thèmes suivants :
 
-Capital naturel 
+1. Capital naturel 
 
-capital sociétal 
+1. capital sociétal 
 
-capital de marque 
+1. capital de marque 
 
 Il y a 34 questions dans ce questionnaire
 
 Capital Naturel
 ---------------
-
 
 #### Qualité de la ressource (air)
 
@@ -25,7 +24,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Les alertes sont assez fréquentes
 -     Les alertes sont très rares
 -     L’air n’est jamais pollué
-
 
 #### Qualité de la ressource (eau)
 
@@ -39,7 +37,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Bonne qualité en surface et en profondeur
 -     Grande pureté tant en surface que dans les nappes phréatiques
 
-
 #### Abondance de la ressource
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -49,7 +46,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Il y a des restrictions d’eau de temps en temps en été
 -     Des risques de restriction ont déjà été évoqués mais n’ont pas eu lieu
 -     Ressource abondante en permanence
-
 
 #### Matières Premières
 
@@ -66,7 +62,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Les matières premières que l’entreprise emploie sont abondantes, de
     grande qualité et bon marché à long terme
 
-
 #### Evaluation du climat
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -78,7 +73,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Les sites de l’entreprise sont implantés dans des régions très
     attractives du point de vue climat : Région PACA, Midi Pyrénées
     Les sites de l’entreprise sont implantés dans des régions très
-
 
 #### Géographie et climat
 
@@ -112,7 +106,6 @@ RH locales et services (potentiel local RH)
 
  
 
-
 #### Sport, Culture, loisirs
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -127,7 +120,6 @@ Veuillez sélectionner une seule des propositions suivantes :
     du sport, de la culture et des loisirs
 -     Tous les sites de l’entreprise sont implantés dans des régions très
     riches sur le plan culturel, sportif ou de loisirs
-
 
 #### Partenaires publics
 
@@ -146,7 +138,6 @@ Veuillez sélectionner une seule des propositions suivantes :
     technopôles, de centres de recherche ou de formation professionnelle
     liés à ses métiers
 
-
 #### Accès et infrastructures
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -156,7 +147,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Autoroute proche
 -     Autoroute et gare TGV à 20 KM
 -     Autoroute, gare TGV, aéroport à 20KM
-
 
 #### RH locales et Services (Services Publics)
 
@@ -171,7 +161,6 @@ Veuillez sélectionner une seule des propositions suivantes :
     les salariés (hôpitaux, écoles,…) sont bons
 -     Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour
     les salariés (hôpitaux, écoles,…) sont d’excellente qualité
-
 
 #### RH locales et Services (Potentiel local RH)
 
@@ -205,7 +194,6 @@ Veuillez sélectionner une seule des propositions suivantes :
     marque
 -     Il n’y a aucun problème de ce type
 
-
 #### Protection juridique des noms de produits ou d’offre
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -217,7 +205,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Marque protégée, par un cluster de dépôts, large périmètre de
     protection, forte ancienneté, aucun plagiat, bon dispositif de
     veille
-
 
 #### Protections des noms de domaine internet
 
@@ -231,7 +218,6 @@ Veuillez sélectionner une seule des propositions suivantes :
     marque commerciale phare, il est protégé par un cluster de nom de
     domaines, la veille est assurée
 
-
 #### Protection juridique du nom de l’entreprise
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -243,7 +229,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Marque protégée, par un cluster de dépôts, large périmètre de
     protection, forte ancienneté, aucun plagiat, bon dispositif de
     veille
-
 
 #### La marque peut-elle être confondue avec une autre marque ?
 
@@ -258,7 +243,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Forte personnalité de la marque - n’est jamais confondue avec une
     autre
 
-
 #### La marque apporte-t-elle un supplément d’image à ses clients ? (Influence)
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -271,7 +255,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     La marque est une référence socioculturelle utilisée dans de
     nombreux films à dessein
 
-
 #### Réputation de l’entreprise
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -283,7 +266,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Bonne réputation
 -     Excellente image de la marque : toujours très positive, partout
 
-
 #### Budgets de promotion de la marque (mesure de la notoriété)
 
 Veuillez sélectionner une seule des propositions suivantes :
@@ -293,7 +275,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Presse écrite
 -     Affichage, pub télé, presse écrite
 -     Budget énorme: sponsoring voile, F1, pub télé, affichage
-
 
 #### Age (mesure de la notoriété)
 
@@ -307,7 +288,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     50 ans
 -     Marque centenaire
 
-
 Veuillez sélectionner une seule des propositions suivantes :
 
 -     Notoriété directe
@@ -316,7 +296,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Sort souvent dans les enquêtes de notoriété assistée
 -     Sort presque toujours dans les enquêtes de notoriété spontanée
 -     Marque leader
-
 
 #### La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance))
 
@@ -327,7 +306,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Partiellement
 -     Globalement Oui
 -     Absolument
-
 
 ### []Nombre d'employés
 
@@ -351,21 +329,20 @@ Veuillez écrire votre réponse ici :
 
 Veuillez écrire votre(vos) réponse(s) ici :
 
-Total :  
+Total :
 
  
 
-Europe (EU) :  
+Europe (EU) :
 
  
 
-US/Canada :  
+US/Canada :
 
  
 
-Reste du monde :  
+Reste du monde :
  
 
 Totale et par région :
-
 

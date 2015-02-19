@@ -10,9 +10,9 @@ ques:capital-0 ques:subheader ques:capital-1 .
  ques:capital-1 ques:paragraph """Ce questionnaire a pour but de permettre l'évaluation du capital
 opérationnel selon les thèmes suivants :""" .
   ques:capital-1 ques:paragraph """Capital naturel """ .
-  ques:capital-1 ques:paragraph """capital sociétal """ .
-  ques:capital-1 ques:paragraph """capital de marque """ .
-  ques:capital-1 ques:paragraph """Il y a 34 questions dans ce questionnaire""" .
+   ques:capital-1 ques:paragraph """capital sociétal """ .
+   ques:capital-1 ques:paragraph """capital de marque """ .
+    ques:capital-1 ques:paragraph """Il y a 34 questions dans ce questionnaire""" .
   
 ques:capital-2 ques:header """Capital Naturel""" .
 ques:capital-1 ques:subheader ques:capital-2 .
@@ -297,13 +297,13 @@ ques:capital-15 ques:subheader ques:capital-29 .
 ques:capital-30 ques:header """[]Marge brute annuelle :""" .
 ques:capital-15 ques:subheader ques:capital-30 .
  ques:capital-30 ques:paragraph """Veuillez écrire votre(vos) réponse(s) ici :""" .
-  ques:capital-30 ques:paragraph """Total :  """ .
+  ques:capital-30 ques:paragraph """Total :""" .
   ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:paragraph """Europe (EU) :  """ .
+  ques:capital-30 ques:paragraph """Europe (EU) :""" .
   ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:paragraph """US/Canada :  """ .
+  ques:capital-30 ques:paragraph """US/Canada :""" .
   ques:capital-30 ques:paragraph """ """ .
-  ques:capital-30 ques:paragraph """Reste du monde :  
+  ques:capital-30 ques:paragraph """Reste du monde :
  """ .
   ques:capital-30 ques:paragraph """Totale et par région :""" .
   

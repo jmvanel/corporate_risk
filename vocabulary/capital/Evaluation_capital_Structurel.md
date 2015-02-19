@@ -8,13 +8,13 @@ Ce questionnaire permet de recueillir les informations nécessaires à l'évalua
 
 Ce capital regroupe les aspects
 
--ACTIONNAIRE 
+1. -ACTIONNAIRE 
 
--PARTENAIRES 
+1. -PARTENAIRES 
 
--ORGANISATIONNEL 
+1. -ORGANISATIONNEL 
 
--﻿CLIENT 
+1. -﻿CLIENT 
 
 Il y a 89 questions dans ce questionnaire
 

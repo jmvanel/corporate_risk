@@ -9,11 +9,11 @@ ques:capital-1000 ques:paragraph """ {.P81}""" .
   ques:capital-1000 ques:paragraph """Evaluation capital Structurel""" .
   ques:capital-1000 ques:paragraph """Ce questionnaire permet de recueillir les informations nécessaires à l'évaluation du capital Structurel.""" .
   ques:capital-1000 ques:paragraph """Ce capital regroupe les aspects""" .
-  ques:capital-1000 ques:item """ACTIONNAIRE """ .
-ques:capital-1000 ques:item """PARTENAIRES """ .
-ques:capital-1000 ques:item """ORGANISATIONNEL """ .
-ques:capital-1000 ques:item """﻿CLIENT """ .
- ques:capital-1000 ques:paragraph """Il y a 89 questions dans ce questionnaire""" .
+  ques:capital-1000 ques:paragraph """-ACTIONNAIRE """ .
+   ques:capital-1000 ques:paragraph """-PARTENAIRES """ .
+   ques:capital-1000 ques:paragraph """-ORGANISATIONNEL """ .
+   ques:capital-1000 ques:paragraph """-﻿CLIENT """ .
+    ques:capital-1000 ques:paragraph """Il y a 89 questions dans ce questionnaire""" .
   
 ques:capital-1001 ques:header """Capital Actionnaire""" .
 ques:capital-0 ques:subheader ques:capital-1001 .
