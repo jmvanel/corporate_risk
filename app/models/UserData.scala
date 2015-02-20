@@ -24,7 +24,7 @@ object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Data
 
 trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     with RDFStoreLocalProvider[Rdf, DATASET]
-    with InstanceLabelsInference2 // [Rdf]
+    with InstanceLabelsInference2[Rdf]
     with SparqlGraphModule
     with SparqlOpsModule {
 
