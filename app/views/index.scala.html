@@ -1,4 +1,4 @@
-@(implicit user: User)
+@(infoForm: Form[UserCompanyInfo])(implicit user: User)
 
 @main("Bienvenue !", Some(user)) {
 	<p>
@@ -17,30 +17,29 @@
 	</p>
 	Connecté en tant que @user.email.
 	<div><a>Modifier le mot de passe.</a></div>
-	<form class="form" action="/saveinfo" method="POST">
-		<div class="form-group">
-			<label for="department">Département de l'entreprise</label>
-			<input type="text" id="department" name="department" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="naf">Code Naf</label>
-			<input type="text" id="naf" name="naf" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="year">Année de création</label>
-			<input type="number" id="year" name="year" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="isGroup">L'entreprise fait partie d'un groupe</label>
-			<div class="btn-group" data-toggle="buttons">
-			  <label class="btn btn-primary active">
-			    <input type="radio" name="isGroup" id="isGroup1" autocomplete="off"> Oui
-			  </label>
-			  <label class="btn btn-primary">
-			    <input type="radio" name="isGroup" id="isGroup2" autocomplete="off"> Non
-			  </label>
+	
+    @helper.form(action = routes.Application.saveinfo, 'class->"form") {
+    	@infoForm.globalError.map { error => <p class="error">@error.message</p>}
+    	
+    	@helper.inputText(infoForm("department"),
+    		'_label->"Département de l'entreprise", 'class->"form-control")
+    	@helper.inputText(infoForm("naf"),
+    		'_label->"Code Naf", 'class->"form-control")
+    	@helper.inputText(infoForm("year"),
+    		'_label->"Année de création", 'class->"form-control")
+    	@helper.input(infoForm("isGroup"),
+    		'_label->"L'entreprise fait partie d'un groupe", 'class->"form-control")  { (id, name, value, args) =>
+			<div class="form-group">
+				<div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-primary @if(value=="Oui"){active}">
+				    <input type="radio" name="@name" id="@{id+1}" @if(value=="Oui"){checked} autocomplete="off" value="Oui"> Oui
+				  </label>
+				  <label class="btn btn-primary @if(value=="Non"){active}">
+				    <input type="radio" name="@name" id="@{id+2}" @if(value=="Non"){checked} autocomplete="off" value="Non">Non
+				  </label>
+				</div>
 			</div>
-		</div>
-		<input type="submit" value="Enregistrer" />
-	</form>
+		}
+    	<input type="submit" class="btn btn-success" value="Enregistrer">
+    }
 }

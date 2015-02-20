@@ -15,6 +15,24 @@ import deductions.runtime.jena.RDFStoreObject
 import java.security.MessageDigest
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter
 
+/** Stores data from the info form */
+case class UserCompanyInfo(val department: Option[String] = None,
+    val naf: Option[String] = None,
+    val year: Option[String] = None,
+    val isGroup: Option[String] = None) {
+
+  def getMap =
+    (Map[String, String]() /: this.getClass.getDeclaredFields) { (map, field) =>
+      field.setAccessible(true)
+      field.get(this).asInstanceOf[Option[String]] match {
+        case None => map
+        case Some(value) => {
+          map + (field.getName -> value)
+        }
+      }
+    }
+}
+
 /** TODO indiquer le but de la classe */
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
   rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) extends { // UserVocab {
@@ -62,18 +80,49 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     }
   }
 
-  def saveInfo(department: String, naf: String, year: Int, isGroup: Boolean) = {
-
-  }
-  def getInfo() = {
-    ("", "", 0, false)
-  }
   def makeURI(user: User) = bizinnovUserPrefix(user.email)
+
+  def saveInfo(user: User, info: UserCompanyInfo) = {
+    val triples = info.getMap.map({
+      case (name, value) =>
+        makeTriple(
+          makeURI(user),
+          bizinnovUserVocabPrefix(name),
+          makeLiteral(value, xsd.string))
+    })
+    val graph = makeGraph(triples)
+    rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
+      rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
+    })
+    UserData.createEmptyUserData(user)
+  }
+
+  def getInfo(user: User): Option[UserCompanyInfo] = {
+    rdfStoreObject.rdfStore.r(
+      rdfStoreObject.dataset, {
+        val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
+        val userURI = getSubjects(userGraph,
+          bizinnovUserVocabPrefix("email"),
+          makeLiteral(user.email, xsd.string))
+        if (!userURI.isEmpty) {
+          val department = getObjects(userGraph, userURI.head,
+            bizinnovUserVocabPrefix("department")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+          val naf = getObjects(userGraph, userURI.head,
+            bizinnovUserVocabPrefix("naf")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+          val year = getObjects(userGraph, userURI.head,
+            bizinnovUserVocabPrefix("year")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+          val isGroup = getObjects(userGraph, userURI.head,
+            bizinnovUserVocabPrefix("isGroup")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+          Some(new UserCompanyInfo(department, naf, year, isGroup))
+        } else {
+          None
+        }
+      }).getOrElse(None)
+  }
 }
 
 /** Class representing the users of the application */
-case class User(var email: String, var password: String, var passwordHash: String = "",
-  var department: Option[String] = None, var naf: Option[String] = None, var year: Option[Int] = None, var isGroup: Option[Boolean] = None)
+case class User(val email: String, val password: String, val passwordHash: String = "")
     extends RDFUser[Jena] {
   def getURI() = bizinnovUserPrefix(email)
 }
