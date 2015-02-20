@@ -30,7 +30,7 @@ object Application extends ApplicationTrait[Jena, Dataset]
 
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with UserDataTrait[Rdf, DATASET]
-    with InstanceLabelsInference2 {
+    with InstanceLabelsInference2[Rdf] {
 
   lazy val tableView = new TableView {}
   import ops._
