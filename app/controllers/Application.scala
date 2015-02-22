@@ -71,7 +71,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
         user, URI(groupUri)).map {
           case FormUserData(formUri, label) =>
             (fromUri(formUri), label,
-              models.ResponseAnalysis.responsesCount(user, fromUri(formUri))
+              new ResponseAnalysis().responsesCount(user, fromUri(formUri))
             )
         }))
   }
@@ -100,7 +100,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** shows the report for the given user, as a html preview */
   def report = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.report(ResponseAnalysis.report(user)))
+      Ok(views.html.webreport(new ResponseAnalysis()))
   }
 
   /** downloads a pdf version of the report */
@@ -108,17 +108,19 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     implicit request =>
       val renderer = new ITextRenderer
       val buffer = new ByteArrayOutputStream
-      renderer.setDocumentFromString(views.html.pdfreport.render(user).toString)
+      renderer.setDocumentFromString(views.html.pdfreport(new ResponseAnalysis()).toString)
       renderer.layout
       renderer.createPDF(buffer)
       Ok(buffer.toByteArray()).withHeaders(CONTENT_TYPE -> "application/pdf")
   }
 
   //TODO: handle security
-  def chart(charttype: String) = Action {
+  def chart(charttype: String, email: String) = Action {
+    val user = User.find(email)
     val content = charttype match {
-      case "pie" => PieChart(Vector(("oui", 254), ("non", 167), ("NSPP", 88)))
-      case "radar" => SpiderWebChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
+      case "risk" => SpiderWebChart(new ResponseAnalysis().getRiskEval.toVector)
+      case "capital" => BarChart(new ResponseAnalysis().getRiskEval.toVector)
+      case "pie" => PieChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
     }
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }

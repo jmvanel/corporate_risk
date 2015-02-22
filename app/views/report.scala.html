@@ -1,19 +1,33 @@
-@(report: Any)(implicit user: User)
+@(reportData: ResponseAnalysis)(implicit user: User)
 
-@main("Rapport d'audit", Some(user)) {
-    <a class="pull-right" href="@routes.Application.exportPDF">
-    	<span class="glyphicon glyphicon-save-file"></span>
-    	Exporter ce rapport en PDF
-    </a>
-    <div class="clearfix"></div>
-    
-    <div class="report">
-	    <div class="pull-right">
-	    	<img src="@routes.Application.chart("pie")" />
-	    	<br />
-	    	<img src="@routes.Application.chart("radar")" />
-	   	</div>
-	    @report
-    	<div class="clearfix"></div>
-	</div>
-}
+<p>
+ 	@if(reportData.globalEval(user) > 3) {
+     L'entreprise a une bonne évaluation (@reportData.globalEval(user))
+  	} else {
+	  L'entreprise a une mauvaise évaluation (@reportData.globalEval(user))
+   }
+</p>
+<h2>Gestion des risques</h2>
+<div style="float: left">
+	<img src="http://localhost:9000@routes.Application.chart("risk", user.email)" />
+</div>
+<div style="float: left">
+	<table>
+		<tr>
+			<th>Thème</th>
+			<th>Note sur 5</th>
+		</tr>
+		@for((form, eval) <- reportData.getRiskEval) {
+		<tr>
+			<td>@form</td>
+			<td>@eval</td>
+		</tr>
+		}
+	</table>
+</div>
+<div style="clear: both"></div>
+<h2>Gestion des risques</h2>
+<div style="float: left">
+	<img src="http://localhost:9000@routes.Application.chart("capital", user.email)" />
+</div>
+<div style="clear: both"></div>

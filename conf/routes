@@ -9,7 +9,7 @@ GET     /formgroup                  controllers.Application.formgroup(url: Strin
 GET     /form                       controllers.Application.form(url: String)
 POST    /save                       controllers.Application.save
 GET     /report                     controllers.Application.report
-GET		/chart.png					controllers.Application.chart(charttype: String)
+GET		/chart.png					controllers.Application.chart(charttype: String, email: String)
 GET		/pdfreport					controllers.Application.exportPDF
 
 GET     /login                      controllers.Auth.login

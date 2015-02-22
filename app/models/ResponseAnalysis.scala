@@ -19,7 +19,7 @@ import deductions.runtime.dataset.RDFStoreLocalProvider
  * Responses Analysis:
  *  see "Note on the data model" in README.md
  */
-object ResponseAnalysis extends RDFStoreLocalJena1Provider with ResponseAnalysisTrait[Jena, Dataset]
+class ResponseAnalysis extends RDFStoreLocalJena1Provider with ResponseAnalysisTrait[Jena, Dataset]
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET] {
@@ -158,22 +158,39 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * fonction qui fournit un rapport en HTML
    *  TODO : prendre en compte les choix multiples pour les transformer en nombre entre 1 et 5
    */
-  def report(user: User): Elem = {
+  def globalEval(user: User): Int = {
     rdfStore.r(dataset, {
-      <div>
-        <p>Rapport de synthèse pour l'utilisateur { user.email }</p>
-        {
-          var weightedSum = 0
-          var coefSumGlobal = 0
-          for (fg <- formsGroupsURIs) {
-            val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
-            weightedSum += av * coefSum
-            coefSumGlobal += coefSum
-            <p> { fg } moyenne pondérée: { av } </p>
-          }
-          <p> Moyenne globale: { weightedSum / coefSumGlobal } </p>
-        }
-      </div>
+      var weightedSum = 0
+      var coefSumGlobal = 0
+      for (fg <- formsGroupsURIs) {
+        val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
+        weightedSum += av * coefSum
+        coefSumGlobal += coefSum
+      }
+      (weightedSum / coefSumGlobal)
     }).get
+  }
+
+  /**
+   * TODO: fonction qui renvoie la liste des formulaires de l'utilisateur avec
+   * la moyenne de chacun. Le user devrait être passé au constructeur
+   */
+  def getRiskEval: Map[String, Double] = {
+    Map(
+      "Politique de sécurité" -> 3.5,
+      "Biens sensibles" -> 2,
+      "Contrôle d'accès" -> 4
+    )
+  }
+  /**
+   * TODO: fonction qui renvoie la liste des formulaires de l'utilisateur avec
+   * la moyenne de chacun. Le user devrait être passé au constructeur
+   */
+  def getCapitalEval: Map[String, Double] = {
+    Map(
+      "Capital humain" -> 3.5,
+      "Capital naturel" -> 2,
+      "Cappital marques" -> 4
+    )
   }
 }

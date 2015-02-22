@@ -1,13 +1,6 @@
-@()(implicit user: User)
+@(reportData: ResponseAnalysis)(implicit user: User)
 <html>
 	<body>
-		<h2>Rapport d'audit</h2>
-		<img src="http://localhost:9000@routes.Application.chart("pie")" />
-		<br />
-		<img src="http://localhost:9000@routes.Application.chart("radar")" />
-		<div>
-		<img src="https://code.google.com/p/flying-saucer/logo" />
-			Ceci est le reste du rapport
-		</div>
+		@report(reportData)
 	</body>
 </html>
