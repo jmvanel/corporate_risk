@@ -15,21 +15,16 @@ ques:capital-2001
     ] .
 
 ques:capital-2002
+    a owl:Class ;
+    rdfs:label "Capital Humain" ;
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
 ques:capital-2003
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2004
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2003 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Gestion des remplacements (turn over ou retraite)" ;
     rdfs:range [
         owl:oneOf ([
@@ -47,17 +42,10 @@ ques:capital-2004
         )
     ] .
 
-ques:capital-2005
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2006
+ques:capital-2004
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2005 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Turn over (sur 3 ans écoulés) + taux de plus de 62 ans dans les 3 ans" ;
     rdfs:range [
         owl:oneOf ([
@@ -75,22 +63,15 @@ ques:capital-2006
         )
     ] .
 
-ques:capital-2007
-    a owl:Class ;
-    rdfs:label "[]" ;
+ques:capital-2005
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2008
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2009
+ques:capital-2006
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2007 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Il s’agit de noter le manager de 1 à 5, 5 étant la meilleur note." ;
     rdfs:range [
         owl:oneOf ([
@@ -111,17 +92,10 @@ ques:capital-2009
         )
     ] .
 
-ques:capital-2010
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2011
+ques:capital-2007
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2010 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Quantitatif hiérarchique" ;
     rdfs:range [
         owl:oneOf ([
@@ -142,17 +116,10 @@ ques:capital-2011
         )
     ] .
 
-ques:capital-2012
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2013
+ques:capital-2008
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2012 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Indicateurs de stress collectif et de climat : plans sociaux, précarité, turn-over, arrêts maladie, taux d’accident, suicides, conflits sociaux pour ces raisons" ;
     rdfs:range [
         owl:oneOf ([
@@ -173,17 +140,10 @@ ques:capital-2013
         )
     ] .
 
-ques:capital-2014
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2015
+ques:capital-2009
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2014 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Votre niveau de stress est acceptable" ;
     rdfs:range [
         owl:oneOf ([
@@ -207,17 +167,10 @@ Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord » """
         )
     ] .
 
-ques:capital-2016
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2017
+ques:capital-2010
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2016 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Indicateurs de tensions sociales (prud’hommes, grèves, dialogue social dégradé avec représentants)" ;
     rdfs:range [
         owl:oneOf ([
@@ -238,17 +191,10 @@ ques:capital-2017
         )
     ] .
 
-ques:capital-2018
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2019
+ques:capital-2011
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2018 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Absentéisme" ;
     rdfs:range [
         owl:oneOf ([
@@ -269,17 +215,10 @@ ques:capital-2019
         )
     ] .
 
-ques:capital-2020
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2021
+ques:capital-2012
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2020 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Turn over" ;
     rdfs:range [
         owl:oneOf ([
@@ -300,17 +239,10 @@ ques:capital-2021
         )
     ] .
 
-ques:capital-2022
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2023
+ques:capital-2013
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2022 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Baromètre social" ;
     rdfs:range [
         owl:oneOf ([
@@ -335,17 +267,10 @@ De 70% à 80% """
         )
     ] .
 
-ques:capital-2024
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2025
+ques:capital-2014
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2024 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Politique de formation de maintien dans l’emploi" ;
     rdfs:range [
         owl:oneOf ([
@@ -366,17 +291,10 @@ ques:capital-2025
         )
     ] .
 
-ques:capital-2026
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2027
+ques:capital-2015
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2026 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Diversité" ;
     rdfs:range [
         owl:oneOf ([
@@ -399,17 +317,10 @@ Très forte diversité mais insuffisance dans le codir (codir= comité de direct
         )
     ] .
 
-ques:capital-2028
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2029
+ques:capital-2016
     a owl:ObjectProperty ;
     rdfs:comment "Il s’agit de la moyenne des notes de compétence aux entretiens individuels de 1 à 5, 5 étant la note maximale", "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2028 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Moyenne des notes de compétence aux entretiens individuels" ;
     rdfs:range [
         owl:oneOf ([
@@ -430,17 +341,10 @@ ques:capital-2029
         )
     ] .
 
-ques:capital-2030
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2031
+ques:capital-2017
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2030 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Existence d’une gestion prévisionnelle des emplois et des compétences" ;
     rdfs:range [
         owl:oneOf ([
@@ -461,17 +365,10 @@ ques:capital-2031
         )
     ] .
 
-ques:capital-2032
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2033
+ques:capital-2018
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2032 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Surcoût du travail" ;
     rdfs:range [
         owl:oneOf ([
@@ -492,17 +389,10 @@ ques:capital-2033
         )
     ] .
 
-ques:capital-2034
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2035
+ques:capital-2019
     a owl:ObjectProperty ;
     rdfs:comment "ETP = Equivalent Temps Plein", "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2034 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "ETP productifs (*) / ETP totaux" ;
     rdfs:range [
         owl:oneOf ([
@@ -520,17 +410,10 @@ ques:capital-2035
         )
     ] .
 
-ques:capital-2036
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2037
+ques:capital-2020
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2036 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Sous-effectif" ;
     rdfs:range [
         owl:oneOf ([
@@ -548,17 +431,10 @@ ques:capital-2037
         )
     ] .
 
-ques:capital-2038
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2039
+ques:capital-2021
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2038 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Sureffectif" ;
     rdfs:range [
         owl:oneOf ([
@@ -576,17 +452,10 @@ ques:capital-2039
         )
     ] .
 
-ques:capital-2040
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2041
+ques:capital-2022
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2040 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Gestion des remplacements (turn over ou retraite) des dirigeants" ;
     rdfs:range [
         owl:oneOf ([
@@ -607,17 +476,10 @@ ques:capital-2041
         )
     ] .
 
-ques:capital-2042
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2043
+ques:capital-2023
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2042 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Turn over (des dirigeants) correspondant" ;
     rdfs:range [
         owl:oneOf ([
@@ -638,17 +500,10 @@ ques:capital-2043
         )
     ] .
 
-ques:capital-2044
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2045
+ques:capital-2024
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2044 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Durée moyenne de collaboration" ;
     rdfs:range [
         owl:oneOf ([
@@ -669,17 +524,10 @@ ques:capital-2045
         )
     ] .
 
-ques:capital-2046
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2047
+ques:capital-2025
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2046 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Confiance" ;
     rdfs:range [
         owl:oneOf ([
@@ -700,17 +548,10 @@ ques:capital-2047
         )
     ] .
 
-ques:capital-2048
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2049
+ques:capital-2026
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2048 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Sensibilité sociale" ;
     rdfs:range [
         owl:oneOf ([
@@ -731,17 +572,10 @@ ques:capital-2049
         )
     ] .
 
-ques:capital-2050
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2051
+ques:capital-2027
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2050 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "L’entreprise est engagée dans la RSE" ;
     rdfs:range [
         owl:oneOf ([
@@ -762,17 +596,10 @@ ques:capital-2051
         )
     ] .
 
-ques:capital-2052
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2053
+ques:capital-2028
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2052 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Prises de décision" ;
     rdfs:range [
         owl:oneOf ([
@@ -793,17 +620,10 @@ ques:capital-2053
         )
     ] .
 
-ques:capital-2054
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2055
+ques:capital-2029
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2054 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Prise de risques" ;
     rdfs:range [
         owl:oneOf ([
@@ -824,17 +644,10 @@ ques:capital-2055
         )
     ] .
 
-ques:capital-2056
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2057
+ques:capital-2030
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2056 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Charisme" ;
     rdfs:range [
         owl:oneOf ([
@@ -855,17 +668,10 @@ ques:capital-2057
         )
     ] .
 
-ques:capital-2058
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2059
+ques:capital-2031
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2058 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Compétence sur les différents domaines d’activité" ;
     rdfs:range [
         owl:oneOf ([
@@ -886,17 +692,10 @@ ques:capital-2059
         )
     ] .
 
-ques:capital-2060
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2061
+ques:capital-2032
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2060 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Parcours du dirigeant" ;
     rdfs:range [
         owl:oneOf ([
@@ -917,17 +716,10 @@ ques:capital-2061
         )
     ] .
 
-ques:capital-2062
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2063
+ques:capital-2033
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2062 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Ancienneté moyenne du dirigeant à son poste" ;
     rdfs:range [
         owl:oneOf ([
@@ -948,17 +740,10 @@ ques:capital-2063
         )
     ] .
 
-ques:capital-2064
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2065
+ques:capital-2034
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2064 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Par ses décisions et réalisations passées (le dirigeant ou le comité de direction)" ;
     rdfs:range [
         owl:oneOf ([
@@ -979,17 +764,10 @@ ques:capital-2065
         )
     ] .
 
-ques:capital-2066
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2067
+ques:capital-2035
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2066 ;
+    rdfs:domain ques:capital-2002 ;
     rdfs:label "Cohésion" ;
     rdfs:range [
         owl:oneOf ([
@@ -1007,22 +785,17 @@ ques:capital-2067
         )
     ] .
 
-ques:capital-2068
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2069
+ques:capital-2036
     a owl:Class ;
-    rdfs:label "[]" ;
+    rdfs:label "Capital de savoir" ;
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2070
+ques:capital-2037
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2069 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Y a-t-il nouveauté ou innovation ?" ;
     rdfs:range [
         owl:oneOf ([
@@ -1043,17 +816,10 @@ ques:capital-2070
         )
     ] .
 
-ques:capital-2071
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2072
+ques:capital-2038
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2071 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "La politique de R&D est-elle cohérente par rapport à la stratégie ?" ;
     rdfs:range [
         owl:oneOf ([
@@ -1074,17 +840,10 @@ ques:capital-2072
         )
     ] .
 
-ques:capital-2073
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2074
+ques:capital-2039
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2073 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Participants à la politique d’innovation produit" ;
     rdfs:range [
         owl:oneOf ([
@@ -1105,17 +864,10 @@ ques:capital-2074
         )
     ] .
 
-ques:capital-2075
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2076
+ques:capital-2040
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2075 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Budget R&D (interne ou sous-traité)" ;
     rdfs:range [
         owl:oneOf ([
@@ -1136,17 +888,10 @@ ques:capital-2076
         )
     ] .
 
-ques:capital-2077
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2078
+ques:capital-2041
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2077 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Services (Valeur des savoirs actuels)" ;
     rdfs:range [
         owl:oneOf ([
@@ -1167,17 +912,10 @@ ques:capital-2078
         )
     ] .
 
-ques:capital-2079
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2080
+ques:capital-2042
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2079 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Produits" ;
     rdfs:range [
         owl:oneOf ([
@@ -1198,17 +936,10 @@ ques:capital-2080
         )
     ] .
 
-ques:capital-2081
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2082
+ques:capital-2043
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2081 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Ordre de grandeur des investissements requis pour un concurrent qui entend entrer sur ce marché (concevoir et fabriquer un produit concurrent)" ;
     rdfs:range [
         owl:oneOf ([
@@ -1229,17 +960,10 @@ ques:capital-2082
         )
     ] .
 
-ques:capital-2083
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2084
+ques:capital-2044
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2083 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Ligne de fabrication ou moyens de productions" ;
     rdfs:range [
         owl:oneOf ([
@@ -1260,17 +984,10 @@ ques:capital-2084
         )
     ] .
 
-ques:capital-2085
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2086
+ques:capital-2045
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2085 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Produit ou service" ;
     rdfs:range [
         owl:oneOf ([
@@ -1291,17 +1008,10 @@ ques:capital-2086
         )
     ] .
 
-ques:capital-2087
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2088
+ques:capital-2046
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2087 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Obsolescence de l’offre" ;
     rdfs:range [
         owl:oneOf ([
@@ -1322,17 +1032,10 @@ ques:capital-2088
         )
     ] .
 
-ques:capital-2089
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2090
+ques:capital-2047
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2089 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Notre avantage concurrentiel (vous estimez que vous êtes :)" ;
     rdfs:range [
         owl:oneOf ([
@@ -1354,17 +1057,10 @@ Top 5 """
         )
     ] .
 
-ques:capital-2091
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2092
+ques:capital-2048
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2091 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Intensité concurrentielle" ;
     rdfs:range [
         owl:oneOf ([
@@ -1385,17 +1081,10 @@ ques:capital-2092
         )
     ] .
 
-ques:capital-2093
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2094
+ques:capital-2049
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2093 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Degré d’innovation" ;
     rdfs:range [
         owl:oneOf ([
@@ -1417,17 +1106,10 @@ Ne fait défaut sur aucune fonction """
         )
     ] .
 
-ques:capital-2095
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2096
+ques:capital-2050
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2095 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Croissance de la demande" ;
     rdfs:range [
         owl:oneOf ([
@@ -1448,17 +1130,10 @@ ques:capital-2096
         )
     ] .
 
-ques:capital-2097
-    a owl:Class ;
-    rdfs:label "[]" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2098
+ques:capital-2051
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
-    rdfs:domain ques:capital-2097 ;
+    rdfs:domain ques:capital-2036 ;
     rdfs:label "Taille du marché accessible (mesure de la demande)" ;
     rdfs:range [
         owl:oneOf ([
@@ -1479,47 +1154,47 @@ ques:capital-2098
         )
     ] .
 
-ques:capital-2099
+ques:capital-2052
     a owl:Class ;
     rdfs:label "Identification de l'entreprise" ;
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2100
+ques:capital-2053
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2101
+ques:capital-2054
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2102
+ques:capital-2055
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2103
+ques:capital-2056
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2104
+ques:capital-2057
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2105
+ques:capital-2058
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2106
+ques:capital-2059
     a owl:ObjectProperty ;
     rdfs:comment "Totale et par région :", "Veuillez écrire votre(vos) réponse(s) ici :", " " ;
-    rdfs:domain ques:capital-2099 ;
+    rdfs:domain ques:capital-2052 ;
     rdfs:label "[]Marge brute annuelle :" ;
     rdfs:range [
         owl:oneOf ([
@@ -1537,278 +1212,53 @@ ques:capital-2106
         )
     ] .
 
-ques:capital-2107
+ques:capital-2060
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2108
+ques:capital-2061
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2109
+ques:capital-2062
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2110
+ques:capital-2063
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2111
+ques:capital-2064
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-2112
+ques:capital-2065
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
 ques:capital-fg
-    ques:properties <ques:capital-2003-user-prop>, <ques:capital-2005-user-prop>, <ques:capital-2007-user-prop>, <ques:capital-2010-user-prop>, <ques:capital-2012-user-prop>, <ques:capital-2014-user-prop>, <ques:capital-2016-user-prop>, <ques:capital-2018-user-prop>, <ques:capital-2020-user-prop>, <ques:capital-2022-user-prop>, <ques:capital-2024-user-prop>, <ques:capital-2026-user-prop>, <ques:capital-2028-user-prop>, <ques:capital-2030-user-prop>, <ques:capital-2032-user-prop>, <ques:capital-2034-user-prop>, <ques:capital-2036-user-prop>, <ques:capital-2038-user-prop>, <ques:capital-2040-user-prop>, <ques:capital-2042-user-prop>, <ques:capital-2044-user-prop>, <ques:capital-2046-user-prop>, <ques:capital-2048-user-prop>, <ques:capital-2050-user-prop>, <ques:capital-2052-user-prop>, <ques:capital-2054-user-prop>, <ques:capital-2056-user-prop>, <ques:capital-2058-user-prop>, <ques:capital-2060-user-prop>, <ques:capital-2062-user-prop>, <ques:capital-2064-user-prop>, <ques:capital-2066-user-prop>, <ques:capital-2069-user-prop>, <ques:capital-2071-user-prop>, <ques:capital-2073-user-prop>, <ques:capital-2075-user-prop>, <ques:capital-2077-user-prop>, <ques:capital-2079-user-prop>, <ques:capital-2081-user-prop>, <ques:capital-2083-user-prop>, <ques:capital-2085-user-prop>, <ques:capital-2087-user-prop>, <ques:capital-2089-user-prop>, <ques:capital-2091-user-prop>, <ques:capital-2093-user-prop>, <ques:capital-2095-user-prop>, <ques:capital-2097-user-prop>, <ques:capital-2099-user-prop> ;
+    ques:properties <ques:capital-2002-user-prop>, <ques:capital-2036-user-prop>, <ques:capital-2052-user-prop> ;
     a ques:FormGroup ;
     rdfs:label "Questions sur le capital immatériel."@fr .
 
-<ques:capital-2003-user-prop>
+<ques:capital-2002-user-prop>
     a owl:ObjectProperty ;
     rdfs:domain ques:User ;
-    rdfs:range ques:capital-2003 .
-
-<ques:capital-2005-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2005 .
-
-<ques:capital-2007-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2007 .
-
-<ques:capital-2010-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2010 .
-
-<ques:capital-2012-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2012 .
-
-<ques:capital-2014-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2014 .
-
-<ques:capital-2016-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2016 .
-
-<ques:capital-2018-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2018 .
-
-<ques:capital-2020-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2020 .
-
-<ques:capital-2022-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2022 .
-
-<ques:capital-2024-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2024 .
-
-<ques:capital-2026-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2026 .
-
-<ques:capital-2028-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2028 .
-
-<ques:capital-2030-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2030 .
-
-<ques:capital-2032-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2032 .
-
-<ques:capital-2034-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2034 .
+    rdfs:range ques:capital-2002 .
 
 <ques:capital-2036-user-prop>
     a owl:ObjectProperty ;
     rdfs:domain ques:User ;
     rdfs:range ques:capital-2036 .
 
-<ques:capital-2038-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2038 .
-
-<ques:capital-2040-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2040 .
-
-<ques:capital-2042-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2042 .
-
-<ques:capital-2044-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2044 .
-
-<ques:capital-2046-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2046 .
-
-<ques:capital-2048-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2048 .
-
-<ques:capital-2050-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2050 .
-
 <ques:capital-2052-user-prop>
     a owl:ObjectProperty ;
     rdfs:domain ques:User ;
     rdfs:range ques:capital-2052 .
-
-<ques:capital-2054-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2054 .
-
-<ques:capital-2056-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2056 .
-
-<ques:capital-2058-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2058 .
-
-<ques:capital-2060-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2060 .
-
-<ques:capital-2062-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2062 .
-
-<ques:capital-2064-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2064 .
-
-<ques:capital-2066-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2066 .
-
-<ques:capital-2069-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2069 .
-
-<ques:capital-2071-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2071 .
-
-<ques:capital-2073-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2073 .
-
-<ques:capital-2075-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2075 .
-
-<ques:capital-2077-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2077 .
-
-<ques:capital-2079-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2079 .
-
-<ques:capital-2081-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2081 .
-
-<ques:capital-2083-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2083 .
-
-<ques:capital-2085-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2085 .
-
-<ques:capital-2087-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2087 .
-
-<ques:capital-2089-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2089 .
-
-<ques:capital-2091-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2091 .
-
-<ques:capital-2093-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2093 .
-
-<ques:capital-2095-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2095 .
-
-<ques:capital-2097-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2097 .
-
-<ques:capital-2099-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2099 .
 

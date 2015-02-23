@@ -5,7 +5,7 @@ function md2owl {
 md=$1
 initialIndex=$2
 
-sed -e '1,$s/ {\.P1}//;1,$s/ {\.P29}//;1,$s/!\[\](data:image.*)//;1,$s/   //;1,$s/ *$//;1,$s/  $//' $md > $md.new
+sed -e '1,$s/ {\.P1}//;1,$s/ {\.P29}//;1,$s/!\[\](data:image.*)//;1,$s/   //;1,$s/ *$//;1,$s/  $//;/### \[\]$/d' $md > $md.new
 echo removing duplicated lines
 uniq $md.new > $md.new2
 echo 'joining lines with "-" only'
