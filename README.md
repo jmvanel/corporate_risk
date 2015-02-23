@@ -2,11 +2,14 @@
 Forms for corporate risk evaluation
 
 ## Introduction
-This projet manages input forms for corporate risk  and immaterial capital evaluation.
+This projet generates input forms (from markdown and tabular data) and implements results management 
+for corporate risk  and immaterial capital evaluation.
+
+It is a web application built with Play! Framework and W3C's Semantic Web recommandations (RDF, SPARQL).
 
 ## Status
 
-Currently in development, first release on february 6.
+Currently in development, first release in february.
 
 ## Technique
 
