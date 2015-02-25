@@ -1,6 +1,6 @@
 @(infoForm: Form[UserCompanyInfo])(implicit user: User)
 
-@main("Bienvenue !", Some(user)) {
+@main("Bienvenue !", Some(user), currentPage = "index") {
 	<p>
 		Le capital immatériel est la richesse cachée des entreprises. La gestion du risque et 
 		la sécurisation du capital immatériel permet de mettre en lumière cette richesse inexploitée.

@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index
-POST    /saveinfo                   controllers.Application.saveinfo
+POST    /		                   controllers.Application.saveinfo
 GET     /formgroup                  controllers.Application.formgroup(url: String)
 GET     /form                       controllers.Application.form(url: String)
 POST    /save                       controllers.Application.save

@@ -1,4 +1,4 @@
-@(title: String, userOption: Option[User])(content: Html)
+@(title: String, userOption: Option[User] = None, currentPage: String = "")(content: Html)
 
 <!DOCTYPE html>
 
@@ -37,15 +37,15 @@
         	
 		@if(!userOption.isEmpty) {
 		<div class="formmenu">
-			<div class="formmenuitem selected">
+			<div class="formmenuitem@if(currentPage=="index"){ selected}">
 				<a href="@routes.Application.index">Profil</a>
 			</div>
-		   	@for(formgroup <- UserData.formGroupList) {
-		   	<div class="formmenuitem">
-		   		<a href="@routes.Application.formgroup(formgroup._2)">@formgroup._1</a>
+		   	@for((fgName, fgUri) <- UserData.formGroupList) {
+		   	<div class="formmenuitem@if(currentPage==fgName){ selected}">
+		   		<a href="@routes.Application.formgroup(fgUri)">@fgName</a>
 		   	</div>
 			}
-			<div class="formmenuitem">
+			<div class="formmenuitem@if(currentPage=="report"){ selected}">
 				<a href="@routes.Application.report">Rapport</a>
 			</div>
 			<div class="clearfix"></div>

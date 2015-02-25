@@ -1,6 +1,6 @@
 @(reportData: ResponseAnalysis)(implicit user: User)
 
-@main("Rapport d'audit", Some(user)) {
+@main("Rapport d'audit", Some(user), currentPage = "report") {
     <a class="pull-right" href="@routes.Application.exportPDF">
     	<span class="glyphicon glyphicon-save-file"></span>
     	Exporter ce rapport en PDF

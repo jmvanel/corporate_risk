@@ -58,7 +58,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
         formWithErrors => BadRequest(views.html.index(formWithErrors)),
         userInfo => {
           user.saveInfo(user, userInfo)
-          Ok(views.html.index(userInfoForm))
+          Redirect(routes.Application.formgroup(UserData.formGroupList.get("Pré-diagnostic").get))
         }
       )
     }
@@ -67,13 +67,15 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** show a list of forms */
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.formgroup(getUserData(
-        user, URI(groupUri)).map {
-          case FormUserData(formUri, label) =>
-            (fromUri(formUri), label,
-              new ResponseAnalysis().responsesCount(user, fromUri(formUri))
-            )
-        }))
+      val fgName = UserData.formGroupList.map(_.swap).get(groupUri).get
+      val forms = getUserData(user, URI(groupUri)).map {
+        case FormUserData(formUri, label) =>
+          (fromUri(formUri), label,
+            new ResponseAnalysis().responsesCount(user, fromUri(formUri))
+          )
+      }
+
+      Ok(views.html.formgroup(forms, fgName))
   }
 
   /** edit given form, with values previously set by the user */

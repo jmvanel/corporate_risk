@@ -1,6 +1,6 @@
-@(forms: Seq[(String, String, Int)] )(implicit user: User)
+@(forms: Seq[(String, String, Int)], fgName: String )(implicit user: User)
 
-@main("Diagnostic", Some(user)) {
+@main(fgName, Some(user), currentPage=fgName) {
     <table class="table">
     	<tr>
     		<th class="index-col-left">Mes formulaires</th>
