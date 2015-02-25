@@ -81,7 +81,15 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.form(tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString())))
+      val label = rdfStore.r(dataset, {
+        implicit val graph = allNamedGraph
+        instanceLabel(URI(uri))
+      }).get
+      Ok {
+        views.html.form(
+          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString()),
+          label)
+      }
   }
 
   /** saves the values entered by the user */

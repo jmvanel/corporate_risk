@@ -1,5 +1,6 @@
-@(form: Any)(implicit user: User)
+@(form: Any, title: String)(implicit user: User)
 
 @main("Formulaire", Some(user)) {
+	<h1>@title</h1>
     @form
 }
