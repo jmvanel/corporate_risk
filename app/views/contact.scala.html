@@ -1,6 +1,6 @@
 @* contact Template File *@
-@(param: Any)
-@main("Contact", None) {
+@(user: Option[User])
+@main("Contact", user) {
 	<div class="contact">
 		<div class="pull-left contactimg">
 			<img src="@routes.Assets.at("/images/contact1.png")" />
@@ -11,4 +11,5 @@
 			<div>Vous faire rappeler par nos experts</div>
 		</div>
 	</div>
+	<div class="clearfix"></div>
 }

@@ -133,11 +133,13 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 
-  def contact() = Action {
-    Ok(views.html.contact())
+  def contact() = Action { implicit request =>
+    val user = request.session.get(Security.username).map { email => User.find(email).get }
+    Ok(views.html.contact(user))
   }
 
-  def info() = Action {
-    Ok(views.html.info())
+  def info() = Action { implicit request =>
+    val user = request.session.get(Security.username).map { email => User.find(email).get }
+    Ok(views.html.info(user))
   }
 }
