@@ -31,10 +31,10 @@
     		'_label->"L'entreprise fait partie d'un groupe", 'class->"form-control")  { (id, name, value, args) =>
 			<div class="form-group">
 				<div class="btn-group" data-toggle="buttons">
-				  <label class="btn btn-primary @if(value=="Oui"){active}">
+				  <label class="btn btn-primary @if(value.getOrElse(None)=="Oui"){active}">
 				    <input type="radio" name="@name" id="@{id+1}" @if(value=="Oui"){checked} autocomplete="off" value="Oui"> Oui
 				  </label>
-				  <label class="btn btn-primary @if(value=="Non"){active}">
+				  <label class="btn btn-primary @if(value.getOrElse(None)=="Non"){active}">
 				    <input type="radio" name="@name" id="@{id+2}" @if(value=="Non"){checked} autocomplete="off" value="Non">Non
 				  </label>
 				</div>

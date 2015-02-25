@@ -94,7 +94,6 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
       rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
     })
-    UserData.createEmptyUserData(user)
   }
 
   def getInfo(user: User): Option[UserCompanyInfo] = {
