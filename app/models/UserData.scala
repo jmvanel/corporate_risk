@@ -37,6 +37,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    */
   lazy val formsGroups = List("risk", "capital") // human", "structural", "operational")
   lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
+  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fg => fg -> fromUri(bizinnovQuestionsVocabPrefix(fg)) } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
     "Pré-diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("risk")),
@@ -106,8 +107,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   /** like before, different argument type */
-  def applicationClassesAndProperties(formGroup: String): FormGroup = {
-    formGroup match {
+  def applicationClassesAndProperties(formGroupName: String): FormGroup = {
+    formGroupName match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
       case name => classesAndProperties(name + "-fg")

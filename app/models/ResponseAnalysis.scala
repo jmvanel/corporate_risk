@@ -22,45 +22,17 @@ import deductions.runtime.dataset.RDFStoreLocalProvider
 class ResponseAnalysis extends RDFStoreLocalJena1Provider with ResponseAnalysisTrait[Jena, Dataset]
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
-    extends UserDataTrait[Rdf, DATASET] {
+    extends UserDataTrait[Rdf, DATASET]
+    with InstanceLabelsInference2[Rdf] {
   val xsd = XSDPrefix[Rdf]
   val zero = ops.makeLiteral("0", xsd.integer)
   import ops._
 
-  /**
-   * fonction qui compte les réponses pour une propriété de User,
-   *  c'est à dire un formulaire, alias une rubrique (alias thème)
-   */
-  def responsesCount0(user: User, propURI: String): Int = {
-    val countTry = rdfStore.r(dataset, {
-      val userURI = getURI(user)
-      // NOTE: could have used find() like in UserData.getUserData()
-      val queryString = s"""
-          SELECT DISTINCT (COUNT(?OBJ) AS ?count) 
-          WHERE {
-           GRAPH <$userURI> {
-             <$userURI> <$propURI> ?FORM.
-                                   ?FORM ?PROP ?OBJ .
-           }
-          } """
-      import sparqlOps._
-      import ops._
-      println("responsesCount " + queryString)
-      val query = parseSelect(queryString).get
-      val solutions = rdfStore.executeSelect(dataset, query, Map()).get
-      val res = solutions.iterator map { row =>
-        row("count").get.as[Rdf#Literal].get
-      }
-      res.next()
-    })
-    val lit = countTry.getOrElse(zero)
-    println("responsesCount " + lit)
-    lit2Int(lit)
-  }
 
   /**
    * fonction qui compte les réponses pour une propriété de User,
-   *  c'est à dire un formulaire, alias une rubrique (alias thème)
+   *  c'est à dire un formulaire, alias une rubrique (alias thème);
+   *  NON transactional
    */
   def responsesCount(user: User, dataURI: String): Int = {
     val countTry = rdfStore.r(dataset, {
@@ -90,25 +62,62 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     lit2Int(lit)
   }
 
+    /**
+   * fonction qui renvoie la liste des formulaires de l'utilisateur avec
+   * la moyenne de chacun,  pour le groupe "risk".
+   */
+  def getRiskEval(userEmail: String): Map[String, Double] = {
+    getEval(userEmail, "risk")
+  }
+  
+ def getEval(userEmail: String, formGroupName: String): Map[String, Double] = {
+    val riskQuestionaires = applicationClassesAndProperties(formGroupName)
+    val cp = riskQuestionaires.classesAndProperties
+    val res = for ( (c, propURI) <- cp ) yield {
+        implicit val graph = allNamedGraph
+        instanceLabel(propURI) ->
+        averagePerForm( User.find(userEmail).get, fromUri(propURI))._1 
+    }
+    val string2Int = res.toMap
+    string2Int.map { case(s,i) => (s, i.toDouble) }    
+  }
+ 
+  /**
+   * renvoie la liste des formulaires de l'utilisateur avec
+   * la moyenne de chacun, pour le groupe "capital"
+   */
+  def getCapitalEval(userEmail: String): Map[String, Double] = {
+	  getEval(userEmail, "capital")
+//    Map(
+//      "Capital humain" -> 3.5,
+//      "Capital naturel" -> 2,
+//      "Capital marques" -> 4
+//    )
+  }
+  
   /**
    * pour diagramme araignée, fonction qui chiffre chaque rubrique;
    *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
    */
-  def averagePerForm(user: User, propURI: String): (Int, Int) = {
+  def averagePerForm(
+//      email: String,
+      user: User, 
+      propURI: String
+      ): (Int, Int) = {
     val iteratorTry = rdfStore.r(dataset, {
       val userURI = getURI(user)
+//      bizinnovUserPrefix(email)
       // NOTE: could have used find() like in UserData.getUserData()
       val queryString = s"""
           prefix : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
           SELECT ?label (xsd:integer(?OBJ) AS ?note) (xsd:integer(?COEF) AS ?coef)
           WHERE {
            GRAPH <$userURI> {
-             <$userURI> <$propURI> ?FORM.
-                                   ?FORM ?PROP ?OBJ .
+             <$propURI> ?PROP ?OBJ .
            }
            GRAPH ?any {
-                                         ?PROP :coef ?COEF ;
-                                               rdfs:label ?LAB .
+             ?PROP :coef ?COEF ;
+             rdfs:label ?LAB .
            }
           } """
       import sparqlOps._
@@ -171,26 +180,4 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     }).get
   }
 
-  /**
-   * TODO: fonction qui renvoie la liste des formulaires de l'utilisateur avec
-   * la moyenne de chacun. Le user devrait être passé au constructeur
-   */
-  def getRiskEval: Map[String, Double] = {
-    Map(
-      "Politique de sécurité" -> 3.5,
-      "Biens sensibles" -> 2,
-      "Contrôle d'accès" -> 4
-    )
-  }
-  /**
-   * TODO: fonction qui renvoie la liste des formulaires de l'utilisateur avec
-   * la moyenne de chacun. Le user devrait être passé au constructeur
-   */
-  def getCapitalEval: Map[String, Double] = {
-    Map(
-      "Capital humain" -> 3.5,
-      "Capital naturel" -> 2,
-      "Cappital marques" -> 4
-    )
-  }
 }

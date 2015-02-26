@@ -128,8 +128,9 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def chart(charttype: String, email: String) = Action {
     val user = User.find(email)
     val content = charttype match {
-      case "risk" => SpiderWebChart(new ResponseAnalysis().getRiskEval.toVector)
-      case "capital" => BarChart(new ResponseAnalysis().getRiskEval.toVector)
+      case "risk" => SpiderWebChart(new ResponseAnalysis().getRiskEval(email).toVector)
+      case "capital" => BarChart(new ResponseAnalysis().getCapitalEval(email).toVector)
+      // TODO: les vrais chiffres:
       case "pie" => PieChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
     }
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")

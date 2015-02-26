@@ -155,6 +155,7 @@ object User extends JenaModule with UserVocab {
   import ops._
   val rdfStoreObject = RDFStoreObject
 
+  /** transactional */
   def find(email: String): Option[User] = {
     val user = rdfStoreObject.rdfStore.r(
       rdfStoreObject.dataset, {
