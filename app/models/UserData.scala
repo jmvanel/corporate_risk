@@ -44,13 +44,13 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     "Diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("capital"))
   )
   /**
-   * create Empty User Data : the triples:
+   * create Empty User Data for all 4 Form Groups : the triples:
    *  <pre>
    *  &lt; userURI> :prop-5 :v5 .
    *                    :v5 a ques:5 . # until ques:15
    *  </pre>
    *
-   * create user data for all 4 Form Groups
+   * transactional
    */
   def createEmptyUserData(user: User) = {
     rdfStore.rw(
@@ -71,9 +71,12 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * - a label string associated to the class of <u1> in configuration.
    *
    * The configuration is gotten by function #applicationClassesAndProperties() .
+   *
+   * transactional
    */
   def getUserData(user: User,
     formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
+    Logger.getRootLogger().info(s"getUserData user $user formGroup $formGroup")
     val nodes = rdfStore.r(dataset, {
       val userURI = getURI(user)
       val userGraph = rdfStore.getGraph(dataset, userURI).get
@@ -103,11 +106,14 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
+    Logger.getRootLogger().info(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
+    Logger.getRootLogger().info(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
   /** like before, different argument type */
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
+    Logger.getRootLogger().info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
@@ -152,6 +158,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * :properties :p1, :p2 .
    * </pre>
    * and return a list of couples (:p1, rdfs:range of :p1) .
+   *
+   * NON transactional
    */
   private def applicationClassesAndPropertiesGeneric(formgroup: String): FormGroup = {
     val queryString = s"""
@@ -200,6 +208,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     )
   }
 
+  /** NON transactional */
   private def createEmptyClassInstanceForUser(userURI: Rdf#URI, classAndPropURI: (Rdf#URI, Rdf#URI)) = {
     val newURI = URI(UnfilledFormFactory.makeId(userURI.toString()))
     val graph = makeGraph(List(
@@ -210,6 +219,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     createEmptyClassInstance(newURI, classAndPropURI._1, userURI)
   }
 
+  /** NON transactional */
   private def createEmptyClassInstance(subjectURI: Rdf#URI, classURI: Rdf#URI,
     graphURI: Rdf#URI) = {
     println(s"create Empty Class $classURI Instance for subject URI $subjectURI")

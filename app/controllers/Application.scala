@@ -33,6 +33,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with InstanceLabelsInference2[Rdf] {
 
   lazy val tableView = new TableView {}
+  val responseAnalysis = new ResponseAnalysis()
   import ops._
 
   /**  */
@@ -71,7 +72,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
       val forms = getUserData(user, URI(groupUri)).map {
         case FormUserData(formUri, label) =>
           (fromUri(formUri), label,
-            new ResponseAnalysis().responsesCount(user, fromUri(formUri))
+            responseAnalysis.responsesCount(user, fromUri(formUri))
           )
       }
 
@@ -110,7 +111,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** shows the report for the given user, as a html preview */
   def report = withUser { implicit user =>
     implicit request =>
-      Ok(views.html.webreport(new ResponseAnalysis()))
+      Ok(views.html.webreport(responseAnalysis))
   }
 
   /** downloads a pdf version of the report */
@@ -118,7 +119,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     implicit request =>
       val renderer = new ITextRenderer
       val buffer = new ByteArrayOutputStream
-      renderer.setDocumentFromString(views.html.pdfreport(new ResponseAnalysis()).toString)
+      renderer.setDocumentFromString(views.html.pdfreport(responseAnalysis).toString)
       renderer.layout
       renderer.createPDF(buffer)
       Ok(buffer.toByteArray()).withHeaders(CONTENT_TYPE -> "application/pdf")
@@ -128,10 +129,11 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def chart(charttype: String, email: String) = Action {
     val user = User.find(email)
     val content = charttype match {
-      case "risk" => SpiderWebChart(new ResponseAnalysis().getRiskEval(email).toVector)
-      case "capital" => BarChart(new ResponseAnalysis().getCapitalEval(email).toVector)
+      case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
+      case "capital" => BarChart(responseAnalysis.getCapitalEval(email).toVector)
       // TODO: les vrais chiffres:
       case "pie" => PieChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
+      case _ => BarChart(Vector(("default case", 1)))
     }
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }

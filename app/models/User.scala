@@ -57,6 +57,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     }
   }
 
+  /** transactional */
   def save(user: User): Boolean = {
     User.find(user.email) match {
       case Some(existingUser) => false
@@ -82,7 +83,10 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
   def makeURI(user: User) = bizinnovUserPrefix(user.email)
 
-  /** TODO voir pour utiliser FormSaver */
+  /**
+   * transactional
+   *  TODO voir pour utiliser FormSaver
+   */
   def saveInfo(user: User, info: UserCompanyInfo) = {
     rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
       val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
@@ -102,6 +106,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     })
   }
 
+  /** transactional */
   def getInfo(user: User): Option[UserCompanyInfo] = {
     rdfStoreObject.rdfStore.r(
       rdfStoreObject.dataset, {
