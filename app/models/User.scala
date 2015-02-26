@@ -1,7 +1,6 @@
 package models
 
 import scala.util.Try
-
 import org.w3.banana.Prefix
 import org.w3.banana.RDF
 import org.w3.banana.RDFOps
@@ -9,11 +8,10 @@ import org.w3.banana.RDFOpsModule
 import org.w3.banana.RDFStore
 import org.w3.banana.jena.Jena
 import org.w3.banana.jena.JenaModule
-
 import deductions.runtime.jena.RDFStoreObject
-
 import java.security.MessageDigest
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter
+import scala.collection.mutable.ArrayBuffer
 
 /** Stores data from the info form */
 case class UserCompanyInfo(val department: Option[String] = None,
@@ -35,8 +33,10 @@ case class UserCompanyInfo(val department: Option[String] = None,
 
 /** TODO indiquer le but de la classe */
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-  rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) extends { // UserVocab {
+    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) //  extends RDFCache
+    { // UserVocab {
 
+  /** NOTE: RDFStoreObject, via RDFStoreLocalJenaProvider, already has rdfStore */
   val rdfStoreObject = RDFStoreObject
   import ops._
 
@@ -82,9 +82,14 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
   def makeURI(user: User) = bizinnovUserPrefix(user.email)
 
+  /** TODO voir pour utiliser FormSaver */
   def saveInfo(user: User, info: UserCompanyInfo) = {
+    val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
+    val toDelete = ArrayBuffer[Rdf#Triple]()
     val triples = info.getMap.map({
       case (name, value) =>
+        val existingValues = find(userGraph, makeURI(user), bizinnovUserVocabPrefix(name), ANY)
+        toDelete ++= existingValues
         makeTriple(
           makeURI(user),
           bizinnovUserVocabPrefix(name),
@@ -92,6 +97,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     })
     val graph = makeGraph(triples)
     rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
+      rdfStore.removeTriples(rdfStoreObject.dataset, bizinnovUserGraphURI, toDelete)
       rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
     })
   }

@@ -22,6 +22,7 @@ case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
 /** Banana principle: refer to concrete implementation only in blocks without code */
 object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
 
+/** access to user data in triple store */
 trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     with RDFStoreLocalProvider[Rdf, DATASET]
     with InstanceLabelsInference2[Rdf]
