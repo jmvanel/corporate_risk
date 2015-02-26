@@ -17,7 +17,7 @@
 			<th>Thème</th>
 			<th>Note sur 5</th>
 		</tr>
-		@for((form, eval) <- reportData.getRiskEval) {
+		@for((form, eval) <- reportData.getRiskEval(user.email)) {
 		<tr>
 			<td>@form</td>
 			<td>@eval</td>

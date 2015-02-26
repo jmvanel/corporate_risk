@@ -28,7 +28,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   val zero = ops.makeLiteral("0", xsd.integer)
   import ops._
 
-
   /**
    * fonction qui compte les réponses pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème);
@@ -62,51 +61,50 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     lit2Int(lit)
   }
 
-    /**
+  /**
    * fonction qui renvoie la liste des formulaires de l'utilisateur avec
    * la moyenne de chacun,  pour le groupe "risk".
    */
   def getRiskEval(userEmail: String): Map[String, Double] = {
     getEval(userEmail, "risk")
   }
-  
- def getEval(userEmail: String, formGroupName: String): Map[String, Double] = {
+
+  def getEval(userEmail: String, formGroupName: String): Map[String, Double] = {
     val riskQuestionaires = applicationClassesAndProperties(formGroupName)
     val cp = riskQuestionaires.classesAndProperties
-    val res = for ( (c, propURI) <- cp ) yield {
-        implicit val graph = allNamedGraph
-        instanceLabel(propURI) ->
-        averagePerForm( User.find(userEmail).get, fromUri(propURI))._1 
+    val res = for ((c, propURI) <- cp) yield {
+      implicit val graph = allNamedGraph
+      instanceLabel(propURI) ->
+        averagePerForm(User.find(userEmail).get, fromUri(propURI))._1
     }
     val string2Int = res.toMap
-    string2Int.map { case(s,i) => (s, i.toDouble) }    
+    string2Int.map { case (s, i) => (s, i.toDouble) }
   }
- 
+
   /**
    * renvoie la liste des formulaires de l'utilisateur avec
    * la moyenne de chacun, pour le groupe "capital"
    */
   def getCapitalEval(userEmail: String): Map[String, Double] = {
-	  getEval(userEmail, "capital")
-//    Map(
-//      "Capital humain" -> 3.5,
-//      "Capital naturel" -> 2,
-//      "Capital marques" -> 4
-//    )
+    getEval(userEmail, "capital")
+    //    Map(
+    //      "Capital humain" -> 3.5,
+    //      "Capital naturel" -> 2,
+    //      "Capital marques" -> 4
+    //    )
   }
-  
+
   /**
    * pour diagramme araignée, fonction qui chiffre chaque rubrique;
    *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
    */
   def averagePerForm(
-//      email: String,
-      user: User, 
-      propURI: String
-      ): (Int, Int) = {
+    //      email: String,
+    user: User,
+    propURI: String): (Int, Int) = {
     val iteratorTry = rdfStore.r(dataset, {
       val userURI = getURI(user)
-//      bizinnovUserPrefix(email)
+      //      bizinnovUserPrefix(email)
       // NOTE: could have used find() like in UserData.getUserData()
       val queryString = s"""
           prefix : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>

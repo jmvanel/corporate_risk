@@ -84,19 +84,19 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
   /** TODO voir pour utiliser FormSaver */
   def saveInfo(user: User, info: UserCompanyInfo) = {
-    val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
-    val toDelete = ArrayBuffer[Rdf#Triple]()
-    val triples = info.getMap.map({
-      case (name, value) =>
-        val existingValues = find(userGraph, makeURI(user), bizinnovUserVocabPrefix(name), ANY)
-        toDelete ++= existingValues
-        makeTriple(
-          makeURI(user),
-          bizinnovUserVocabPrefix(name),
-          makeLiteral(value, xsd.string))
-    })
-    val graph = makeGraph(triples)
     rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
+      val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
+      val toDelete = ArrayBuffer[Rdf#Triple]()
+      val triples = info.getMap.map({
+        case (name, value) =>
+          val existingValues = find(userGraph, makeURI(user), bizinnovUserVocabPrefix(name), ANY)
+          toDelete ++= existingValues
+          makeTriple(
+            makeURI(user),
+            bizinnovUserVocabPrefix(name),
+            makeLiteral(value, xsd.string))
+      })
+      val graph = makeGraph(triples)
       rdfStore.removeTriples(rdfStoreObject.dataset, bizinnovUserGraphURI, toDelete)
       rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
     })
