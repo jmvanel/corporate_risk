@@ -1,4 +1,4 @@
-@(reportData: ResponseAnalysis)(implicit user: User)
+@(reportData: ResponseAnalysis)(implicit user: User, request: RequestHeader)
 
 <p>
  	@if(reportData.globalEval(user) > 3) {
@@ -9,7 +9,7 @@
 </p>
 <h2>Gestion des risques</h2>
 <div style="float: left">
-	<img src="http://localhost:9000@routes.Application.chart("risk", user.email)" />
+	<img src="http://@request.host@routes.Application.chart("risk", user.email)" />
 </div>
 <div style="float: left">
 	<table>
@@ -28,6 +28,6 @@
 <div style="clear: both"></div>
 <h2>Gestion du capital immatériel</h2>
 <div style="float: left">
-	<img src="http://localhost:9000@routes.Application.chart("capital", user.email)" />
+	<img src="http://@request.host@routes.Application.chart("capital", user.email)" />
 </div>
 <div style="clear: both"></div>
