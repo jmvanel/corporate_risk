@@ -70,18 +70,18 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   /**
-   * return User Data: a sequence of couples:
+   * return (direct) User Data: a sequence of couples:
    * - an URI <u1> associated with the user <user> through one of the RDF properties <prop> in configuration :
    *     <user> <prop> <u1> .
    * - a label string associated to the class of <u1> in configuration.
    *
-   * The configuration is gotten by function #applicationClassesAndProperties() .
+   * The configuration (data model & form groups) is gotten by function #applicationClassesAndProperties() .
    *
    * transactional
    */
   def getUserData(user: User,
     formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
-    Logger.getRootLogger().info(s"getUserData user $user formGroup $formGroup")
+    info(s"getUserData user $user formGroup $formGroup")
     val nodes = dataset.r({
       val userURI = getURI(user)
       val userGraph = dataset.getGraph(userURI).get
@@ -103,21 +103,50 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   /**
+   * get User Data for all form Groups
+   * transactional
+   */
+  def getAllUserData(user: User): Seq[FormUserData[Rdf]] =
+    for (
+      fg <- formsGroupsURIs;
+      fud <- getUserData(user, fg)
+    ) yield fud
+
+  /** transactional */
+  def getNextForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
+    val fuds = getAllUserData(user)
+    info(s"""getNextForm for dataURI : ${dataURI} """)
+    info(s"""getNextForm total for all groups : ${fuds.size} """)
+    val sl = fuds.sliding(2)
+
+    val nf = for (
+      Seq(f1, f2) <- sl;
+      // _ = info(s"""getNextForm $f1 :: ${f2}  """);
+      if (fromUri(f1.data) == dataURI)
+    ) yield f2
+    info(s"""getNextForm $dataURI : $nf """)
+    if (nf isEmpty) None else Some(nf.next)
+  }
+
+  def info(s: String) = Logger.getRootLogger().info(s)
+
+  /**
    * return a FormGroup, that is a sequence of URI couples:
    *  - an OWL class C,
    *  - and a property whose domain is :User and range C
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
+   *  See "Note on the data model" in README.md
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
-    Logger.getRootLogger().info(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
-    Logger.getRootLogger().info(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
+    info(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
+    info(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
   /** like before, different argument type */
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
-    Logger.getRootLogger().info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
+    info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
@@ -203,7 +232,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   def println(mess: String) = {
-    Logger.getRootLogger().info(mess)
+    info(mess)
     val fileName = "bblog.txt"
     import java.nio.file.{ Paths, Files }
     import java.nio.charset.StandardCharsets

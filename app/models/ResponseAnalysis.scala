@@ -76,7 +76,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * la moyenne de chacun,  pour le groupe "risk".
    */
   def getRiskEval(userEmail: String): Map[String, Double] = {
-    getEval(userEmail, "risk")
+    getEvaluation(userEmail, "risk")
   }
 
   /**
@@ -84,14 +84,14 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * la moyenne de chacun, pour le groupe "capital"
    */
   def getCapitalEval(userEmail: String): Map[String, Double] = {
-    getEval(userEmail, "capital")
+    getEvaluation(userEmail, "capital")
     // Map( "Capital humain" -> 3.5,
     //      "Capital naturel" -> 2,
     //      "Capital marques" -> 4 )
   }
 
   /** transactional */
-  def getEval(userEmail: String, formGroupName: String): Map[String, Double] = {
+  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
     val userData = getUserData(user(userEmail), bizinnovQuestionsVocabPrefix(formGroupName))
     dataset.r({

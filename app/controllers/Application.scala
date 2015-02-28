@@ -5,9 +5,10 @@ import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
 import deductions.runtime.html.{ CreationForm, TableView }
-import deductions.runtime.services.FormSaver
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCache
+import deductions.runtime.services.FormSaverObject
+
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
 import org.xhtmlrenderer.pdf.ITextRenderer
@@ -94,19 +95,28 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
       }
   }
 
-  /** saves the values entered by the user */
+  /**
+   * saves the values entered by the user,
+   *  and redirect to next form in form group, if there is still one
+   */
   def save = withUser { implicit user =>
     implicit request =>
       val uri = request.body match {
         case form: AnyContentAsFormUrlEncoded =>
-          deductions.runtime.services.FormSaverObject.saveTriples(form.data)
+          FormSaverObject.saveTriples(form.data)
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => URLDecoder.decode(url, "utf-8")
-            case _ => throw new IllegalArgumentException
+            case _ => throw new IllegalArgumentException(form.asText.toString)
           }
-        case _ => throw new IllegalArgumentException
+        case _ => throw new IllegalArgumentException(request.body.asText.toString)
       }
-      Redirect(routes.Application.index.url);
+      val fudOption = getNextForm(user, uri)
+      fudOption match {
+        case Some(fud) =>
+          Redirect(routes.Application.form(fromUri(fud.data)))
+        case None =>
+          Redirect(routes.Application.index.url)
+      }
   }
 
   /** shows the report for the given user, as a html preview */
