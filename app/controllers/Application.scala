@@ -35,6 +35,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   lazy val tableView = new TableView {}
   val responseAnalysis = new ResponseAnalysis()
   import ops._
+  import rdfStore.transactorSyntax._
 
   /**  */
   val userInfoForm = Form(
@@ -82,7 +83,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
-      val label = rdfStore.r(dataset, {
+      val label = dataset.r({
         implicit val graph = allNamedGraph
         instanceLabel(URI(uri))
       }).get

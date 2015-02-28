@@ -13,6 +13,8 @@ import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.diesel._
+import org.w3.banana.syntax._
+
 import org.apache.log4j.Logger
 import java.nio.file.StandardOpenOption
 
@@ -30,6 +32,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     with SparqlOpsModule {
 
   import ops._
+  import rdfStore.transactorSyntax._
+  import rdfStore.graphStoreSyntax._
+  import rdfStore.sparqlEngineSyntax._
 
   /**
    * values for arguments to applicationClassesAndProperties(formGroup: String)
@@ -53,15 +58,15 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * transactional
    */
   def createEmptyUserData(user: User) = {
-    rdfStore.rw(
-      dataset, {
-        for (fg <- formsGroups) {
-          val cp = applicationClassesAndProperties(fg)
-          println(s"createEmptyUserData $user $fg")
-          for (classAndPropURI <- cp.classesAndProperties)
-            createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
-        }
-      })
+    dataset.rw({
+      //    dataset.rw({ // TODO <<<<
+      for (fg <- formsGroups) {
+        val cp = applicationClassesAndProperties(fg)
+        println(s"createEmptyUserData $user $fg")
+        for (classAndPropURI <- cp.classesAndProperties)
+          createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
+      }
+    })
   }
 
   /**
@@ -77,11 +82,10 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   def getUserData(user: User,
     formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
     Logger.getRootLogger().info(s"getUserData user $user formGroup $formGroup")
-    val nodes = rdfStore.r(dataset, {
+    val nodes = dataset.r({
       val userURI = getURI(user)
-      val userGraph = rdfStore.getGraph(dataset, userURI).get
-      implicit val graphForVocabulary = rdfStore.getGraph(dataset,
-        URI("vocabulary")).get
+      val userGraph = dataset.getGraph(userURI).get
+      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
       for {
         (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
         triple <- find(userGraph, userURI, prop, ANY)
@@ -125,8 +129,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   //  def getPropertiesInFormGroup(formGroup: String): Seq[String] = {
-  //    val nodes = rdfStore.r(dataset, {
-  //      val graphForVocabulary = rdfStore.getGraph(dataset, URI("vocabulary")).get
+  //    val nodes = dataset.r( {
+  //      val graphForVocabulary = dataset.getGraph( URI("vocabulary")).get
   //      val triples = find(graphForVocabulary, bizinnovQuestionsVocabPrefix(formGroup), bizinnovQuestionsVocabPrefix("properties"), ANY)
   //      triples.map { triple => triple.toString() }.toSeq
   //    })
@@ -177,7 +181,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     """
     import sparqlOps._
     val query = parseSelect(queryString).get
-    val solutions = rdfStore.executeSelect(dataset, query, Map()).get
+    val solutions = dataset.executeSelect(query, Map()).get
     var label = Literal("")
     val variables: Iterator[(Rdf#Literal, Rdf#URI, Rdf#URI)] = solutions.iterator map { row =>
       /* row is an Rdf#Solution, we can get an Rdf#Node from the variable name
@@ -213,7 +217,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val newURI = URI(UnfilledFormFactory.makeId(userURI.toString()))
     val graph = makeGraph(List(
       makeTriple(userURI, classAndPropURI._2, newURI)))
-    rdfStore.appendToGraph(dataset, userURI, graph)
+    dataset.appendToGraph(userURI, graph)
     println(s"createEmptyClassInstanceForUser $userURI $graph")
     println(s"createEmptyClassInstanceForUser $classAndPropURI")
     createEmptyClassInstance(newURI, classAndPropURI._1, userURI)
@@ -226,6 +230,6 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val graph = makeGraph(List(
       makeTriple(subjectURI, rdf.typ, classURI)))
     // TODO call appendToGraph only once
-    rdfStore.appendToGraph(dataset, graphURI, graph)
+    dataset.appendToGraph(graphURI, graph)
   }
 }

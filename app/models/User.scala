@@ -39,6 +39,10 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
   /** NOTE: RDFStoreObject, via RDFStoreLocalJenaProvider, already has rdfStore */
   val rdfStoreObject = RDFStoreObject
   import ops._
+  import rdfStore.transactorSyntax._
+  import rdfStore.graphStoreSyntax._
+  import rdfStore.sparqlEngineSyntax._
+  val dataset = rdfStoreObject.dataset
 
   // TODO duplicate with UserVocab
   val bizinnovUserPrefix = Prefix("usr", "http://bizinnov.com/ontologies/users/")
@@ -73,8 +77,8 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
             makeLiteral(user.email, xsd.string)
           ))
         val graph = makeGraph(triples)
-        rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
-          rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
+        dataset.rw({
+          dataset.appendToGraph(bizinnovUserGraphURI, graph)
         })
         UserData.createEmptyUserData(user)
         true
@@ -88,8 +92,8 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
    *  TODO voir pour utiliser FormSaver
    */
   def saveInfo(user: User, info: UserCompanyInfo) = {
-    rdfStoreObject.rdfStore.rw(rdfStoreObject.dataset, {
-      val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
+    dataset.rw({
+      val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val toDelete = ArrayBuffer[Rdf#Triple]()
       val triples = info.getMap.map({
         case (name, value) =>
@@ -101,33 +105,32 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
             makeLiteral(value, xsd.string))
       })
       val graph = makeGraph(triples)
-      rdfStore.removeTriples(rdfStoreObject.dataset, bizinnovUserGraphURI, toDelete)
-      rdfStore.appendToGraph(rdfStoreObject.dataset, bizinnovUserGraphURI, graph)
+      dataset.removeTriples(bizinnovUserGraphURI, toDelete)
+      dataset.appendToGraph(bizinnovUserGraphURI, graph)
     })
   }
 
   /** transactional */
   def getInfo(user: User): Option[UserCompanyInfo] = {
-    rdfStoreObject.rdfStore.r(
-      rdfStoreObject.dataset, {
-        val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
-        val userURI = getSubjects(userGraph,
-          bizinnovUserVocabPrefix("email"),
-          makeLiteral(user.email, xsd.string))
-        if (!userURI.isEmpty) {
-          val department = getObjects(userGraph, userURI.head,
-            bizinnovUserVocabPrefix("department")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
-          val naf = getObjects(userGraph, userURI.head,
-            bizinnovUserVocabPrefix("naf")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
-          val year = getObjects(userGraph, userURI.head,
-            bizinnovUserVocabPrefix("year")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
-          val isGroup = getObjects(userGraph, userURI.head,
-            bizinnovUserVocabPrefix("isGroup")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
-          Some(new UserCompanyInfo(department, naf, year, isGroup))
-        } else {
-          None
-        }
-      }).getOrElse(None)
+    dataset.r({
+      val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
+      val userURI = getSubjects(userGraph,
+        bizinnovUserVocabPrefix("email"),
+        makeLiteral(user.email, xsd.string))
+      if (!userURI.isEmpty) {
+        val department = getObjects(userGraph, userURI.head,
+          bizinnovUserVocabPrefix("department")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+        val naf = getObjects(userGraph, userURI.head,
+          bizinnovUserVocabPrefix("naf")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+        val year = getObjects(userGraph, userURI.head,
+          bizinnovUserVocabPrefix("year")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+        val isGroup = getObjects(userGraph, userURI.head,
+          bizinnovUserVocabPrefix("isGroup")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
+        Some(new UserCompanyInfo(department, naf, year, isGroup))
+      } else {
+        None
+      }
+    }).getOrElse(None)
   }
 }
 
@@ -158,28 +161,29 @@ trait UserVocab extends RDFOpsModule {
 /** User lookup, using RDF store  */
 object User extends JenaModule with UserVocab {
   import ops._
-  val rdfStoreObject = RDFStoreObject
+  import rdfStore.transactorSyntax._
+  import rdfStore.graphStoreSyntax._
+  val dataset = RDFStoreObject.dataset
 
   /** transactional */
   def find(email: String): Option[User] = {
-    val user = rdfStoreObject.rdfStore.r(
-      rdfStoreObject.dataset, {
-        val userGraph = rdfStore.getGraph(rdfStoreObject.dataset, bizinnovUserGraphURI).get
-        val userURI = getSubjects(userGraph,
-          bizinnovUserVocabPrefix("email"),
-          makeLiteral(email, xsd.string))
-        if (!userURI.isEmpty) {
-          val passwordHash = getObjects(userGraph, userURI.head,
-            bizinnovUserVocabPrefix("passwordHash"))
-          val email = getObjects(userGraph, userURI.head,
-            bizinnovUserVocabPrefix("email"))
-          if (!passwordHash.isEmpty) {
-            val userEmail = foldNode(email.head)(_ => "", _ => "", l => fromLiteral(l)_1)
-            val userPasswordHash = foldNode(passwordHash.head)(_ => "", _ => "", l => fromLiteral(l)._1)
-            Some(User(email = userEmail, password = "", passwordHash = userPasswordHash))
-          } else None
+    val user = dataset.r({
+      val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
+      val userURI = getSubjects(userGraph,
+        bizinnovUserVocabPrefix("email"),
+        makeLiteral(email, xsd.string))
+      if (!userURI.isEmpty) {
+        val passwordHash = getObjects(userGraph, userURI.head,
+          bizinnovUserVocabPrefix("passwordHash"))
+        val email = getObjects(userGraph, userURI.head,
+          bizinnovUserVocabPrefix("email"))
+        if (!passwordHash.isEmpty) {
+          val userEmail = foldNode(email.head)(_ => "", _ => "", l => fromLiteral(l)_1)
+          val userPasswordHash = foldNode(passwordHash.head)(_ => "", _ => "", l => fromLiteral(l)._1)
+          Some(User(email = userEmail, password = "", passwordHash = userPasswordHash))
         } else None
-      })
+      } else None
+    })
     user.getOrElse(None)
   }
 }
