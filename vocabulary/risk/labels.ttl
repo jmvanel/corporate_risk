@@ -1,0 +1,23 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix form: <http://deductions-software.com/ontologies/forms.owl.ttl#> .
+@prefix :     <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+:risk-fg a :FormGroup ;
+	form:labelsForFormGroup
+:risk-fg-labels .
+
+:risk-fg-labels form:labelsForValues
+  [ form:value 0 ; rdfs:label "Pratique inexistante ou incomplète"@fr ] ,
+  [ form:value 1 ; rdfs:label """ Pratique informelle : pratiques de base mises en œuvre
+ de manière informelle et réactive à l'initiative
+ de ceux qui estiment en avoir besoin."""@fr ] ,
+  [ form:value 2 ; rdfs:label """ Pratique répétable et suivie : pratiques de base mises en œuvre de façon planifiée et suivie,
+  avec un support relatif de l'organisme."""@fr ] ,
+  [ form:value 3 ; rdfs:label """ Processus défini : mise en œuvre d'un processus décrit, adapté à l'organisme,
+  généralisé et bien compris par le management et par les exécutants."""@fr ] ,
+  [ form:value 4 ; rdfs:label """ Processus contrôlé : le processus est coordonné et contrôlé
+  à l'aide d'indicateurs permettant de corriger les défauts constatés
+."""@fr ] ,
+  [ form:value 5 ; rdfs:label """ Processus continuellement optimisé : l'amélioration des processus est dynamique,
+  institutionnalisée et tient compte de l'évolution du contexte."""@fr ]
+.
