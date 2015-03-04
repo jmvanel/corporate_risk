@@ -42,7 +42,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    */
   lazy val formsGroups = List("risk", "capital") // human", "structural", "operational")
   lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
-  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fg => fg -> fromUri(bizinnovQuestionsVocabPrefix(fg)) } toMap
+  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg")) } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
     "Pré-diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("risk")),
