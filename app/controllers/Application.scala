@@ -8,7 +8,6 @@ import deductions.runtime.html.{ CreationForm, TableView }
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCache
 import deductions.runtime.services.FormSaverObject
-
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
 import org.xhtmlrenderer.pdf.ITextRenderer
@@ -25,15 +24,18 @@ import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
 import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import models.UserCompanyInfo
+import deductions.runtime.html.TableViewModule
 
 object Application extends ApplicationTrait[Jena, Dataset]
   with RDFStoreLocalJena1Provider
 
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with UserDataTrait[Rdf, DATASET]
-    with InstanceLabelsInference2[Rdf] {
+    with InstanceLabelsInference2[Rdf] //with TableViewModule
+    {
 
-  lazy val tableView = new TableView {}
+  lazy val tableView = // this; // 
+    new TableView {}
   val responseAnalysis = new ResponseAnalysis()
   import ops._
   import rdfStore.transactorSyntax._
@@ -77,7 +79,6 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
             responseAnalysis.responsesCount(user, fromUri(formUri))
           )
       }
-
       Ok(views.html.formgroup(forms, fgName))
   }
 
@@ -90,7 +91,8 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
       }).get
       Ok {
         views.html.form(
-          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString()),
+          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString(),
+            formGroup = getFormGroup(user, uri)), // formsGroupsURIMap("risk")),
           label)
       }
   }

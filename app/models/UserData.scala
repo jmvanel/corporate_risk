@@ -70,7 +70,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   /**
-   * return (direct) User Data: a sequence of couples:
+   * return all (direct) User Data: a sequence of couples:
    * - an URI <u1> associated with the user <user> through one of the RDF properties <prop> in configuration :
    *     <user> <prop> <u1> .
    * - a label string associated to the class of <u1> in configuration.
@@ -126,6 +126,23 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     ) yield f2
     info(s"""getNextForm $dataURI : $nf """)
     if (nf isEmpty) None else Some(nf.next)
+  }
+
+  /** transactional */
+  def getFormGroup(user: User, dataURI: String): String = {
+    //    val formsGroups = formsGroupsURIMap.values.toSeq
+    val userDataGroups = for (fg <- formsGroups) yield getUserData(user, URI(fg))
+    val userDataGroup = userDataGroups.find {
+      udg =>
+        val userData = udg.find {
+          formUserData => formUserData.data == dataURI
+        }
+        userData.isDefined
+    }
+    if (userDataGroup.isDefined) {
+      val x = userDataGroup.get
+      formsGroups(userDataGroups.indexOf(x))
+    } else ""
   }
 
   def info(s: String) = Logger.getRootLogger().info(s)
