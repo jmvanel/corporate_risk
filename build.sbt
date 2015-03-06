@@ -14,6 +14,8 @@ libraryDependencies += "deductions" %% "semantic_forms" % "1.0-SNAPSHOT"
 
 libraryDependencies += "com.github.wookietreiber" %% "scala-chart" % "latest.integration"
 
+libraryDependencies += "com.typesafe.play.plugins" %% "play-plugins-mailer" % "2.3.1"
+
 javacOptions ++= Seq("-source","1.7", "-target","1.7")
 
 // resolvers += Resolver.mavenLocal

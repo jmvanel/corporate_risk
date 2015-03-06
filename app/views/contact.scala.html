@@ -1,15 +1,45 @@
 @* contact Template File *@
-@(user: Option[User])
+@(user: Option[User], contactForm: Form[ContactInfo], message: String = "")
 @main("Contact", user) {
 	<div class="contact">
-		<div class="pull-left contactimg">
-			<img src="@routes.Assets.at("/images/contact1.png")" />
-			<div>Demande de renseignement</div>
-		</div>
-		<div class="pull-left contactimg">
-			<img src="@routes.Assets.at("/images/contact2.png")" />
-			<div>Vous faire rappeler par nos experts</div>
-		</div>
+		<a data-toggle="collapse" href="#collapseEmail"
+			aria-expanded="false" aria-controls="collapseEmail">
+			<div class="pull-left contactimg">
+				<img src="@routes.Assets.at("/images/contact1.png")" />
+				<div>Demande de renseignement</div>
+			</div>
+		</a>
+		<a data-toggle="collapse" href="#collapsePhone"
+			aria-expanded="false" aria-controls="collapsePhone">
+			<div class="pull-left contactimg">
+				<img src="@routes.Assets.at("/images/contact2.png")" />
+				<div>Vous faire rappeler par nos experts</div>
+			</div>
+		</a>
 	</div>
 	<div class="clearfix"></div>
+	<div id="message">@message</div>
+	<div class="contactForm">
+		<div class="collapse" id="collapseEmail">
+		    @helper.form(action = routes.Application.contactRequest) {
+		    	@contactForm.globalError.map { error => <p class="error">@error.message</p>}
+				@helper.inputText(contactForm("name"))
+				@helper.inputText(contactForm("job"))
+				@helper.inputText(contactForm("city"))
+				@helper.inputText(contactForm("email"))
+				@helper.textarea(contactForm("message"))
+		    	<input type="submit" class="btn" value="Envoyer">
+		    }
+		</div>
+		<div class="collapse" id="collapsePhone">
+		    @helper.form(action = routes.Application.contactRequest) {
+		    	@contactForm.globalError.map { error => <p class="error">@error.message</p>}
+				@helper.inputText(contactForm("name"))
+				@helper.inputText(contactForm("job"))
+				@helper.inputText(contactForm("city"))
+				@helper.inputText(contactForm("phone"))
+		    	<input type="submit" class="btn" value="Envoyer">
+		    }
+		</div>
+	</div>
 }

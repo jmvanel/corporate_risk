@@ -1,6 +1,7 @@
 package controllers
 
 import play.api._
+import play.api.Play.current
 import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
@@ -16,6 +17,7 @@ import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.w3.banana.RDF
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
+import com.typesafe.plugin._
 import models.FormUserData
 import models.UserDataTrait
 import models.{ User, UserCompanyInfo, UserData, UserVocab, ResponseAnalysis }
@@ -28,6 +30,9 @@ import models.UserCompanyInfo
 object Application extends ApplicationTrait[Jena, Dataset]
   with RDFStoreLocalJena1Provider
 
+/** Class for contact information for email and phone call request */
+case class ContactInfo(name: String, job: Option[String], city: Option[String], phone: Option[String], email: Option[String], message: String)
+
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with UserDataTrait[Rdf, DATASET]
     with InstanceLabelsInference2[Rdf] {
@@ -36,13 +41,25 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   val responseAnalysis = new ResponseAnalysis()
   import ops._
 
-  /**  */
+  /** User company information form for the index page */
   val userInfoForm = Form(
     mapping("department" -> optional(text),
       "naf" -> optional(text),
       "year" -> optional(text),
       "isGroup" -> optional(text)
     )(UserCompanyInfo.apply)(UserCompanyInfo.unapply)
+  )
+
+  /** Contact form */
+  val contactForm = Form(
+    mapping(
+      "name" -> text,
+      "job" -> optional(text),
+      "city" -> optional(text),
+      "phone" -> optional(text),
+      "email" -> optional(text),
+      "message" -> text
+    )(ContactInfo.apply)(ContactInfo.unapply)
   )
 
   /** Shows the index page with the info form */
@@ -140,7 +157,36 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
 
   def contact() = Action { implicit request =>
     val user = request.session.get(Security.username).map { email => User.find(email).get }
-    Ok(views.html.contact(user))
+    Ok(views.html.contact(user, contactForm))
+  }
+
+  def sendEmail(sender: String, subject: String, body: String) = {
+    val mail = use[MailerPlugin].email
+    mail.setSubject(subject)
+    mail.setRecipient(Play.current.configuration.getString("smtp.admin"))
+    mail.setFrom(sender)
+    mail.send(body)
+  }
+
+  def contactRequest() = Action { implicit request =>
+    val user = request.session.get(Security.username).map { email => User.find(email).get }
+    contactForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.contact(user, formWithErrors)),
+      contactInfo => {
+        contactInfo.email match {
+          case Some(emailAdress) =>
+            sendEmail(emailAdress, "Message de V.S.I", contactInfo.message)
+            Ok(views.html.contact(user, contactForm, "L'e-mail a bien été envoyé."))
+          case None =>
+            contactInfo.phone match {
+              case Some(phoneNumber) =>
+                sendEmail("", "Demande de rappel de V.S.I", phoneNumber)
+                Ok(views.html.contact(user, contactForm, "La demande a été enregistrée. Nous vous contacterons prochainement."))
+              case None =>
+                Ok(views.html.contact(user, contactForm, "Merci d'entrer une information de contact"))
+            }
+        }
+      })
   }
 
   def info() = Action { implicit request =>
