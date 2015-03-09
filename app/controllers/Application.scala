@@ -163,7 +163,7 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def sendEmail(sender: String, subject: String, body: String) = {
     val mail = use[MailerPlugin].email
     mail.setSubject(subject)
-    mail.setRecipient(Play.current.configuration.getString("smtp.admin"))
+    mail.setRecipient(Play.current.configuration.getString("smtp.admin").get)
     mail.setFrom(sender)
     mail.send(body)
   }
