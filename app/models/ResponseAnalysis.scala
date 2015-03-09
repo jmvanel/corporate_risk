@@ -93,7 +93,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   /** transactional */
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
-    val userData = getUserData(user(userEmail), bizinnovQuestionsVocabPrefix(formGroupName))
+    val userData = getUserData(user(userEmail), bizinnovQuestionsVocabPrefix(formGroupName).toString)
     dataset.r({
       Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {

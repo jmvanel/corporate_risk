@@ -28,22 +28,13 @@ import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import models.UserCompanyInfo
 import deductions.runtime.html.TableViewModule
 
-object Application extends ApplicationTrait[Jena, Dataset]
-  with RDFStoreLocalJena1Provider
-
 /** Class for contact information for email and phone call request */
 case class ContactInfo(name: String, job: Option[String], city: Option[String], phone: Option[String], email: Option[String], message: String)
 
-trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
-    with UserDataTrait[Rdf, DATASET]
-    with InstanceLabelsInference2[Rdf] //with TableViewModule
-    {
+object Application extends Controller with Secured {
 
-  lazy val tableView = // this; // 
-    new TableView {}
+  lazy val tableView = new TableView {}
   val responseAnalysis = new ResponseAnalysis()
-  import ops._
-  import rdfStore.transactorSyntax._
 
   /** User company information form for the index page */
   val userInfoForm = Form(
@@ -90,10 +81,10 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
       val fgName = UserData.formGroupList.map(_.swap).get(groupUri).get
-      val forms = getUserData(user, URI(groupUri)).map {
+      val forms = UserData.getUserData(user, groupUri).map {
         case FormUserData(formUri, label) =>
-          (fromUri(formUri), label,
-            responseAnalysis.responsesCount(user, fromUri(formUri))
+          (formUri.getURI, label,
+            responseAnalysis.responsesCount(user, formUri.getURI)
           )
       }
       Ok(views.html.formgroup(forms, fgName))
@@ -102,14 +93,11 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
-      val label = dataset.r({
-        implicit val graph = allNamedGraph
-        instanceLabel(URI(uri))
-      }).get
+      val label = UserData.getFormLabel(uri)
       Ok {
         views.html.form(
-          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString(),
-            formGroup = getFormGroup(user, uri)), // formsGroupsURIMap("risk")),
+          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().getURI(),
+            formGroup = UserData.getFormGroup(user, uri)), // formsGroupsURIMap("risk")),
           label)
       }
   }
@@ -126,13 +114,13 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => {
               val nextform = if (form.data.contains("SAVE1")) {
-                getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
+                UserData.getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
               } else if (form.data.contains("SAVE2")) {
-                getNextForm(user, URLDecoder.decode(url, "utf-8"))
+                UserData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
               } else None
 
               nextform match {
-                case Some(form) => Redirect(routes.Application.form(fromUri(form.data)))
+                case Some(form) => Redirect(routes.Application.form(form.data.getURI))
                 case None => Redirect(routes.Application.index.url)
               }
             }

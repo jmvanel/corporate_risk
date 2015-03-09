@@ -79,9 +79,11 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *
    * transactional
    */
-  def getUserData(user: User,
-    formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
-    info(s"getUserData user $user formGroup $formGroup")
+  def getUserData(user: User, formGroupUri: String = ""): Seq[FormUserData[Rdf]] = {
+    val formGroup = formGroupUri match {
+      case "" => bizinnovQuestionsVocabPrefix("risk")
+      case uri: String => URI(uri)
+    }
     val nodes = dataset.r({
       val userURI = getURI(user)
       val userGraph = dataset.getGraph(userURI).get
@@ -109,7 +111,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   def getAllUserData(user: User): Seq[FormUserData[Rdf]] =
     for (
       fg <- formsGroupsURIs;
-      fud <- getUserData(user, fg)
+      fud <- getUserData(user, fg.toString)
     ) yield fud
 
   /** transactional */
@@ -136,10 +138,17 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     if (nf isEmpty) None else Some(nf.next)
   }
 
+  def getFormLabel(formUri: String): String = {
+    dataset.r({
+      implicit val graph = allNamedGraph
+      instanceLabel(URI(formUri))
+    }).get
+  }
+
   /** transactional */
   def getFormGroup(user: User, dataURI: String): String = {
     //    val formsGroups = formsGroupsURIMap.values.toSeq
-    val userDataGroups = for (fg <- formsGroups) yield getUserData(user, URI(fg))
+    val userDataGroups = for (fg <- formsGroups) yield getUserData(user, fg)
     val userDataGroup = userDataGroups.find {
       udg =>
         val userData = udg.find {
