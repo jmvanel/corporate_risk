@@ -113,6 +113,15 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     ) yield fud
 
   /** transactional */
+  def getPreviousForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
+    val form = for (
+      Seq(f1, f2) <- getAllUserData(user).sliding(2);
+      if (fromUri(f2.data) == dataURI)
+    ) yield f1
+
+    if (form isEmpty) None else Some(form.next)
+  }
+  /** transactional */
   def getNextForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
     val fuds = getAllUserData(user)
     info(s"""getNextForm for dataURI : ${dataURI} """)
@@ -121,7 +130,6 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
 
     val nf = for (
       Seq(f1, f2) <- sl;
-      // _ = info(s"""getNextForm $f1 :: ${f2}  """);
       if (fromUri(f1.data) == dataURI)
     ) yield f2
     info(s"""getNextForm $dataURI : $nf """)

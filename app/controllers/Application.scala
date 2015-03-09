@@ -120,21 +120,25 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
    */
   def save = withUser { implicit user =>
     implicit request =>
-      val uri = request.body match {
+      request.body match {
         case form: AnyContentAsFormUrlEncoded =>
           FormSaverObject.saveTriples(form.data)
           form.data.getOrElse("uri", Seq()).headOption match {
-            case Some(url) => URLDecoder.decode(url, "utf-8")
+            case Some(url) => {
+              val nextform = if (form.data.contains("SAVE1")) {
+                getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
+              } else if (form.data.contains("SAVE2")) {
+                getNextForm(user, URLDecoder.decode(url, "utf-8"))
+              } else None
+
+              nextform match {
+                case Some(form) => Redirect(routes.Application.form(fromUri(form.data)))
+                case None => Redirect(routes.Application.index.url)
+              }
+            }
             case _ => throw new IllegalArgumentException(form.asText.toString)
           }
         case _ => throw new IllegalArgumentException(request.body.asText.toString)
-      }
-      val fudOption = getNextForm(user, uri)
-      fudOption match {
-        case Some(fud) =>
-          Redirect(routes.Application.form(fromUri(fud.data)))
-        case None =>
-          Redirect(routes.Application.index.url)
       }
   }
 
