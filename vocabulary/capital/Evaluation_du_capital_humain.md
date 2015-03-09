@@ -252,7 +252,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Le dirigeant est un bon manager
 - Le dirigeant écoute ses collaborateurs, il est exigeant et bienveillant. Il excelle dans ce domaine
 
-#### L’entreprise est engagée dans la RSE
+#### L’entreprise est engagée dans la RSE (Responsabilité Sociale & Environnementale)
 
 Veuillez sélectionner une seule des propositions suivantes :
 

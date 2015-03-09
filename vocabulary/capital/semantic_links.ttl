@@ -4,58 +4,43 @@
 @prefix dbpedia: <http://dbpedia.org/resource/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
-#TRACE (ques:capital-1001 "Capital Actionnaire")
-#TRACE (ques:capital-1008 "Capital Partenaire")
-#TRACE (ques:capital-1012 "Fidélité (fournisseur depuis ?)")
-#TRACE (ques:capital-1021 "Capital Organisationnel")
-#TRACE (ques:capital-1023 "Flexibilité")
-#TRACE (ques:capital-1055 "Capital Client")
-#TRACE (ques:capital-1082 "Identification de l'entreprise")
-#TRACE (ques:capital-15 "Capital de Marque")
-#TRACE (ques:capital-15 "Protection juridique des noms de produits ou d’offre {.P1}")
-#TRACE (ques:capital-2002 "Capital Humain")
-#TRACE (ques:capital-2036 "Capital de savoir")
-#TRACE (ques:capital-2052 "Identification de l'entreprise")
-#TRACE (ques:capital-2 "Capital Naturel")
-#TRACE (ques:capital-9 "Capital sociétal")
-#TRACE (ques:capital-9 "Sport, Culture, loisirs {.P1}")
+# (ques:capital-1001 "Capital Actionnaire")
+# (ques:capital-1008 "Capital Partenaire")
+# (ques:capital-1012 "Fidélité (fournisseur depuis ?)")
+# (ques:capital-1021 "Capital Organisationnel")
+# (ques:capital-1023 "Flexibilité")
+# (ques:capital-1055 "Capital Client")
+# (ques:capital-1082 "Identification de l'entreprise")
+# (ques:capital-15 "Capital de Marque")
+# (ques:capital-15 "Protection juridique des noms de produits ou d’offre {.P1}")
+# (ques:capital-2002 "Capital Humain")
+# (ques:capital-2036 "Capital de savoir")
+# (ques:capital-2052 "Identification de l'entreprise")
+# (ques:capital-2 "Capital Naturel")
+# (ques:capital-9 "Capital sociétal")
+# (ques:capital-9 "Sport, Culture, loisirs {.P1}")
 
-ques:capital-1001
-    dc:subject dbpedia:XX .
+ques:capital-1001 dc:subject dbpedia:Shareholder .
+ques:capital-1008 dc:subject dbpedia:Business_partner .
+ques:capital-1012 dc:subject dbpedia:Fidelity , dbpedia:Supplier .
 
-ques:capital-1008
-    dc:subject dbpedia:XX .
+ques:capital-1021 dc:subject dbpedia:XX .
 
-ques:capital-1012
-    dc:subject dbpedia:XX .
+ques:capital-1023 dc:subject dbpedia:XX .
 
-ques:capital-1021
-    dc:subject dbpedia:XX .
+ques:capital-1055 dc:subject dbpedia:XX .
 
-ques:capital-1023
-    dc:subject dbpedia:XX .
+ques:capital-1082 dc:subject dbpedia:XX .
 
-ques:capital-1055
-    dc:subject dbpedia:XX .
+ques:capital-15 dc:subject dbpedia:XX .
 
-ques:capital-1082
-    dc:subject dbpedia:XX .
+ques:capital-2 dc:subject dbpedia:XX .
 
-ques:capital-15
-    dc:subject dbpedia:XX .
+ques:capital-2002 dc:subject dbpedia:XX .
 
-ques:capital-2
-    dc:subject dbpedia:XX .
+ques:capital-2036 dc:subject dbpedia:XX .
 
-ques:capital-2002
-    dc:subject dbpedia:XX .
+ques:capital-2052 dc:subject dbpedia:XX .
 
-ques:capital-2036
-    dc:subject dbpedia:XX .
-
-ques:capital-2052
-    dc:subject dbpedia:XX .
-
-ques:capital-9
-    dc:subject dbpedia:XX .
+ques:capital-9 dc:subject dbpedia:XX .
 
