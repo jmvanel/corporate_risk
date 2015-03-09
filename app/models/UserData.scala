@@ -13,6 +13,8 @@ import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.diesel._
+import org.w3.banana.syntax._
+
 import org.apache.log4j.Logger
 import java.nio.file.StandardOpenOption
 
@@ -30,6 +32,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     with SparqlOpsModule {
 
   import ops._
+  import rdfStore.transactorSyntax._
+  import rdfStore.graphStoreSyntax._
+  import rdfStore.sparqlEngineSyntax._
 
   /**
    * values for arguments to applicationClassesAndProperties(formGroup: String)
@@ -37,7 +42,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    */
   lazy val formsGroups = List("risk", "capital") // human", "structural", "operational")
   lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
-  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fg => fg -> fromUri(bizinnovQuestionsVocabPrefix(fg)) } toMap
+  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg")) } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
     "Pré-diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("risk")),
@@ -53,35 +58,34 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * transactional
    */
   def createEmptyUserData(user: User) = {
-    rdfStore.rw(
-      dataset, {
-        for (fg <- formsGroups) {
-          val cp = applicationClassesAndProperties(fg)
-          println(s"createEmptyUserData $user $fg")
-          for (classAndPropURI <- cp.classesAndProperties)
-            createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
-        }
-      })
+    dataset.rw({
+      //    dataset.rw({ // TODO <<<<
+      for (fg <- formsGroups) {
+        val cp = applicationClassesAndProperties(fg)
+        println(s"createEmptyUserData $user $fg")
+        for (classAndPropURI <- cp.classesAndProperties)
+          createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
+      }
+    })
   }
 
   /**
-   * return User Data: a sequence of couples:
+   * return all (direct) User Data: a sequence of couples:
    * - an URI <u1> associated with the user <user> through one of the RDF properties <prop> in configuration :
    *     <user> <prop> <u1> .
    * - a label string associated to the class of <u1> in configuration.
    *
-   * The configuration is gotten by function #applicationClassesAndProperties() .
+   * The configuration (data model & form groups) is gotten by function #applicationClassesAndProperties() .
    *
    * transactional
    */
   def getUserData(user: User,
     formGroup: Rdf#URI = bizinnovQuestionsVocabPrefix("risk")): Seq[FormUserData[Rdf]] = {
-    Logger.getRootLogger().info(s"getUserData user $user formGroup $formGroup")
-    val nodes = rdfStore.r(dataset, {
+    info(s"getUserData user $user formGroup $formGroup")
+    val nodes = dataset.r({
       val userURI = getURI(user)
-      val userGraph = rdfStore.getGraph(dataset, userURI).get
-      implicit val graphForVocabulary = rdfStore.getGraph(dataset,
-        URI("vocabulary")).get
+      val userGraph = dataset.getGraph(userURI).get
+      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
       for {
         (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
         triple <- find(userGraph, userURI, prop, ANY)
@@ -99,21 +103,67 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   /**
+   * get User Data for all form Groups
+   * transactional
+   */
+  def getAllUserData(user: User): Seq[FormUserData[Rdf]] =
+    for (
+      fg <- formsGroupsURIs;
+      fud <- getUserData(user, fg)
+    ) yield fud
+
+  /** transactional */
+  def getNextForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
+    val fuds = getAllUserData(user)
+    info(s"""getNextForm for dataURI : ${dataURI} """)
+    info(s"""getNextForm total for all groups : ${fuds.size} """)
+    val sl = fuds.sliding(2)
+
+    val nf = for (
+      Seq(f1, f2) <- sl;
+      // _ = info(s"""getNextForm $f1 :: ${f2}  """);
+      if (fromUri(f1.data) == dataURI)
+    ) yield f2
+    info(s"""getNextForm $dataURI : $nf """)
+    if (nf isEmpty) None else Some(nf.next)
+  }
+
+  /** transactional */
+  def getFormGroup(user: User, dataURI: String): String = {
+    //    val formsGroups = formsGroupsURIMap.values.toSeq
+    val userDataGroups = for (fg <- formsGroups) yield getUserData(user, URI(fg))
+    val userDataGroup = userDataGroups.find {
+      udg =>
+        val userData = udg.find {
+          formUserData => formUserData.data == dataURI
+        }
+        userData.isDefined
+    }
+    if (userDataGroup.isDefined) {
+      val x = userDataGroup.get
+      formsGroups(userDataGroups.indexOf(x))
+    } else ""
+  }
+
+  def info(s: String) = Logger.getRootLogger().info(s)
+
+  /**
    * return a FormGroup, that is a sequence of URI couples:
    *  - an OWL class C,
    *  - and a property whose domain is :User and range C
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
+   *  See "Note on the data model" in README.md
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
-    Logger.getRootLogger().info(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
-    Logger.getRootLogger().info(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
+    info(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
+    info(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
   /** like before, different argument type */
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
-    Logger.getRootLogger().info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
+    info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
       case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
@@ -125,8 +175,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   //  def getPropertiesInFormGroup(formGroup: String): Seq[String] = {
-  //    val nodes = rdfStore.r(dataset, {
-  //      val graphForVocabulary = rdfStore.getGraph(dataset, URI("vocabulary")).get
+  //    val nodes = dataset.r( {
+  //      val graphForVocabulary = dataset.getGraph( URI("vocabulary")).get
   //      val triples = find(graphForVocabulary, bizinnovQuestionsVocabPrefix(formGroup), bizinnovQuestionsVocabPrefix("properties"), ANY)
   //      triples.map { triple => triple.toString() }.toSeq
   //    })
@@ -177,7 +227,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     """
     import sparqlOps._
     val query = parseSelect(queryString).get
-    val solutions = rdfStore.executeSelect(dataset, query, Map()).get
+    val solutions = dataset.executeSelect(query, Map()).get
     var label = Literal("")
     val variables: Iterator[(Rdf#Literal, Rdf#URI, Rdf#URI)] = solutions.iterator map { row =>
       /* row is an Rdf#Solution, we can get an Rdf#Node from the variable name
@@ -199,7 +249,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   def println(mess: String) = {
-    Logger.getRootLogger().info(mess)
+    info(mess)
     val fileName = "bblog.txt"
     import java.nio.file.{ Paths, Files }
     import java.nio.charset.StandardCharsets
@@ -213,7 +263,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val newURI = URI(UnfilledFormFactory.makeId(userURI.toString()))
     val graph = makeGraph(List(
       makeTriple(userURI, classAndPropURI._2, newURI)))
-    rdfStore.appendToGraph(dataset, userURI, graph)
+    dataset.appendToGraph(userURI, graph)
     println(s"createEmptyClassInstanceForUser $userURI $graph")
     println(s"createEmptyClassInstanceForUser $classAndPropURI")
     createEmptyClassInstance(newURI, classAndPropURI._1, userURI)
@@ -226,6 +276,6 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val graph = makeGraph(List(
       makeTriple(subjectURI, rdf.typ, classURI)))
     // TODO call appendToGraph only once
-    rdfStore.appendToGraph(dataset, graphURI, graph)
+    dataset.appendToGraph(graphURI, graph)
   }
 }

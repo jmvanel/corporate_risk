@@ -1,0 +1,18 @@
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/>.
+@prefix dc:      <http://purl.org/dc/elements/1.1/>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+
+# generate a skeleton with OWL classes to be filled by hand .
+# run with:
+# eye *.owl.ttl --nope  --query skeleton_with_classes.q.n3
+
+{ ?C a owl:Class ;
+     rdfs:label ?LAB .
+  _:d e:trace ( ?C ?LAB ) .
+} => {
+ ?C dc:subject dbpedia:XX .
+} .

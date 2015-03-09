@@ -29,6 +29,9 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   val xsd = XSDPrefix[Rdf]
   val zero = ops.makeLiteral("0", xsd.integer)
   import ops._
+  import rdfStore.transactorSyntax._
+  import rdfStore.graphStoreSyntax._
+  import rdfStore.sparqlEngineSyntax._
 
   //////// Response count ////////
 
@@ -39,7 +42,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    *  NON transactional
    */
   def responsesCount(user: User, dataURI: String): Int = {
-    val countTry = rdfStore.r(dataset, {
+    val countTry = dataset.r({
       val userURI = getURI(user)
       // NOTE: could have used find() like in UserData.getUserData()
       val queryString = s"""
@@ -55,7 +58,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       import ops._
       //      println("responsesCount " + queryString)
       val query = parseSelect(queryString).get
-      val solutions = rdfStore.executeSelect(dataset, query, Map()).get
+      val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
         row("count").get.as[Rdf#Literal].get
       }
@@ -73,7 +76,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * la moyenne de chacun,  pour le groupe "risk".
    */
   def getRiskEval(userEmail: String): Map[String, Double] = {
-    getEval(userEmail, "risk")
+    getEvaluation(userEmail, "risk")
   }
 
   /**
@@ -81,17 +84,17 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * la moyenne de chacun, pour le groupe "capital"
    */
   def getCapitalEval(userEmail: String): Map[String, Double] = {
-    getEval(userEmail, "capital")
+    getEvaluation(userEmail, "capital")
     // Map( "Capital humain" -> 3.5,
     //      "Capital naturel" -> 2,
     //      "Capital marques" -> 4 )
   }
 
   /** transactional */
-  def getEval(userEmail: String, formGroupName: String): Map[String, Double] = {
+  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
     val userData = getUserData(user(userEmail), bizinnovQuestionsVocabPrefix(formGroupName))
-    rdfStore.r(dataset, {
+    dataset.r({
       Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {
         case FormUserData(formUri, label) =>
@@ -138,7 +141,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     import sparqlOps._
     import ops._
     val query = parseSelect(queryString).get
-    val solutions = rdfStore.executeSelect(dataset, query, Map()).get
+    val solutions = dataset.executeSelect(query, Map()).get
     val solutionsSeq = solutions.iterator.toSeq
     Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
       size ${solutionsSeq.size}
@@ -195,7 +198,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * transactional
    */
   def globalEval(user: User): Int = {
-    rdfStore.r(dataset, {
+    dataset.r({
       var weightedSum = 0
       var coefSumGlobal = 0
       for (fg <- formsGroupsURIs) {

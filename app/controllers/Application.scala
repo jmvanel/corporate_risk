@@ -6,9 +6,9 @@ import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
 import deductions.runtime.html.{ CreationForm, TableView }
-import deductions.runtime.services.FormSaver
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCache
+import deductions.runtime.services.FormSaverObject
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
 import org.xhtmlrenderer.pdf.ITextRenderer
@@ -26,6 +26,7 @@ import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
 import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import models.UserCompanyInfo
+import deductions.runtime.html.TableViewModule
 
 object Application extends ApplicationTrait[Jena, Dataset]
   with RDFStoreLocalJena1Provider
@@ -35,11 +36,14 @@ case class ContactInfo(name: String, job: Option[String], city: Option[String], 
 
 trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
     with UserDataTrait[Rdf, DATASET]
-    with InstanceLabelsInference2[Rdf] {
+    with InstanceLabelsInference2[Rdf] //with TableViewModule
+    {
 
-  lazy val tableView = new TableView {}
+  lazy val tableView = // this; // 
+    new TableView {}
   val responseAnalysis = new ResponseAnalysis()
   import ops._
+  import rdfStore.transactorSyntax._
 
   /** User company information form for the index page */
   val userInfoForm = Form(
@@ -92,37 +96,46 @@ trait ApplicationTrait[Rdf <: RDF, DATASET] extends Controller with Secured
             responseAnalysis.responsesCount(user, fromUri(formUri))
           )
       }
-
       Ok(views.html.formgroup(forms, fgName))
   }
 
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request =>
-      val label = rdfStore.r(dataset, {
+      val label = dataset.r({
         implicit val graph = allNamedGraph
         instanceLabel(URI(uri))
       }).get
       Ok {
         views.html.form(
-          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString()),
+          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().toString(),
+            formGroup = getFormGroup(user, uri)), // formsGroupsURIMap("risk")),
           label)
       }
   }
 
-  /** saves the values entered by the user */
+  /**
+   * saves the values entered by the user,
+   *  and redirect to next form in form group, if there is still one
+   */
   def save = withUser { implicit user =>
     implicit request =>
       val uri = request.body match {
         case form: AnyContentAsFormUrlEncoded =>
-          deductions.runtime.services.FormSaverObject.saveTriples(form.data)
+          FormSaverObject.saveTriples(form.data)
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => URLDecoder.decode(url, "utf-8")
-            case _ => throw new IllegalArgumentException
+            case _ => throw new IllegalArgumentException(form.asText.toString)
           }
-        case _ => throw new IllegalArgumentException
+        case _ => throw new IllegalArgumentException(request.body.asText.toString)
       }
-      Redirect(routes.Application.index.url);
+      val fudOption = getNextForm(user, uri)
+      fudOption match {
+        case Some(fud) =>
+          Redirect(routes.Application.form(fromUri(fud.data)))
+        case None =>
+          Redirect(routes.Application.index.url)
+      }
   }
 
   /** shows the report for the given user, as a html preview */

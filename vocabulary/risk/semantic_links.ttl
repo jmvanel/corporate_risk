@@ -1,0 +1,24 @@
+@prefix dbpedia: <http://dbpedia.org/resource/>.
+@prefix dc:      <http://purl.org/dc/elements/1.1/>.
+
+@prefix ques:  <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+ques:5 dc:subject dbpedia:Security_policy .
+
+ques:6 dc:subject dbpedia:Organization .
+ques:6 dc:subject dbpedia:Security .
+ques:6 dc:subject dbpedia:Safety .
+
+ques:7 dc:subject dbpedia:Classified_information .
+
+ques:8 dc:subject dbpedia:Security , dbpedia:Safety , dbpedia:Staff .
+
+ques:9 dc:subject dbpedia:Physical_security .
+ques:10 dc:subject dbpedia:Computer_network .
+ques:11 dc:subject dbpedia:Access_control .
+ques:12 dc:subject dbpedia:Software_development .
+# MCO == maintien en Condition Operationnelle
+ques:13 dc:subject dbpedia:Crisis_management .
+ques:14 dc:subject dbpedia:Business_continuity .
+ques:15 dc:subject dbpedia:Regulatory_compliance .
+
