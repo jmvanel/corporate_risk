@@ -95,9 +95,11 @@ object Application extends Controller with Secured {
     implicit request =>
       val label = UserData.getFormLabel(uri)
       Ok {
+        val fg = UserData.getFormGroup(user, uri)
+        println(s"form( $uri ) formGroup: $fg")
         views.html.form(
           tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().getURI(),
-            formGroup = UserData.getFormGroup(user, uri)), // formsGroupsURIMap("risk")),
+            formGroup = UserData.formsGroupsURIMap(fg)), // formsGroupsURIMap("risk")),
           label)
       }
   }

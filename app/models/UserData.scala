@@ -148,17 +148,18 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   /** transactional */
   def getFormGroup(user: User, dataURI: String): String = {
     //    val formsGroups = formsGroupsURIMap.values.toSeq
-    val userDataGroups = for (fg <- formsGroups) yield getUserData(user, fg)
+    val userDataGroups = for (fg <- formsGroupsURIs) yield getUserData(user, fg.toString())
     val userDataGroup = userDataGroups.find {
       udg =>
         val userData = udg.find {
-          formUserData => formUserData.data == dataURI
+          formUserData => formUserData.data.toString() == dataURI
         }
         userData.isDefined
     }
     if (userDataGroup.isDefined) {
       val x = userDataGroup.get
-      formsGroups(userDataGroups.indexOf(x))
+      val ind = userDataGroups.indexOf(x)
+      formsGroups(ind)
     } else ""
   }
 

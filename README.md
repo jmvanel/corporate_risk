@@ -24,6 +24,13 @@ Just like any Play! Framework application, install SBT, and type:
 
 For more details, see [in semantic\_forms the paragraph "How to run"](https://github.com/jmvanel/semantic_forms/tree/master/scala/forms_play#how-to-run)
 
+## Debug
+See 
+[playframework documentation/2.3.x/IDE](https://www.playframework.com/documentation/2.3.x/IDE)
+
+Apparently Activator, not SBT, is needed:
+    activator -jvm-debug 9999 run
+
 ### Preloading RDF content
 
 - Preloading vocabularies, and pre-defined form specifications : in activator shell type:
