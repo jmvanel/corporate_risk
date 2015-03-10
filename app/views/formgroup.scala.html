@@ -1,4 +1,4 @@
-@(forms: Seq[(String, String, Int)], fgName: String )(implicit user: User)
+@(forms: Seq[(String, String, Int, Int)], fgName: String )(implicit user: User)
 
 @main(fgName, Some(user), currentPage=fgName) {
     <table class="table">
@@ -12,7 +12,7 @@
     			<a href="@routes.Application.form(form._1.toString)">@form._2</a>
     		</td>
     		<td class="index-col-right">
-    			@form._3 question(s) remplie(s)
+    			@form._3 réponse@if(form._3 >1){s} sur @form._4
     		</td>
    		</tr>
    		}

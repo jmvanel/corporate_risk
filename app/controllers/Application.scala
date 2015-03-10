@@ -84,7 +84,8 @@ object Application extends Controller with Secured {
       val forms = UserData.getUserData(user, groupUri).map {
         case FormUserData(formUri, label) =>
           (formUri.getURI, label,
-            responseAnalysis.responsesCount(user, formUri.getURI)
+            responseAnalysis.responsesCount(user, formUri.getURI),
+            responseAnalysis.fieldsCount(user, formUri.getURI)
           )
       }
       Ok(views.html.formgroup(forms, fgName))
