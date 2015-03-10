@@ -39,7 +39,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * fonction qui compte les réponses pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème);
    *
-   *  NON transactional
+   *  transactional
    */
   def responsesCount(user: User, dataURI: String): Int = {
     val countTry = dataset.r({
@@ -69,6 +69,12 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     lit2Int(lit)
   }
 
+  /**
+   * fonction qui compte le nombre de champs pour une propriété de User,
+   *  c'est à dire un formulaire, alias une rubrique (alias thème);
+   *
+   *  transactional
+   */
   def fieldsCount(user: User, dataURI: String): Int = {
     val userURI = getURI(user)
     val queryString = s"""
@@ -143,26 +149,33 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * NON transactional
    */
   def averagePerForm(
-    //      email: String,
     user: User,
     instanceURI: String): (Int, Int) = {
     val userURI = getURI(user)
-    //      bizinnovUserPrefix(email)
-    // NOTE: could have used find() like in UserData.getUserData()
     val queryString = s"""
-          prefix : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
-          prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
+          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
 
-          SELECT ?label (xsd:integer(?OBJ) AS ?note) (xsd:integer(?COEF) AS ?coef)
+          SELECT ?label (xsd:integer(?VALUE) AS ?note) (xsd:integer(?COEF) AS ?coef)
           WHERE {
-           GRAPH <$userURI> {
-             <$instanceURI> ?PROP ?OBJ ;
+           {
+            GRAPH <$userURI> {
+             <$instanceURI> ?PROP ?VALUE ;
                             a ?CLASS .
-           }
-           GRAPH ?any {
+            }
+            GRAPH ?ONTO {
              ?PROP :coef ?COEF .
              ?CLASS rdfs:label ?label .
+            }
+           } UNION {
+            GRAPH <$userURI> {
+             <$instanceURI> ?PROP ?OBJ .
+            }
+            GRAPH ?ONTO {
+             ?OBJ ques:value ?VALUE
+            }
            }
           } """
     import sparqlOps._
@@ -181,7 +194,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       Logger.getRootLogger().info(s"""averagePerForm($instanceURI) solution $sol""")
       sol
     }
-
     var weightedSum = 0
     var coefSum = 0
     for (tuple <- res) yield {
@@ -191,8 +203,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
     (weightedAverage, coefSum)
-    //    })
-    //    iteratorTry.getOrElse(0, 1)
   }
 
   private def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
