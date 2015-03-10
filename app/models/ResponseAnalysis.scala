@@ -69,6 +69,33 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     lit2Int(lit)
   }
 
+  def fieldsCount(user: User, dataURI: String): Int = {
+    val userURI = getURI(user)
+    val queryString = s"""
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT DISTINCT (COUNT(?PROP) AS ?count) 
+        WHERE {
+         GRAPH <$userURI> {
+           <$dataURI> a ?CLASS .
+         }
+         GRAPH ?ONTO {
+           ?PROP rdfs:domain ?CLASS .
+         }
+        } """
+    val countTry = dataset.r({
+      import sparqlOps._
+      val query = parseSelect(queryString).get
+      val solutions = dataset.executeSelect(query, Map()).get
+      val res = solutions.iterator map { row =>
+        row("count").get.as[Rdf#Literal].get
+      }
+      res.next()
+    })
+    val lit = countTry.getOrElse(zero)
+    println("fieldsCount " + lit)
+    lit2Int(lit)
+  }
+
   //////// Response Analysis proper ////////
 
   /**
