@@ -17,9 +17,27 @@
 } .
 
 { ?BASE_URI :newURI ?NEW } <= {
-  # (1000000) prolog:random ?RAND .
   ( ?BASE_URI "-user-prop" ) string:concatenation ?NEW_URI .
   ?NEW log:uri ?NEW_URI .
+}.
+
+{ ?Q ques:header ?L .
+  _:d eu:findall ( ?ENUM
+       { ?ENUM :classForOneOf ?Q }
+       ?LIST
+  )
+} => {
+   ?Q rdfs:range [ owl:oneOf ?LIST ] .
+} .
+
+{ ?RANGE owl:oneOf ?LIST .
+  _:d eu:trace (?RANGE owl:oneOf "LIST").
+  ?LIST list:member ?M.
+  _:d eu:trace ("LIST" list:member ?M).
+  (?I ?LIST ?M) prolog:nth1 true.
+  _:d eu:trace (?I "LIST" ?M).
+} => {
+  ?M ques:value ?I .
 }.
 
 

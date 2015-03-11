@@ -21,22 +21,27 @@ ques:capital-10
     rdfs:label "Sport, Culture, loisirs" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ Toutes les régions d’implantation de l’entreprise sont très pauvres
 sur le plan sportif, culturel ou des loisirs"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ Les trois quarts des implantations sont dans des régions pauvres
 dans ce domaine"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ La moitié des implantations présente peu de potentiel dans ce
 domaine"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ Les régions d’implantation sont pour la plupart riches sur le plan
 du sport, de la culture et des loisirs"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Tous les sites de l’entreprise sont implantés dans des régions très
 riches sur le plan culturel, sportif ou de loisirs"""
             ]
@@ -50,21 +55,26 @@ ques:capital-11
     rdfs:label "Partenaires publics" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " L’entreprise est très éloignée de ses partenaires publics (à plus de"
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ L’entreprise est éloignée de ses partenaires publics (à plus de 200
 km)"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ Les partenaires publics importants pour l’entreprise sont présents
 dans la région (à 100 km)"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ L’entreprise a un accès facile (moins de 50 km) aux partenaires
 publics importants pour elle"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ L’entreprise est implantée à proximité de partenaires publics
 importants pour elle. Exemple: pôles de compétitivité, de
 technopôles, de centres de recherche ou de formation professionnelle
@@ -80,18 +90,23 @@ ques:capital-12
     rdfs:label "Accès et infrastructures" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Autoroute à + de 50 KM, pas de gare"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Autoroute à + de 50 KM, Gare TER à 20 KM"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Autoroute proche"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Autoroute et gare TGV à 20 KM"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Autoroute, gare TGV, aéroport à 20KM"
             ]
         )
@@ -104,21 +119,26 @@ ques:capital-13
     rdfs:label "RH locales et Services (Services Publics)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ Les zones ou l’entreprise est implantée sont très pauvres en service
 publics"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Les services publics lorsqu’ils existent sont de mauvaise qualité"
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ Certains services publics manquent (accès à 50 km) ou sont de
 qualité moyenne"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ Les services publics tant pour l’entreprise (Dreal, CCI,…) que pour
 les salariés (hôpitaux, écoles,…) sont bons"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Les services publics, tant pour l’entreprise (Dreal, CCI,…) que pour
 les salariés (hôpitaux, écoles,…) sont d’excellente qualité"""
             ]
@@ -132,24 +152,29 @@ ques:capital-14
     rdfs:label "RH locales et Services (Potentiel local RH)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ Les différents sites de l’entreprise sont implantés dans des zones
 rurales très éloignées de centres urbains. Les problèmes de
 recrutement qui en résultent sont très sérieux"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ Le recrutement est difficile à cause de l’implantation de
 l’entreprise majoritairement dans des petites agglomérations"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ La démographie des régions d’implantation de l’entreprise fait que
 des problèmes de recrutement significatifs se posent"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ Certains sites de l’entreprise sont implantés dans des villes de
 taille moyenne (50 000 habitants). Le recrutement pose parfois
 quelques problèmes de ce fait mais à la marge"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Tous les sites de l’entreprise sont implantés à proximité de grands
 centres urbains où il existe des écoles ou centres de formation en
 phase avec les métiers de l’entreprise. Le recrutement ne pose
@@ -172,14 +197,17 @@ ques:capital-16
     rdfs:label "Les produits actuels ont-ils un impact négatif sur la marque ? (essoufflement compétitif)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ Les produits ou services actuels ont une influence négative sur la
 marque"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ Les produits ou services ont une influence très négative sur la
 marque"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Il n’y a aucun problème de ce type"
             ]
         )
@@ -192,18 +220,23 @@ ques:capital-17
     rdfs:label "Protection juridique des noms de produits ou d’offre" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Pas de dépôt INPI, pas de veille"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Mauvaise qualité du dépôt de la marque, pas de veille."
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Marque protégée, pas de cluster, marque assez jeune, pas de veille."
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Veille insuffisante, reste comme ci-dessus"
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Marque protégée, par un cluster de dépôts, large périmètre de
 protection, forte ancienneté, aucun plagiat, bon dispositif de
 veille"""
@@ -218,18 +251,23 @@ ques:capital-18
     rdfs:label "Protections des noms de domaine internet" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Marque absente sur internet"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Le nom de domaine est différent du nom de l’entreprise"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Pas de cluster , pas de veille"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " La veille est insuffisante, reste comme ci-dessus"
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Le nom de domaine principal est égal au nom de l’entreprise ou de la
 marque commerciale phare, il est protégé par un cluster de nom de
 domaines, la veille est assurée"""
@@ -244,18 +282,23 @@ ques:capital-19
     rdfs:label "Protection juridique du nom de l’entreprise" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Pas de dépôt INPI, pas de veille"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Mauvaise qualité du dépôt de la marque, pas de veille."
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Marque protégée, pas de cluster, marque assez jeune, pas de veille."
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Veille insuffisante, reste comme ci-dessus"
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Marque protégée, par un cluster de dépôts, large périmètre de
 protection, forte ancienneté, aucun plagiat, bon dispositif de
 veille"""
@@ -277,20 +320,25 @@ ques:capital-20
     rdfs:label "La marque peut-elle être confondue avec une autre marque ?" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Pas de marque : produit générique"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Marque peu singulière souvent prise pour une autre"
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ 10 % des consommateurs confondent notre marque avec celle d’un
 concurrent"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ Des confusions rares peuvent exister avec une autre marque dans un
 secteur très distant"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Forte personnalité de la marque - n’est jamais confondue avec une
 autre"""
             ]
@@ -304,19 +352,24 @@ ques:capital-21
     rdfs:label "La marque apporte-t-elle un supplément d’image à ses clients ? (Influence)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Les clients cachent le fait qu’ils achètent cette marque"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Les clients ne montrent pas qu’ils achètent cette marque"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " La marque n’a pas d’influence sur l’ego de ses clients"
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ En général les clients aiment montrer qu’ils possèdent un produit
 ayant cette marque"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ La marque est une référence socioculturelle utilisée dans de
 nombreux films à dessein"""
             ]
@@ -330,19 +383,24 @@ ques:capital-22
     rdfs:label "Réputation de l’entreprise" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ La marque en sursis : a souffert de crises graves et largement
 médiatisées"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label " La marque rencontre des problèmes de réputation ou d’image"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Réputation neutre"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Bonne réputation"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Excellente image de la marque : toujours très positive, partout"
             ]
         )
@@ -355,18 +413,23 @@ ques:capital-23
     rdfs:label "Budgets de promotion de la marque (mesure de la notoriété)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Aucun investissement"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Documentation marketing diffusée par l’entreprise"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Presse écrite"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Affichage, pub télé, presse écrite"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Budget énorme: sponsoring voile, F1, pub télé, affichage"
             ]
         )
@@ -384,36 +447,47 @@ ques:capital-25
     rdfs:label "Il s’agit de l’âge de la marque" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " 6 mois"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " 5 ans"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " 10 ans"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " 50 ans"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Marque centenaire"
             ]
             [
+                ques:value 6 ;
                 rdfs:label " Notoriété directe"
             ]
             [
+                ques:value 7 ;
                 rdfs:label " Marque inconnue"
             ]
             [
+                ques:value 8 ;
                 rdfs:label " Sort parfois dans les enquêtes de notoriété assistée"
             ]
             [
+                ques:value 9 ;
                 rdfs:label " Sort souvent dans les enquêtes de notoriété assistée"
             ]
             [
+                ques:value 10 ;
                 rdfs:label " Sort presque toujours dans les enquêtes de notoriété spontanée"
             ]
             [
+                ques:value 11 ;
                 rdfs:label " Marque leader"
             ]
         )
@@ -426,18 +500,23 @@ ques:capital-26
     rdfs:label "La marque constitue-t-elle une garantie pour les produits que vend l’entreprise à travers le temps? (on sait ce que l’on achète, zéro surprise (sert à mesure la Confiance))" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Pas du tout"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Globalement Non"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Partiellement"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Globalement Oui"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Absolument"
             ]
         )
@@ -465,18 +544,23 @@ ques:capital-3
     rdfs:label "Qualité de la ressource (air)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Les alertes sont très fréquentes et les niveaux atteints sont très élevés"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Les alertes sont fréquentes"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Les alertes sont assez fréquentes"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Les alertes sont très rares"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " L’air n’est jamais pollué"
             ]
         )
@@ -494,20 +578,25 @@ ques:capital-4
     rdfs:label "Qualité de la ressource (eau)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ L’eau est de très mauvaise qualité en surface et en profondeur, les
 teneurs en nitrates, hydrocarbures, pesticides…sont très élevées"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ L’eau est polluée en surface et en profondeur (nitrates,
 hydrocarbures, pesticides)"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label " L’eau est de qualité acceptable en profondeur mais pas en surface"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Bonne qualité en surface et en profondeur"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Grande pureté tant en surface que dans les nappes phréatiques"
             ]
         )
@@ -520,18 +609,23 @@ ques:capital-5
     rdfs:label "Abondance de la ressource" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Il y a des restrictions d’eau très fréquentes dans l’année"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Il y a des restrictions d’eau souvent en été"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Il y a des restrictions d’eau de temps en temps en été"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Des risques de restriction ont déjà été évoqués mais n’ont pas eu lieu"
             ]
             [
+                ques:value 5 ;
                 rdfs:label " Ressource abondante en permanence"
             ]
         )
@@ -544,22 +638,27 @@ ques:capital-6
     rdfs:label "Matières Premières" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ La ressource est devenue rare et le métier de l’entreprise est de ce
 fait en danger"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ L’approvisionnement fait régulièrement question, l’entreprise a déjà
 souffert de ruptures"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ La qualité et le prix posent des problèmes réguliers qui iront en
 s’intensifiant"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label """ Quelques petits problèmes de qualité ou de prix peuvent se
 manifester à 5 ans"""
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Les matières premières que l’entreprise emploie sont abondantes, de
 grande qualité et bon marché à long terme"""
             ]
@@ -573,18 +672,23 @@ ques:capital-7
     rdfs:label "Evaluation du climat" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label " Nord"
             ]
             [
+                ques:value 2 ;
                 rdfs:label " Bretagne, Est, Massif Central, Normandie"
             ]
             [
+                ques:value 3 ;
                 rdfs:label " Ile de France"
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Aquitaine, Rhône Alpes"
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Les sites de l’entreprise sont implantés dans des régions très
 attractives du point de vue climat : Région PACA, Midi Pyrénées
 Les sites de l’entreprise sont implantés dans des régions très"""
@@ -599,21 +703,26 @@ ques:capital-8
     rdfs:label "Géographie et climat" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """ L’entreprise est implantée dans des régions ou peu de personnes
 souhaitent s’installer : Creuse, Allier, Ardennes"""
             ]
             [
+                ques:value 2 ;
                 rdfs:label """ L’entreprise est implantée dans des régions jugées peu attractives
 (Nord, Picardie,…)"""
             ]
             [
+                ques:value 3 ;
                 rdfs:label """ L’attractivité de la région est moyenne compte tenu de la géographie
 physique (Île de France, Lorraine,…)"""
             ]
             [
+                ques:value 4 ;
                 rdfs:label " Les régions d’implantation sont jolies: Touraine, Landes, Alsace…"
             ]
             [
+                ques:value 5 ;
                 rdfs:label """ Les sites de l’entreprise sont implantés dans des régions très
 attractives du point de vue géographique. Exemple: Bretagne, Alpes,
 Côte d’Azur…"""

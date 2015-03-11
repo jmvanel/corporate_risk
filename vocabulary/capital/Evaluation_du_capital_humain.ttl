@@ -231,7 +231,7 @@ ques:capital-2026 ques:item """L’aptitude à manager est moyenne""" .
 ques:capital-2026 ques:item """Le dirigeant est un bon manager""" .
 ques:capital-2026 ques:item """Le dirigeant écoute ses collaborateurs, il est exigeant et bienveillant. Il excelle dans ce domaine""" .
  
-ques:capital-2027 ques:header """L’entreprise est engagée dans la RSE""" .
+ques:capital-2027 ques:header """L’entreprise est engagée dans la RSE (Responsabilité Sociale & Environnementale)""" .
 ques:capital-2002 ques:subheader ques:capital-2027 .
  ques:capital-2027 ques:paragraph """Veuillez sélectionner une seule des propositions suivantes :""" .
   ques:capital-2027 ques:item """Entreprise peu recommandable""" .

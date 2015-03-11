@@ -28,15 +28,19 @@ ques:capital-2003
     rdfs:label "Gestion des remplacements (turn over ou retraite)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le système fonctionne mal"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le système de gestion de la relève existe mais ne fonctionne pas très bien"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Malgré un dispositif efficace, la durée des transitions est parfois trop courte"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "L’organigramme de remplacement et les périodes de transition marchent à merveille"
             ]
         )
@@ -49,15 +53,19 @@ ques:capital-2004
     rdfs:label "Turn over (sur 3 ans écoulés) + taux de plus de 62 ans dans les 3 ans" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "2 fois la moyenne secteur"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Moyenne secteur"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "(8 % + moyenne secteur)/2"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "8%"
             ]
         )
@@ -75,18 +83,23 @@ ques:capital-2006
     rdfs:label "Il s’agit de noter le manager de 1 à 5, 5 étant la meilleur note." ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "1"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "2"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "3"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "4"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "5"
             ]
         )
@@ -99,18 +112,23 @@ ques:capital-2007
     rdfs:label "Quantitatif hiérarchique" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Un manager pour plus de 100 ou pour moins de 5"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Un manager pour plus de 50 ou pour moins de 10"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Un manager pour plus de 30 ou pour moins de 15"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Un manager pour 20 à 30"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Un manager pour 20"
             ]
         )
@@ -123,18 +141,23 @@ ques:capital-2008
     rdfs:label "Indicateurs de stress collectif et de climat : plans sociaux, précarité, turn-over, arrêts maladie, taux d’accident, suicides, conflits sociaux pour ces raisons" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Forte souffrance perceptible, très fort absentéisme, fort turn over, suicides"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Souffrance, conflits sociaux fréquents, plan sociaux fréquents"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Sujet peu évoqué, ni en positif ni en négatif"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Bonne image employeur, entreprise où il fait bon vivre (réputation persistante et connue)"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Entreprise exemplaire à cet égard (top 10 great place to work par exemple)"
             ]
         )
@@ -147,21 +170,26 @@ ques:capital-2009
     rdfs:label "Votre niveau de stress est acceptable" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord »
 Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord » """
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Entre 60% à 80 % de « plutôt pas d’accord » et de « pas d’accord »"
             ]
             [
+                ques:value 3 ;
                 rdfs:label """Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord »
 Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord » """
             ]
             [
+                ques:value 4 ;
                 rdfs:label """Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord »
 Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord » """
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Entre 0% à 20% de « plutôt pas d’accord » et de « pas d’accord »"
             ]
         )
@@ -174,18 +202,23 @@ ques:capital-2010
     rdfs:label "Indicateurs de tensions sociales (prud’hommes, grèves, dialogue social dégradé avec représentants)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Nombreux et permanents"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Fréquents"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Existants"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Rares"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Absence depuis très longtemps"
             ]
         )
@@ -198,18 +231,23 @@ ques:capital-2011
     rdfs:label "Absentéisme" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "13%"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "6%"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "4%"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "2%"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "0%"
             ]
         )
@@ -222,18 +260,23 @@ ques:capital-2012
     rdfs:label "Turn over" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "3 fois"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "2 fois la moyenne secteur"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Moyenne secteur"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "(8 % + moyenne secteur)/2"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "8%"
             ]
         )
@@ -246,22 +289,27 @@ ques:capital-2013
     rdfs:label "Baromètre social" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label """De 0% à 20%
 De 0% à 20% """
             ]
             [
+                ques:value 2 ;
                 rdfs:label """De 20% à 40%
 De 20% à 40% """
             ]
             [
+                ques:value 3 ;
                 rdfs:label """De 40% à 70%
 De 40% à 70% """
             ]
             [
+                ques:value 4 ;
                 rdfs:label """De 70% à 80%
 De 70% à 80% """
             ]
             [
+                ques:value 5 ;
                 rdfs:label "De 80% à 100 % de motivés"
             ]
         )
@@ -274,18 +322,23 @@ ques:capital-2014
     rdfs:label "Politique de formation de maintien dans l’emploi" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "L’entreprise ne forme pas ses salariés"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "L’entreprise consacre 1%"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "L’entreprise consacre 3% de la masse salariale à la formation"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Budget formation = 4% MS (masse salariale), la plupart des salariés sont formés"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "L’entreprise consacre plus de 6 % de sa masse salariale à la formation, tous les collaborateurs sont formés"
             ]
         )
@@ -298,20 +351,25 @@ ques:capital-2015
     rdfs:label "Diversité" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Discrimination perceptible"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Pas de politique"
             ]
             [
+                ques:value 3 ;
                 rdfs:label """Politique de diversité mais peu de résultat visible
 Politique de diversité mais peu de résultat visible """
             ]
             [
+                ques:value 4 ;
                 rdfs:label """Très forte diversité mais insuffisance dans le codir (codir= comité de direction)
 Très forte diversité mais insuffisance dans le codir (codir= comité de direction) """
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Très forte diversité y compris dans le comité de direction"
             ]
         )
@@ -324,18 +382,23 @@ ques:capital-2016
     rdfs:label "Moyenne des notes de compétence aux entretiens individuels" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "1"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "2"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "3"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "4"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "5"
             ]
         )
@@ -348,18 +411,23 @@ ques:capital-2017
     rdfs:label "Existence d’une gestion prévisionnelle des emplois et des compétences" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Absence d’entretien d’évaluation"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Il n’y a pas de GPEC"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Il y a un déficit de compétence pour certaines fonctions clés"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Pour toutes les fonctions clés il y a des experts mais il manque des remplaçants pour certaines"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Pour toutes les fonctions clés de l’entreprise il y a des collaborateurs experts et des remplaçants experts"
             ]
         )
@@ -372,18 +440,23 @@ ques:capital-2018
     rdfs:label "Surcoût du travail" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "70%"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "45%"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "30%"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "20%"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "10%"
             ]
         )
@@ -396,15 +469,19 @@ ques:capital-2019
     rdfs:label "ETP productifs (*) / ETP totaux" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "55%"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "65%"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "75%"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "80%"
             ]
         )
@@ -417,15 +494,19 @@ ques:capital-2020
     rdfs:label "Sous-effectif" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le rythme de travail est excessif comme le montre le volume d’heures supplémentaires"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le recours au travail temporaire et les heures supplémentaires sont assez fréquents"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Tous les postes sont pourvus, la charge de travail très soutenue (les heures supplémentaires et l’intérim sont substantiels ponctuellement)"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Tous les postes sont pourvus, la charge de travail est soutenue mais sans excès (pas d’heures supplémentaires ou d’intérim)"
             ]
         )
@@ -438,15 +519,19 @@ ques:capital-2021
     rdfs:label "Sureffectif" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le taux d’occupation des salariés est faible"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le taux d’occupation des salariés est faible par moment dans l’année"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Le taux d’occupation des salariés est bon en permanence"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Le taux d’occupation des salariés est idéal"
             ]
         )
@@ -459,18 +544,23 @@ ques:capital-2022
     rdfs:label "Gestion des remplacements (turn over ou retraite) des dirigeants" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Rien n’est prévu à cet égard"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le système fonctionne mal"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Le système de gestion de la relève existe mais ne fonctionne pas très bien"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Malgré un dispositif efficace, la durée des transitions est parfois trop courte"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "L’organigramme de remplacement et les périodes de transition marchent à merveille"
             ]
         )
@@ -483,18 +573,23 @@ ques:capital-2023
     rdfs:label "Turn over (des dirigeants) correspondant" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "100%"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "50%"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "20%"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "10%"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Moins de 6,6 %"
             ]
         )
@@ -507,18 +602,23 @@ ques:capital-2024
     rdfs:label "Durée moyenne de collaboration" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "1 an"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "2 ans"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "5 ans"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "10 ans"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Plus de 15 ans"
             ]
         )
@@ -531,18 +631,23 @@ ques:capital-2025
     rdfs:label "Confiance" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le capital humain n’a pas confiance dans son dirigeant"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le niveau de confiance est faible"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "La confiance est moyenne"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Le capital humain a confiance dans son dirigeant"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Le capital humain de l’entreprise a une confiance totale dans son dirigeant"
             ]
         )
@@ -555,18 +660,23 @@ ques:capital-2026
     rdfs:label "Sensibilité sociale" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le dirigeant n’a pas de qualité de management des RH"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "L’aptitude à manager est insuffisante"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "L’aptitude à manager est moyenne"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Le dirigeant est un bon manager"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Le dirigeant écoute ses collaborateurs, il est exigeant et bienveillant. Il excelle dans ce domaine"
             ]
         )
@@ -576,21 +686,26 @@ ques:capital-2027
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
     rdfs:domain ques:capital-2002 ;
-    rdfs:label "L’entreprise est engagée dans la RSE" ;
+    rdfs:label "L’entreprise est engagée dans la RSE (Responsabilité Sociale & Environnementale)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Entreprise peu recommandable"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Entreprise en infraction avec la réglementation"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Une sensibilité au sujet"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "L’engagement est réel et sérieux"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Certifié QSE, labellisée ISO 26 000, …"
             ]
         )
@@ -603,18 +718,23 @@ ques:capital-2028
     rdfs:label "Prises de décision" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le comité ne prend pas de décisions, l’entreprise est à la dérive"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le dirigeant ne prend pas les décisions en temps et en heure ou est flou dans ce qu’il décide"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Des décisions importantes ne sont pas prises à temps ou sont instables"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Sur quelques sujets de moindre importance, les décisions peuvent tarder"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Les décisions sont sûres, rapides et couvrent tous les sujets"
             ]
         )
@@ -627,18 +747,23 @@ ques:capital-2029
     rdfs:label "Prise de risques" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "La prise de risque est inconsidérée ou totalement absente"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le dirigeant est timoré (prise de risque insuffisante) ou un peu casse-cou"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Le dirigeant est prudent"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "La prise de risque est bonne, quelques défauts en évaluation (au préalable) ou en gestion (à posteriori)"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Le dirigeant est un entrepreneur parfait qui sait prendre des risques importants quand il le faut en les mesurant et en les gérant"
             ]
         )
@@ -651,18 +776,23 @@ ques:capital-2030
     rdfs:label "Charisme" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Absence totale de légitimité"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "La personnalité du dirigeant est en retrait"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "L’autorité du dirigeant est suffisante"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Une réelle personnalité"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Très fort charisme"
             ]
         )
@@ -675,18 +805,23 @@ ques:capital-2031
     rdfs:label "Compétence sur les différents domaines d’activité" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Dirigeant aux nombreuses lacunes"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "2 domaines clés non maîtrisés"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Un domaine clé n’est pas maîtrisé"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Quelques fragilités à la marge"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "La finance, le commercial, la création et la production sont parfaitement maitrisés par le dirigeant"
             ]
         )
@@ -699,18 +834,23 @@ ques:capital-2032
     rdfs:label "Parcours du dirigeant" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Le parcours est totalement inadapté à la fonction"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Le parcours présente des lacunes réelles pour la fonction"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Le parcours est moyen au regard du poste"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Quelques écarts à l’idéal dans le parcours"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "A un parcours de haut niveau (diplômes, postes antérieurs) en phase avec sa fonction à 100 %"
             ]
         )
@@ -723,18 +863,23 @@ ques:capital-2033
     rdfs:label "Ancienneté moyenne du dirigeant à son poste" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "1 an et moins"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "2 ans et moins"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "4 ans"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "6 ans"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "8 ans"
             ]
         )
@@ -747,18 +892,23 @@ ques:capital-2034
     rdfs:label "Par ses décisions et réalisations passées (le dirigeant ou le comité de direction)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Mène l’entreprise à sa perte"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "A fait des erreurs sérieuses de stratégie ou de management"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Gère à court terme de façon assez opportuniste"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Se montre pertinent dans ses décisions mais pas toujours dans sa vision"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "A fait la preuve de ses qualités de stratège et de management (bonnes décisions à long et court terme)"
             ]
         )
@@ -771,15 +921,19 @@ ques:capital-2035
     rdfs:label "Cohésion" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Des tensions existent ou bien, les tensions n’existent pas parce que le management est très ferme"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Il y a des conflits dans le groupe ou la cohésion est assez faible et le management manque de leadership (décisions collégiales, dilution des responsabilités)"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Forte proximité, liberté de parole, management participatif"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Tensions rares et le management est participatif"
             ]
         )
@@ -799,18 +953,23 @@ ques:capital-2037
     rdfs:label "Y a-t-il nouveauté ou innovation ?" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "L’entreprise n’innove pas du tout."
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Les projets de R&D concernent des améliorations mineures de l’offre. Lorsque l’entreprise propose des nouveautés au niveau de son offre, celles-ci ne font pas l’objet au préalable d’une analyse de la demande"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Les projets de R&D en cours sont peu innovants. Par ailleurs des études de marché précèdent la R&D"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Les projets de R&D en cours sont prometteurs. En outre, plutôt que de regarder et d’écouter le marché, l’entreprise a mis au point des démarches pour le « sentir » étudier les besoins préconscients de sa clientèle et y répondre."
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Les projets de R&D en cours sont à très haut potentiel. En outre, la politique d’innovation a fait ses preuves, l’entreprise a déjà par le passé produit de grandes innovations couronnées de succès commercial."
             ]
         )
@@ -823,18 +982,23 @@ ques:capital-2038
     rdfs:label "La politique de R&D est-elle cohérente par rapport à la stratégie ?" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Les domaines de R&D sont sans rapport avec l’offre et le positionnement de l’entreprise et la relève produit est assurée à 0 %"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "La relève produit est assurée à moins de 50 %"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "La relève est assurée"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "La relève produit est assurée, des nouveaux produits vont sortir"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Les investissements vont permettre d’assurer la relève des produits vieillissants et de lancer de nombreux nouveaux produits en phase avec la stratégie de l’entreprise"
             ]
         )
@@ -847,18 +1011,23 @@ ques:capital-2039
     rdfs:label "Participants à la politique d’innovation produit" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Personne"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Une équipe réduite non dédiée et isolée ou des actions diffuses"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Un responsable de l’innovation est identifié, ses moyens sont limités"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Une équipe structurée dédiée avec des partenariats externes actifs"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Equipe spécialisée et importante, nombreuses sollicitations et propositions internes alimentent la R&D. Les partenariats externes sont nombreux et productifs"
             ]
         )
@@ -871,18 +1040,23 @@ ques:capital-2040
     rdfs:label "Budget R&D (interne ou sous-traité)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Pas de R&D"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "La moitié des confrères"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Un peu en retrait par rapport aux confrères"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Dans les meilleurs du secteur"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Best in class secteur"
             ]
         )
@@ -895,18 +1069,23 @@ ques:capital-2041
     rdfs:label "Services (Valeur des savoirs actuels)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Aucune précaution n’est prise pour protéger les procédés et savoirs critiques"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Il y a une clause de non concurrence dans les contrats de travail des hommes clés"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "L’entreprise a développé une culture du secret et de lutte contre l’espionnage industriel (signatures fréquentes de clause de confidentialité aux tiers, règles de destruction de documents avant poubelle…)"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Les codes source informatique, méthodes, savoir-faire et lignes de services sont déposées (notaire, société des gens de lettres….)"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Politique éprouvée de protection des savoir-faire (dépôts nombreux, au niveau mondial, veille et lutte contre la contrefaçon…)"
             ]
         )
@@ -919,18 +1098,23 @@ ques:capital-2042
     rdfs:label "Produits" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Aucune précaution n’est prise pour protéger les procédés et savoirs critiques"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Il y a une clause de non concurrence dans les contrats de travail des hommes clés"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "L’entreprise a développé une culture du secret et de lutte contre l’espionnage industriel (signatures fréquentes de clause de confidentialité aux tiers, règles de destruction de documents avant poubelle…)"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Gestion interne des secrets de fabrication selon une procédure rigoureuse ou politique de dépôts de brevets"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Politique éprouvée de protection des savoir-faire (dépôts nombreux, au niveau mondial, veille et lutte contre la contrefaçon…)"
             ]
         )
@@ -943,18 +1127,23 @@ ques:capital-2043
     rdfs:label "Ordre de grandeur des investissements requis pour un concurrent qui entend entrer sur ce marché (concevoir et fabriquer un produit concurrent)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Négligeables (quelques k€)"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "100 K€"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Quelques millions"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "100 millions"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Un milliard d’euros et plus"
             ]
         )
@@ -967,18 +1156,23 @@ ques:capital-2044
     rdfs:label "Ligne de fabrication ou moyens de productions" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Ré-engineering produit impossible"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Documentation absente ou obsolète mais ré-engineering produit possible"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Il manque des documents descriptifs du produit ou permettant la formation"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Quelques manques à la marge"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "100 % documentation à jour et 100 % des cours existent"
             ]
         )
@@ -991,18 +1185,23 @@ ques:capital-2045
     rdfs:label "Produit ou service" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Ré-engineering produit impossible"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Documentation absente ou obsolète mais ré-engineering produit possible"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Il manque des documents descriptifs du produit ou permettant la formation"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Quelques manques à la marge"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "100 % documentation à jour et 100 % des cours existent"
             ]
         )
@@ -1015,18 +1214,23 @@ ques:capital-2046
     rdfs:label "Obsolescence de l’offre" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Dans quelques mois"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Dans 1 an"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Dans 3 ans"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Dans 7 ans"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Dans 15 ans et plus"
             ]
         )
@@ -1039,19 +1243,24 @@ ques:capital-2047
     rdfs:label "Notre avantage concurrentiel (vous estimez que vous êtes :)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Distancé"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Inconnu"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Connu"
             ]
             [
+                ques:value 4 ;
                 rdfs:label """Top 5
 Top 5 """
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Leader"
             ]
         )
@@ -1064,18 +1273,23 @@ ques:capital-2048
     rdfs:label "Intensité concurrentielle" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Extrême (+ 1000)"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Très sérieuse (+ 100)"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "Sérieuse (+ de 10)"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Oligopole"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Seul / monopole"
             ]
         )
@@ -1088,19 +1302,24 @@ ques:capital-2049
     rdfs:label "Degré d’innovation" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Fait défaut sur certaines fonctions"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Fait défaut sur une fonction"
             ]
             [
+                ques:value 3 ;
                 rdfs:label """Ne fait défaut sur aucune fonction
 Ne fait défaut sur aucune fonction """
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Apporte des plus sur certaines fonctions"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "Apporte des innovations majeures sur plusieurs fonctions"
             ]
         )
@@ -1113,18 +1332,23 @@ ques:capital-2050
     rdfs:label "Croissance de la demande" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Négative"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "0%"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "5%"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "A deux chiffres à MT"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "À deux chiffres à LT"
             ]
         )
@@ -1137,18 +1361,23 @@ ques:capital-2051
     rdfs:label "Taille du marché accessible (mesure de la demande)" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "En millions"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "En dizaine de millions"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "En centaines de millions"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "En milliards"
             ]
             [
+                ques:value 5 ;
                 rdfs:label "En dizaine de milliards"
             ]
         )
@@ -1198,15 +1427,19 @@ ques:capital-2059
     rdfs:label "[]Marge brute annuelle :" ;
     rdfs:range [
         owl:oneOf ([
+                ques:value 1 ;
                 rdfs:label "Total :"
             ]
             [
+                ques:value 2 ;
                 rdfs:label "Europe (EU) :"
             ]
             [
+                ques:value 3 ;
                 rdfs:label "US/Canada :"
             ]
             [
+                ques:value 4 ;
                 rdfs:label "Reste du monde :"
             ]
         )
