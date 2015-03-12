@@ -24,21 +24,21 @@ ques:capital-1001 dc:subject dbpedia:Shareholder .
 ques:capital-1008 dc:subject dbpedia:Business_partner .
 ques:capital-1012 dc:subject dbpedia:Fidelity , dbpedia:Supplier .
 
-ques:capital-1021 dc:subject dbpedia:XX .
+ques:capital-1021 dc:subject dbpedia:Organizational capital .
 
 ques:capital-1023 dc:subject dbpedia:XX .
 
-ques:capital-1055 dc:subject dbpedia:XX .
+ques:capital-1055 dc:subject dbpedia:customer .
 
 ques:capital-1082 dc:subject dbpedia:XX .
 
-ques:capital-15 dc:subject dbpedia:XX .
+ques:capital-15 dc:subject dbpedia:brand .
 
-ques:capital-2 dc:subject dbpedia:XX .
+ques:capital-2 dc:subject dbpedia:Natural capital .
 
-ques:capital-2002 dc:subject dbpedia:XX .
+ques:capital-2002 dc:subject dbpedia:Human capital .
 
-ques:capital-2036 dc:subject dbpedia:XX .
+ques:capital-2036 dc:subject dbpedia:Knowledge .
 
 ques:capital-2052 dc:subject dbpedia:XX .
 
