@@ -42,5 +42,5 @@ ques:capital-2036 dc:subject dbpedia:Knowledge .
 
 ques:capital-2052 dc:subject dbpedia:XX .
 
-ques:capital-9 dc:subject dbpedia:XX .
+ques:capital-9 dc:subject dbpedia:social, dbpedia:Sustainable development .
 
