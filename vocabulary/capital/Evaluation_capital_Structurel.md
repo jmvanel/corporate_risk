@@ -36,7 +36,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Un des actionnaires a une réelle notoriété mais sa réputation est négative
-    Un des actionnaires a une réelle notoriété mais sa réputation est négative 
 - Les actionnaires n’ont pas de notoriété
 - Au moins un actionnaire est une personne physique de notoriété régionale
 - Au moins un actionnaire est une personne morale qui a une réelle notoriété régionale ou bien au moins un des actionnaires personne physique a une notoriété nationale en tant qu’acteur économique
@@ -89,7 +88,6 @@ Capital Partenaire
 Veuillez sélectionner une seule des propositions suivantes :
 
 - On travaille avec tout le monde (plus de 15 fournisseurs)
-    On travaille avec tout le monde (plus de 15 fournisseurs) 
 - 15 fournisseurs
 - 6 fournisseurs
 - 4 fournisseurs
@@ -122,7 +120,6 @@ La Notation est sur 20.
 Veuillez sélectionner une seule des propositions suivantes :
 
 - De 0 à 6 mois
-    De 0 à 6 mois 
 - De 6 mois à 1 an
 - De 1 an à 3 ans
 - De 3 ans à 7 ans
@@ -148,7 +145,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Relation neutre, ni bonne, ni mauvaise
 - Bonne relation
 - Excellente relation
-    Excellente relation 
 
 #### Rapport qualité prix (Evaluation du prix)
 
@@ -187,7 +183,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Pas de SAV
 - Accueil déshumanisé et prise en compte lente
 - Pas toujours réactif – délais de prise en compte de la demande parfois longs
-    Pas toujours réactif – délais de prise en compte de la demande parfois longs 
 - Attentes rares bon accueil
 - Demandes prises en compte sans délai, accueil attentionné
 
@@ -233,7 +228,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - L’entreprise évite de se transformer ou le fait dans la douleur, avec des séquelles
 - Les grandes réformes conduites par l’entreprise ont été difficiles mais ont fini par réussir
 - L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent
-    L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent 
 - Au cours des dernières années l’entreprise à réussi plusieurs tours de force en matière d’adaptation (grande réorganisation, fusion vraiment réussie…)
 
 #### Centralisation
@@ -272,7 +266,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Il y a de nombreuses erreurs chaque mois ou jour
 - Il y a quelques erreurs tous les mois/jours
-    Il y a quelques erreurs tous les mois/jours 
 - Quelques erreurs un mois / de temps en temps
 - Erreurs rares
 - Zéro défaut ou presque
@@ -306,7 +299,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Ratio de marge brute / produit
 - Rentabilité par produit et par client
 - ActivityBasedCost
-    ActivityBasedCost 
 
 #### Comptabilité Trésorerie
 
@@ -364,7 +356,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Rien
 - Statiques, peu considérées
-    Statiques, peu considérées 
 - Existent et sont promues
 - Résultent d’un travail collectif partagé
 - Travail collectif, partagées et améliorées
@@ -414,7 +405,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Absente
-    Absente 
 - Partielle
 - Pour tous – externalisée
 - École de vente interne
@@ -471,7 +461,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Absente
 - Ajustée et confinée
 - Ajustée, confinée et solidaire
-    Ajustée, confinée et solidaire 
 
 #### Centralisation et règles
 
@@ -511,7 +500,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Excentré
 - Centré
 - Barycentre (centre de gravité)
-    Barycentre (centre de gravité) 
 - Optimisée ou sans objet
 
 #### Distance clientèle
@@ -530,7 +518,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Pas du tout
 - Plutôt pas (peu)
-    Plutôt pas (peu) 
 - Partiellement
 - Quasiment
 - Absolument
@@ -541,7 +528,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 
 - Pas du tout
 - Plutôt pas (peu)
-    Plutôt pas (peu) 
 - Partiellement
 - Quasiment
 - Absolument
@@ -574,7 +560,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Moins de 30%
-    Moins de 30% 
 -Entre 30 et 50% 
 -Entre 50% et 80% 
 -Entre 80% et 90% 
@@ -585,13 +570,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - De 2 à 5 % CA
-    De 2 à 5 % CA 
 - De 0,5 à 2 % CA
-    De 0,5 à 2 % CA 
 - De 0,25 à 0,5 % CA
-    De 0,25 à 0,5 % CA 
 - De 0 à 0,25 % CA
-    De 0 à 0,25 % CA 
 - 0 % CA
 
 #### Clientèle aux revenus fragiles (entreprises en difficulté dans la région, etc.)
@@ -659,7 +640,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - En retournement (sous performance)
-    En retournement (sous performance) 
 - Chaotique et imprévisible
 - Stable à court terme (instable)
 - Stable à moyen terme
@@ -672,9 +652,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - En décroissance
 - Stable
 - Croissance faible
-    Croissance faible 
 - croissance entre 3% et 10%
-    croissance entre 3% et 10% 
 - Plus de 10 %
 
 #### Taille du marché accessible
@@ -682,7 +660,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Absent (inéxistant)
-    Absent (inéxistant) 
 - Local
 - Régional
 - National
@@ -693,30 +670,20 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Moins de 30%
-    Moins de 30% 
 - Entre 30 et 50%
-    Entre 30 et 50% 
 - Entre 50% et 80%
-    Entre 50% et 80% 
 - Entre 80% et 90%
-    Entre 80% et 90% 
 - Plus de 95 %
-    Plus de 95 % 
 
 #### Fidélité
 
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Moins de 30%
-    Moins de 30% 
 - Entre 30 et 50%
-    Entre 30 et 50% 
 - Entre 50% et 80%
-    Entre 50% et 80% 
 - Entre 80% et 90%
-    Entre 80% et 90% 
 - Plus de 95 %
-    Plus de 95 % 
 
 #### Notre taux de marge nette (équivalent EBE) chez le client
 
@@ -791,7 +758,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - En retournement (sous performance)
-    En retournement (sous performance) 
 - Chaotique et imprévisible
 - Stable a court terme (instable)
 - Stable à moyen terme
@@ -802,7 +768,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - En retournement (sous performance)
-    En retournement (sous performance) 
 - Chaotique et imprévisible
 - Stable à court terme (instable)
 - Stable à moyen terme
