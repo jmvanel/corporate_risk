@@ -15,31 +15,32 @@
 		votre pré-diagnostic est concluant, vous allez pouvoir faire un diagnostic total de 
 		votre capital immatériel.
 	</p>
-	Connecté en tant que @user.email.
-	<div><a>Modifier le mot de passe.</a></div>
 	
-    @helper.form(action = routes.Application.saveinfo, 'class->"form") {
-    	@infoForm.globalError.map { error => <p class="error">@error.message</p>}
-    	
-    	@helper.inputText(infoForm("department"),
-    		'_label->"Département de l'entreprise", 'class->"form-control")
-    	@helper.inputText(infoForm("naf"),
-    		'_label->"Code Naf", 'class->"form-control")
-    	@helper.inputText(infoForm("year"),
-    		'_label->"Année de création", 'class->"form-control")
-    	@helper.input(infoForm("isGroup"),
-    		'_label->"L'entreprise fait partie d'un groupe", 'class->"form-control")  { (id, name, value, args) =>
-			<div class="form-group">
-				<div class="btn-group" data-toggle="buttons">
-				  <label class="btn btn-primary @if(value.getOrElse(None)=="Oui"){active}">
-				    <input type="radio" name="@name" id="@{id+1}" @if(value=="Oui"){checked} autocomplete="off" value="Oui"> Oui
-				  </label>
-				  <label class="btn btn-primary @if(value.getOrElse(None)=="Non"){active}">
-				    <input type="radio" name="@name" id="@{id+2}" @if(value=="Non"){checked} autocomplete="off" value="Non">Non
-				  </label>
+	<div class="contentform">
+	    @helper.form(action = routes.Application.saveinfo, 'class->"form") {
+	    	@infoForm.globalError.map { error => <p class="error">@error.message</p>}
+	    	
+	    	@helper.inputText(infoForm("department"), '_label -> null,
+	    		'placeholder->"Département de l'entreprise", 'class->"form-control")
+	    	@helper.inputText(infoForm("naf"), '_label -> null,
+	    		'placeholder->"Code Naf", 'class->"form-control")
+	    	@helper.inputText(infoForm("year"), '_label -> null,
+	    		'placeholder->"Année de création", 'class->"form-control")
+	    	@helper.input(infoForm("isGroup"),
+	    		'_label->"", 'class->"form-control")  { (id, name, value, args) =>
+				<div class="form-group">
+					<div>L'entreprise fait partie d'un groupe</div>
+					<div class="btn-group" data-toggle="buttons">
+					  <label class="btn btn-default @if(value.getOrElse(None)=="Oui"){active}">
+					    <input type="radio" name="@name" id="@{id+1}" @if(value=="Oui"){checked} autocomplete="off" value="Oui"> Oui
+					  </label>
+					  <label class="btn btn-default @if(value.getOrElse(None)=="Non"){active}">
+					    <input type="radio" name="@name" id="@{id+2}" @if(value=="Non"){checked} autocomplete="off" value="Non">Non
+					  </label>
+					</div>
 				</div>
-			</div>
-		}
-    	<input type="submit" class="btn btn-success" value="Enregistrer">
-    }
+			}
+	    	<input type="submit" class="btn btn-blue" value="Enregistrer">
+	    }
+    </div>
 }

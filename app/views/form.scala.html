@@ -1,71 +1,7 @@
 @(form: Any, title: String)(implicit user: User)
 
 @main(title, Some(user)) {
-	
-      <table cellspacing="0" border="0">
-        <colgroup width="99"></colgroup> <colgroup width="743"></colgroup>
-        <tbody>
-          <tr>
-            <td height="20" valign="bottom" style="border-width: 1px; border-style: solid; border-color: black; text-align: center;"><font
-                color="#000000">cote</font></td>
-            <td valign="bottom" style="border-width: 1px; border-style: solid; border-color: black; text-align: center;"><font
-                color="#000000">Description <a href="http://fr.wikipedia.org/wiki/Capability_Maturity_Model_Integration">CMMI</a><br />
-              </font></td>
-          </tr>
-          <tr>
-            <td height="20" valign="bottom" align="center" sdnum="1036;" sdval="0"
-              style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">0</font></td>
-            <td valign="bottom" align="left" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">Pratique inexistante ou incomplète</font></td>
-          </tr>
-          <tr>
-            <td height="40" valign="bottom" align="center" sdnum="1036;" sdval="1"
-              style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">1</font></td>
-            <td valign="bottom" align="left" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">Pratique informelle : pratiques de base mises en
-                œuvre de manière informelle et réactive à l'initiative de ceux
-                qui estiment en avoir besoin</font></td>
-          </tr>
-          <tr>
-            <td height="40" valign="bottom" align="center" sdnum="1036;" sdval="2"
-              style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">2</font></td>
-            <td valign="bottom" align="left" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">Pratique répétable et suivie : pratiques de base
-                mises en œuvre de façon planifiée et suivie, avec un support
-                relatif de l'organisme</font></td>
-          </tr>
-          <tr>
-            <td height="40" valign="bottom" align="center" sdnum="1036;" sdval="3"
-              style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">3</font></td>
-            <td valign="bottom" align="left" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">Processus défini : mise en œuvre d'un processus
-                décrit, adapté à l'organisme, généralisé et bien compris par le
-                management et par les exécutants</font></td>
-          </tr>
-          <tr>
-            <td height="40" valign="bottom" align="center" sdnum="1036;" sdval="4"
-              style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">4</font></td>
-            <td valign="bottom" align="left" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">Processus contrôlé : le processus est coordonné
-                et contrôlé à l'aide d'indicateurs permettant de corriger les
-                défauts constatés</font></td>
-          </tr>
-          <tr>
-            <td height="40" valign="bottom" align="center" sdnum="1036;" sdval="5"
-              style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">5</font></td>
-            <td valign="bottom" align="left" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"><font
-                color="#000000">Processus continuellement optimisé :
-                l'amélioration des processus est dynamique, institutionnalisée
-                et tient compte de l'évolution du contexte</font></td>
-          </tr>
-        </tbody>
-      </table>
-
-    @form
+    <div class="vsiform">
+    	@form
+   	</div>
 }
