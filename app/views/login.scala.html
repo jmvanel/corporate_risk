@@ -2,29 +2,32 @@
 
 @main("Connexion", None) {
 	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices auctor turpis eu pellentesque. Mauris et pretium sapien, et malesuada ligula. Phasellus aliquam, mi ut venenatis feugiat, tortor quam ultricies dui, ac hendrerit purus dolor ut turpis. Vivamus imperdiet ultricies nulla pulvinar aliquet. Sed velit ipsum, rutrum nec nisl eget, maximus dictum ante. Nam imperdiet erat non nibh viverra, nec pulvinar tellus mattis. In tincidunt felis interdum metus suscipit, nec aliquam augue blandit. Proin condimentum quam eget sagittis ornare. Cras porta massa eget fermentum facilisis. Aliquam nec tellus fringilla, dapibus diam in, pharetra quam.
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut malesuada nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 	</p>
-	<p>
-		Nam nulla ipsum, auctor eu risus non, venenatis euismod odio. Curabitur ultricies enim id congue iaculis. Nam consequat risus ante, ut tempus dui ultrices sed. Fusce vel lectus eu tellus luctus lacinia ac ac dolor. Aenean ac arcu augue. Praesent eget est vel ante varius consectetur sit amet id lacus. Curabitur sed mattis dolor, in luctus massa. Proin luctus neque eros, eget pellentesque ante porttitor vitae. Phasellus sit amet consectetur nisi, non malesuada eros. 
-    </p>
-    <div class="loginform">
-	    <h2>Déjà membre</h2>
-	    @helper.form(action = routes.Auth.authenticate) {
-	    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
-	    	
-	    	@helper.inputText(loginForm("email"))
-	    	@helper.inputPassword(loginForm("password"))
-	    	<input type="submit" class="btn" value="Login">
-	    }
+    <div class="contentform">
+	    <div class="btn btn-blue" data-toggle="collapse" href="#collapseLogin" aria-expanded="false" 
+	    	aria-controls="#collapseLogin">Déjà membre</div>
+	    <div class="collapse" id="collapseLogin">
+		    @helper.form(action = routes.Auth.authenticate) {
+		    	@loginForm.globalError.map { error => <p class="error">@error.message</p>}
+		    	
+		    	@helper.inputText(loginForm("email"), 'placeholder -> "email", '_label -> null)
+		    	@helper.inputPassword(loginForm("password"), 'placeholder -> "mot de passe", '_label -> null)
+		    	<input type="submit" class="btn" value="Login">
+		    }
+		</div>
 	    
-	    <h2>Nouveau membre</h2>
-	    @helper.form(action = routes.Auth.register) {
-	    	@registerForm.globalError.map { error => <p class="error">@error.message</p>}
-	    	
-	    	@helper.inputText(registerForm("email"))
-	    	@helper.inputPassword(registerForm("password"))
-	    	@helper.inputPassword(registerForm("confirmPassword"))
-	    	<input type="submit" class="btn" value="Login">
-	    }
+	    <div class="btn btn-blue" data-toggle="collapse" href="#collapseRegister" aria-expanded="false" 
+	    	aria-controls="collapseRegister">Nouveau membre</div>
+	    <div class="collapse" id="collapseRegister">
+		    @helper.form(action = routes.Auth.register) {
+		    	@registerForm.globalError.map { error => <p class="error">@error.message</p>}
+		    	
+		    	@helper.inputText(registerForm("email"), 'placeholder -> "email", '_label -> null)
+		    	@helper.inputPassword(registerForm("password"), 'placeholder -> "mot de passe", '_label -> null)
+		    	@helper.inputPassword(registerForm("confirmPassword"), 'placeholder -> "confirmez le mot de passe", '_label -> null)
+		    	<input type="submit" class="btn" value="Login">
+		    }
+		</div>
     </div>
 }

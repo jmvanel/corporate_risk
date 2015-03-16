@@ -57,12 +57,30 @@ body {
 	padding: 0 1em;
 }
 
-.loginform {
+#content p {
+	max-width: 900px;
+	margin: auto;
+	text-align: justify;
+}
+.contentform {
 	width: 50%;
 	margin: auto;
 }
-.loginform input {
-	width: 100%
+.contentform input {
+	width: 100%;
+}
+.contentform .btn-blue {
+	background-color: #1C1862;
+	color: white;
+    margin-top: 2em;
+    display: block;
+}
+.contentform dl {
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+.contentform .btn {
+	font-weight: bold;
 }
 
 .index-col-left {
@@ -98,6 +116,9 @@ body {
 	text-align: center;
 	font-weight: bold;
 }
+.formmenuitem a {
+	color: #1C1862;
+}
 .formmenuitem.selected {
 	background-color: #1C1862;
 }
@@ -112,12 +133,28 @@ body {
 	top: -2px;
 	left: 140px;
 }
-.form {
-	margin: 0 18px;	
+.table > tbody > tr > th {
+	color: #FFF;
+	text-transform: uppercase;
+	line-height: 3em;
+	border-top: none;
+}
+.table > tbody > tr > td {
+	border-top: none;
+}
+.formname {
+	color: #1C1862;
+	font-weight: bold;
 }
 .form .input label {
 	width: 15%;
 	padding-left: 1em;	
+}
+.vsiform {
+	margin-top: 20px;
+}
+.row {
+	margin-bottom: 20px;
 }
 
 .report {

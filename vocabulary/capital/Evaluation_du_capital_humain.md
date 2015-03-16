@@ -67,12 +67,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord »
-    Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord » 
 - Entre 60% à 80 % de « plutôt pas d’accord » et de « pas d’accord »
 - Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord »
-    Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord » 
 - Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord »
-    Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord » 
 - Entre 0% à 20% de « plutôt pas d’accord » et de « pas d’accord »
 
 #### Indicateurs de tensions sociales (prud’hommes, grèves, dialogue social dégradé avec représentants)
@@ -110,13 +107,9 @@ Veuillez sélectionner une seule des propositions suivantes :
 Veuillez sélectionner une seule des propositions suivantes :
 
 - De 0% à 20%
-    De 0% à 20% 
 - De 20% à 40%
-    De 20% à 40% 
 - De 40% à 70%
-    De 40% à 70% 
 - De 70% à 80%
-    De 70% à 80% 
 - De 80% à 100 % de motivés
 
 #### Politique de formation de maintien dans l’emploi
@@ -136,9 +129,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Discrimination perceptible
 - Pas de politique
 - Politique de diversité mais peu de résultat visible
-    Politique de diversité mais peu de résultat visible 
 - Très forte diversité mais insuffisance dans le codir (codir= comité de direction)
-    Très forte diversité mais insuffisance dans le codir (codir= comité de direction) 
 - Très forte diversité y compris dans le comité de direction
 
 #### Moyenne des notes de compétence aux entretiens individuels
@@ -452,7 +443,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Inconnu
 - Connu
 - Top 5
-    Top 5 
 - Leader
 
 #### Intensité concurrentielle
@@ -472,7 +462,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Fait défaut sur certaines fonctions
 - Fait défaut sur une fonction
 - Ne fait défaut sur aucune fonction
-    Ne fait défaut sur aucune fonction 
 - Apporte des plus sur certaines fonctions
 - Apporte des innovations majeures sur plusieurs fonctions
 

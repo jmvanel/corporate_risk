@@ -72,7 +72,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 -     Aquitaine, Rhône Alpes
 -     Les sites de l’entreprise sont implantés dans des régions très
     attractives du point de vue climat : Région PACA, Midi Pyrénées
-    Les sites de l’entreprise sont implantés dans des régions très
 
 #### Géographie et climat
 
