@@ -90,17 +90,21 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
       for {
         (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
+        //        _ <- println("")
         triple <- find(userGraph, userURI, prop, ANY)
       } yield {
         (triple.objectt, instanceLabel(cl))
       }
     })
+    println(s"nodes  ${nodes.get.mkString(", ")}")
     val uriOptions = nodes.get.map {
       case (n, il) => foldNode(n)(
         uri => Some(uri, il),
         x => None, x => None)
     }
+    println(s"uriOptions ${uriOptions.mkString(", ")}")
     val v = uriOptions collect { case Some((uri, il)) => (uri, il) }
+    println(s"v ${v.mkString(", ")}")
     v.map(e => FormUserData(e._1, e._2))
   }
 
@@ -262,7 +266,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     val fg = FormGroup(classesAndProperties.to[List], fromLiteral(label)._1
     )
     //    println("classesAndProperties " + classesAndProperties.mkString("\n"))
-    println(s"$formgroup $fg")
+    println(s"\t formgroup = $formgroup : $fg")
     fg
   }
 
