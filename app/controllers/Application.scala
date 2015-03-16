@@ -93,16 +93,12 @@ object Application extends Controller with Secured {
 
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
-    implicit request =>
+    implicit request => {
+      val form = tableView.htmlFormElemJustFields(uri, editable = true, graphURI = user.getURI().getURI())
       val label = UserData.getFormLabel(uri)
-      Ok {
-        val fg = UserData.getFormGroup(user, uri)
-        println(s"form( $uri ) formGroup: $fg")
-        views.html.form(
-          tableView.htmlFormElem(uri, editable = true, graphURI = user.getURI().getURI(),
-            formGroup = UserData.formsGroupsURIMap(fg)), // formsGroupsURIMap("risk")),
-          label)
-      }
+      val formGroup = UserData.getFormGroup(user, uri)
+      Ok(views.html.form(form, label, formGroup))
+    }
   }
 
   /**
@@ -116,9 +112,9 @@ object Application extends Controller with Secured {
           FormSaverObject.saveTriples(form.data)
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => {
-              val nextform = if (form.data.contains("SAVE1")) {
+              val nextform = if (form.data.contains("SAVE_previous")) {
                 UserData.getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
-              } else if (form.data.contains("SAVE2")) {
+              } else if (form.data.contains("SAVE_next")) {
                 UserData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
               } else None
 
