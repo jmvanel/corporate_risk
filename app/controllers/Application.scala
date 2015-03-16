@@ -96,7 +96,7 @@ object Application extends Controller with Secured {
     implicit request => {
       val form = tableView.htmlFormElemJustFields(uri, editable = true, graphURI = user.getURI().getURI())
       val label = UserData.getFormLabel(uri)
-      val formGroup = UserData.getFormGroup(user, uri)
+      val formGroup = UserData.formGroupList.map(_.swap).get(UserData.bizinnovQuestionsVocabPrefix(UserData.getFormGroup(user, uri)).toString()).get
       Ok(views.html.form(form, label, formGroup))
     }
   }
