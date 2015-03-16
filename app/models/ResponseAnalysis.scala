@@ -75,7 +75,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   def fieldsCount(user: User, dataURI: String): Int = {
     val userURI = getURI(user)
     val queryString = s"""
-         ${declareSPARQL_PREFIX(rdfs)}
+        PREFIX rdfs: <${rdfs.prefixIri}>"
         SELECT DISTINCT (COUNT(?PROP) AS ?count) 
         WHERE {
          GRAPH <$userURI> {
@@ -85,6 +85,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
            ?PROP rdfs:domain ?CLASS .
          }
         } """
+    println( s"fieldsCount: $queryString" )
     val countTry = dataset.r({
       import sparqlOps._
       val query = parseSelect(queryString).get
@@ -156,7 +157,8 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val queryString = s"""
           PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
           ${declareSPARQL_PREFIX(xsd)}
-          ${declareSPARQL_PREFIX(rdfs)}
+          # ${declareSPARQL_PREFIX(rdfs)}
+          PREFIX rdfs: <${rdfs.prefixIri}>
           PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
 
           SELECT ?label (xsd:integer(?VALUE) AS ?note) (xsd:integer(?COEF) AS ?coef)
@@ -181,6 +183,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           } """
     import sparqlOps._
     import ops._
+    //    println(queryString)
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
     val solutionsSeq = solutions.iterator.toSeq

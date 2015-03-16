@@ -116,7 +116,8 @@ object Application extends Controller with Secured {
                 UserData.getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
               } else if (form.data.contains("SAVE_next")) {
                 UserData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
-              } else None
+              } else
+                UserData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
 
               nextform match {
                 case Some(form) => Redirect(routes.Application.form(form.data.getURI))
