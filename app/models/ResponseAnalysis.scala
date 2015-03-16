@@ -1,21 +1,18 @@
 package models
 
 import scala.xml.Elem
-
 import org.w3.banana.RDF
 import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.XSDPrefix
 import org.w3.banana.diesel._
 import org.w3.banana.jena.Jena
-
 import com.hp.hpl.jena.query.Dataset
-
 import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.dataset.RDFStoreLocalProvider
-
 import org.apache.log4j.Logger
+import org.w3.banana.Prefix
 
 /**
  * Responses Analysis:
@@ -46,7 +43,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       val userURI = getURI(user)
       // NOTE: could have used find() like in UserData.getUserData()
       val queryString = s"""
-          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          ${declareSPARQL_PREFIX(rdf)}
           SELECT DISTINCT (COUNT(?OBJ) AS ?count) 
           WHERE {
            GRAPH <$userURI> {
@@ -78,7 +75,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   def fieldsCount(user: User, dataURI: String): Int = {
     val userURI = getURI(user)
     val queryString = s"""
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+         ${declareSPARQL_PREFIX(rdfs)}
         SELECT DISTINCT (COUNT(?PROP) AS ?count) 
         WHERE {
          GRAPH <$userURI> {
@@ -100,6 +97,10 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val lit = countTry.getOrElse(zero)
     println("fieldsCount " + lit)
     lit2Int(lit)
+  }
+
+  def declareSPARQL_PREFIX(pr: Prefix[_]) = {
+    s"PREFIX ${pr.prefixName}: <${pr.prefixIri}>"
   }
 
   //////// Response Analysis proper ////////
@@ -153,9 +154,9 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     instanceURI: String): (Int, Int) = {
     val userURI = getURI(user)
     val queryString = s"""
-          PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
-          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
+          ${declareSPARQL_PREFIX(xsd)}
+          ${declareSPARQL_PREFIX(rdfs)}
           PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
 
           SELECT ?label (xsd:integer(?VALUE) AS ?note) (xsd:integer(?COEF) AS ?coef)
@@ -205,8 +206,8 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     (weightedAverage, coefSum)
   }
 
-  private def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
-  private def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
+  protected def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
+  protected def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
 
   /**
    * pour le rapport, fonction qui chiffre chaque groupe de formulaires;

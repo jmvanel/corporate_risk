@@ -603,7 +603,7 @@ ques:capital-1023
             [
                 ques:value 5 ;
                 rdfs:label """L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent
-L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent """
+"""
             ]
             [
                 ques:value 6 ;

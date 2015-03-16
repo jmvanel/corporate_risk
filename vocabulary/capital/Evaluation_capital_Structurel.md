@@ -233,7 +233,6 @@ Veuillez sélectionner une seule des propositions suivantes :
 - L’entreprise évite de se transformer ou le fait dans la douleur, avec des séquelles
 - Les grandes réformes conduites par l’entreprise ont été difficiles mais ont fini par réussir
 - L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent
-    L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent 
 - Au cours des dernières années l’entreprise à réussi plusieurs tours de force en matière d’adaptation (grande réorganisation, fusion vraiment réussie…)
 
 #### Centralisation
