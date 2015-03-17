@@ -113,7 +113,10 @@ object Application extends Controller with Secured {
     implicit request =>
       request.body match {
         case form: AnyContentAsFormUrlEncoded =>
-          FormSaverObject.saveTriples(form.data)
+          FormSaverObject.saveTriples(
+            form.data.filterNot {
+              case (key: String, _) => key.startsWith("SAVE")
+            })
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => {
               val nextform = if (form.data.contains("SAVE1")) {

@@ -85,7 +85,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
            ?PROP rdfs:domain ?CLASS .
          }
         } """
-    println( s"fieldsCount: $queryString" )
+    println(s"fieldsCount: $queryString")
     val countTry = dataset.r({
       import sparqlOps._
       val query = parseSelect(queryString).get

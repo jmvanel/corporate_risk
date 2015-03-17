@@ -1,6 +1,6 @@
 echo "update corporate_risk server when code has changed"
 
-cd ~/src/semantic_forms/scala/forms_play/
+cd ~/src/semantic_forms/scala/forms/
 git pull --verbose
 ./activator clean publishLocal
 

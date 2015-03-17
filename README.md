@@ -9,7 +9,7 @@ It is a web application built with Play! Framework and W3C's Semantic Web recomm
 
 ## Status
 
-Currently in development, first release in february.
+Currently in development, first release in march.
 
 ## Technique
 
@@ -24,6 +24,9 @@ Just like any Play! Framework application, install SBT, and type:
 
 For more details, see [in semantic\_forms the paragraph "How to run"](https://github.com/jmvanel/semantic_forms/tree/master/scala/forms_play#how-to-run)
 
+There is also a script to restart the server when the code has changed:
+    update_server.sh
+
 ## Debug
 See 
 [playframework documentation/2.3.x/IDE](https://www.playframework.com/documentation/2.3.x/IDE)
@@ -33,12 +36,9 @@ Apparently Activator, not SBT, is needed:
 
 ### Preloading RDF content
 
-- Preloading vocabularies, and pre-defined form specifications : in activator shell type:
+- Preloading vocabularies, and pre-defined form specifications : in shell type:
 ```
-    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/risk/risk_questions.owl.ttl
-    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/capital/Evaluation_capital_opérationnel.owl.ttl
-    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/capital/Evaluation_capital_Structurel.owl.ttl
-    runMain tdb.tdbloader --loc=TDB --graph=vocabulary vocabulary/capital/Evaluation_du_capital_humain.owl.ttl
+    populate_db.sh
 ```
 
 ## Note on the data model
