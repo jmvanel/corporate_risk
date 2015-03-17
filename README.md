@@ -18,7 +18,8 @@ which itself leverages on Play! Framework, Banana-RDf and Jena TDB.
 
 ### Running
 
-Just like any Play! Framework application, install SBT, and type:
+First, install from sources the Scala project [semantic\_forms/forms](https://github.com/jmvanel/semantic_forms/tree/master/scala/forms).
+Then, just like any Play! Framework application, install SBT, and type:
 
     run
 

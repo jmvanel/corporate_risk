@@ -242,8 +242,11 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     dataset.r({
       var weightedSum = 0
       var coefSumGlobal = 0
-      for (fg <- formsGroupsURIs) {
-        val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
+      for (
+        fg <- formsGroupsURIMap.values // .map()
+      ) {
+        //        val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
+        val (av, coefSum) = averagePerFormGroup(user, fg)
         weightedSum += av * coefSum
         coefSumGlobal += coefSum
       }

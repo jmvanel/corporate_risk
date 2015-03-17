@@ -41,7 +41,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *  TODO should be read from RDF database
    */
   lazy val formsGroups = List("risk", "capital") // human", "structural", "operational")
-  lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
+  //  private lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
   lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg")) } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
@@ -80,8 +80,10 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * transactional
    */
   def getUserData(user: User, formGroupUri: String = ""): Seq[FormUserData[Rdf]] = {
+    println(s"getUserData: formGroupUri $formGroupUri")
     val formGroup = formGroupUri match {
-      case "" => bizinnovQuestionsVocabPrefix("risk")
+      case "" => URI(formsGroupsURIMap("risk"))
+      // bizinnovQuestionsVocabPrefix("risk")
       case uri: String => URI(uri)
     }
     val nodes = dataset.r({
@@ -90,8 +92,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
       for {
         (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
-        //        _ <- println("")
+        //        debug = println(s"getUserData ($cl, $prop)")
         triple <- find(userGraph, userURI, prop, ANY)
+        //        debug2 = println(s"getUserData $triple")
       } yield {
         (triple.objectt, instanceLabel(cl))
       }
@@ -114,7 +117,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    */
   def getAllUserData(user: User): Seq[FormUserData[Rdf]] =
     for (
-      fg <- formsGroupsURIs;
+      fg <- formsGroupsURIMap.values.toSeq;
       fud <- getUserData(user, fg.toString)
     ) yield fud
 
@@ -151,19 +154,22 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
 
   /** transactional */
   def getFormGroup(user: User, dataURI: String): String = {
-    //    val formsGroups = formsGroupsURIMap.values.toSeq
-    val userDataGroups = for (fg <- formsGroupsURIs) yield getUserData(user, fg.toString())
+    val formsGroupsURIs = formsGroupsURIMap.values.toSeq
+    println(s"getFormGroup ${formsGroupsURIs.mkString(", ")}")
+    val userDataGroups = for (fg <- formsGroupsURIs) yield getUserData(user, fg)
+    println(s"getFormGroup ${userDataGroups.mkString(", ")}")
     val userDataGroup = userDataGroups.find {
       udg =>
         val userData = udg.find {
           formUserData => formUserData.data.toString() == dataURI
         }
+        println(s"getFormGroup userData.isDefined ${userData.isDefined} udg ${udg.mkString(", ")}")
         userData.isDefined
     }
     if (userDataGroup.isDefined) {
       val x = userDataGroup.get
       val ind = userDataGroups.indexOf(x)
-      formsGroups(ind)
+      formsGroupsURIs(ind)
     } else ""
   }
 
@@ -187,9 +193,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
     info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
-      case "risk" => FormGroup(applicationClassesAndPropertiesRisk,
+      case name if (name.startsWith("risk")) => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
-      case name => classesAndProperties(name + "-fg")
+      case name => classesAndProperties(name)
       //      case _ =>
       //        println(s"formGroup URI not expected: $formGroup");
       //        FormGroup(Seq((URI(""), URI(""))), "")

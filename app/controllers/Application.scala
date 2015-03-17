@@ -94,9 +94,10 @@ object Application extends Controller with Secured {
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request => {
-      val form = tableView.htmlFormElemJustFields(uri, editable = true, graphURI = user.getURI().getURI())
-      val label = UserData.getFormLabel(uri)
       val formGroup = UserData.getFormGroup(user, uri)
+      val form = tableView.htmlFormElemJustFields(uri, editable = true,
+        graphURI = user.getURI().getURI(), formGroup = formGroup)
+      val label = UserData.getFormLabel(uri)
       Ok(views.html.form(form, label, formGroup))
     }
   }
