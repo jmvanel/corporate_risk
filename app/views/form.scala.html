@@ -1,7 +1,13 @@
-@(form: Any, title: String)(implicit user: User)
+@(form: Any, title: String, formGroup: String)(implicit user: User)
 
-@main(title, Some(user)) {
+@main(title, Some(user), formGroup) {
     <div class="vsiform">
-    	@form
+    	<form action="@routes.Application.save" method="POST">
+    		@form
+    		<div class="pull-right">
+    			<input type="submit" name="SAVE_previous" class="btn btn-blue" value="Précédent"/>
+    			<input type="submit" name="SAVE_next" class="btn btn-blue" value="Suivant" />
+    		</div>
+    	</form>
    	</div>
 }

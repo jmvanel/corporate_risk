@@ -57,6 +57,11 @@ body {
 	padding: 0 1em;
 }
 
+.btn-blue {
+	background-color: #1C1862;
+	color: white;
+}
+
 #content p {
 	max-width: 900px;
 	margin: auto;
@@ -70,8 +75,6 @@ body {
 	width: 100%;
 }
 .contentform .btn-blue {
-	background-color: #1C1862;
-	color: white;
     margin-top: 2em;
     display: block;
 }
