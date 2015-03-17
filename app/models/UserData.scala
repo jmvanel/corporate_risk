@@ -46,8 +46,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
-    "Pré-diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("risk")),
-    "Diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("capital"))
+    "Pré-diagnostic" -> formsGroupsURIMap("risk"), // fromUri(bizinnovQuestionsVocabPrefix("risk")),
+    "Diagnostic" -> formsGroupsURIMap("capital") // fromUri(bizinnovQuestionsVocabPrefix("capital"))
   )
   /**
    * create Empty User Data for all 4 Form Groups : the triples:
