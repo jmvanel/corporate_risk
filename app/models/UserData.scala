@@ -40,9 +40,10 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    * values for arguments to applicationClassesAndProperties(formGroup: String)
    *  TODO should be read from RDF database
    */
-  lazy val formsGroups = List("risk", "capital") // human", "structural", "operational")
-  //  private lazy val formsGroupsURIs: List[Rdf#URI] = formsGroups map { fg => bizinnovQuestionsVocabPrefix(fg) }
-  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map { fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg")) } toMap
+  lazy val formsGroups = List("risk", "capital")
+  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map {
+    fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg"))
+  } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
     "Pré-diagnostic" -> fromUri(bizinnovQuestionsVocabPrefix("risk")),
@@ -196,9 +197,6 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
       case name if (name.startsWith("risk")) => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
       case name => classesAndProperties(name)
-      //      case _ =>
-      //        println(s"formGroup URI not expected: $formGroup");
-      //        FormGroup(Seq((URI(""), URI(""))), "")
     }
   }
 

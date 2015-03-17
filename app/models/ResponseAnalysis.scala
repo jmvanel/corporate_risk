@@ -75,7 +75,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   def fieldsCount(user: User, dataURI: String): Int = {
     val userURI = getURI(user)
     val queryString = s"""
-        PREFIX rdfs: <${rdfs.prefixIri}>"
+        PREFIX rdfs: <${rdfs.prefixIri}>
         SELECT DISTINCT (COUNT(?PROP) AS ?count) 
         WHERE {
          GRAPH <$userURI> {
@@ -85,12 +85,13 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
            ?PROP rdfs:domain ?CLASS .
          }
         } """
-    println(s"fieldsCount: $queryString")
+    //    println(s"fieldsCount: $queryString")
     val countTry = dataset.r({
       import sparqlOps._
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
+        //        info(s""" fieldsCount iter ${row}""")
         row("count").get.as[Rdf#Literal].get
       }
       res.next()
