@@ -53,16 +53,17 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           } """
       import sparqlOps._
       import ops._
-      //      println("responsesCount " + queryString)
+      println("responsesCount " + queryString)
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
+        info(s""" responsesCount iter ${row}""")
         row("count").get.as[Rdf#Literal].get
       }
       res.next()
     })
     val lit = countTry.getOrElse(zero)
-    println("responsesCount " + lit)
+    println(s"responsesCount $dataURI $lit")
     lit2Int(lit)
   }
 
@@ -129,7 +130,10 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   /** transactional */
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
-    val userData = getUserData(user(userEmail), bizinnovQuestionsVocabPrefix(formGroupName).toString)
+    val userData = getUserData(user(userEmail),
+      formsGroupsURIMap(formGroupName)
+    //        bizinnovQuestionsVocabPrefix(formGroupName).toString
+    )
     dataset.r({
       Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {
@@ -162,9 +166,9 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           PREFIX rdfs: <${rdfs.prefixIri}>
           PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
 
-          SELECT ?label (xsd:integer(?VALUE) AS ?note) (xsd:integer(?COEF) AS ?coef)
+          SELECT ?label (xsd:integer(?VALUE) AS ?note) (IF(bound(?COEF), xsd:integer(?COEF) ,1) AS ?coef)
           WHERE {
-           {
+           { # for direct numeric values (risk forms)
             GRAPH <$userURI> {
              <$instanceURI> ?PROP ?VALUE ;
                             a ?CLASS .
@@ -173,24 +177,26 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
              ?PROP :coef ?COEF .
              ?CLASS rdfs:label ?label .
             }
-           } UNION {
+           } UNION { # for indirect numeric values: enumerated values have a ques:value (capital forms)
             GRAPH <$userURI> {
-             <$instanceURI> ?PROP ?OBJ .
+             <$instanceURI> ?PROP ?OBJ ;
+                            a ?CLASS  .
             }
             GRAPH ?ONTO {
-             ?OBJ ques:value ?VALUE
+             ?OBJ ques:value ?VALUE .
+             ?CLASS rdfs:label ?label .
             }
            }
           } """
     import sparqlOps._
     import ops._
-    //    println(queryString)
+    //    println(s"averagePerForm queryString $queryString")
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
     val solutionsSeq = solutions.iterator.toSeq
     Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
       size ${solutionsSeq.size}
-      queryString""")
+      $queryString""")
     val res = solutionsSeq map { row =>
       val sol =
         (lit2String(row("label").get.as[Rdf#Literal].get),

@@ -58,6 +58,9 @@ The form is built by the semantic\_forms tool from C by gathering all properties
     PC rdfs:domain C .
 
 So each PC gives an atomic question in the form defined by C and P.
+And user data are triples like:
+    <users/email123-456> PC "5" .
+    <users/email123-789> PC  <a9b76> .
 
 Then forms are grouped in form groups appearing in different pages in the application, with a summary of the answers.
 In the RDF database, the form groups are connected to the OWL object properties P of the forms by a ques:properties predicate, like this :
