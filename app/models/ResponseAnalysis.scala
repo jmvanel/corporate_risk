@@ -122,18 +122,12 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    */
   def getCapitalEval(userEmail: String): Map[String, Double] = {
     getEvaluation(userEmail, "capital")
-    // Map( "Capital humain" -> 3.5,
-    //      "Capital naturel" -> 2,
-    //      "Capital marques" -> 4 )
   }
 
   /** transactional */
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
-    val userData = getUserData(user(userEmail),
-      formsGroupsURIMap(formGroupName)
-    //        bizinnovQuestionsVocabPrefix(formGroupName).toString
-    )
+    val userData = getUserData(user(userEmail), formsGroupsURIMap(formGroupName))
     dataset.r({
       Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {

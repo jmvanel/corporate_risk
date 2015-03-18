@@ -46,8 +46,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   } toMap
 
   lazy val formGroupList: Map[String, String] = Map(
-    "Pré-diagnostic" -> formsGroupsURIMap("risk"), // fromUri(bizinnovQuestionsVocabPrefix("risk")),
-    "Diagnostic" -> formsGroupsURIMap("capital") // fromUri(bizinnovQuestionsVocabPrefix("capital"))
+    "Pré-diagnostic" -> formsGroupsURIMap("risk"),
+    "Diagnostic" -> formsGroupsURIMap("capital")
   )
   /**
    * create Empty User Data for all 4 Form Groups : the triples:
@@ -60,10 +60,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    */
   def createEmptyUserData(user: User) = {
     dataset.rw({
-      //    dataset.rw({ // TODO <<<<
       for (fg <- formsGroups) {
         val cp = applicationClassesAndProperties(fg)
-        println(s"createEmptyUserData $user $fg")
+        println(s"createEmptyUserData $user $fg $cp")
         for (classAndPropURI <- cp.classesAndProperties)
           createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
       }
@@ -220,7 +219,12 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   /** @param fg is URI ending for forms group */
   private def classesAndProperties(fg: String): FormGroup = {
     applicationClassesAndPropertiesGeneric(
-      fromUri(bizinnovQuestionsVocabPrefix(fg)))
+      //      fromUri(bizinnovQuestionsVocabPrefix(fg)))
+      if (formsGroupsURIMap.contains(fg))
+        formsGroupsURIMap(fg)
+      else
+        fromUri(bizinnovQuestionsVocabPrefix(fg))
+    )
   }
 
   /** see #applicationClassesAndProperties() */
