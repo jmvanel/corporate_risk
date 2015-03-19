@@ -133,15 +133,15 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   /** transactional */
   def getNextForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
     val fuds = getAllUserData(user)
-    info(s"""getNextForm for dataURI : ${dataURI} """)
-    info(s"""getNextForm total for all groups : ${fuds.size} """)
+    infor(s"""getNextForm for dataURI : ${dataURI} """)
+    infor(s"""getNextForm total for all groups : ${fuds.size} """)
     val sl = fuds.sliding(2)
 
     val nf = for (
       Seq(f1, f2) <- sl;
       if (fromUri(f1.data) == dataURI)
     ) yield f2
-    info(s"""getNextForm $dataURI : $nf """)
+    infor(s"""getNextForm $dataURI : $nf """)
     if (nf isEmpty) None else Some(nf.next)
   }
 
@@ -173,7 +173,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
     } else ""
   }
 
-  def info(s: String) = Logger.getRootLogger().info(s)
+  //  private
+  def infor(s: String) = Logger.getRootLogger().info(s)
 
   /**
    * return a FormGroup, that is a sequence of URI couples:
@@ -184,14 +185,14 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
    *  See "Note on the data model" in README.md
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
-    info(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
-    info(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
+    infor(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
+    infor(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
   /** like before, different argument type */
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
-    info(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
+    infor(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
       case name if (name.startsWith("risk")) => FormGroup(applicationClassesAndPropertiesRisk,
         "Questions sur la gestion des risques.")
@@ -279,7 +280,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
   }
 
   def println(mess: String) = {
-    info(mess)
+    infor(mess)
     val fileName = "bblog.txt"
     import java.nio.file.{ Paths, Files }
     import java.nio.charset.StandardCharsets

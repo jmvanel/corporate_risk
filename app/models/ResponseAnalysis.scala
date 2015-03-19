@@ -57,7 +57,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
-        info(s""" responsesCount iter ${row}""")
+        infor(s""" responsesCount iter ${row}""")
         row("count").get.as[Rdf#Literal].get
       }
       res.next()
@@ -111,6 +111,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   /**
    * fonction qui renvoie la liste des formulaires de l'utilisateur avec
    * la moyenne de chacun,  pour le groupe "risk".
+   * transactional
    */
   def getRiskEval(userEmail: String): Map[String, Double] = {
     getEvaluation(userEmail, "risk")
@@ -119,6 +120,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   /**
    * renvoie la liste des formulaires de l'utilisateur avec
    * la moyenne de chacun, pour le groupe "capital"
+   * transactional
    */
   def getCapitalEval(userEmail: String): Map[String, Double] = {
     getEvaluation(userEmail, "capital")
@@ -151,7 +153,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    */
   def averagePerForm(
     user: User,
-    instanceURI: String): (Int, Int) = {
+    instanceURI: String): (Float, Int) = {
     val userURI = getURI(user)
     val queryString = s"""
           PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
@@ -187,7 +189,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     //    println(s"averagePerForm queryString $queryString")
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
-    val solutionsSeq = solutions.iterator.toSeq
+    val solutionsSeq = solutions.iterator.to[List]
     Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
       size ${solutionsSeq.size}
       $queryString""")
@@ -199,7 +201,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       Logger.getRootLogger().info(s"""averagePerForm($instanceURI) solution $sol""")
       sol
     }
-    var weightedSum = 0
+    var weightedSum: Float = 0
     var coefSum = 0
     for (tuple <- res) yield {
       val (label, note, coef) = tuple
@@ -219,10 +221,10 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    *
    * NON transactional
    */
-  def averagePerFormGroup(user: User, formGroupURI: String): (Int, Int) = {
+  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
     val fg = applicationClassesAndProperties(makeUri(formGroupURI))
     val cps = fg.classesAndProperties
-    var weightedSum = 0
+    var weightedSum: Float = 0
     var coefSum = 0
     for (cp <- cps) {
       val av = averagePerForm(user, fromUri(cp._2))
@@ -234,19 +236,16 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   }
 
   /**
-   * fonction qui fournit un rapport en HTML
-   *  TODO : prendre en compte les choix multiples pour les transformer en nombre entre 1 et 5
+   * fonction qui fournit la notr globale
+   * ( pris en compte les choix multiples pour les transformer en nombre entre 1 et 5 )
    *
    * transactional
    */
-  def globalEval(user: User): Int = {
+  def globalEval(user: User): Float = {
     dataset.r({
-      var weightedSum = 0
+      var weightedSum: Float = 0
       var coefSumGlobal = 0
-      for (
-        fg <- formsGroupsURIMap.values // .map()
-      ) {
-        //        val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
+      for (fg <- formsGroupsURIMap.values) {
         val (av, coefSum) = averagePerFormGroup(user, fg)
         weightedSum += av * coefSum
         coefSumGlobal += coefSum
