@@ -1,12 +1,18 @@
 package models
 
-object TestNewUser extends App {
-  // TODO set a test TDB, to avoid destroy the default one  
-  //  deductions.runtime.utils.FileUtils.deleteLocalSPARL()
+import org.scalatest.FunSuite
+
+class TestNewUser extends FunSuite {
+  TestCommons.prepareTDBontologies()
 
   val s = "zz"
   val user = User(s, s)
   UserData.createEmptyUserData(user)
-  println(UserData.getUserData(user))
-  // TODO assert that the TDB is populated
+  test("the TDB is populated") {
+    println(UserData.getUserData(user))
+    val formGroupUri = "http://www.bizinnov.com/ontologies/quest.owl.ttl#capital-fg"
+    val userData = UserData.getUserData(user, formGroupUri)
+    println(s"${userData.mkString(" , \n")}")
+    assert(userData.size == 3)
+  }
 }

@@ -5,12 +5,18 @@ import scala.util.Try
 
 object TestCommons {
 
-  def prepareData() {
+  /**
+   * delete previousLocal SPARL;
+   * load part of vocabulary/risk/ and vocabulary/capital/
+   */
+  def prepareTDBontologies() {
     // TODO set a test TDB, to avoid destroy the default one  
     deleteLocalSPARL()
     tdb.tdbloader.main("--loc=TDB", "--graph=vocabulary",
       "vocabulary/risk/risk_questions.owl.ttl",
-      "vocabulary/risk/labels.ttl")
+      "vocabulary/risk/labels.ttl",
+      "vocabulary/capital/Evaluation_du_capital_humain.owl.ttl"
+    )
   }
 
   def info(s: String) = {

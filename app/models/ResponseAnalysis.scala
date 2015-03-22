@@ -113,7 +113,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * la moyenne de chacun,  pour le groupe "risk".
    * transactional
    */
-  def getRiskEval(userEmail: String): Map[String, Double] = {
+  def getRiskEval(userEmail: String): Map[String, Float] = {
     getEvaluation(userEmail, "risk")
   }
 
@@ -122,12 +122,15 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * la moyenne de chacun, pour le groupe "capital"
    * transactional
    */
-  def getCapitalEval(userEmail: String): Map[String, Double] = {
+  def getCapitalEval(userEmail: String): Map[String, Float] = {
     getEvaluation(userEmail, "capital")
   }
 
-  /** transactional */
-  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
+  /**
+   * @return Map with key from label, and value Evaluation 0<note<5
+   * transactional
+   */
+  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
     val userData = getUserData(user(userEmail), formsGroupsURIMap(formGroupName))
     dataset.r({
@@ -138,7 +141,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           label -> averagePerForm(user(userEmail), fromUri(formUri))._1
       }
       val string2Int = res.toMap
-      string2Int.map { case (s, i) => (s, i.toDouble) }
+      string2Int.map { case (s, i) => (s, i.toFloat) }
     }).get
   }
 
@@ -192,7 +195,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val solutionsSeq = solutions.iterator.to[List]
     Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
       size ${solutionsSeq.size}
-      $queryString""")
+      """)
     val res = solutionsSeq map { row =>
       val sol =
         (lit2String(row("label").get.as[Rdf#Literal].get),
@@ -216,24 +219,48 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   protected def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
 
   /**
+   * average Per FormGroup;
    * pour le rapport, fonction qui chiffre chaque groupe de formulaires;
    *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
    *
-   * NON transactional
+   * transactional
    */
   def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
-    val fg = applicationClassesAndProperties(makeUri(formGroupURI))
-    val cps = fg.classesAndProperties
+    val userEmail = user.email
+    Logger.getRootLogger().info(s"averagePerFormGroup($userEmail, $formGroupURI $formGroupURI)")
+    val userData = getUserData(user, formGroupURI)
+    val avgs = dataset.r({
+      val res = userData.map {
+        case FormUserData(formUri, label) =>
+          Logger.getRootLogger().info(s"averagePerFormGroup($userEmail, $formUri) $label")
+          averagePerForm(user, fromUri(formUri))
+      }
+      res
+    }).get
     var weightedSum: Float = 0
     var coefSum = 0
-    for (cp <- cps) {
-      val av = averagePerForm(user, fromUri(cp._2))
-      weightedSum += av._1 * av._2
-      coefSum += av._2
+    for (tuple <- avgs) yield {
+      val (note, coef) = tuple
+      weightedSum += note * coef
+      coefSum += coef
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
     (weightedAverage, coefSum)
   }
+
+  //  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
+  //    val fg = applicationClassesAndProperties(makeUri(formGroupURI))
+  //    val cps = fg.classesAndProperties
+  //    var weightedSum: Float = 0
+  //    var coefSum = 0
+  //    for (cp <- cps) {
+  //      val av = averagePerForm(user, fromUri(cp._2))
+  //      weightedSum += av._1 * av._2
+  //      coefSum += av._2
+  //    }
+  //    val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
+  //    (weightedAverage, coefSum)
+  //  }
 
   /**
    * fonction qui fournit la notr globale
@@ -242,17 +269,17 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * transactional
    */
   def globalEval(user: User): Float = {
-    dataset.r({
-      var weightedSum: Float = 0
-      var coefSumGlobal = 0
-      for (fg <- formsGroupsURIMap.values) {
-        val (av, coefSum) = averagePerFormGroup(user, fg)
-        weightedSum += av * coefSum
-        coefSumGlobal += coefSum
-      }
-      coefSumGlobal = if (coefSumGlobal != 0) coefSumGlobal else 1
-      (weightedSum / coefSumGlobal)
-    }).get
+    //    dataset.r({
+    var weightedSum: Float = 0
+    var coefSumGlobal = 0
+    for (fg <- formsGroupsURIMap.values) {
+      val (av, coefSum) = averagePerFormGroup(user, fg)
+      weightedSum += av * coefSum
+      coefSumGlobal += coefSum
+    }
+    coefSumGlobal = if (coefSumGlobal != 0) coefSumGlobal else 1
+    (weightedSum / coefSumGlobal)
+    //    }).get
   }
 
 }
