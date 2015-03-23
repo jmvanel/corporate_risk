@@ -11,6 +11,8 @@ import deductions.runtime.sparql_cache.RDFCache
 import deductions.runtime.services.FormSaverObject
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
+import org.jfree.chart.axis.CategoryLabelPositions
+import org.jfree.chart.StandardChartTheme
 import org.xhtmlrenderer.pdf.ITextRenderer
 import scalax.chart.api._
 import deductions.runtime.dataset.RDFStoreLocalProvider
@@ -154,12 +156,19 @@ object Application extends Controller with Secured {
   //TODO: handle security
   def chart(charttype: String, email: String) = Action {
     val user = User.find(email)
+    val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
+    implicit val theme: StandardChartTheme = org.jfree.chart.StandardChartTheme.createLegacyTheme().asInstanceOf[StandardChartTheme]
+    theme.setPlotBackgroundPaint(transparent)
+    theme.setChartBackgroundPaint(transparent)
+    theme.setLegendBackgroundPaint(transparent)
     val content = charttype match {
       case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
-      case "capital" => BarChart(responseAnalysis.getCapitalEval(email).toVector)
-      // TODO: les vrais chiffres:
-      case "pie" => PieChart(Vector(("Sécurité", 4), ("Fiabilité", 1), ("Gouvernance", 4), ("Vitesse", 2), ("Solidité", 3)))
-      case _ => BarChart(Vector(("default case", 1)))
+      case "capital" => {
+        val chart = BarChart(responseAnalysis.getCapitalEval(email).toVector)
+        chart.plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.UP_45)
+        chart
+      }
+      case _ => throw new IllegalArgumentException("Please specify the kind of chart you want")
     }
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }

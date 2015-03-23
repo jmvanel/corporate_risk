@@ -20,7 +20,7 @@
 		@for((form, eval) <- reportData.getRiskEval(user.email)) {
 		<tr>
 			<td>@form</td>
-			<td>@eval</td>
+			<td>@("%.1f".format(eval))</td>
 		</tr>
 		}
 	</table>
