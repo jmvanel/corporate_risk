@@ -37,16 +37,18 @@
         	
 		@if(!userOption.isEmpty) {
 		<div class="formmenu">
-			<div class="formmenuitem@if(currentPage=="index"){ selected}">
-				<a href="@routes.Application.index">Profil</a>
-			</div>
-		   	@for((fgName, fgUri) <- UserData.formGroupList) {
-		   	<div class="formmenuitem@if(currentPage==fgName){ selected}">
-		   		<a href="@routes.Application.formgroup(fgUri)">@fgName</a>
-		   	</div>
-			}
-			<div class="formmenuitem@if(currentPage=="report"){ selected}">
-				<a href="@routes.Application.report">Rapport</a>
+			<div>
+				<div class="formmenuitem@if(currentPage=="index"){ selected}">
+					<a href="@routes.Application.index">Profil</a>
+				</div>
+			   	@for((fgName, fgUri) <- UserData.formGroupList) {
+			   	<div class="formmenuitem@if(currentPage==fgName){ selected}">
+			   		<a href="@routes.Application.formgroup(fgUri)">@fgName</a>
+			   	</div>
+				}
+				<div class="formmenuitem@if(currentPage=="report"){ selected}">
+					<a href="@routes.Application.report">Rapport</a>
+				</div>
 			</div>
 			<div class="clearfix"></div>
 		</div>
