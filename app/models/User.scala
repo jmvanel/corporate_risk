@@ -45,7 +45,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
   val dataset = rdfStoreObject.dataset
 
   // TODO duplicate with UserVocab
-  val bizinnovUserPrefix = Prefix("usr", "http://bizinnov.com/ontologies/users/")
+  val bizinnovUserPrefix = Prefix("usr", User.usersPrefix)
   val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
   val bizinnovUserVocabPrefix = Prefix("user", "http://bizinnov.com/ontologies/users.owl.ttl#")
 
@@ -144,8 +144,7 @@ case class User(val email: String, val password: String, val passwordHash: Strin
 trait UserVocab extends RDFOpsModule {
   import ops._
   /** users' prefix */
-  lazy val bizinnovUserPrefix = Prefix("usr",
-    "http://bizinnov.com/ontologies/users/")
+  lazy val bizinnovUserPrefix = Prefix("usr", User.usersPrefix)
   lazy val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
   /** user vocabulary */
   lazy val bizinnovUserVocabPrefix = Prefix("user",
@@ -160,6 +159,10 @@ trait UserVocab extends RDFOpsModule {
 
 /** User lookup, using RDF store  */
 object User extends JenaModule with UserVocab {
+
+  //  val usersPrefix = "http://bizinnov.com/ontologies/users/"
+  val usersPrefix = "urn://bizinnov/users/"
+
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._

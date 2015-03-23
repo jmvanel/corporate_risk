@@ -53,16 +53,17 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           } """
       import sparqlOps._
       import ops._
-      //      println("responsesCount " + queryString)
+      println("responsesCount " + queryString)
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
+        infor(s""" responsesCount iter ${row}""")
         row("count").get.as[Rdf#Literal].get
       }
       res.next()
     })
     val lit = countTry.getOrElse(zero)
-    println("responsesCount " + lit)
+    println(s"responsesCount $dataURI $lit")
     lit2Int(lit)
   }
 
@@ -75,7 +76,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   def fieldsCount(user: User, dataURI: String): Int = {
     val userURI = getURI(user)
     val queryString = s"""
-        PREFIX rdfs: <${rdfs.prefixIri}>"
+        PREFIX rdfs: <${rdfs.prefixIri}>
         SELECT DISTINCT (COUNT(?PROP) AS ?count) 
         WHERE {
          GRAPH <$userURI> {
@@ -85,12 +86,13 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
            ?PROP rdfs:domain ?CLASS .
          }
         } """
-    println( s"fieldsCount: $queryString" )
+    //    println(s"fieldsCount: $queryString")
     val countTry = dataset.r({
       import sparqlOps._
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
+        //        info(s""" fieldsCount iter ${row}""")
         row("count").get.as[Rdf#Literal].get
       }
       res.next()
@@ -109,26 +111,28 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   /**
    * fonction qui renvoie la liste des formulaires de l'utilisateur avec
    * la moyenne de chacun,  pour le groupe "risk".
+   * transactional
    */
-  def getRiskEval(userEmail: String): Map[String, Double] = {
+  def getRiskEval(userEmail: String): Map[String, Float] = {
     getEvaluation(userEmail, "risk")
   }
 
   /**
    * renvoie la liste des formulaires de l'utilisateur avec
    * la moyenne de chacun, pour le groupe "capital"
+   * transactional
    */
-  def getCapitalEval(userEmail: String): Map[String, Double] = {
+  def getCapitalEval(userEmail: String): Map[String, Float] = {
     getEvaluation(userEmail, "capital")
-    // Map( "Capital humain" -> 3.5,
-    //      "Capital naturel" -> 2,
-    //      "Capital marques" -> 4 )
   }
 
-  /** transactional */
-  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Double] = {
+  /**
+   * @return Map with key from label, and value Evaluation 0<note<5
+   * transactional
+   */
+  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
-    val userData = getUserData(user(userEmail), bizinnovQuestionsVocabPrefix(formGroupName).toString)
+    val userData = getUserData(user(userEmail), formsGroupsURIMap(formGroupName))
     dataset.r({
       Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {
@@ -137,7 +141,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           label -> averagePerForm(user(userEmail), fromUri(formUri))._1
       }
       val string2Int = res.toMap
-      string2Int.map { case (s, i) => (s, i.toDouble) }
+      string2Int.map { case (s, i) => (s, i.toFloat) }
     }).get
   }
 
@@ -152,7 +156,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    */
   def averagePerForm(
     user: User,
-    instanceURI: String): (Int, Int) = {
+    instanceURI: String): (Float, Int) = {
     val userURI = getURI(user)
     val queryString = s"""
           PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
@@ -161,9 +165,9 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           PREFIX rdfs: <${rdfs.prefixIri}>
           PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
 
-          SELECT ?label (xsd:integer(?VALUE) AS ?note) (xsd:integer(?COEF) AS ?coef)
+          SELECT ?label (xsd:integer(?VALUE) AS ?note) (IF(bound(?COEF), xsd:integer(?COEF) ,1) AS ?coef)
           WHERE {
-           {
+           { # for direct numeric values (risk forms)
             GRAPH <$userURI> {
              <$instanceURI> ?PROP ?VALUE ;
                             a ?CLASS .
@@ -172,24 +176,26 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
              ?PROP :coef ?COEF .
              ?CLASS rdfs:label ?label .
             }
-           } UNION {
+           } UNION { # for indirect numeric values: enumerated values have a ques:value (capital forms)
             GRAPH <$userURI> {
-             <$instanceURI> ?PROP ?OBJ .
+             <$instanceURI> ?PROP ?OBJ ;
+                            a ?CLASS  .
             }
             GRAPH ?ONTO {
-             ?OBJ ques:value ?VALUE
+             ?OBJ ques:value ?VALUE .
+             ?CLASS rdfs:label ?label .
             }
            }
           } """
     import sparqlOps._
     import ops._
-    //    println(queryString)
+    //    println(s"averagePerForm queryString $queryString")
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
-    val solutionsSeq = solutions.iterator.toSeq
+    val solutionsSeq = solutions.iterator.to[List]
     Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
       size ${solutionsSeq.size}
-      queryString""")
+      """)
     val res = solutionsSeq map { row =>
       val sol =
         (lit2String(row("label").get.as[Rdf#Literal].get),
@@ -198,7 +204,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       Logger.getRootLogger().info(s"""averagePerForm($instanceURI) solution $sol""")
       sol
     }
-    var weightedSum = 0
+    var weightedSum: Float = 0
     var coefSum = 0
     for (tuple <- res) yield {
       val (label, note, coef) = tuple
@@ -213,43 +219,67 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   protected def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
 
   /**
+   * average Per FormGroup;
    * pour le rapport, fonction qui chiffre chaque groupe de formulaires;
    *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
    *
-   * NON transactional
+   * transactional
    */
-  def averagePerFormGroup(user: User, formGroupURI: String): (Int, Int) = {
-    val fg = applicationClassesAndProperties(makeUri(formGroupURI))
-    val cps = fg.classesAndProperties
-    var weightedSum = 0
+  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
+    val userEmail = user.email
+    Logger.getRootLogger().info(s"averagePerFormGroup($userEmail, $formGroupURI $formGroupURI)")
+    val userData = getUserData(user, formGroupURI)
+    val avgs = dataset.r({
+      val res = userData.map {
+        case FormUserData(formUri, label) =>
+          Logger.getRootLogger().info(s"averagePerFormGroup($userEmail, $formUri) $label")
+          averagePerForm(user, fromUri(formUri))
+      }
+      res
+    }).get
+    var weightedSum: Float = 0
     var coefSum = 0
-    for (cp <- cps) {
-      val av = averagePerForm(user, fromUri(cp._2))
-      weightedSum += av._1 * av._2
-      coefSum += av._2
+    for (tuple <- avgs) yield {
+      val (note, coef) = tuple
+      weightedSum += note * coef
+      coefSum += coef
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
     (weightedAverage, coefSum)
   }
 
+  //  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
+  //    val fg = applicationClassesAndProperties(makeUri(formGroupURI))
+  //    val cps = fg.classesAndProperties
+  //    var weightedSum: Float = 0
+  //    var coefSum = 0
+  //    for (cp <- cps) {
+  //      val av = averagePerForm(user, fromUri(cp._2))
+  //      weightedSum += av._1 * av._2
+  //      coefSum += av._2
+  //    }
+  //    val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
+  //    (weightedAverage, coefSum)
+  //  }
+
   /**
-   * fonction qui fournit un rapport en HTML
-   *  TODO : prendre en compte les choix multiples pour les transformer en nombre entre 1 et 5
+   * fonction qui fournit la notr globale
+   * ( pris en compte les choix multiples pour les transformer en nombre entre 1 et 5 )
    *
    * transactional
    */
-  def globalEval(user: User): Int = {
-    dataset.r({
-      var weightedSum = 0
-      var coefSumGlobal = 0
-      for (fg <- formsGroupsURIs) {
-        val (av, coefSum) = averagePerFormGroup(user, ops.fromUri(fg))
-        weightedSum += av * coefSum
-        coefSumGlobal += coefSum
-      }
-      coefSumGlobal = if (coefSumGlobal != 0) coefSumGlobal else 1
-      (weightedSum / coefSumGlobal)
-    }).get
+  def globalEval(user: User): Float = {
+    //    dataset.r({
+    var weightedSum: Float = 0
+    var coefSumGlobal = 0
+    for (fg <- formsGroupsURIMap.values) {
+      val (av, coefSum) = averagePerFormGroup(user, fg)
+      weightedSum += av * coefSum
+      coefSumGlobal += coefSum
+    }
+    coefSumGlobal = if (coefSumGlobal != 0) coefSumGlobal else 1
+    (weightedSum / coefSumGlobal)
+    //    }).get
   }
 
 }

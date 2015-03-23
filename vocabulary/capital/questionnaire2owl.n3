@@ -17,7 +17,8 @@
 } .
 
 { ?BASE_URI :newURI ?NEW } <= {
-  ( ?BASE_URI "-user-prop" ) string:concatenation ?NEW_URI .
+  ?BASE_URI log:uri ?BASE_STRING 
+  ( ?BASE_STRING "-user-prop" ) string:concatenation ?NEW_URI .
   ?NEW log:uri ?NEW_URI .
 }.
 
