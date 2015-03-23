@@ -31,3 +31,7 @@
 	<img src="http://@request.host@routes.Application.chart("capital", user.email)" />
 </div>
 <div style="clear: both"></div>
+
+@for( elem <- reportData.sentencesGoodBadPoints(user) ) {
+	@elem
+}

@@ -18,7 +18,8 @@ import org.w3.banana.Prefix
  * Responses Analysis:
  *  see "Note on the data model" in README.md
  */
-class ResponseAnalysis extends RDFStoreLocalJena1Provider with ResponseAnalysisTrait[Jena, Dataset]
+class ResponseAnalysis extends RDFStoreLocalJena1Provider
+  with ReportGenerationTrait[Jena, Dataset]
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
