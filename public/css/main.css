@@ -18,15 +18,15 @@ body {
 
 #header {
 	background: #1C1862;
-	height: 98px;
+	height: 78px;
 	text-align: center;
 	border-bottom: solid white;
-	margin-bottom: 170px;
+	margin-bottom: 140px;
 }
 .username {
 	color: white;
 	position: absolute;
-	padding: 30px;
+	padding: 12px;
 }
 #header img {
 	margin-top: 27px;
@@ -35,7 +35,7 @@ body {
 	padding: .3em 1em;
 	background-color: #1C1862;
 	color: white;
-	font-size: 150%;
+	font-size: 130%;
 	font-weight: bold;
 	text-align: center;
 }
@@ -84,8 +84,11 @@ body {
 }
 .contentform .btn {
 	font-weight: bold;
+	margin-top: 2em;
 }
-
+.contentform .btn-group .btn {
+	margin-top: 1em;
+}
 .index-col-left {
 	text-align: right;
 	width: 50%;
@@ -136,11 +139,15 @@ body {
 	top: -2px;
 	left: 140px;
 }
+.formmenuitem.selected:last-child:after {
+	border-color: #1C1862;
+}
 .table > tbody > tr > th {
 	color: #FFF;
 	text-transform: uppercase;
 	line-height: 3em;
 	border-top: none;
+	font-size: 120%
 }
 .table > tbody > tr > td {
 	border-top: none;
@@ -156,6 +163,9 @@ body {
 .vsiform {
 	margin-top: 20px;
 }
+.vsiform select {
+    width: 100%;
+}
 .row {
 	margin-bottom: 20px;
 }
@@ -163,5 +173,4 @@ body {
 .report {
 	width: 640px;
 	margin: auto;
-	background: white;
 }
