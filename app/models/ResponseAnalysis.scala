@@ -157,7 +157,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    */
   def averagePerForm(
     user: User,
-    instanceURI: String): (Float, Int) = {
+    instanceURI: String): (Float, Int, String) = {
     val userURI = getURI(user)
     val queryString = s"""
           PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
@@ -207,13 +207,15 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     }
     var weightedSum: Float = 0
     var coefSum = 0
+    var labelClass = ""
     for (tuple <- res) yield {
       val (label, note, coef) = tuple
       weightedSum += note * coef
       coefSum += coef
+      labelClass = label
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
-    (weightedAverage, coefSum)
+    (weightedAverage, coefSum, labelClass)
   }
 
   protected def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
@@ -241,27 +243,13 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     var weightedSum: Float = 0
     var coefSum = 0
     for (tuple <- avgs) yield {
-      val (note, coef) = tuple
+      val (note, coef, _) = tuple
       weightedSum += note * coef
       coefSum += coef
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
     (weightedAverage, coefSum)
   }
-
-  //  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
-  //    val fg = applicationClassesAndProperties(makeUri(formGroupURI))
-  //    val cps = fg.classesAndProperties
-  //    var weightedSum: Float = 0
-  //    var coefSum = 0
-  //    for (cp <- cps) {
-  //      val av = averagePerForm(user, fromUri(cp._2))
-  //      weightedSum += av._1 * av._2
-  //      coefSum += av._2
-  //    }
-  //    val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
-  //    (weightedAverage, coefSum)
-  //  }
 
   /**
    * fonction qui fournit la notr globale

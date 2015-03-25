@@ -32,6 +32,27 @@
 </div>
 <div style="clear: both"></div>
 
-@for( elem <- reportData.sentencesGoodBadPoints(user) ) {
-	@elem
+@* Textual report *@
+
+@{for( formsGroupURI <- reportData.formsGroupsURIMap.values ) yield {
+  val elems = reportData.filterQuestionnaires( user, formsGroupURI) match {
+	case ( good, bad ) => {
+	 ( for( item <- good ) yield
+	 	if( item._1 != "" )
+	 	 <p> Un point favorable est
+	 	 <a href={ "/form?url=" + java.net.URLEncoder.encode(item._2, "utf-8") }> 
+             {item._1} </a>.</p>
+        else <span></span>
+     ) ++ (
+     for( item <- bad ) yield
+    	if( item._1 != "" )
+	 	 <p> Un point à améliorer est
+	 	 <a href={ "/form?url=" + java.net.URLEncoder.encode(item._2, "utf-8") }> 
+             {item._1} </a>.</p>
+        else <span></span>
+     )
+    }
+  }
+  elems
+}
 }

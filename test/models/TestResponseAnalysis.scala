@@ -48,7 +48,7 @@ class TestResponseAnalysis extends FunSuite with BeforeAndAfterAll {
 
   test("averagePerForm 1") {
     responseAnalysis.dataset.rw({
-      val (avg, coefs) = responseAnalysis.averagePerForm(user, fromUri(instanceURI))
+      val (avg, coefs, _) = responseAnalysis.averagePerForm(user, fromUri(instanceURI))
       info(s""" responseAnalysis ${fud.label}
           avg ${avg} coefs $coefs""")
       assert(avg == 3.3333333f)
