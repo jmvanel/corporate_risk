@@ -157,10 +157,8 @@ object Application extends Controller with Secured {
   def chart(charttype: String, email: String) = Action {
     val user = User.find(email)
     val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
-    implicit val theme: StandardChartTheme = org.jfree.chart.StandardChartTheme.createLegacyTheme().asInstanceOf[StandardChartTheme]
-    theme.setPlotBackgroundPaint(transparent)
+    implicit val theme: StandardChartTheme = org.jfree.chart.StandardChartTheme.createJFreeTheme().asInstanceOf[StandardChartTheme]
     theme.setChartBackgroundPaint(transparent)
-    theme.setLegendBackgroundPaint(transparent)
     val content = charttype match {
       case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
       case "capital" => {
