@@ -38,6 +38,8 @@ object Application extends Controller with Secured {
   lazy val tableView = new TableView {}
   val responseAnalysis = new ResponseAnalysis()
 
+  //////// UI for user information ////////
+
   /** User company information form for the index page */
   val userInfoForm = Form(
     mapping("department" -> optional(text),
@@ -78,6 +80,8 @@ object Application extends Controller with Secured {
       )
     }
   }
+
+  //////// UI for business forms ////////
 
   /** show a list of forms */
   def formgroup(groupUri: String) = withUser { implicit user =>
