@@ -7,7 +7,7 @@ import play.api.data.Form
 import play.api.data.Forms._
 import deductions.runtime.html.{ CreationForm, TableView }
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
-import deductions.runtime.sparql_cache.RDFCache
+import deductions.runtime.jena.RDFCache
 import deductions.runtime.services.FormSaverObject
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
@@ -29,13 +29,21 @@ import org.w3.banana.RDFOpsModule
 import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import models.UserCompanyInfo
 import deductions.runtime.html.TableViewModule
+import scalax.chart.SpiderWebChart
+import org.w3.banana.jena.JenaModule
+import deductions.runtime.jena.JenaHelpers
 
 /** Class for contact information for email and phone call request */
 case class ContactInfo(name: String, job: Option[String], city: Option[String], phone: Option[String], email: Option[String], message: String)
 
-object Application extends Controller with Secured {
+object Application extends Controller with Secured
+    //    with TableView
+    with JenaModule
+    with TableView
+    with JenaHelpers
+    with RDFStoreLocalJena1Provider {
 
-  lazy val tableView = new TableView {}
+  lazy val tableView = this // new TableView {}
   val responseAnalysis = new ResponseAnalysis()
 
   //////// UI for user information ////////
