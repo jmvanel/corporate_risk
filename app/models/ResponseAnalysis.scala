@@ -13,6 +13,8 @@ import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.apache.log4j.Logger
 import org.w3.banana.Prefix
+import org.w3.banana.RDFSPrefix
+import deductions.runtime.jena.JenaRDFLoader
 
 /**
  * Responses Analysis:
@@ -20,11 +22,17 @@ import org.w3.banana.Prefix
  */
 class ResponseAnalysis extends RDFStoreLocalJena1Provider
   with ReportGenerationTrait[Jena, Dataset]
+  with JenaRDFLoader
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
     with InstanceLabelsInference2[Rdf] {
-  val xsd = XSDPrefix[Rdf]
+
+  import ops._
+
+  //  val xsd = XSDPrefix[Rdf]
+  val rdfs = RDFSPrefix[Rdf]
+
   val zero = ops.makeLiteral("0", xsd.integer)
   import ops._
   import rdfStore.transactorSyntax._

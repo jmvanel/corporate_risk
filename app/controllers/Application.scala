@@ -5,10 +5,10 @@ import play.api.Play.current
 import play.api.mvc._
 import play.api.data.Form
 import play.api.data.Forms._
-import deductions.runtime.html.{ CreationForm, TableView }
+import deductions.runtime.html.{ CreationFormAlgo, TableViewModule }
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.jena.RDFCache
-import deductions.runtime.services.FormSaverObject
+import deductions.runtime.services.FormSaver
 import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
 import org.jfree.chart.axis.CategoryLabelPositions
@@ -31,17 +31,15 @@ import models.UserCompanyInfo
 import deductions.runtime.html.TableViewModule
 import scalax.chart.SpiderWebChart
 import org.w3.banana.jena.JenaModule
-import deductions.runtime.jena.JenaHelpers
 
 /** Class for contact information for email and phone call request */
 case class ContactInfo(name: String, job: Option[String], city: Option[String], phone: Option[String], email: Option[String], message: String)
 
 object Application extends Controller with Secured
-    //    with TableView
     with JenaModule
-    with TableView
-    with JenaHelpers
-    with RDFStoreLocalJena1Provider {
+    with TableViewModule[Jena, Dataset]
+    with RDFStoreLocalJena1Provider
+    with FormSaver[Jena, Dataset] {
 
   lazy val tableView = this // new TableView {}
   val responseAnalysis = new ResponseAnalysis()
@@ -124,7 +122,7 @@ object Application extends Controller with Secured
     implicit request =>
       request.body match {
         case form: AnyContentAsFormUrlEncoded =>
-          FormSaverObject.saveTriples(
+          saveTriples(
             form.data.filterNot {
               case (key: String, _) => key.startsWith("SAVE")
             })

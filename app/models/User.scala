@@ -33,8 +33,7 @@ case class UserCompanyInfo(val department: Option[String] = None,
 
 /** TODO indiquer le but de la classe */
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) //  extends RDFCache
-    { // UserVocab {
+    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) {
 
   /** NOTE: RDFStoreObject, via RDFStoreLocalJenaProvider, already has rdfStore */
   val rdfStoreObject = RDFStoreObject
@@ -141,7 +140,10 @@ case class User(val email: String, val password: String, val passwordHash: Strin
 }
 
 /** gather URI's and prefixes for user management */
-trait UserVocab extends RDFOpsModule {
+trait UserVocab[Rdf <: RDF] // extends RDFOpsModule
+{
+  implicit val ops: RDFOps[Rdf]
+
   import ops._
   /** users' prefix */
   lazy val bizinnovUserPrefix = Prefix("usr", User.usersPrefix)
@@ -158,7 +160,7 @@ trait UserVocab extends RDFOpsModule {
 }
 
 /** User lookup, using RDF store  */
-object User extends JenaModule with UserVocab {
+object User extends JenaModule with UserVocab[Jena] {
 
   //  val usersPrefix = "http://bizinnov.com/ontologies/users/"
   val usersPrefix = "urn://bizinnov/users/"

@@ -14,22 +14,25 @@ import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.diesel._
 import org.w3.banana.syntax._
-
 import org.apache.log4j.Logger
 import java.nio.file.StandardOpenOption
+import deductions.runtime.sparql_cache.RDFCacheAlgo
+import deductions.runtime.abstract_syntax.PreferredLanguageLiteral
+import deductions.runtime.jena.JenaRDFLoader
 
 /** see function getUserData() */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
 
 /** Banana principle: refer to concrete implementation only in blocks without code */
 object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
+//  with JenaRDFLoader
 
 /** access to user data in triple store */
-trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
+trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with RDFStoreLocalProvider[Rdf, DATASET]
-    with InstanceLabelsInference2[Rdf]
-    with SparqlGraphModule
-    with SparqlOpsModule {
+    with RDFCacheAlgo[Rdf, DATASET]
+    with PreferredLanguageLiteral[Rdf]
+    with InstanceLabelsInference2[Rdf] {
 
   import ops._
   import rdfStore.transactorSyntax._
@@ -96,7 +99,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
         triple <- find(userGraph, userURI, prop, ANY)
         //        debug2 = println(s"getUserData $triple")
       } yield {
-        (triple.objectt, instanceLabel(cl))
+        (triple.objectt, instanceLabel(cl, graphForVocabulary, "" /*lang TODO*/ ))
       }
     })
     println(s"nodes  ${nodes.get.mkString(", ")}")
@@ -147,8 +150,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab
 
   def getFormLabel(formUri: String): String = {
     dataset.r({
-      implicit val graph = allNamedGraph
-      instanceLabel(URI(formUri))
+      val graph = allNamedGraph
+      instanceLabel(URI(formUri), graph, "" /*lang TODO*/ )
     }).get
   }
 
