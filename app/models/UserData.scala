@@ -53,7 +53,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     "Diagnostic" -> formsGroupsURIMap("capital")
   )
   /**
-   * create Empty User Data for all 4 Form Groups : the triples:
+   * create empty user managed Data for all 4 Form Groups : the triples:
    *  <pre>
    *  &lt; userURI> :prop-5 :v5 .
    *                    :v5 a ques:5 . # until ques:15

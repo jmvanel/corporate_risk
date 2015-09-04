@@ -8,6 +8,9 @@ import org.w3.banana.RDFOpsModule
 import org.w3.banana.RDFStore
 import org.w3.banana.jena.Jena
 import org.w3.banana.jena.JenaModule
+import org.w3.banana._
+import org.w3.banana.syntax._
+
 import deductions.runtime.jena.RDFStoreObject
 import java.security.MessageDigest
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter
@@ -31,7 +34,11 @@ case class UserCompanyInfo(val department: Option[String] = None,
     }
 }
 
-/** TODO indiquer le but de la classe */
+/**
+ * data mapping between class User & RDF database
+ *  TODO: this class has only services & has no data;
+ *  should be a trait
+ */
 abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
     rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) {
 
@@ -55,30 +62,42 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
   def checkPassword(user: User): Boolean = {
     User.find(user.email) match {
       case None => false
-      case Some(registeredUser) => registeredUser.passwordHash ==
-        hashPassword(user.password)
+      case Some(registeredUser) =>
+        registeredUser.passwordHash == hashPassword(user.password)
     }
   }
 
-  /** transactional */
+  /**
+   * save User instance in RDF database;
+   * email is a unique key, returns false if email already exists;
+   *  transactional
+   */
   def save(user: User): Boolean = {
     User.find(user.email) match {
       case Some(existingUser) => false
       case None =>
-        val triples = List(
-          makeTriple(
-            makeURI(user),
-            bizinnovUserVocabPrefix("passwordHash"),
-            makeLiteral(hashPassword(user.password), xsd.string)),
-          makeTriple(
-            makeURI(user),
-            bizinnovUserVocabPrefix("email"),
-            makeLiteral(user.email, xsd.string)
-          ))
-        val graph = makeGraph(triples)
+        val pgr = makeURI(user) --
+          bizinnovUserVocabPrefix("passwordHash") ->-
+          makeLiteral(hashPassword(user.password), xsd.string) --
+          bizinnovUserVocabPrefix("email") ->-
+          makeLiteral(user.email, xsd.string)
         dataset.rw({
-          dataset.appendToGraph(bizinnovUserGraphURI, graph)
+          dataset.appendToGraph(bizinnovUserGraphURI, pgr.graph)
         })
+        //        val triples = List(
+        //          makeTriple(
+        //            makeURI(user),
+        //            bizinnovUserVocabPrefix("passwordHash"),
+        //            makeLiteral(hashPassword(user.password), xsd.string)),
+        //          makeTriple(
+        //            makeURI(user),
+        //            bizinnovUserVocabPrefix("email"),
+        //            makeLiteral(user.email, xsd.string)
+        //          ))
+        //        val graph = makeGraph(triples)
+        //        dataset.rw({
+        //          dataset.appendToGraph(bizinnovUserGraphURI, graph)
+        //        })
         UserData.createEmptyUserData(user)
         true
     }
@@ -133,7 +152,7 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
   }
 }
 
-/** Class representing the users of the application */
+/** pure data class representing the users of the application */
 case class User(val email: String, val password: String, val passwordHash: String = "")
     extends RDFUser[Jena] {
   def getURI() = bizinnovUserPrefix(email)
