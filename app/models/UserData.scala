@@ -9,7 +9,7 @@ import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
 import deductions.runtime.jena.RDFStoreObject
 import deductions.runtime.abstract_syntax.UnfilledFormFactory
-import deductions.runtime.abstract_syntax.InstanceLabelsInference2
+// import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import org.w3.banana.SparqlGraphModule
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.diesel._
@@ -19,6 +19,7 @@ import java.nio.file.StandardOpenOption
 import deductions.runtime.sparql_cache.RDFCacheAlgo
 import deductions.runtime.abstract_syntax.PreferredLanguageLiteral
 import deductions.runtime.jena.JenaRDFLoader
+import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 
 /** see function getUserData() */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
@@ -32,7 +33,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with RDFStoreLocalProvider[Rdf, DATASET]
     with RDFCacheAlgo[Rdf, DATASET]
     with PreferredLanguageLiteral[Rdf]
-    with InstanceLabelsInference2[Rdf] {
+    with InstanceLabelsInferenceMemory[Rdf, DATASET] {
 
   import ops._
   import rdfStore.transactorSyntax._

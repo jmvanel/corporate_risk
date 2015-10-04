@@ -8,7 +8,7 @@ import org.w3.banana.XSDPrefix
 import org.w3.banana.diesel._
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
-import deductions.runtime.abstract_syntax.InstanceLabelsInference2
+// import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.apache.log4j.Logger

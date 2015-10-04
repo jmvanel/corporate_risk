@@ -8,13 +8,14 @@ import org.w3.banana.XSDPrefix
 import org.w3.banana.diesel._
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
-import deductions.runtime.abstract_syntax.InstanceLabelsInference2
+// import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.apache.log4j.Logger
 import org.w3.banana.Prefix
 import org.w3.banana.RDFSPrefix
 import deductions.runtime.jena.JenaRDFLoader
+import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 
 /**
  * Responses Analysis:
@@ -26,7 +27,7 @@ class ResponseAnalysis extends RDFStoreLocalJena1Provider
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
-    with InstanceLabelsInference2[Rdf] {
+    with InstanceLabelsInferenceMemory[Rdf, DATASET] {
 
   import ops._
 
