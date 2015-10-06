@@ -90,19 +90,43 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       // bizinnovQuestionsVocabPrefix("risk")
       case uri: String => URI(uri)
     }
+    //    val nodes = dataset.r({
+    //      val userURI = getURI(user)
+    //      val userGraph = dataset.getGraph(userURI).get
+    //      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
+    //      val classesAndProperties =
+    //        applicationClassesAndProperties(formGroup).classesAndProperties
+    //      println(s"getUserData classesAndProperties $classesAndProperties")
+    //      for {
+    //        (cl, prop) <- classesAndProperties
+    //        //        debug = println(s"getUserData ($cl, $prop)")
+    //        triple <- find(userGraph, userURI, prop, ANY)
+    //        //        debug2 = println(s"getUserData $triple")
+    //      } yield {
+    //        (triple.objectt, instanceLabel(cl, graphForVocabulary, "" /*lang TODO*/ ))
+    //      }
+    //    })
+
     val nodes = dataset.r({
       val userURI = getURI(user)
       val userGraph = dataset.getGraph(userURI).get
-      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
-      for {
-        (cl, prop) <- applicationClassesAndProperties(formGroup).classesAndProperties
+      val classesAndProperties =
+        applicationClassesAndProperties(formGroup).classesAndProperties
+      println(s"getUserData classesAndProperties $classesAndProperties")
+      val triples1 = for {
+        (classe, prop) <- classesAndProperties
         //        debug = println(s"getUserData ($cl, $prop)")
         triple <- find(userGraph, userURI, prop, ANY)
         //        debug2 = println(s"getUserData $triple")
-      } yield {
-        (triple.objectt, instanceLabel(cl, graphForVocabulary, "" /*lang TODO*/ ))
-      }
+      } yield (triple.objectt, classe)
+
+      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
+      val nodes = for {
+        (objectt, classe) <- triples1
+      } yield (objectt, instanceLabel(classe, graphForVocabulary, "" /*lang TODO*/ ))
+      nodes
     })
+
     println(s"nodes  ${nodes.get.mkString(", ")}")
     val uriOptions = nodes.get.map {
       case (n, il) => foldNode(n)(
