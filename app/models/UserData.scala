@@ -107,36 +107,37 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     //      }
     //    })
 
-    val nodes = dataset.r({
+    val nodesAndLabels = dataset.r({
       val userURI = getURI(user)
       val userGraph = dataset.getGraph(userURI).get
       val classesAndProperties =
         applicationClassesAndProperties(formGroup).classesAndProperties
       println(s"getUserData classesAndProperties $classesAndProperties")
-      val triples1 = for {
+      val objectAndClass = for {
         (classe, prop) <- classesAndProperties
         //        debug = println(s"getUserData ($cl, $prop)")
         triple <- find(userGraph, userURI, prop, ANY)
         //        debug2 = println(s"getUserData $triple")
       } yield (triple.objectt, classe)
+//      println(s"objectAndClass ${objectAndClass.mkString(", ")}")
 
       implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
-      val nodes = for {
-        (objectt, classe) <- triples1
+      val nodesAndLabels = for {
+        (objectt, classe) <- objectAndClass
       } yield (objectt, instanceLabel(classe, graphForVocabulary, "" /*lang TODO*/ ))
-      nodes
+      nodesAndLabels
     })
 
-    println(s"nodes  ${nodes.get.mkString(", ")}")
-    val uriOptions = nodes.get.map {
+//    println(s"nodesAndLabels ${nodesAndLabels.get.mkString(", ")}")
+    val uriOptions = nodesAndLabels.get.map {
       case (n, il) => foldNode(n)(
         uri => Some(uri, il),
         x => None, x => None)
     }
-    println(s"uriOptions ${uriOptions.mkString(", ")}")
-    val v = uriOptions collect { case Some((uri, il)) => (uri, il) }
-    println(s"v ${v.mkString(", ")}")
-    v.map(e => FormUserData(e._1, e._2))
+    //    println(s"uriOptions ${uriOptions.mkString(", ")}")
+    val valuesAndLabels = uriOptions collect { case Some((uri, il)) => (uri, il) }
+    println(s"valuesAndLabels ${valuesAndLabels.mkString(", ")}")
+    valuesAndLabels.map(e => FormUserData(e._1, e._2))
   }
 
   /**
