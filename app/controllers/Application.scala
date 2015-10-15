@@ -34,6 +34,7 @@ import deductions.runtime.html.TableViewModule
 import scalax.chart.SpiderWebChart
 import org.w3.banana.jena.JenaModule
 import org.apache.log4j.Logger
+import deductions.runtime.services.Configuration
 
 /** Class for contact information for email and phone call request */
 case class ContactInfo(name: String, job: Option[String], city: Option[String], phone: Option[String], email: Option[String], message: String)
@@ -43,7 +44,10 @@ object Application extends Controller with Secured
     with TableViewModule[Jena, Dataset]
     with RDFStoreLocalJena1Provider
     with FormSaver[Jena, Dataset]
-    with TimeSeries[Jena, Dataset] {
+    with TimeSeries[Jena, Dataset]
+    with Configuration {
+
+  override val recordUserActions: Boolean = true
 
   val logger: Logger = Logger.getRootLogger()
   lazy val tableView = this // new TableView {}

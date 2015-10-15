@@ -155,7 +155,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     }).get
   }
 
-  private def user(userEmail: String) = User(userEmail, "", "")
+  def user(userEmail: String) = User(userEmail, "", "")
 
   /**
    * average per form;
@@ -261,7 +261,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   }
 
   /**
-   * fonction qui fournit la notr globale
+   * fonction qui fournit la note globale
    * ( pris en compte les choix multiples pour les transformer en nombre entre 1 et 5 )
    *
    * transactional

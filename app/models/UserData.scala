@@ -119,7 +119,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
         triple <- find(userGraph, userURI, prop, ANY)
         //        debug2 = println(s"getUserData $triple")
       } yield (triple.objectt, classe)
-//      println(s"objectAndClass ${objectAndClass.mkString(", ")}")
+      //      println(s"objectAndClass ${objectAndClass.mkString(", ")}")
 
       implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
       val nodesAndLabels = for {
@@ -128,7 +128,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       nodesAndLabels
     })
 
-//    println(s"nodesAndLabels ${nodesAndLabels.get.mkString(", ")}")
+    //    println(s"nodesAndLabels ${nodesAndLabels.get.mkString(", ")}")
     val uriOptions = nodesAndLabels.get.map {
       case (n, il) => foldNode(n)(
         uri => Some(uri, il),
@@ -181,7 +181,10 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     }).get
   }
 
-  /** transactional */
+  /**
+   * get Form Group name corresponding to User & data URI;
+   *  see #getUserData ; transactional
+   */
   def getFormGroup(user: User, dataURI: String): String = {
     val formsGroupsURIs = formsGroupsURIMap.values.toSeq
     println(s"getFormGroup ${formsGroupsURIs.mkString(", ")}")
