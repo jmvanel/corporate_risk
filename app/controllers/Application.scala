@@ -116,7 +116,7 @@ object Application extends Controller with Secured
   def form(uri: String) = withUser { implicit user =>
     implicit request => {
       val formGroup = UserData.getFormGroup(user, uri)
-      implicit val graph = allNamedGraph
+      implicit val graph = rdfStore.r(dataset, { allNamedGraph }).get
       val form = tableView.htmlFormElemJustFields(uri, editable = true,
         graphURI = user.getURI().getURI(), formGroup = formGroup)
       val label = UserData.getFormLabel(uri)
