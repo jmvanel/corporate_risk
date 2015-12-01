@@ -42,6 +42,7 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
           graphs.map { graph => dataset2.appendToGraph(graphUri, graph) }
         })
       }
+    Unit
   }
 
 }
