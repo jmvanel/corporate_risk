@@ -14,7 +14,7 @@ libraryDependencies += "deductions" %% "semantic_forms" % "1.0-SNAPSHOT"
 
 libraryDependencies += "com.typesafe.play.plugins" %% "play-plugins-mailer" % "2.3.1"
 
-libraryDependencies += "com.github.wookietreiber" %% "scala-chart" % "0.5.0-SNAPSHOT" // latest.integration"
+libraryDependencies += "com.github.wookietreiber" %% "scala-chart" % "0.5.0" // -SNAPSHOT" // latest.integration"
 
 javacOptions ++= Seq("-source","1.7", "-target","1.7")
 
