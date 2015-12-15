@@ -1,4 +1,4 @@
-@(reportData: ResponseAnalysis)(implicit user: User, request: RequestHeader)
+@(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
 
 @main("Rapport d'audit", Some(user), currentPage = "report") {
     <a class="pull-right" href="@routes.Application.exportPDF">

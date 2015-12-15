@@ -1,4 +1,4 @@
-@(reportData: ResponseAnalysis)(implicit user: User, request: RequestHeader)
+@(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
 
 <p>
  	@if(reportData.globalEval(user) > 3) {
@@ -34,7 +34,10 @@
 
 @* Textual report *@
 
-@{for( formsGroupURI <- reportData.formsGroupsURIMap.values ) yield {
+@* 
+@{for( formsGroupURI <- reportData.formsGroupsURIMap.values ) yield
+*@
+@{for( formsGroupURI <- reportData.formsGroups ) yield {
   val elems = reportData.filterQuestionnaires( user, formsGroupURI) match {
 	case ( good, bad ) => {
 	 ( for( item <- good ) yield

@@ -27,7 +27,8 @@ class ResponseAnalysis extends RDFStoreLocalJena1Provider
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
-    with InstanceLabelsInferenceMemory[Rdf, DATASET] {
+    with InstanceLabelsInferenceMemory[Rdf, DATASET]
+    with ResponseAnalysisInterface {
 
   import ops._
 
@@ -279,5 +280,23 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     (weightedSum / coefSumGlobal)
     //    }).get
   }
-
 }
+
+//trait ResponseAnalysisInterface[Rdf <: RDF] extends ResponseAnalysisInterface0 with FormsGroupsData[Rdf]
+
+trait ResponseAnalysisInterface extends FormsGroupsData {
+  def responsesCount(user: User, dataURI: String): Int
+  def fieldsCount(user: User, dataURI: String): Int
+  def getRiskEval(userEmail: String): Map[String, Float]
+  def getCapitalEval(userEmail: String): Map[String, Float]
+  def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float]
+  def averagePerForm(
+    user: User,
+    instanceURI: String): (Float, Int, String)
+  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int)
+  def globalEval(user: User): Float
+
+  type DataMatch = (String, String)
+  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ )
+}
+

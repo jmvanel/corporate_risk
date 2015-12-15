@@ -34,22 +34,19 @@ import org.w3.banana.jena.JenaModule
 import org.apache.log4j.Logger
 import deductions.runtime.services.Configuration
 import models.TimeSeriesFormGroups
-
-///** Class for contact information for email and phone call request */
-//case class ContactInfo(
-//    name: String,
-//    job: Option[String],
-//    city: Option[String],
-//    phone: Option[String],
-//    email: Option[String],
-//    message: String)
+import views.charts.Charts
+import models.ResponseAnalysisTrait
+import models.ResponseAnalysisInterface
 
 object Application extends Controller with Secured
     with JenaModule
     with TableViewModule[Jena, Dataset]
     with RDFStoreLocalJena1Provider
     with FormSaver[Jena, Dataset]
+    //    with ResponseAnalysisTrait[Jena, Dataset]
+    with ResponseAnalysisInterface
     with TimeSeriesFormGroups[Jena, Dataset]
+    with Charts[Jena, Dataset]
     with Configuration {
 
   override val recordUserActions: Boolean = true
@@ -59,7 +56,7 @@ object Application extends Controller with Secured
 
   val logger: Logger = Logger.getRootLogger()
   lazy val tableView = this // new TableView {}
-  val responseAnalysis = new ResponseAnalysis()
+  val responseAnalysis = this // new ResponseAnalysis()
 
   //////// UI for user information ////////
 
@@ -181,11 +178,20 @@ object Application extends Controller with Secured
       Ok(buffer.toByteArray()).withHeaders(CONTENT_TYPE -> "application/pdf")
   }
 
-  //TODO: handle security
+  /**
+   * compute Chart: chart type is "risk" or "capital"
+   *  TODO: handle security
+   */
   def chart(charttype: String, email: String) = Action {
+    val content = computeChart(charttype, email)
+    Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
+  }
+
+  def chart_old(charttype: String, email: String) = Action {
     val user = User.find(email)
     val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
-    implicit val theme: StandardChartTheme = org.jfree.chart.StandardChartTheme.createJFreeTheme().asInstanceOf[StandardChartTheme]
+    //    implicit 
+    val theme = new StandardChartTheme("JFree")
     theme.setChartBackgroundPaint(transparent)
     val content = charttype match {
       case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
@@ -237,4 +243,8 @@ object Application extends Controller with Secured
     val user = request.session.get(Security.username).map { email => User.find(email).get }
     Ok(views.html.info(user))
   }
+
+  //  type DataMatch = (String, String)
+  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = (Seq(), Seq())
+
 }

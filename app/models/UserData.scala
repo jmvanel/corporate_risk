@@ -33,26 +33,14 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with RDFStoreLocalProvider[Rdf, DATASET]
     with RDFCacheAlgo[Rdf, DATASET]
     with PreferredLanguageLiteral[Rdf]
-    with InstanceLabelsInferenceMemory[Rdf, DATASET] {
+    with InstanceLabelsInferenceMemory[Rdf, DATASET]
+    with FormsGroupsData1[Rdf] {
 
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
   import rdfStore.sparqlEngineSyntax._
 
-  /**
-   * values for arguments to applicationClassesAndProperties(formGroup: String)
-   *  TODO should be read from RDF database
-   */
-  lazy val formsGroups = List("risk", "capital")
-  lazy val formsGroupsURIMap: Map[String, String] = formsGroups map {
-    fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg"))
-  } toMap
-
-  lazy val formGroupList: Map[String, String] = Map(
-    "Pré-diagnostic" -> formsGroupsURIMap("risk"),
-    "Diagnostic" -> formsGroupsURIMap("capital")
-  )
   /**
    * create empty user managed Data for all 4 Form Groups : the triples:
    *  <pre>

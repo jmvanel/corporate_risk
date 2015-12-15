@@ -159,21 +159,11 @@ case class User(val email: String, val password: String, val passwordHash: Strin
 }
 
 /** gather URI's and prefixes for user management */
-trait UserVocab[Rdf <: RDF] // extends RDFOpsModule
-{
-  implicit val ops: RDFOps[Rdf]
+trait UserVocab[Rdf <: RDF] extends Prefixes[Rdf] {
 
+  implicit val ops: RDFOps[Rdf]
   import ops._
-  /** users' prefix */
-  lazy val bizinnovUserPrefix = Prefix("usr", User.usersPrefix)
-  lazy val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
-  /** user vocabulary */
-  lazy val bizinnovUserVocabPrefix = Prefix("user",
-    "http://bizinnov.com/ontologies/users.owl.ttl#")
-  /** Questionnaire vocabulary */
-  lazy val bizinnovQuestionsVocabPrefix = Prefix("ques",
-    "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
-  // TODO Add props & classes to Prefix objects
+
   def getURI(user: User) = bizinnovUserPrefix(user.email)
 
 }

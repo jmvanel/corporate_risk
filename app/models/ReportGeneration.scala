@@ -30,7 +30,7 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
   import rdfStore.graphStoreSyntax._
   import rdfStore.sparqlEngineSyntax._
 
-  type DataMatch = (String, String)
+  //  type DataMatch = (String, String)
 
   //  def sentencesGoodBadPoints(user: User): Seq[Elem] = {
   //    filterGoodQuestionnaires(user).map {
