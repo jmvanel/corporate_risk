@@ -22,32 +22,39 @@ import com.hp.hpl.jena.query.Dataset
 import com.typesafe.plugin._
 import models.FormUserData
 import models.UserDataTrait
-import models.{ User, UserCompanyInfo, UserData, UserVocab, ResponseAnalysis }
+import models.{ User, UserCompanyInfo, UserData, UserVocab, ResponseAnalysis, ContactInfo }
 import Auth._
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
-//import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import deductions.runtime.semlogs.TimeSeries
-
 import models.UserCompanyInfo
 import deductions.runtime.html.TableViewModule
 import scalax.chart.SpiderWebChart
 import org.w3.banana.jena.JenaModule
 import org.apache.log4j.Logger
 import deductions.runtime.services.Configuration
+import models.TimeSeriesFormGroups
 
-/** Class for contact information for email and phone call request */
-case class ContactInfo(name: String, job: Option[String], city: Option[String], phone: Option[String], email: Option[String], message: String)
+
+///** Class for contact information for email and phone call request */
+//case class ContactInfo(
+//    name: String,
+//    job: Option[String],
+//    city: Option[String],
+//    phone: Option[String],
+//    email: Option[String],
+//    message: String)
 
 object Application extends Controller with Secured
     with JenaModule
     with TableViewModule[Jena, Dataset]
     with RDFStoreLocalJena1Provider
     with FormSaver[Jena, Dataset]
-    with TimeSeries[Jena, Dataset]
+    with TimeSeriesFormGroups[Jena, Dataset]
     with Configuration {
 
   override val recordUserActions: Boolean = true
+  addSaveListener(this) // for TimeSeries
 
   val logger: Logger = Logger.getRootLogger()
   lazy val tableView = this // new TableView {}
