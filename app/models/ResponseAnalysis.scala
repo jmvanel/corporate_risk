@@ -32,7 +32,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   import ops._
 
   //  val xsd = XSDPrefix[Rdf]
-  val rdfs = RDFSPrefix[Rdf]
+  private val rdfs = RDFSPrefix[Rdf]
 
   val zero = ops.makeLiteral("0", xsd.integer)
   import ops._

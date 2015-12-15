@@ -35,7 +35,6 @@ import org.apache.log4j.Logger
 import deductions.runtime.services.Configuration
 import models.TimeSeriesFormGroups
 
-
 ///** Class for contact information for email and phone call request */
 //case class ContactInfo(
 //    name: String,
@@ -54,6 +53,8 @@ object Application extends Controller with Secured
     with Configuration {
 
   override val recordUserActions: Boolean = true
+  override val addRDFS_label_comment = false
+
   addSaveListener(this) // for TimeSeries
 
   val logger: Logger = Logger.getRootLogger()

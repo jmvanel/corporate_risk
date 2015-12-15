@@ -20,6 +20,8 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
   import rdfStore.sparqlEngineSyntax._
   import scala.concurrent.ExecutionContext.Implicits.global
 
+  private val rdfs = RDFSPrefix[Rdf]
+
   /**
    * save averages for current form to a specific new named graph,
    *  and add timestamp metadata to default unamed graph
