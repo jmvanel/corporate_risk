@@ -9,6 +9,7 @@ import scala.concurrent.Future
 import org.w3.banana.syntax._
 import org.w3.banana.RDFSPrefix
 
+/** record history of averages Per user Form */
 trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
     extends TimeSeries[Rdf, DATASET]
     with ResponseAnalysisTrait[Rdf, DATASET]
@@ -38,7 +39,7 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
           val graphs = subjects.map { subj =>
             val avTuple = averagePerForm(user(userURI), subj.toString())
             (URI(userURI)
-              -- URI("average") ->- avTuple._1.toDouble
+              -- URI("urn:average") ->- avTuple._1.toDouble
               -- rdfs.label ->- avTuple._3).graph
           }
           graphs.map { graph => dataset2.appendToGraph(graphUri, graph) }
