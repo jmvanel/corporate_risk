@@ -8,7 +8,6 @@ import org.w3.banana.XSDPrefix
 import org.w3.banana.diesel._
 import org.w3.banana.jena.Jena
 import com.hp.hpl.jena.query.Dataset
-// import deductions.runtime.abstract_syntax.InstanceLabelsInference2
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.apache.log4j.Logger
@@ -16,14 +15,15 @@ import org.w3.banana.Prefix
 import org.w3.banana.RDFSPrefix
 import deductions.runtime.jena.JenaRDFLoader
 import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
+import scalax.chart.Chart
 
 /**
  * Responses Analysis:
  *  see "Note on the data model" in README.md
  */
-class ResponseAnalysis extends RDFStoreLocalJena1Provider
-  with ReportGenerationTrait[Jena, Dataset]
-  with JenaRDFLoader
+//class ResponseAnalysis extends RDFStoreLocalJena1Provider
+//  with ReportGenerationTrait[Jena, Dataset]
+//  with JenaRDFLoader
 
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
@@ -298,5 +298,11 @@ trait ResponseAnalysisInterface extends FormsGroupsData {
 
   type DataMatch = (String, String)
   def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ )
+
+  /**
+   * @return all non empty X-Y Charts with X = timestamp, and Y = average,
+   * for all form groups,
+   */
+  def computeAllXYChart(email: String): Iterable[Chart]
 }
 

@@ -39,19 +39,28 @@ trait Charts[Rdf <: RDF, DATASET] {
     content
   }
 
-  def computeAllXYChart(email: String) = {
-    for (formGroupURI <- formsGroupsURIMap.values) {
+  /**
+   * @return all non empty X-Y Charts with X = timestamp, and Y = average,
+   * for all form groups,
+   *  associated with given user
+   */
+  def computeAllXYChart(email: String): Iterable[Chart] = {
+    val ll = for (formGroupURI <- formsGroupsURIMap.values) yield {
       computeXYCharts(formGroupURI, email)
     }
+    ll.flatten
   }
 
-  /** @return all X-Y Charts with X = timestamp, and Y = average for a given form group,
-   *  associated with given user */
-  def computeXYCharts( formGroupURI: String, email: String): Iterable[Chart] = {
+  /**
+   * @return all non empty X-Y Charts with X = timestamp, and Y = average for given form group,
+   *  associated with given user
+   */
+  def computeXYCharts(formGroupURI: String, email: String): Iterable[Chart] = {
     implicit val userURI = email
     //    getTimeSeries(predicateURI = "urn:average")
     //    getTimeSeries("urn:average")
     val timeSeries = getTimeSeries()
+    println("timeSeries " + timeSeries)
     for {
       label <- timeSeries.keys
       ts1 <- timeSeries.get(label) if (!ts1.isEmpty)

@@ -30,6 +30,7 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
   override def notifyDataEvent(
     addedTriples: Seq[Rdf#Triple],
     removedTriples: Seq[Rdf#Triple])(implicit userURI: String) = {
+    println( "notifyDataEvent userURI " + userURI + " - " + addedTriples )
     if (!addedTriples.isEmpty)
       Future {
         dataset2.rw({

@@ -22,7 +22,14 @@ import com.hp.hpl.jena.query.Dataset
 import com.typesafe.plugin._
 import models.FormUserData
 import models.UserDataTrait
-import models.{ User, UserCompanyInfo, UserData, UserVocab, ResponseAnalysis, ContactInfo }
+import models.{
+  User,
+  UserCompanyInfo,
+  UserData,
+  UserVocab,
+  //  ResponseAnalysis, 
+  ContactInfo
+}
 import Auth._
 import org.w3.banana.SparqlOpsModule
 import org.w3.banana.RDFOpsModule
