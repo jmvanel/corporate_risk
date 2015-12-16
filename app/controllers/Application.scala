@@ -34,7 +34,7 @@ import org.w3.banana.jena.JenaModule
 import org.apache.log4j.Logger
 import deductions.runtime.services.Configuration
 import models.TimeSeriesFormGroups
-import views.charts.Charts
+import views.Charts
 import models.ResponseAnalysisTrait
 import models.ResponseAnalysisInterface
 

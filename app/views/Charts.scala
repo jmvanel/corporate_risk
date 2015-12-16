@@ -1,12 +1,14 @@
-package views.charts
+package views
 
 import org.jfree.chart.StandardChartTheme
 import org.jfree.chart.axis.CategoryLabelPositions
-import models.ResponseAnalysis
 import models.User
+
 import scalax.chart.SpiderWebChart
 import scalax.chart.api.BarChart
+import scalax.chart.api.XYLineChart
 import scalax.chart.api.Color
+
 import org.w3.banana.RDF
 import models.ResponseAnalysisTrait
 
@@ -32,5 +34,10 @@ trait Charts[Rdf <: RDF, DATASET] {
       case _ => throw new IllegalArgumentException("Please specify the kind of chart you want")
     }
     content
+  }
+
+  def computeXYChart(formGroupURI: String, email: String) = {
+    //  TODO >>>>>>>>>>>>>>><
+    //    val chart = XYLineChart(data)
   }
 }

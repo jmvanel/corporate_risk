@@ -42,8 +42,11 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
   //      }
   //  }
 
-  /** transactional */
-  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = {
+  /**
+   * split Questionnaires in 2 sets: good, bad;
+   *  transactional
+   */
+  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Bad*/ ) = {
     val good = ArrayBuffer[DataMatch]()
     val bad = ArrayBuffer[DataMatch]()
     val forms = getUserData(user, groupUri).map {

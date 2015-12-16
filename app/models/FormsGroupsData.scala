@@ -18,10 +18,12 @@ trait FormsGroupsData1[Rdf <: RDF] extends FormsGroupsData with Prefixes[Rdf] {
   implicit val ops: RDFOps[Rdf]
   import ops._
 
+  /** Map forms Groups plain names to their URI */
   lazy val formsGroupsURIMap: Map[String, String] = formsGroups map {
     fgName => fgName -> fromUri(bizinnovQuestionsVocabPrefix(fgName + "-fg"))
   } toMap
 
+  /** Map forms Groups labels to their URI */
   lazy val formGroupList: Map[String, String] = Map(
     "Pré-diagnostic" -> formsGroupsURIMap("risk"),
     "Diagnostic" -> formsGroupsURIMap("capital")
