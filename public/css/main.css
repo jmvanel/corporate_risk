@@ -61,6 +61,10 @@ body {
 	background-color: #1C1862;
 	color: white;
 }
+.error {
+    color: #DE4040;
+    font-weight: bold;
+}
 
 #content p {
 	max-width: 900px;
