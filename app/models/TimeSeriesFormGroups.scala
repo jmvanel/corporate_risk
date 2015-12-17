@@ -25,25 +25,33 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
 
   /**
    * save averages for current form to a specific new named graph,
-   *  and add timestamp metadata to default unamed graph
+   *  and add timestamp metadata to default unamed graph;
+   * transactional
    */
   override def notifyDataEvent(
     addedTriples: Seq[Rdf#Triple],
     removedTriples: Seq[Rdf#Triple])(implicit userURI: String) = {
-    println( "notifyDataEvent userURI " + userURI + " - " + addedTriples )
+    println("TimeSeriesFormGroups.notifyDataEvent userURI " + userURI + " - " + addedTriples)
     if (!addedTriples.isEmpty)
       Future {
         dataset2.rw({
           val (graphUri, metadata) = makeGraphURIAndMetadata(addedTriples, removedTriples)
+          println("TimeSeriesFormGroups.notifyDataEvent: metadata" + metadata)
           dataset2.appendToGraph(URI(""), metadata)
           val subjects = addedTriples.map { _.subject }.distinct
-          val graphs = subjects.map { subj =>
-            val avTuple = averagePerForm(user(userURI), subj.toString())
-            (URI(userURI)
-              -- URI("urn:average") ->- avTuple._1.toDouble
-              -- rdfs.label ->- avTuple._3).graph
+          // NOTE: transaction within transaction, but with different database!
+          val graphs = dataset.r({
+            subjects.map { subj =>
+              val avTuple = averagePerForm(user(userURI), subj.toString())
+              (URI(userURI)
+                -- URI("urn:average") ->- avTuple._1.toDouble
+                -- rdfs.label ->- avTuple._3).graph
+            }
+          }).get
+          graphs.map { graph =>
+            println("TimeSeriesFormGroups.notifyDataEvent: data graph" + graph)
+            dataset2.appendToGraph(graphUri, graph)
           }
-          graphs.map { graph => dataset2.appendToGraph(graphUri, graph) }
         })
       }
     Unit

@@ -172,7 +172,7 @@ trait UserVocab[Rdf <: RDF] extends Prefixes[Rdf] {
 object User extends JenaModule with UserVocab[Jena] {
 
   //  val usersPrefix = "http://bizinnov.com/ontologies/users/"
-  val usersPrefix = "urn://bizinnov/users/"
+  val usersPrefix = "urn:/bizinnov/users/"
 
   import ops._
   import rdfStore.transactorSyntax._

@@ -34,9 +34,6 @@
 
 @* Textual report *@
 
-@* 
-@{for( formsGroupURI <- reportData.formsGroupsURIMap.values ) yield
-*@
 @{for( formsGroupURI <- reportData.formsGroups ) yield {
   val elems = reportData.filterQuestionnaires( user, formsGroupURI) match {
 	case ( good, bad ) => {
@@ -59,3 +56,10 @@
   elems
 }
 }
+
+<h2>Evolution de la notation au cours du temps</h2>
+
+A partir de toutes les réponses enregistrées au cours du temps, voici les courbes d'évolution.
+
+@{reportData.computeAllXYChart(user.email)}
+
