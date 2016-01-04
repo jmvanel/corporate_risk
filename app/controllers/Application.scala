@@ -144,6 +144,7 @@ object Application extends Controller with Secured
     implicit request =>
       request.body match {
         case form: AnyContentAsFormUrlEncoded =>
+          implicit val userURI: String = user.getURI().toString()
           saveTriples(
             form.data.filterNot {
               case (key: String, _) => key.startsWith("SAVE")

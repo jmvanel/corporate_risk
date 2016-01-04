@@ -8,7 +8,7 @@ version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.11.7"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.4" % Test
+libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.5" % Test
 
 libraryDependencies += "deductions" %% "semantic_forms" % "1.0-SNAPSHOT"
 

@@ -78,3 +78,13 @@ Currently some things are hard coded in UserDataTrait :
     formsGroupsURIs
 ```
 But in principle any database made of OWL Turtle files can be used in the application.
+
+## API
+
+example (WIP)
+
+    val formGroup: FormGroup = applicationClassesAndProperties(formGroupURI)
+    val user = User.find(email).get
+    val userDataURIs = getUserData(user, formGroup.toString)
+    for (userDataURI <- userDataURIs) {}
+    //      for(cp <- formGroup.classesAndProperties) {   }
