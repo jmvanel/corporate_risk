@@ -45,19 +45,23 @@ import views.Charts
 import models.ResponseAnalysisTrait
 import models.ResponseAnalysisInterface
 
-object Application extends Controller with Secured
-    with JenaModule
+object Application extends ApplicationTrait
+
+trait ApplicationTrait
+    extends Controller with Secured with JenaModule
+    with Configuration
     with TableViewModule[Jena, Dataset]
     with RDFStoreLocalJena1Provider
     with FormSaver[Jena, Dataset]
     //    with ResponseAnalysisTrait[Jena, Dataset]
     with ResponseAnalysisInterface
     with TimeSeriesFormGroups[Jena, Dataset]
-    with Charts[Jena, Dataset]
-    with Configuration {
+    with Charts[Jena, Dataset] {
 
-  override val recordUserActions: Boolean = true
-  override val addRDFS_label_comment = false
+  abstract override val recordUserActions: Boolean = true
+  abstract override val addRDFS_label_comment = false
+  abstract override val showRDFtype = false
+  override val showPlusButtons = false
 
   addSaveListener(this) // for TimeSeries
 
