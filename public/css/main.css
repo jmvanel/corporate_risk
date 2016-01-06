@@ -29,6 +29,7 @@ body {
 	padding: 12px;
 }
 #header img {
+	height: 180px;
 	margin-top: 27px;
 }
 #pagetitle {
@@ -55,6 +56,9 @@ body {
 }
 .footerlink {
 	padding: 0 1em;
+}
+.footerlink img {
+	height: 50px;
 }
 
 .btn-blue {
