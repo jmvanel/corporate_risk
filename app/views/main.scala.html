@@ -42,9 +42,12 @@
 				<div class="formmenuitem@if(currentPage=="index"){ selected}">
 					<a href="@routes.Application.index">Profil</a>
 				</div>
-			   	@for((fgName, fgUri) <- UserData.formGroupList) {
+			   	@for((fgName, fgUriOption) <- UserData.formGroupList(userOption)) {
 			   	<div class="formmenuitem@if(currentPage==fgName){ selected}">
-			   		<a href="@routes.Application.formgroup(fgUri)">@fgName</a>
+			   		@fgUriOption match {
+			   			case Some(fgUri) => { <a href="@routes.Application.formgroup(fgUri)">@fgName</a> }
+			   			case None => { <a disabled>@fgName</a> }
+			   		}
 			   	</div>
 				}
 				<div class="formmenuitem@if(currentPage=="report"){ selected}">

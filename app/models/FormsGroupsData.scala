@@ -10,10 +10,10 @@ trait FormsGroupsData {
    */
   lazy val formsGroups = List("risk", "capital")
 
-  val formGroupList: Map[String, String]
+  def formGroupList(userOption: Option[User]): Map[String, Option[String]]
 }
 
-trait FormsGroupsData1[Rdf <: RDF] extends FormsGroupsData with Prefixes[Rdf] {
+trait FormsGroupsData1[Rdf <: RDF] extends FormsGroupsData with Prefixes[Rdf] /*with ResponseAnalysis*/{
 
   implicit val ops: RDFOps[Rdf]
   import ops._
@@ -24,8 +24,11 @@ trait FormsGroupsData1[Rdf <: RDF] extends FormsGroupsData with Prefixes[Rdf] {
   } toMap
 
   /** Map forms Groups labels to their URI */
-  lazy val formGroupList: Map[String, String] = Map(
-    "Pré-diagnostic" -> formsGroupsURIMap("risk"),
-    "Diagnostic" -> formsGroupsURIMap("capital")
+  def formGroupList(userOption: Option[User]): Map[String, Option[String]] = Map(
+    "Pré-diagnostic" -> Some(formsGroupsURIMap("risk")),
+    "Diagnostic" -> { userOption match {
+      case Some(user) => if(/*this.globalEval(user) > 3*/true) Some(formsGroupsURIMap("capital")) else None
+      case None => None
+    }}
   )
 }

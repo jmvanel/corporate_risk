@@ -69,6 +69,10 @@ body {
     color: #DE4040;
     font-weight: bold;
 }
+a[disabled] {
+    pointer-events: none;
+    color: gray;
+}
 
 #content p {
 	max-width: 900px;

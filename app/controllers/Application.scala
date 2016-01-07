@@ -65,17 +65,6 @@ trait ApplicationTrait
   override val showRDFtype = false
   override val showPlusButtons = false
   override val inlineJavascriptInForm = false
-//  override val css: CSS = new CSS {
-//    override val cssRules = """
-//      .form-row{ display: table-row; }
-//      .form-cell{ display: table-cell; }
-//      .form-input{ display: table-cell; width: 500px; }
-//      .form-value{ display: table-cell; width: 500px; }
-//      .button-add{ width: 25px; }
-//      .form-label{ display: table-cell; width: 160px; }
-//      """
-//  }
-
   addSaveListener(this) // for TimeSeries
 
   val logger: Logger = Logger.getRootLogger()
@@ -119,7 +108,7 @@ trait ApplicationTrait
         formWithErrors => BadRequest(views.html.index(formWithErrors)),
         userInfo => {
           user.saveInfo(user, userInfo)
-          Redirect(routes.Application.formgroup(UserData.formGroupList.get("Pré-diagnostic").get))
+          Redirect(routes.Application.formgroup(UserData.formGroupList(Some(user)).get("Pré-diagnostic").get.get))
         }
       )
     }
@@ -130,7 +119,7 @@ trait ApplicationTrait
   /** show a list of forms */
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
-      val fgName = UserData.formGroupList.map(_.swap).get(groupUri).get
+      val fgName = UserData.formGroupList(Some(user)).map(_.swap).get(Some(groupUri)).get
       val forms = UserData.getUserData(user, groupUri).map {
         case FormUserData(formUri, label) =>
           (formUri.getURI, label,
@@ -269,7 +258,6 @@ trait ApplicationTrait
     Ok(views.html.info(user))
   }
 
-  //  type DataMatch = (String, String)
   def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = (Seq(), Seq())
 
 }
