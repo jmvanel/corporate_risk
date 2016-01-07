@@ -1,32 +1,30 @@
 package models
 
-import org.w3.banana.jena.JenaModule
-import org.w3.banana.RDFOpsModule
-import deductions.runtime.jena.RDFStoreLocalJena1Provider
-import deductions.runtime.dataset.RDFStoreLocalProvider
-import org.w3.banana.RDF
-import org.w3.banana.jena.Jena
-import com.hp.hpl.jena.query.Dataset
-import deductions.runtime.jena.RDFStoreObject
-import deductions.runtime.abstract_syntax.UnfilledFormFactory
-// import deductions.runtime.abstract_syntax.InstanceLabelsInference2
-import org.w3.banana.SparqlGraphModule
-import org.w3.banana.SparqlOpsModule
-import org.w3.banana.diesel._
-import org.w3.banana.syntax._
-import org.apache.log4j.Logger
+import java.nio.charset.StandardCharsets
 import java.nio.file.StandardOpenOption
-import deductions.runtime.sparql_cache.RDFCacheAlgo
-import deductions.runtime.abstract_syntax.PreferredLanguageLiteral
-import deductions.runtime.jena.JenaRDFLoader
-import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 
-/** see function getUserData() */
+import org.apache.log4j.Logger
+import org.w3.banana.PointedGraph
+import org.w3.banana.RDF
+import org.w3.banana.RDFSPrefix
+import org.w3.banana.jena.Jena
+
+import com.hp.hpl.jena.query.Dataset
+
+import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
+import deductions.runtime.abstract_syntax.PreferredLanguageLiteral
+import deductions.runtime.abstract_syntax.UnfilledFormFactory
+import deductions.runtime.dataset.RDFStoreLocalProvider
+import deductions.runtime.jena.RDFStoreLocalJena1Provider
+import deductions.runtime.sparql_cache.RDFCacheAlgo
+
+/** an URI and a label, see function getUserData() */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
 
 /** Banana principle: refer to concrete implementation only in blocks without code */
-object UserData extends RDFStoreLocalJena1Provider with UserDataTrait[Jena, Dataset]
-//  with JenaRDFLoader
+object UserData extends RDFStoreLocalJena1Provider
+with UserDataTrait[Jena, Dataset]
+with ResponseAnalysisTrait[Jena, Dataset]
 
 /** access to user data in triple store */
 trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
@@ -165,7 +163,20 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   def getFormLabel(formUri: String): String = {
     dataset.r({
       val graph = allNamedGraph
-      instanceLabel(URI(formUri), graph, "" /*lang TODO*/ )
+      // possible user-specific label:
+      val userSpecificLabel = instanceLabel(URI(formUri), graph, "" /*lang TODO*/ )
+      if( formUri.endsWith( userSpecificLabel ) ) {
+        // get label from class
+        import org.w3.banana.PointedGraph
+        import org.w3.banana.syntax._
+        val pg = PointedGraph(URI(formUri), allNamedGraph)
+        val rdfs = RDFSPrefix[Rdf]
+        val lab = pg / rdf.typ / rdfs.label
+        lab.nodes.headOption match {
+          case Some(n) => n.toString()
+          case None => "? " + formUri
+        }
+      } else userSpecificLabel
     }).get
   }
 
@@ -310,7 +321,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   }
 
   /** NON transactional */
-  private def createEmptyClassInstanceForUser(userURI: Rdf#URI, classAndPropURI: (Rdf#URI, Rdf#URI)) = {
+  private def createEmptyClassInstanceForUser(userURI: Rdf#URI,
+      classAndPropURI: (Rdf#URI, Rdf#URI)) = {
     val newURI = URI(UnfilledFormFactory.makeId(userURI.toString()))
     val graph = makeGraph(List(
       makeTriple(userURI, classAndPropURI._2, newURI)))

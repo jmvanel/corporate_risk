@@ -28,7 +28,7 @@ import scalax.chart.Chart
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]
-    with ResponseAnalysisInterface {
+    with ResponseAnalysisOnlyInterface {
 
   import ops._
 
@@ -280,11 +280,36 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     (weightedSum / coefSumGlobal)
     //    }).get
   }
+  
+  /** Map forms Groups labels to their URI;
+   * and filters results acording to a criterium, here
+   *           globalEval(user) > 3
+   * */
+  def formGroupList(userOption: Option[User]): Map[String, Option[String]] = Map(
+    "Pré-diagnostic" -> Some(formsGroupsURIMap("risk")),
+    "Diagnostic" -> { userOption match {
+      case Some(user) => if(
+          globalEval(user) > 3
+          ) Some(formsGroupsURIMap("capital")) else None
+      case None => None
+    }}
+  )
 }
 
 //trait ResponseAnalysisInterface[Rdf <: RDF] extends ResponseAnalysisInterface0 with FormsGroupsData[Rdf]
 
-trait ResponseAnalysisInterface extends FormsGroupsData {
+/** actually Interface for the view */
+trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
+  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ ,
+      Seq[DataMatch] /*Good*/ )
+  /**
+   * @return all non empty X-Y Charts with X = timestamp, and Y = average,
+   * for all form groups,
+   */
+  def computeAllXYChart(email: String): Iterable[Chart]
+}
+  
+trait ResponseAnalysisOnlyInterface extends FormsGroupsData {
   def responsesCount(user: User, dataURI: String): Int
   def fieldsCount(user: User, dataURI: String): Int
   def getRiskEval(userEmail: String): Map[String, Float]
@@ -295,14 +320,6 @@ trait ResponseAnalysisInterface extends FormsGroupsData {
     instanceURI: String): (Float, Int, String)
   def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int)
   def globalEval(user: User): Float
-
   type DataMatch = (String, String)
-  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ )
-
-  /**
-   * @return all non empty X-Y Charts with X = timestamp, and Y = average,
-   * for all form groups,
-   */
-  def computeAllXYChart(email: String): Iterable[Chart]
 }
 

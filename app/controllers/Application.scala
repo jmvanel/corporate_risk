@@ -25,7 +25,7 @@ import models.UserDataTrait
 import models.{
   User,
   UserCompanyInfo,
-  UserData,
+  //  UserData,
   UserVocab,
   //  ResponseAnalysis, 
   ContactInfo
@@ -45,19 +45,22 @@ import views.Charts
 import models.ResponseAnalysisTrait
 import models.ResponseAnalysisInterface
 import deductions.runtime.html.CSS
+import deductions.runtime.services.DefaultConfiguration
+import models.UserDataTrait
 
 object Application extends ApplicationTrait
 
 trait ApplicationTrait
     extends Controller with Secured with JenaModule
-    with Configuration
+    with DefaultConfiguration
     with TableViewModule[Jena, Dataset]
     with RDFStoreLocalJena1Provider
     with FormSaver[Jena, Dataset]
     //    with ResponseAnalysisTrait[Jena, Dataset]
     with ResponseAnalysisInterface
     with TimeSeriesFormGroups[Jena, Dataset]
-    with Charts[Jena, Dataset] {
+    with Charts[Jena, Dataset]
+    with UserDataTrait[Jena, Dataset] {
 
   // override defaults from semantic_forms:
   override val recordUserActions: Boolean = true
@@ -81,6 +84,7 @@ trait ApplicationTrait
   val logger: Logger = Logger.getRootLogger()
   lazy val tableView = this // new TableView {}
   val responseAnalysis = this // new ResponseAnalysis()
+  val userData = this
 
   //////// UI for user information ////////
 
@@ -119,7 +123,7 @@ trait ApplicationTrait
         formWithErrors => BadRequest(views.html.index(formWithErrors)),
         userInfo => {
           user.saveInfo(user, userInfo)
-          Redirect(routes.Application.formgroup(UserData.formGroupList(Some(user)).get("Pré-diagnostic").get.get))
+          Redirect(routes.Application.formgroup(userData.formGroupList(Some(user)).get("Pré-diagnostic").get.get))
         }
       )
     }
@@ -130,8 +134,8 @@ trait ApplicationTrait
   /** show a list of forms */
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
-      val fgName = UserData.formGroupList(Some(user)).map(_.swap).get(Some(groupUri)).get
-      val forms = UserData.getUserData(user, groupUri).map {
+      val fgName = userData.formGroupList(Some(user)).map(_.swap).get(Some(groupUri)).get
+      val forms = userData.getUserData(user, groupUri).map {
         case FormUserData(formUri, label) =>
           (formUri.getURI, label,
             responseAnalysis.responsesCount(user, formUri.getURI),
@@ -144,11 +148,11 @@ trait ApplicationTrait
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request => {
-      val formGroup = UserData.getFormGroup(user, uri)
+      val formGroup = userData.getFormGroup(user, uri)
       implicit val graph = rdfStore.r(dataset, { allNamedGraph }).get
       val form = tableView.htmlFormElemJustFields(uri, editable = true,
         graphURI = user.getURI().getURI(), formGroup = formGroup)
-      val label = UserData.getFormLabel(uri)
+      val label = userData.getFormLabel(uri)
       Ok(views.html.form(form, label, formGroup))
     }
   }
@@ -169,11 +173,11 @@ trait ApplicationTrait
           form.data.getOrElse("uri", Seq()).headOption match {
             case Some(url) => {
               val nextform = if (form.data.contains("SAVE_previous")) {
-                UserData.getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
+                userData.getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
               } else if (form.data.contains("SAVE_next")) {
-                UserData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
+                userData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
               } else
-                UserData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
+                userData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
 
               nextform match {
                 case Some(form) => Redirect(routes.Application.form(form.data.getURI))
@@ -269,6 +273,7 @@ trait ApplicationTrait
     Ok(views.html.info(user))
   }
 
+  /** just to satisfy the compiler */
   def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = (Seq(), Seq())
 
 }

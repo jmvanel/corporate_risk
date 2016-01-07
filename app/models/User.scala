@@ -1,20 +1,19 @@
 package models
 
+import java.security.MessageDigest
+
+import scala.collection.mutable.ArrayBuffer
 import scala.util.Try
+
 import org.w3.banana.Prefix
 import org.w3.banana.RDF
 import org.w3.banana.RDFOps
-import org.w3.banana.RDFOpsModule
 import org.w3.banana.RDFStore
 import org.w3.banana.jena.Jena
 import org.w3.banana.jena.JenaModule
-import org.w3.banana._
-import org.w3.banana.syntax._
 
-import deductions.runtime.jena.RDFStoreObject
-import java.security.MessageDigest
+import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter
-import scala.collection.mutable.ArrayBuffer
 
 /** Stores data from the info form */
 case class UserCompanyInfo(val department: Option[String] = None,
@@ -34,6 +33,8 @@ case class UserCompanyInfo(val department: Option[String] = None,
     }
 }
 
+
+object RDFStoreObject extends JenaModule with RDFStoreLocalJena1Provider
 /**
  * data mapping between class User & RDF database
  *  TODO: this class has only services & has no data;
@@ -84,20 +85,6 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
         dataset.rw({
           dataset.appendToGraph(bizinnovUserGraphURI, pgr.graph)
         })
-        //        val triples = List(
-        //          makeTriple(
-        //            makeURI(user),
-        //            bizinnovUserVocabPrefix("passwordHash"),
-        //            makeLiteral(hashPassword(user.password), xsd.string)),
-        //          makeTriple(
-        //            makeURI(user),
-        //            bizinnovUserVocabPrefix("email"),
-        //            makeLiteral(user.email, xsd.string)
-        //          ))
-        //        val graph = makeGraph(triples)
-        //        dataset.rw({
-        //          dataset.appendToGraph(bizinnovUserGraphURI, graph)
-        //        })
         UserData.createEmptyUserData(user)
         true
     }

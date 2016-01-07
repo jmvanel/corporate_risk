@@ -45,8 +45,15 @@
 			   	@for((fgName, fgUriOption) <- UserData.formGroupList(userOption)) {
 			   	<div class="formmenuitem@if(currentPage==fgName){ selected}">
 			   		@fgUriOption match {
-			   			case Some(fgUri) => { <a href="@routes.Application.formgroup(fgUri)">@fgName</a> }
-			   			case None => { <a disabled>@fgName</a> }
+			   			case Some(fgUri) => {
+			   				<a href="@routes.Application.formgroup(fgUri)">@fgName</a> }
+			   			case None => { <div 
+			   			title="Pour passer au questionnaire suivant,
+			   			la note du pré-diagnostic doit être au moins 3 sur 5.
+			   			Avez vous répondu à toutes les questions?">
+			   			<a disabled>@fgName</a>
+			   			</div>
+			   			}
 			   		}
 			   	</div>
 				}

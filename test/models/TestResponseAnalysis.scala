@@ -7,6 +7,9 @@ import scala.util.Failure
 import scala.reflect.io.Path
 import scala.util.Try
 import org.scalatest.BeforeAndAfterAll
+import org.w3.banana.jena.Jena
+import com.hp.hpl.jena.query.Dataset
+import deductions.runtime.jena.RDFStoreLocalJena1Provider
 
 class TestResponseAnalysis extends FunSuite with BeforeAndAfterAll {
   import UserData._
@@ -16,7 +19,7 @@ class TestResponseAnalysis extends FunSuite with BeforeAndAfterAll {
 
   lazy val name = "zz"
   lazy val user = User(name, name)
-  lazy val responseAnalysis = new ResponseAnalysis()
+  lazy val responseAnalysis = new ResponseAnalysisTrait[Jena, Dataset] with RDFStoreLocalJena1Provider {}
   lazy val formGroupUri = UserData.formsGroupsURIMap("risk")
   lazy val fuds = getUserData(user, formGroupUri)
   lazy val fud = fuds(0)
