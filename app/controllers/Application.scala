@@ -44,6 +44,7 @@ import models.TimeSeriesFormGroups
 import views.Charts
 import models.ResponseAnalysisTrait
 import models.ResponseAnalysisInterface
+import deductions.runtime.html.CSS
 
 object Application extends ApplicationTrait
 
@@ -58,10 +59,22 @@ trait ApplicationTrait
     with TimeSeriesFormGroups[Jena, Dataset]
     with Charts[Jena, Dataset] {
 
-  abstract override val recordUserActions: Boolean = true
-  abstract override val addRDFS_label_comment = false
-  abstract override val showRDFtype = false
+  // override defaults form semantic_forms:
+  override val recordUserActions: Boolean = true
+  override val addRDFS_label_comment = false
+  override val showRDFtype = false
   override val showPlusButtons = false
+  override val inlineJavascriptInForm = false
+//  override val css: CSS = new CSS {
+//    override val cssRules = """
+//      .form-row{ display: table-row; }
+//      .form-cell{ display: table-cell; }
+//      .form-input{ display: table-cell; width: 500px; }
+//      .form-value{ display: table-cell; width: 500px; }
+//      .button-add{ width: 25px; }
+//      .form-label{ display: table-cell; width: 160px; }
+//      """
+//  }
 
   addSaveListener(this) // for TimeSeries
 
