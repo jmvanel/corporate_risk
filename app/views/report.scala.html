@@ -1,12 +1,22 @@
 @(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
 
+<h2>Présentation de l’entreprise XX</h2>
+ @* reprendre les éléments du formulaire *@
+ @{ reportData.getInfo(user).get.naf }
+ @{ reportData.getInfo(user).get. year }
+ @{ reportData.getInfo(user).get. isGroup }
+
+  <h2>
+ Bilan de la valorisation de l’immatériel de l’entreprise
+ </h2>
 <p>
  	@if(reportData.globalEval(user) > 3) {
-     L'entreprise a une bonne évaluation (@reportData.globalEval(user))
+     L'entreprise a une bonne évaluation (@reportData.globalEval(user)) .
   	} else {
-	  L'entreprise a une mauvaise évaluation (@reportData.globalEval(user))
+	  L'entreprise a une mauvaise évaluation (@reportData.globalEval(user)) .
    }
 </p>
+
 <h2>Gestion des risques</h2>
 <div style="float: left">
 	<img src="http://@request.host@routes.Application.chart("risk", user.email)" />
@@ -26,6 +36,7 @@
 	</table>
 </div>
 <div style="clear: both"></div>
+
 <h2>Gestion du capital immatériel</h2>
 <div style="float: left">
 	<img src="http://@request.host@routes.Application.chart("capital", user.email)" />
@@ -60,6 +71,7 @@
 <h2>Evolution de la notation au cours du temps</h2>
 
 A partir de toutes les réponses enregistrées au cours du temps, voici les courbes d'évolution.
-
+<br/>
+TODO faire un service web
 @{reportData.computeAllXYChart(user.email)}
 

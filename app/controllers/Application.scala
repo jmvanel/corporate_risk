@@ -47,8 +47,11 @@ import models.ResponseAnalysisInterface
 import deductions.runtime.html.CSS
 import deductions.runtime.services.DefaultConfiguration
 import models.UserDataTrait
+import models.RDFUser
+import deductions.runtime.jena.ImplementationSettings
 
 object Application extends ApplicationTrait
+  with RDFUser[Jena, ImplementationSettings.DATASET]
 
 trait ApplicationTrait
     extends Controller with Secured with JenaModule
@@ -56,7 +59,6 @@ trait ApplicationTrait
     with TableViewModule[Jena, Dataset]
     with RDFStoreLocalJena1Provider
     with FormSaver[Jena, Dataset]
-    //    with ResponseAnalysisTrait[Jena, Dataset]
     with ResponseAnalysisInterface
     with TimeSeriesFormGroups[Jena, Dataset]
     with Charts[Jena, Dataset]
@@ -123,7 +125,8 @@ trait ApplicationTrait
         formWithErrors => BadRequest(views.html.index(formWithErrors)),
         userInfo => {
           user.saveInfo(user, userInfo)
-          Redirect(routes.Application.formgroup(userData.formGroupList(Some(user)).get("Pré-diagnostic").get.get))
+          Redirect(routes.Application.formgroup(userData.formGroupList(Some(user)).
+            get("Pré-diagnostic").get.get))
         }
       )
     }

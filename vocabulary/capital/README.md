@@ -21,7 +21,7 @@ pour obtenir:
     Evaluation_capital_opérationnel.ttl
 etc.
 
-Ensuite on utilise une base de règles (questionnaire2owl.q.n3) avec Euler / EYE pour transformer afin de créer le vocabulaire OWL et le groupe de formulaires pour sematic\_forms .
+Ensuite on utilise une base de règles (questionnaire2owl.q.n3) avec Euler / EYE pour transformer afin de créer le vocabulaire OWL et le groupe de formulaires pour semantic\_forms .
 
 Enfin, on utilise rapper (installer raptor2-utils sur Linux) pour reformater joliment le vocabulaire OWL obtenu:
     Evaluation_capital_opérationnel.owl.ttl

@@ -307,6 +307,8 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
    * for all form groups,
    */
   def computeAllXYChart(email: String): Iterable[Chart]
+  
+  def getInfo(user: User): Option[UserCompanyInfo]
 }
   
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {

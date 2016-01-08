@@ -18,7 +18,6 @@ import scalax.chart.Chart
 trait Charts[Rdf <: RDF, DATASET] {
   self: ResponseAnalysisTrait[Rdf, DATASET] with TimeSeriesFormGroups[Rdf, DATASET] =>
 
-  //  val responseAnalysis = new ResponseAnalysis()
   private val responseAnalysis = this;
 
   /** compute Chart: chart type is "risk" or "capital" */

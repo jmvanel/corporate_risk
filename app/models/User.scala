@@ -1,19 +1,18 @@
 package models
 
 import java.security.MessageDigest
-
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Try
-
 import org.w3.banana.Prefix
 import org.w3.banana.RDF
 import org.w3.banana.RDFOps
 import org.w3.banana.RDFStore
 import org.w3.banana.jena.Jena
 import org.w3.banana.jena.JenaModule
-
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter
+import deductions.runtime.jena.ImplementationSettings
+import deductions.runtime.dataset.RDFStoreLocalProvider
 
 /** Stores data from the info form */
 case class UserCompanyInfo(val department: Option[String] = None,
@@ -34,27 +33,23 @@ case class UserCompanyInfo(val department: Option[String] = None,
 }
 
 
-object RDFStoreObject extends JenaModule with RDFStoreLocalJena1Provider
-/**
- * data mapping between class User & RDF database
- *  TODO: this class has only services & has no data;
- *  should be a trait
- */
-abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-    rdfStore: RDFStore[Rdf, Try, RDFStoreObject.DATASET]) {
+//object RDFStoreObject extends JenaModule with RDFStoreLocalJena1Provider
 
-  /** NOTE: RDFStoreObject, via RDFStoreLocalJenaProvider, already has rdfStore */
-  val rdfStoreObject = RDFStoreObject
+/**
+ * data mapping between class User & RDF database;
+ * this class has only services & has no data */
+trait RDFUser[Rdf <: RDF, DATASET] extends RDFStoreLocalProvider[Rdf, DATASET]
+with Prefixes[Rdf] {
+
+//abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
+//    rdfStore: RDFStore[Rdf, Try, ImplementationSettings.DATASET]) {
+
+//  val rdfStoreObject = RDFStoreObject
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
   import rdfStore.sparqlEngineSyntax._
-  val dataset = rdfStoreObject.dataset
-
-  // TODO duplicate with UserVocab
-  val bizinnovUserPrefix = Prefix("usr", User.usersPrefix)
-  val bizinnovUserGraphURI = URI(bizinnovUserPrefix.prefixIri)
-  val bizinnovUserVocabPrefix = Prefix("user", "http://bizinnov.com/ontologies/users.owl.ttl#")
+//  val dataset = rdfStoreObject.dataset
 
   def hashPassword(password: String): String = {
     new HexBinaryAdapter().marshal(MessageDigest.getInstance("MD5").digest(password.getBytes))
@@ -141,7 +136,8 @@ abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
 
 /** pure data class representing the users of the application */
 case class User(val email: String, val password: String, val passwordHash: String = "")
-    extends RDFUser[Jena] {
+    extends RDFStoreLocalJena1Provider
+    with RDFUser[ Jena, ImplementationSettings.DATASET ] {
   def getURI() = bizinnovUserPrefix(email)
 }
 
@@ -151,12 +147,12 @@ trait UserVocab[Rdf <: RDF] extends Prefixes[Rdf] {
   implicit val ops: RDFOps[Rdf]
   import ops._
 
-  def getURI(user: User) = bizinnovUserPrefix(user.email)
+  def getURI(user: User): Rdf#URI = bizinnovUserPrefix(user.email)
 
 }
 
 /** User lookup, using RDF store  */
-object User extends JenaModule with UserVocab[Jena] {
+object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
 
   //  val usersPrefix = "http://bizinnov.com/ontologies/users/"
   val usersPrefix = "urn:/bizinnov/users/"
@@ -164,7 +160,7 @@ object User extends JenaModule with UserVocab[Jena] {
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
-  val dataset = RDFStoreObject.dataset
+//  val dataset = RDFStoreObject.dataset
 
   /** transactional */
   def find(email: String): Option[User] = {
