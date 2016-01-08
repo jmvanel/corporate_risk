@@ -296,9 +296,8 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   )
 }
 
-//trait ResponseAnalysisInterface[Rdf <: RDF] extends ResponseAnalysisInterface0 with FormsGroupsData[Rdf]
 
-/** actually Interface for the view */
+/** actually overall Interface for the view */
 trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ ,
       Seq[DataMatch] /*Good*/ )
@@ -308,7 +307,7 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
    */
   def computeAllXYChart(email: String): Iterable[Chart]
   
-  def getInfo(user: User): Option[UserCompanyInfo]
+  def getCompanyInfo(user: User): Option[UserCompanyInfo]
 }
   
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {

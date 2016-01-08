@@ -36,7 +36,7 @@ object Auth extends Controller {
 
   def check(username: String, password: String): Boolean = {
     val user = new User(username, password)
-    user.checkPassword(user)
+    user.checkPassword()
   }
 
   /** page for login or signin */

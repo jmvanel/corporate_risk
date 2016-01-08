@@ -32,24 +32,16 @@ case class UserCompanyInfo(val department: Option[String] = None,
     }
 }
 
-
-//object RDFStoreObject extends JenaModule with RDFStoreLocalJena1Provider
-
 /**
  * data mapping between class User & RDF database;
  * this class has only services & has no data */
 trait RDFUser[Rdf <: RDF, DATASET] extends RDFStoreLocalProvider[Rdf, DATASET]
 with Prefixes[Rdf] {
 
-//abstract class RDFUser[Rdf <: RDF](implicit ops: RDFOps[Rdf],
-//    rdfStore: RDFStore[Rdf, Try, ImplementationSettings.DATASET]) {
-
-//  val rdfStoreObject = RDFStoreObject
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
   import rdfStore.sparqlEngineSyntax._
-//  val dataset = rdfStoreObject.dataset
 
   def hashPassword(password: String): String = {
     new HexBinaryAdapter().marshal(MessageDigest.getInstance("MD5").digest(password.getBytes))
@@ -111,7 +103,7 @@ with Prefixes[Rdf] {
   }
 
   /** transactional */
-  def getInfo(user: User): Option[UserCompanyInfo] = {
+  def getCompanyInfo(user: User): Option[UserCompanyInfo] = {
     dataset.r({
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val userURI = getSubjects(userGraph,
@@ -139,6 +131,8 @@ case class User(val email: String, val password: String, val passwordHash: Strin
     extends RDFStoreLocalJena1Provider
     with RDFUser[ Jena, ImplementationSettings.DATASET ] {
   def getURI() = bizinnovUserPrefix(email)
+  
+  def checkPassword(): Boolean = checkPassword(this)
 }
 
 /** gather URI's and prefixes for user management */
@@ -154,13 +148,9 @@ trait UserVocab[Rdf <: RDF] extends Prefixes[Rdf] {
 /** User lookup, using RDF store  */
 object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
 
-  //  val usersPrefix = "http://bizinnov.com/ontologies/users/"
-  val usersPrefix = "urn:/bizinnov/users/"
-
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
-//  val dataset = RDFStoreObject.dataset
 
   /** transactional */
   def find(email: String): Option[User] = {

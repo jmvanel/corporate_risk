@@ -62,7 +62,8 @@ trait ApplicationTrait
     with ResponseAnalysisInterface
     with TimeSeriesFormGroups[Jena, Dataset]
     with Charts[Jena, Dataset]
-    with UserDataTrait[Jena, Dataset] {
+    with UserDataTrait[Jena, Dataset]
+    with RDFUser[Jena, Dataset] {
 
   // override defaults from semantic_forms:
   override val recordUserActions: Boolean = true
@@ -114,7 +115,7 @@ trait ApplicationTrait
   /** Shows the index page with the info form */
   def index = withUser { implicit user =>
     implicit request =>
-      val form = userInfoForm.bind(user.getInfo(user).getOrElse(new UserCompanyInfo).getMap)
+      val form = userInfoForm.bind(getCompanyInfo(user).getOrElse(new UserCompanyInfo).getMap)
       Ok(views.html.index(form))
   }
 
@@ -124,7 +125,7 @@ trait ApplicationTrait
       userInfoForm.bindFromRequest.fold(
         formWithErrors => BadRequest(views.html.index(formWithErrors)),
         userInfo => {
-          user.saveInfo(user, userInfo)
+          saveInfo(user, userInfo)
           Redirect(routes.Application.formgroup(userData.formGroupList(Some(user)).
             get("Pré-diagnostic").get.get))
         }

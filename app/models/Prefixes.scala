@@ -18,5 +18,9 @@ trait Prefixes[Rdf <: RDF] {
   /** Questionnaire vocabulary */
   lazy val bizinnovQuestionsVocabPrefix = Prefix("ques",
     "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
+    
   // TODO Add props & classes to Prefix objects
+  
+  /** prefix for URI resources of users */
+  val usersPrefix = "urn:/bizinnov/users/"
 }

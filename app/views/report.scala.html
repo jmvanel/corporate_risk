@@ -1,10 +1,14 @@
 @(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
 
-<h2>Présentation de l’entreprise XX</h2>
+<h2>Présentation de l’entreprise</h2>
  @* reprendre les éléments du formulaire *@
- @{ reportData.getInfo(user).get.naf }
- @{ reportData.getInfo(user).get. year }
- @{ reportData.getInfo(user).get. isGroup }
+ Code NAF : @{ reportData.getCompanyInfo(user).get.naf } <br/>
+ Année de création: @{ reportData.getCompanyInfo(user).get. year } <br/>
+ @{ if( reportData.getCompanyInfo(user).get. isGroup )
+ 	"Fait partie d'un groupe."
+ 	else
+ 	"Ne fait pas partie d'un groupe."
+ } <br/>
 
   <h2>
  Bilan de la valorisation de l’immatériel de l’entreprise
