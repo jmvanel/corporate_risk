@@ -220,22 +220,30 @@ trait ApplicationTrait
     Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 
-  def chart_old(charttype: String, email: String) = Action {
-    val user = User.find(email)
-    val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
-    //    implicit 
-    val theme = new StandardChartTheme("JFree")
-    theme.setChartBackgroundPaint(transparent)
-    val content = charttype match {
-      case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
-      case "capital" => {
-        val chart = BarChart(responseAnalysis.getCapitalEval(email).toVector)
-        chart.plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.UP_45)
-        chart
-      }
-      case _ => throw new IllegalArgumentException("Please specify the kind of chart you want")
+  //  def chart_old(charttype: String, email: String) = Action {
+  //    val user = User.find(email)
+  //    val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
+  //    //    implicit 
+  //    val theme = new StandardChartTheme("JFree")
+  //    theme.setChartBackgroundPaint(transparent)
+  //    val content = charttype match {
+  //      case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
+  //      case "capital" => {
+  //        val chart = BarChart(responseAnalysis.getCapitalEval(email).toVector)
+  //        chart.plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.UP_45)
+  //        chart
+  //      }
+  //      case _ => throw new IllegalArgumentException("Please specify the kind of chart you want")
+  //    }
+  //    Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
+  //  }
+
+  def history(email: String) = withUser { implicit user =>
+    implicit request => {
+      // TODO <<<<<<<< how to send back several images in a single service ?
+      val content = computeAllXYChart(user.email).head
+      Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
     }
-    Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 
   def contact() = Action { implicit request =>

@@ -15,9 +15,9 @@
  </h2>
 <p>
  	@if(reportData.globalEval(user) > 3) {
-     L'entreprise a une bonne évaluation (@reportData.globalEval(user)) .
+     L'entreprise a une bonne évaluation (@reportData.globalEval(user)) sur 5 .
   	} else {
-	  L'entreprise a une mauvaise évaluation (@reportData.globalEval(user)) .
+	  L'entreprise a une mauvaise évaluation (@reportData.globalEval(user)) sur 5 .
    }
 </p>
 
@@ -76,6 +76,5 @@
 
 A partir de toutes les réponses enregistrées au cours du temps, voici les courbes d'évolution.
 <br/>
-TODO faire un service web
-@{reportData.computeAllXYChart(user.email)}
+<img src="http://@request.host@routes.Application.history(user.email)" />
 

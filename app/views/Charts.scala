@@ -21,7 +21,7 @@ trait Charts[Rdf <: RDF, DATASET] {
   private val responseAnalysis = this;
 
   /** compute Chart: chart type is "risk" or "capital" */
-  def computeChart(charttype: String, email: String) = {
+  def computeChart(charttype: String, email: String): Chart = {
     val user = User.find(email)
     val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
     val theme = new StandardChartTheme("JFree")

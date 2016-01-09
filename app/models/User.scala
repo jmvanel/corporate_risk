@@ -126,12 +126,12 @@ with Prefixes[Rdf] {
   }
 }
 
-/** pure data class representing the users of the application */
+/** data class representing the users of the application */
 case class User(val email: String, val password: String, val passwordHash: String = "")
     extends RDFStoreLocalJena1Provider
     with RDFUser[ Jena, ImplementationSettings.DATASET ] {
-  def getURI() = bizinnovUserPrefix(email)
   
+  def getURI() = bizinnovUserPrefix(email)
   def checkPassword(): Boolean = checkPassword(this)
 }
 
