@@ -76,24 +76,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       // bizinnovQuestionsVocabPrefix("risk")
       case uri: String => URI(uri)
     }
-    //    val nodes = dataset.r({
-    //      val userURI = getURI(user)
-    //      val userGraph = dataset.getGraph(userURI).get
-    //      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
-    //      val classesAndProperties =
-    //        applicationClassesAndProperties(formGroup).classesAndProperties
-    //      println(s"getUserData classesAndProperties $classesAndProperties")
-    //      for {
-    //        (cl, prop) <- classesAndProperties
-    //        //        debug = println(s"getUserData ($cl, $prop)")
-    //        triple <- find(userGraph, userURI, prop, ANY)
-    //        //        debug2 = println(s"getUserData $triple")
-    //      } yield {
-    //        (triple.objectt, instanceLabel(cl, graphForVocabulary, "" /*lang TODO*/ ))
-    //      }
-    //    })
-
-    val nodesAndLabels = dataset.r({
+    // rw because of instanceLabel()
+    val nodesAndLabels = dataset.rw({
       val userURI = getURI(user)
       val userGraph = dataset.getGraph(userURI).get
       val classesAndProperties =
@@ -111,7 +95,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       val nodesAndLabels = for {
         (objectt, classe) <- objectAndClass
       } yield (objectt, instanceLabel(classe, graphForVocabulary, "" /*lang TODO*/ ))
-      nodesAndLabels
+      nodesAndLabels . toList
     })
 
     //    println(s"nodesAndLabels ${nodesAndLabels.get.mkString(", ")}")
@@ -278,8 +262,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX : <${bizinnovQuestionsVocabPrefix.prefixIri}>
       SELECT ?LAB ?PROP ?CLASS
-      WHERE {
-#      GRAPH <vocabulary> {
+      WHERE { # GRAPH <vocabulary> {
        GRAPH ?G {
         <$formgroup> a :FormGroup ; rdfs:label ?LAB ;
         :properties ?PROP .
@@ -291,7 +274,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
     var label = Literal("")
-    val variables: Iterator[(Rdf#Literal, Rdf#URI, Rdf#URI)] = solutions.iterator map { row =>
+    val variables0: Iterator[(Rdf#Literal, Rdf#URI, Rdf#URI)] = solutions.iterator map {
+          row =>
       /* row is an Rdf#Solution, we can get an Rdf#Node from the variable name
        * both the #Rdf#Node projection and the transformation to Rdf#URI can fail
        * in the Try type */
@@ -301,6 +285,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
         row("CLASS").get.as[Rdf#URI].get,
         row("PROP").get.as[Rdf#URI].get)
     }
+    val variables = variables0 . toList
     println("applicationClassesAndPropertiesGeneric")
     val classesAndProperties = for (v <- variables) yield (v._2, v._3)
     val fg = FormGroup(classesAndProperties.to[List], fromLiteral(label)._1

@@ -20,7 +20,8 @@ trait Charts[Rdf <: RDF, DATASET] {
 
   private val responseAnalysis = this;
 
-  /** compute Chart: chart type is "risk" or "capital" */
+  /** compute Chart: chart type is "risk" or "capital";
+   *  transactional */
   def computeChart(charttype: String, email: String): Chart = {
     val user = User.find(email)
     val transparent = new Color(0xFF, 0xFF, 0xFF, 0)

@@ -143,6 +143,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    */
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float] = {
     Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
+    try {
     val userData = getUserData(user(userEmail), formsGroupsURIMap(formGroupName))
     dataset.r({
       Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
@@ -154,9 +155,15 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       val string2Int = res.toMap
       string2Int.map { case (s, i) => (s, i.toFloat) }
     }).get
+    } catch {
+      case t: Throwable => t.printStackTrace()
+      Map()
+    }
   }
 
-  def user(userEmail: String) = User(userEmail, "", "")
+  /** get user object from her Email; convenience method that does not populate user credentials;
+   *  NOTE: for that, see method: User.find(email: String) */
+  def user(userEmail: String): User = User(userEmail, "", "")
 
   /**
    * average per form;
@@ -169,11 +176,11 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     user: User,
     instanceURI: String): (Float, Int, String) = {
     val userURI = getURI(user)
+//          # ${declareSPARQL_PREFIX(rdfs)}
     val queryString = s"""
           PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
           ${declareSPARQL_PREFIX(xsd)}
-          # ${declareSPARQL_PREFIX(rdfs)}
-          PREFIX rdfs: <${rdfs.prefixIri}>
+          PREFIX rdfs: <${rdfs.prefixIri}> # workaround bug on Banana: rdfs bad prefix 
           PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
 
           SELECT ?label (xsd:integer(?VALUE) AS ?note) (IF(bound(?COEF), xsd:integer(?COEF) ,1) AS ?coef)
@@ -187,7 +194,8 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
              ?PROP :coef ?COEF .
              ?CLASS rdfs:label ?label .
             }
-           } UNION { # for indirect numeric values: enumerated values have a ques:value (capital forms)
+           } UNION {
+           # for indirect numeric values: enumerated values having a ques:value (capital forms)
             GRAPH <$userURI> {
              <$instanceURI> ?PROP ?OBJ ;
                             a ?CLASS  .
@@ -205,7 +213,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val solutions = dataset.executeSelect(query, Map()).get
     val solutionsSeq = solutions.iterator.to[List]
     Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
-      size ${solutionsSeq.size}
+      solutions size ${solutionsSeq.size}
       """)
     val res = solutionsSeq map { row =>
       val sol =

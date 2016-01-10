@@ -36,7 +36,7 @@ case class UserCompanyInfo(val department: Option[String] = None,
  * data mapping between class User & RDF database;
  * this class has only services & has no data */
 trait RDFUser[Rdf <: RDF, DATASET] extends RDFStoreLocalProvider[Rdf, DATASET]
-with Prefixes[Rdf] {
+with UserVocab[Rdf] {
 
   import ops._
   import rdfStore.transactorSyntax._
@@ -64,7 +64,7 @@ with Prefixes[Rdf] {
     User.find(user.email) match {
       case Some(existingUser) => false
       case None =>
-        val pgr = makeURI(user) --
+        val pgr = getURI(user) --
           bizinnovUserVocabPrefix("passwordHash") ->-
           makeLiteral(hashPassword(user.password), xsd.string) --
           bizinnovUserVocabPrefix("email") ->-
@@ -77,7 +77,7 @@ with Prefixes[Rdf] {
     }
   }
 
-  def makeURI(user: User) = bizinnovUserPrefix(user.email)
+//  def makeURI(user: User) = bizinnovUserPrefix(user.email)
 
   /**
    * transactional
@@ -89,10 +89,10 @@ with Prefixes[Rdf] {
       val toDelete = ArrayBuffer[Rdf#Triple]()
       val triples = info.getMap.map({
         case (name, value) =>
-          val existingValues = find(userGraph, makeURI(user), bizinnovUserVocabPrefix(name), ANY)
+          val existingValues = find(userGraph, getURI(user), bizinnovUserVocabPrefix(name), ANY)
           toDelete ++= existingValues
           makeTriple(
-            makeURI(user),
+            getURI(user),
             bizinnovUserVocabPrefix(name),
             makeLiteral(value, xsd.string))
       })
@@ -152,7 +152,8 @@ object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
 
-  /** transactional */
+  /** get user object from her Email;
+   * NON transactional */
   def find(email: String): Option[User] = {
     val user = dataset.r({
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
@@ -173,4 +174,10 @@ object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
     })
     user.getOrElse(None)
   }
+  
+  /** get user object from from its URI ;
+   * convenience method that does not populate user credentials */
+  def getUserFromURI(userURI: String): User =
+    User(bizinnovUserPrefix.unapply(URI(userURI)).get, "", "")
+  
 }
