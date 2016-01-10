@@ -11,7 +11,7 @@ POST    /save                       controllers.Application.save
 GET     /report                     controllers.Application.report
 GET		/chart.png					controllers.Application.chart(charttype: String, email: String)
 GET		/pdfreport					controllers.Application.exportPDF
-GET		/history.png				controllers.Application.history(email: String)
+GET		/history.png				controllers.Application.history(email: String, fg:Int)
 
 GET     /login                      controllers.Auth.login
 POST    /login                      controllers.Auth.authenticate

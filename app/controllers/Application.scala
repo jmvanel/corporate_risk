@@ -72,14 +72,15 @@ trait ApplicationTrait
   override val showPlusButtons = false
   override val inlineJavascriptInForm = false
   override val css: CSS = new CSS {
-    override val cssRules = """
+    override val cssRules = ""
+    /*
       .form-row{ display: table-row; }
       .form-cell{ display: table-cell; }
       .form-input{ display: table-cell; width: 500px; }
       .form-value{ display: table-cell; width: 500px; }
       .button-add{ width: 25px; }
       .form-label{ display: table-cell; width: 160px; }
-      """
+     */
   }
 
   addSaveListener(this) // for TimeSeries
@@ -238,13 +239,19 @@ trait ApplicationTrait
   //    Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   //  }
 
-  def history(email: String) = withUser { implicit user =>
-    implicit request => {
-      // TODO <<<<<<<< how to send back several images in a single service ?
-      val content = computeAllXYChart(user.email).head
-      Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
+  def history(email: String, fg: Int) =
+    withUser { implicit user =>
+      implicit request => {
+        /* how to send back several images in a single service */
+        val allXYChart = computeAllXYChart(user.email)
+        if (!allXYChart.isEmpty) {
+          val content = allXYChart toIndexedSeq (fg)
+          Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
+        } else {
+          Ok("Pas encore d'historique à afficher.")
+        }
+      }
     }
-  }
 
   def contact() = Action { implicit request =>
     val user = request.session.get(Security.username).map { email => User.find(email).get }

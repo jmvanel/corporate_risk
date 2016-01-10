@@ -53,6 +53,7 @@
 <div style="clear: both"></div>
 
 @* Textual report
+TODO rétablir <<<<<<<<<<<<<<<<<<
 
 @{for( formsGroupURI <- reportData.formsGroups ) yield {
   val elems = reportData.filterQuestionnaires( user, formsGroupURI) match {
@@ -81,7 +82,9 @@
 
 <h2>Evolution de la notation au cours du temps</h2>
 
-A partir de toutes les réponses enregistrées au cours du temps, voici les courbes d'évolution.
+A partir de toutes les réponses enregistrées au cours du temps, voici les courbes d'historique.
 <br/>
-<img src="http://@request.host@routes.Application.history(user.email)" />
+<img src="http://@request.host@routes.Application.history( user.email, 0 )" />
 @* *@
+---
+<img src="http://@request.host@routes.Application.history( user.email, 1 )" />
