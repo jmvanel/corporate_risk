@@ -1,6 +1,25 @@
 @(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
 <html>
+	<head>
+		<style>
+			@@font-face {
+				font-family: "DIN";
+				src: url("/assets/fonts/DINPro-Regular.otf") format('opentype');
+			}
+			body {
+			    font-family: "DIN","Helvetica Neue",Helvetica,Arial,sans-serif;
+			    font-size: 14px;
+			    line-height: 1.42857;
+			    color: #333;
+			}
+			h1, h2 {
+				color: #1C1862;
+			}
+		</style>
+	</head>
 	<body>
+		<h1>Évaluer et Sécuriser le capital immatériel</h1>
+		<hr />
 		@report(reportData)
 	</body>
 </html>

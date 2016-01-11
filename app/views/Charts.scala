@@ -25,8 +25,10 @@ trait Charts[Rdf <: RDF, DATASET] {
   def computeChart(charttype: String, email: String): Chart = {
     val user = User.find(email)
     val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
-    val theme = new StandardChartTheme("JFree")
+    implicit val theme = new StandardChartTheme("JFree")
     theme.setChartBackgroundPaint(transparent)
+    theme.setPlotBackgroundPaint(transparent)
+    theme.setPlotOutlinePaint(transparent)
     val content = charttype match {
       case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
       case "capital" => {
