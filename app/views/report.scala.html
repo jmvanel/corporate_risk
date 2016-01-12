@@ -52,20 +52,25 @@
 </div>
 <div style="clear: both"></div>
 
-@* Textual report
-TODO rétablir <<<<<<<<<<<<<<<<<<
 
-@{for( formsGroupURI <- reportData.formsGroups ) yield {
+@* Textual report 
+  for( formsGroupName <- reportData.formsGroups
+  	formsGroupURI <- formsGroupsURIMap(formsGroupName) ) yield {
+  	*@
+
+@{ println(">>>> reportData.formsGroups " + reportData.formsGroups)
+  for( formsGroupName <- reportData.formsGroups ) yield {
+  val formsGroupURI = reportData.formsGroupsURIMap(formsGroupName)
   val elems = reportData.filterQuestionnaires( user, formsGroupURI) match {
-	case ( good, bad ) => {
-	 ( for( item <- good ) yield
+	case ( goodOnes, badOnes ) => {
+	 ( for( item <- goodOnes ) yield
 	 	if( item._1 != "" )
 	 	 <p> Un point favorable est
 	 	 <a href={ "/form?url=" + java.net.URLEncoder.encode(item._2, "utf-8") }> 
              {item._1} </a>.</p>
         else <span></span>
      ) ++ (
-     for( item <- bad ) yield
+     for( item <- badOnes ) yield
     	if( item._1 != "" )
 	 	 <p> Un point à améliorer est
 	 	 <a href={ "/form?url=" + java.net.URLEncoder.encode(item._2, "utf-8") }> 
@@ -77,7 +82,6 @@ TODO rétablir <<<<<<<<<<<<<<<<<<
   elems
 }
 }
-*@
 
 
 <h2>Evolution de la notation au cours du temps</h2>

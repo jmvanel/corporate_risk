@@ -1,19 +1,10 @@
 package models
 
-import scala.xml.Elem
-import org.w3.banana.RDF
-import org.w3.banana.SparqlGraphModule
-import org.w3.banana.SparqlOpsModule
-import org.w3.banana.XSDPrefix
-import org.w3.banana.diesel._
-import org.w3.banana.jena.Jena
-import com.hp.hpl.jena.query.Dataset
-import deductions.runtime.jena.RDFStoreLocalJena1Provider
-import deductions.runtime.dataset.RDFStoreLocalProvider
 import org.apache.log4j.Logger
 import org.w3.banana.Prefix
+import org.w3.banana.RDF
 import org.w3.banana.RDFSPrefix
-import deductions.runtime.jena.JenaRDFLoader
+
 import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 import scalax.chart.Chart
 
@@ -316,6 +307,7 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   def computeAllXYChart(email: String): Iterable[Chart]
   
   def getCompanyInfo(user: User): Option[UserCompanyInfo]
+  val formsGroupsURIMap: Map[String, String]
 }
   
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {

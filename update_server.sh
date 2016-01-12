@@ -1,24 +1,9 @@
-echo "update corporate_risk server when code has changed"
+echo "update corporate_risk server when code has changed in semantic_forms & corporate_risk"
+SBT=./activator
+export SBT=sbt
 
 cd ~/src/semantic_forms/scala/forms/
 git pull --verbose
-./activator clean publishLocal
+$SBT clean publishLocal
 
-cd ~/src/corporate_risk/
-git pull --verbose
-./activator dist
-
-echo "sofware recompiled!"
-
-cd ~/deploy
-kill `cat corporate_risk-1.0-SNAPSHOT/RUNNING_PID`
-
-# pour garder les logs
-rm -r corporate_risk-1.0-SNAPSHOT_OLD
-mv corporate_risk-1.0-SNAPSHOT  corporate_risk-1.0-SNAPSHOT_OLD
-
-unzip $HOME/src/corporate_risk/target/universal/corporate_risk-1.0-SNAPSHOT.zip
-
-cd corporate_risk-1.0-SNAPSHOT
-ln -s ../TDBrisk TDB
-nohup bin/corporate_risk -mem 100 -J-server -Dhttp.port=9153 &
+./update_server_only_corporate_risk.sh
