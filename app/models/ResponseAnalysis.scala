@@ -316,6 +316,7 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   def computeAllXYChart(email: String): Iterable[Chart]
   
   def getCompanyInfo(user: User): Option[UserCompanyInfo]
+  val formsGroupsURIMap: Map[String, String]
 }
   
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {

@@ -19,8 +19,6 @@ import scala.collection.mutable.ArrayBuffer
  * (textual) Report Generation :
  *  see "Note on the data model" in README.md
  */
-//class ReportGeneration extends RDFStoreLocalJena1Provider
-//  with ReportGenerationTrait[Jena, Dataset]
 
 trait ReportGenerationTrait[Rdf <: RDF, DATASET]
     extends ResponseAnalysisTrait[Rdf, DATASET] {

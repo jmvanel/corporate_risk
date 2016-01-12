@@ -49,6 +49,8 @@ import deductions.runtime.services.DefaultConfiguration
 import models.UserDataTrait
 import models.RDFUser
 import deductions.runtime.jena.ImplementationSettings
+import models.ReportGenerationTrait
+import models.FormsGroupsData1
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -63,7 +65,9 @@ trait ApplicationTrait
     with TimeSeriesFormGroups[Jena, Dataset]
     with Charts[Jena, Dataset]
     with UserDataTrait[Jena, Dataset]
-    with RDFUser[Jena, Dataset] {
+    with RDFUser[Jena, Dataset]
+    with ReportGenerationTrait[Jena, Dataset]
+    with FormsGroupsData1[Jena] {
 
   // override defaults from semantic_forms:
   override val recordUserActions: Boolean = true
@@ -275,6 +279,6 @@ trait ApplicationTrait
   }
 
   /** just to satisfy the compiler */
-  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = (Seq(), Seq())
+  //  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = (Seq(), Seq())
 
 }
