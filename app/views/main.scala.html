@@ -13,24 +13,22 @@
 	    <script src="@routes.Assets.at("js/bootstrap.min.js")" type="text/javascript"></script>
     </head>
     <body>
-    	<div id="header">
-    		@userOption match {
-    			case Some(user) => {
-    				<div class="username">
-    					@user.email
-    					<div><a href="@routes.Auth.logout">Se déconnecter</a></div>
-    				</div>
-    				
-   				}
-    			case None => {
-    				<div class="username">
-    					<div><a href="@routes.Auth.login">Se connecter</a></div>
-    				</div>
-    			}
-    		}
+    	<header>
+			<div class="username">
+	    		@userOption match {
+	    			case Some(user) => {
+	   					@user.email
+	   					<div><a href="@routes.Auth.logout">Se déconnecter</a></div>
+	    				
+	   				}
+	    			case None => {
+	   					<div><a href="@routes.Auth.login">Se connecter</a></div>
+	    			}
+	    		}
+  			</div>
     		<img src="@routes.Assets.at("images/logo.png")"/>
-    		<div>Version beta</div>
-    	</div>
+    	</header>
+   		<div class="beta">Beta</div>
     	<div class="container text-center"><span id="pagetitle">@title</span></div>
     	<div id="content">
         	@content
