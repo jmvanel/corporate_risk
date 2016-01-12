@@ -1,36 +1,18 @@
 package models
 
 import java.security.MessageDigest
+
 import scala.collection.mutable.ArrayBuffer
-import scala.util.Try
-import org.w3.banana.Prefix
+
 import org.w3.banana.RDF
 import org.w3.banana.RDFOps
-import org.w3.banana.RDFStore
 import org.w3.banana.jena.Jena
-import org.w3.banana.jena.JenaModule
+
+import deductions.runtime.dataset.RDFStoreLocalProvider
+import deductions.runtime.jena.ImplementationSettings
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter
-import deductions.runtime.jena.ImplementationSettings
-import deductions.runtime.dataset.RDFStoreLocalProvider
 
-/** Stores data from the info form */
-case class UserCompanyInfo(val department: Option[String] = None,
-    val naf: Option[String] = None,
-    val year: Option[String] = None,
-    val isGroup: Option[String] = None) {
-
-  def getMap =
-    (Map[String, String]() /: this.getClass.getDeclaredFields) { (map, field) =>
-      field.setAccessible(true)
-      field.get(this).asInstanceOf[Option[String]] match {
-        case None => map
-        case Some(value) => {
-          map + (field.getName -> value)
-        }
-      }
-    }
-}
 
 /**
  * data mapping between class User & RDF database;

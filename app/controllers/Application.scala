@@ -1,56 +1,45 @@
 package controllers
 
-import play.api._
-import play.api.Play.current
-import play.api.mvc._
-import play.api.data.Form
-import play.api.data.Forms._
-import deductions.runtime.html.{ CreationFormAlgo, TableViewModule }
-import deductions.runtime.jena.RDFStoreLocalJena1Provider
-import deductions.runtime.jena.RDFCache
-import deductions.runtime.services.FormSaver
-import java.net.URLDecoder
 import java.io.ByteArrayOutputStream
-import org.jfree.chart.axis.CategoryLabelPositions
-import org.jfree.chart.StandardChartTheme
-import org.xhtmlrenderer.pdf.ITextRenderer
-import scalax.chart.api._
-import deductions.runtime.dataset.RDFStoreLocalProvider
-import org.w3.banana.RDF
-import org.w3.banana.jena.Jena
-import com.hp.hpl.jena.query.Dataset
-import com.typesafe.plugin._
-import models.FormUserData
-import models.UserDataTrait
-import models.{
-  User,
-  UserCompanyInfo,
-  //  UserData,
-  UserVocab,
-  //  ResponseAnalysis, 
-  ContactInfo
-}
-import Auth._
-import org.w3.banana.SparqlOpsModule
-import org.w3.banana.RDFOpsModule
-import deductions.runtime.semlogs.TimeSeries
-import models.UserCompanyInfo
-import deductions.runtime.html.TableViewModule
-import scalax.chart.SpiderWebChart
-import org.w3.banana.jena.JenaModule
+import java.net.URLDecoder
+
 import org.apache.log4j.Logger
-import deductions.runtime.services.Configuration
-import models.TimeSeriesFormGroups
-import views.Charts
-import models.ResponseAnalysisTrait
-import models.ResponseAnalysisInterface
+import org.w3.banana.jena.Jena
+import org.w3.banana.jena.JenaModule
+import org.xhtmlrenderer.pdf.ITextRenderer
+
+import com.hp.hpl.jena.query.Dataset
+import com.typesafe.plugin.MailerPlugin
+import com.typesafe.plugin.use
+
 import deductions.runtime.html.CSS
-import deductions.runtime.services.DefaultConfiguration
-import models.UserDataTrait
-import models.RDFUser
+import deductions.runtime.html.TableViewModule
 import deductions.runtime.jena.ImplementationSettings
-import models.ReportGenerationTrait
+import deductions.runtime.jena.RDFStoreLocalJena1Provider
+import deductions.runtime.services.DefaultConfiguration
+import deductions.runtime.services.FormSaver
+import models.ContactInfo
+import models.FormUserData
 import models.FormsGroupsData1
+import models.RDFUser
+import models.ReportGenerationTrait
+import models.ResponseAnalysisInterface
+import models.TimeSeriesFormGroups
+import models.User
+import models.UserCompanyInfo
+import models.UserDataTrait
+import play.api.Play
+import play.api.Play.current
+import play.api.data.Form
+import play.api.data.Forms.mapping
+import play.api.data.Forms.optional
+import play.api.data.Forms.text
+import play.api.mvc.Action
+import play.api.mvc.AnyContentAsFormUrlEncoded
+import play.api.mvc.Controller
+import play.api.mvc.Security
+import scalax.chart.api.ChartPNGExporter
+import views.Charts
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]

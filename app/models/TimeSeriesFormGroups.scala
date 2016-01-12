@@ -1,13 +1,12 @@
 package models
 
-import deductions.runtime.semlogs._
+import scala.concurrent.ExecutionContext.Implicits
+
 import org.w3.banana.RDF
-import deductions.runtime.dataset.RDFStoreLocalProvider
-import java.util.Date
-import deductions.runtime.semlogs.TimeSeries
-import scala.concurrent.Future
-import org.w3.banana.syntax._
 import org.w3.banana.RDFSPrefix
+
+import deductions.runtime.semlogs.LogAPI
+import deductions.runtime.semlogs.TimeSeries
 
 /** record history of averages Per user Form */
 trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]

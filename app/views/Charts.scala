@@ -2,18 +2,20 @@ package views
 
 import org.jfree.chart.StandardChartTheme
 import org.jfree.chart.axis.CategoryLabelPositions
+import org.w3.banana.RDF
+
+import models.User
+import scalax.chart.Chart
 import scalax.chart.SpiderWebChart
 import scalax.chart.api.BarChart
-import scalax.chart.api.XYLineChart
 import scalax.chart.api.Color
-import scalax.chart.api.Orientation._
-import org.w3.banana.RDF
-import models.User
+import scalax.chart.api.Orientation.Vertical
+import scalax.chart.api.ToCategoryDataset.FromTuple2s
+import scalax.chart.api.XYLineChart
+
 import models.ResponseAnalysisTrait
 import models.TimeSeriesFormGroups
-import scalaz.IsEmpty
-import scalax.chart.XYChart
-import scalax.chart.Chart
+
 
 trait Charts[Rdf <: RDF, DATASET] {
   self: ResponseAnalysisTrait[Rdf, DATASET] with TimeSeriesFormGroups[Rdf, DATASET] =>
