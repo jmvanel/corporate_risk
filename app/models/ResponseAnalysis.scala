@@ -308,6 +308,7 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   
   def getCompanyInfo(user: User): Option[UserCompanyInfo]
   val formsGroupsURIMap: Map[String, String]
+  def getNAFLabel(number: String, lang: String = "fr"): String
 }
   
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {

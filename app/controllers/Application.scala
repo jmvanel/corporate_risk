@@ -2,16 +2,13 @@ package controllers
 
 import java.io.ByteArrayOutputStream
 import java.net.URLDecoder
-
 import org.apache.log4j.Logger
 import org.w3.banana.jena.Jena
 import org.w3.banana.jena.JenaModule
 import org.xhtmlrenderer.pdf.ITextRenderer
-
 import com.hp.hpl.jena.query.Dataset
 import com.typesafe.plugin.MailerPlugin
 import com.typesafe.plugin.use
-
 import deductions.runtime.html.CSS
 import deductions.runtime.html.TableViewModule
 import deductions.runtime.jena.ImplementationSettings
@@ -40,6 +37,7 @@ import play.api.mvc.Controller
 import play.api.mvc.Security
 import scalax.chart.api.ChartPNGExporter
 import views.Charts
+import models.LOD
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -56,7 +54,8 @@ trait ApplicationTrait
     with UserDataTrait[Jena, Dataset]
     with RDFUser[Jena, Dataset]
     with ReportGenerationTrait[Jena, Dataset]
-    with FormsGroupsData1[Jena] {
+    with FormsGroupsData1[Jena]
+    with LOD[Jena, Dataset] {
 
   // override defaults from semantic_forms:
   override val recordUserActions: Boolean = true

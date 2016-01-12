@@ -9,7 +9,8 @@ runMain tdb.tdbloader --loc=TDB --graph=vocabulary \
 	vocabulary/capital/Evaluation_capital_Structurel.owl.ttl \
 	vocabulary/capital/Evaluation_du_capital_humain.owl.ttl \
 	vocabulary/risk/semantic_links.ttl \
-	vocabulary/capital/semantic_links.ttl
+	vocabulary/capital/semantic_links.ttl \
+runMain tdb.tdbloader --loc=TDB --graph=insee.NAF data/nafr2.ttl
 EOF
 
 echo "Local SPARQL database in TDB/ populated."
