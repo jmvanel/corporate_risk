@@ -37,10 +37,10 @@ trait LOD[Rdf <: RDF, DATASET]
     val res = sparqlSelectQueryVariables(query, Seq("LABEL"))
     val node = res.flatten.headOption.getOrElse(Literal(""))
     val valueFromTDB = foldNode(node)(_ => "", _ => "", l => fromLiteral(l)._1)
-    
-    if( valueFromTDB != "" )
-      valueFromTDB
-    else
-      s"Le code NAF $number ($notation) n'existe pas."
+
+    valueFromTDB match {
+      case "" => s"Le code NAF $number ( $notation ) n'existe pas."
+      case _  => valueFromTDB
+    }
   }
 }

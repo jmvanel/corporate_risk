@@ -162,4 +162,6 @@ object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
   def getUserFromURI(userURI: String): User =
     User(bizinnovUserPrefix.unapply(URI(userURI)).get, "", "")
   
+    def getUserURIFromEmail(email: String): String =
+      fromUri( User( email, "", "").getURI() )
 }

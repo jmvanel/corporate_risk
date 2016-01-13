@@ -3,7 +3,6 @@ package views
 import org.jfree.chart.StandardChartTheme
 import org.jfree.chart.axis.CategoryLabelPositions
 import org.w3.banana.RDF
-
 import models.User
 import scalax.chart.Chart
 import scalax.chart.SpiderWebChart
@@ -12,18 +11,22 @@ import scalax.chart.api.Color
 import scalax.chart.api.Orientation.Vertical
 import scalax.chart.api.ToCategoryDataset.FromTuple2s
 import scalax.chart.api.XYLineChart
-
 import models.ResponseAnalysisTrait
 import models.TimeSeriesFormGroups
-
+import org.jfree.data.time.TimeSeries
+import org.jfree.data.time.FixedMillisecond
+import org.jfree.chart.ChartFactory
+import org.jfree.data.time.TimeSeriesCollection
 
 trait Charts[Rdf <: RDF, DATASET] {
   self: ResponseAnalysisTrait[Rdf, DATASET] with TimeSeriesFormGroups[Rdf, DATASET] =>
 
   private val responseAnalysis = this;
 
-  /** compute Chart: chart type is "risk" or "capital";
-   *  transactional */
+  /**
+   * compute Chart: chart type is "risk" or "capital";
+   *  transactional
+   */
   def computeChart(charttype: String, email: String): Chart = {
     val user = User.find(email)
     val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
@@ -60,25 +63,43 @@ trait Charts[Rdf <: RDF, DATASET] {
    *  associated with given user
    */
   def computeXYCharts(formGroupURI: String, email: String): Iterable[Chart] = {
-    implicit val userURI = email
+    implicit val userURI = User.getUserURIFromEmail(email)
     //    getTimeSeries(predicateURI = "urn:average")
-    //    getTimeSeries("urn:average")
     val timeSeries = getTimeSeries()
-    println("timeSeries " + timeSeries)
-    for {
+    println(s"timeSeries $timeSeries")
+    val labelsAndTimeSeries = for {
       label <- timeSeries.keys
       ts1 <- timeSeries.get(label) if (!ts1.isEmpty)
     } yield {
-      val ts // : scala.collection.immutable.IndexedSeq[(java.util.Date, Double)]
-      = ts1.toIndexedSeq.map {
-        e =>
-          (
-            // new java.util.Date
-            (e._1.longValueExact()), e._2)
+      val ts = ts1.toIndexedSeq.map {
+        e => ((e._1.longValueExact()), e._2)
       }
-      val chart = XYLineChart(data = ts, title = label, orientation = Vertical, legend = true)
-      //      chart.show()  // debug <<
-      chart
+      println(">>> computeXYCharts " + ts)
+      label -> ts
     }
+
+    val dataset = new TimeSeriesCollection()
+    for( (label, timeSeries) <- labelsAndTimeSeries ) {
+      val tsForJFreeCharts = new TimeSeries( label )
+      timeSeries . map {
+        case (timestamp, value) =>
+        tsForJFreeCharts.add(new FixedMillisecond(timestamp), value)
+      }
+      dataset.addSeries(tsForJFreeCharts)
+    }
+      // inspired by org.jfree.chart.demo.TimeSeriesChartDemo1
+      val chart = ChartFactory.createTimeSeriesChart(
+        formGroupURIToLabel(formGroupURI), // title
+        "Date", // x-axis label
+        "", // y-axis label
+        dataset,
+        true, // create legend?
+        true, // generate tooltips?
+        false // generate URLs?
+        );
+
+      // XYLineChart(data = ts, title = label, orientation = Vertical, legend = true)
+      //      chart.show()  // debug <<
+    Seq(Chart.fromPeer(chart))
   }
 }

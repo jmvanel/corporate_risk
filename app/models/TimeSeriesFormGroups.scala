@@ -24,7 +24,11 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
 
   /**
    * save averages for current form to a specific new named graph,
-   *  and add timestamp metadata to default unamed graph;
+   *  and add timestamp metadata to metadata graph;
+   *
+   * Data saved is used in web service Application#history(),
+   * calling Charts#computeAllXYChart() ,
+   * calling  TimeSeries#getTimeSeries() from semantic_forms ;
    * transactional
    */
   override def notifyDataEvent(
@@ -36,15 +40,15 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
         dataset2.rw({
           val (graphUri, metadata) = makeGraphURIAndMetadata(addedTriples, removedTriples)
           println("TimeSeriesFormGroups.notifyDataEvent: metadata" + metadata)
-          dataset2.appendToGraph(URI(""), metadata)
+          dataset2.appendToGraph( metadataGraph, metadata)
           // typically 1 subject
           val subjects = addedTriples.map { _.subject }.distinct
           /* NOTE: transaction within transaction, but with a different database! */
           val graphs =
 //            dataset.r({
-            subjects.map { subj =>
-              val avTuple = averagePerForm(User.getUserFromURI(userURI), subj.toString())
-              (URI(userURI)
+            subjects.map { subject =>
+              val avTuple = averagePerForm(User.getUserFromURI(userURI), subject.toString())
+              ( subject // URI(userURI)
                 -- URI("urn:average") ->- avTuple._1.toDouble
                 -- rdfs.label ->- avTuple._3).graph
             }
