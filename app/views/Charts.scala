@@ -17,12 +17,25 @@ import org.jfree.data.time.TimeSeries
 import org.jfree.data.time.FixedMillisecond
 import org.jfree.chart.ChartFactory
 import org.jfree.data.time.TimeSeriesCollection
+import org.w3.banana.binder.FromURI
+import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 
-trait Charts[Rdf <: RDF, DATASET] {
-  self: ResponseAnalysisTrait[Rdf, DATASET] with TimeSeriesFormGroups[Rdf, DATASET] =>
+trait Charts[Rdf <: RDF, DATASET]
+extends ResponseAnalysisTrait[Rdf, DATASET]
+  with TimeSeriesFormGroups[Rdf, DATASET]
+  with InstanceLabelsInferenceMemory[Rdf, DATASET]
+{
+//  self: ResponseAnalysisTrait[Rdf, DATASET]
+//  with TimeSeriesFormGroups[Rdf, DATASET]
+//  with InstanceLabelsInferenceMemory[Rdf, DATASET] =>
 
   private val responseAnalysis = this;
 
+  import ops._
+  import rdfStore.transactorSyntax._
+  import rdfStore.graphStoreSyntax._
+  import rdfStore.sparqlEngineSyntax._
+  
   /**
    * compute Chart: chart type is "risk" or "capital";
    *  transactional
@@ -45,7 +58,7 @@ trait Charts[Rdf <: RDF, DATASET] {
     }
     content
   }
-
+  
   /**
    * @return all non empty X-Y Charts with X = timestamp, and Y = average,
    * for all form groups,
@@ -63,36 +76,46 @@ trait Charts[Rdf <: RDF, DATASET] {
    *  associated with given user
    */
   def computeXYCharts(formGroupURI: String, email: String): Iterable[Chart] = {
+    // TODO ? move to a class to manage data model
+    val labelsInFormGroup = dataset.rw({
+      val formGroup = applicationClassesAndProperties(URI(formGroupURI))
+      val classesAndProperties = formGroup.classesAndProperties
+      classesAndProperties.map {
+        case (classe, property) =>
+          instanceLabel(classe, allNamedGraph, "fr")
+      }
+    }).get
+    println( "labelsInFormGroup " + labelsInFormGroup )
     implicit val userURI = User.getUserURIFromEmail(email)
     //    getTimeSeries(predicateURI = "urn:average")
     val timeSeries = getTimeSeries()
     println(s"timeSeries $timeSeries")
     val labelsAndTimeSeries = for {
       label <- timeSeries.keys
+       // filter labels not corresponding to given formGroupURI
+       if labelsInFormGroup.contains(label)
       ts1 <- timeSeries.get(label) if (!ts1.isEmpty)
     } yield {
       val ts = ts1.toIndexedSeq.map {
-        e => ((e._1.longValueExact()), e._2)
-      }
+        e => ((e._1.longValueExact()), e._2) }
       println(">>> computeXYCharts " + ts)
       label -> ts
     }
-
-    val dataset = new TimeSeriesCollection()
+    val chartDataset = new TimeSeriesCollection()
     for( (label, timeSeries) <- labelsAndTimeSeries ) {
       val tsForJFreeCharts = new TimeSeries( label )
       timeSeries . map {
         case (timestamp, value) =>
         tsForJFreeCharts.add(new FixedMillisecond(timestamp), value)
       }
-      dataset.addSeries(tsForJFreeCharts)
+      chartDataset.addSeries(tsForJFreeCharts)
     }
       // inspired by org.jfree.chart.demo.TimeSeriesChartDemo1
       val chart = ChartFactory.createTimeSeriesChart(
         formGroupURIToLabel(formGroupURI), // title
         "Date", // x-axis label
         "", // y-axis label
-        dataset,
+        chartDataset,
         true, // create legend?
         true, // generate tooltips?
         false // generate URLs?

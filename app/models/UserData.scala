@@ -191,8 +191,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   //  private
   def infor(s: String) = Logger.getRootLogger().info(s)
 
-  /**
-   * return a FormGroup, that is a sequence of URI couples:
+  /** @argument formGroup URI like eg http://www.bizinnov.com/ontologies/quest.owl.ttl#capital-fg
+   * @return a FormGroup, that is a sequence of URI couples:
    *  - an OWL class C,
    *  - and a property whose domain is :User and range C
    *
@@ -205,24 +205,17 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
-  /** like before, different argument type */
+  /** like before, different argument type (eg "risk-fg")
+   * NON transactional */
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
     infor(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
-      case name if (name.startsWith("risk")) => FormGroup(applicationClassesAndPropertiesRisk,
-        "Questions sur la gestion des risques.")
+      case name if (name.startsWith("risk")) =>
+        FormGroup(applicationClassesAndPropertiesRisk,
+            "Questions sur la gestion des risques.")
       case name => classesAndProperties(name)
     }
   }
-
-  //  def getPropertiesInFormGroup(formGroup: String): Seq[String] = {
-  //    val nodes = dataset.r( {
-  //      val graphForVocabulary = dataset.getGraph( URI("vocabulary")).get
-  //      val triples = find(graphForVocabulary, bizinnovQuestionsVocabPrefix(formGroup), bizinnovQuestionsVocabPrefix("properties"), ANY)
-  //      triples.map { triple => triple.toString() }.toSeq
-  //    })
-  //    nodes.get
-  //  }
 
   private def questionsVocabURI2String(uri: Rdf#URI): String = bizinnovQuestionsVocabPrefix.unapply(uri).getOrElse("")
 
@@ -232,10 +225,10 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       bizinnovQuestionsVocabPrefix("prop-" + i.toString()))
   }
 
-  /** @param fg is URI ending for forms group */
+  /** @param fg is URI ending for forms group (eg "risk-fg")
+   * NON transactional */
   private def classesAndProperties(fg: String): FormGroup = {
     applicationClassesAndPropertiesGeneric(
-      //      fromUri(bizinnovQuestionsVocabPrefix(fg)))
       if (formsGroupsURIMap.contains(fg))
         formsGroupsURIMap(fg)
       else
