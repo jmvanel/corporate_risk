@@ -86,6 +86,7 @@ with UserVocab[Rdf] {
 
   /** transactional */
   def getCompanyInfo(user: User): Option[UserCompanyInfo] = {
+    val nonEntered = Some(UserCompanyInfo( Some("Non renseigné"), Some("9999"), Some("2222"),  Some("Non renseigné") ))
     dataset.r({
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val userURI = getSubjects(userGraph,
@@ -100,11 +101,11 @@ with UserVocab[Rdf] {
           bizinnovUserVocabPrefix("year")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
         val isGroup = getObjects(userGraph, userURI.head,
           bizinnovUserVocabPrefix("isGroup")).headOption.map(n => fromLiteral(n.asInstanceOf[Rdf#Literal])._1)
-        Some(new UserCompanyInfo(department, naf, year, isGroup))
+        Some(UserCompanyInfo(department, naf, year, isGroup))
       } else {
-        None
+        nonEntered
       }
-    }).getOrElse(None)
+    }).getOrElse(nonEntered)
   }
 }
 

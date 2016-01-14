@@ -2,10 +2,10 @@
 
 <h2>Présentation de l’entreprise</h2>
  @* reprendre les éléments du formulaire *@
- Code NAF : @{ reportData.getCompanyInfo(user).get.naf } . <br/>
- @{ reportData.getNAFLabel( reportData.getCompanyInfo(user).get.naf.get ) } .
+ Code NAF : @{ reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") } . <br/>
+ @{ reportData.getNAFLabel( reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") ) } .
  <br/>
- Année de création: @{ reportData.getCompanyInfo(user).get. year } <br/> .
+ Année de création: @{ reportData.getCompanyInfo(user).get. year.getOrElse("N.R.") } <br/> .
  @{ if( reportData.getCompanyInfo(user).get. isGroup )
  	"Fait partie d'un groupe."
  	else
