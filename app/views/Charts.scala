@@ -19,6 +19,12 @@ import org.jfree.chart.ChartFactory
 import org.jfree.data.time.TimeSeriesCollection
 import org.w3.banana.binder.FromURI
 import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
+import java.awt.Color
+import org.jfree.chart.plot.XYPlot
+import org.jfree.ui.RectangleInsets
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer
+import org.jfree.chart.axis.DateAxis
+import java.text.SimpleDateFormat
 
 trait Charts[Rdf <: RDF, DATASET]
 extends ResponseAnalysisTrait[Rdf, DATASET]
@@ -123,6 +129,30 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
 
       // XYLineChart(data = ts, title = label, orientation = Vertical, legend = true)
       //      chart.show()  // debug <<
-    Seq(Chart.fromPeer(chart))
+      configureChart(chart)
+      Seq(Chart.fromPeer(chart))
+  }
+
+  def configureChart(chart: org.jfree.chart.JFreeChart) {
+    chart.setBackgroundPaint(Color.white);
+    val plot = chart.getPlot().asInstanceOf[XYPlot]
+    plot.setBackgroundPaint(Color.lightGray);
+    plot.setDomainGridlinePaint(Color.white);
+    plot.setRangeGridlinePaint(Color.white);
+    plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
+    plot.setDomainCrosshairVisible(true);
+    plot.setRangeCrosshairVisible(true);
+    //        XYItemRenderer
+    val r = plot.getRenderer()
+    r match {
+      case renderer: XYLineAndShapeRenderer =>
+        renderer.setBaseShapesVisible(true);
+        renderer.setBaseShapesFilled(true);
+        renderer.setDrawSeriesLineAsPath(true);
+    }
+    val timeAxis = plot.getDomainAxis().asInstanceOf[DateAxis]
+    timeAxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"))
+
+    val valueAxis = plot.getRangeAxis.setRange( 0, 5)
   }
 }

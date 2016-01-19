@@ -63,6 +63,7 @@ trait ApplicationTrait
   override val showRDFtype = false
   override val showPlusButtons = false
   override val inlineJavascriptInForm = false
+  override val displayTechnicalSemWebDetails = false
   override val css: CSS = new CSS {
     override val cssRules = ""
     /*
