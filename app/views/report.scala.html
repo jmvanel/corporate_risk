@@ -1,5 +1,14 @@
 @(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
 
+<h1>Rapport d'évaluation V.S.I.</h1>
+Date: @{
+	import java.text.SimpleDateFormat
+	import java.util.Locale
+	val date = new java.util.Date()
+	val dateFormat = new SimpleDateFormat("EEEE dd MMM yyyy, HH:mm", Locale.FRENCH)
+    dateFormat.format(date)
+} .
+
 <h2>Présentation de l’entreprise</h2>
  @* reprendre les éléments du formulaire *@
  Code NAF : @{ reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") } . <br/>

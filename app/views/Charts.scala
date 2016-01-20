@@ -58,7 +58,8 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
     val content = charttype match {
       case "risk" => 
         val chart = SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
-        // FAILS:  val spiderWebPlot = chart.peer.asInstanceOf[SpiderWebPlot]  
+        val spiderWebPlot = chart.peer.asInstanceOf[ org.jfree.chart.JFreeChart ]
+//        println( "chart.peer.getClass " + chart.peer.getClass )
         chart
       case "capital" => {
         val chart = BarChart(responseAnalysis.getCapitalEval(email).toVector)
