@@ -5,7 +5,7 @@
  Code NAF : @{ reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") } . <br/>
  @{ reportData.getNAFLabel( reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") ) } .
  <br/>
- Année de création: @{ reportData.getCompanyInfo(user).get. year.getOrElse("N.R.") } <br/> .
+ Année de création: @{ reportData.getCompanyInfo(user).get. year.getOrElse("N.R.") } . <br/> 
  @{ if( reportData.getCompanyInfo(user).get. isGroup )
  	"Fait partie d'un groupe."
  	else
@@ -13,15 +13,18 @@
  } <br/>
 
   <h2>
- Bilan de la valorisation de l’immatériel de l’entreprise
+ Bilan de la valorisation de l’entreprise
  </h2>
 <p>
  	@if(reportData.globalEval(user) > 3) {
-     L'entreprise a une bonne évaluation (@reportData.globalEval(user)) sur 5 .
+     L'entreprise a une bonne évaluation:
+     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
   	} else {
-	  L'entreprise a une mauvaise évaluation (@reportData.globalEval(user)) sur 5 .
+	  L'entreprise a une mauvaise évaluation:
+     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
    }
 </p>
+Cette moyenne ne tient pas compte des formulaires non remplis.
 
 <h2>Gestion des risques</h2>
 
@@ -40,7 +43,7 @@
 		@for((form, eval) <- reportData.getRiskEval(user.email)) {
 		<tr>
 			<td>@form</td>
-			<td>@("%.1f".format(eval))</td>
+			<td>@("%.2f".format(eval))</td>
 		</tr>
 		}
 	</table>
@@ -54,6 +57,23 @@
 </div>
 <div style="clear: both"></div>
 
+<div style="float: left">
+	<table>
+		<tr>
+			<th>Thème</th>
+			<th>Note sur 5</th>
+		</tr>
+		@for((form, eval) <- reportData.getCapitalEval(user.email) ) {
+		<tr>
+			<td>@form</td>
+			<td>@("%.2f".format(eval))</td>
+		</tr>
+		}
+	</table>
+</div>
+<div style="clear: both"></div>
+
+<h2>Récapitulation et recommandations</h2>
 
 @* Textual report 
   for( formsGroupName <- reportData.formsGroups

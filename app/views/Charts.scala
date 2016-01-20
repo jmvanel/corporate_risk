@@ -25,6 +25,8 @@ import org.jfree.ui.RectangleInsets
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer
 import org.jfree.chart.axis.DateAxis
 import java.text.SimpleDateFormat
+import org.jfree.chart.plot.SpiderWebPlot
+import java.awt.Rectangle
 
 trait Charts[Rdf <: RDF, DATASET]
 extends ResponseAnalysisTrait[Rdf, DATASET]
@@ -54,7 +56,10 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
     theme.setPlotBackgroundPaint(transparent)
     theme.setPlotOutlinePaint(transparent)
     val content = charttype match {
-      case "risk" => SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
+      case "risk" => 
+        val chart = SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
+        // FAILS:  val spiderWebPlot = chart.peer.asInstanceOf[SpiderWebPlot]  
+        chart
       case "capital" => {
         val chart = BarChart(responseAnalysis.getCapitalEval(email).toVector)
         chart.plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.UP_45)
@@ -126,14 +131,12 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
         true, // generate tooltips?
         false // generate URLs?
         );
-
-      // XYLineChart(data = ts, title = label, orientation = Vertical, legend = true)
       //      chart.show()  // debug <<
-      configureChart(chart)
+      configureXYChart(chart)
       Seq(Chart.fromPeer(chart))
   }
 
-  def configureChart(chart: org.jfree.chart.JFreeChart) {
+  private def configureXYChart(chart: org.jfree.chart.JFreeChart) {
     chart.setBackgroundPaint(Color.white);
     val plot = chart.getPlot().asInstanceOf[XYPlot]
     plot.setBackgroundPaint(Color.lightGray);
@@ -142,7 +145,6 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
     plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
     plot.setDomainCrosshairVisible(true);
     plot.setRangeCrosshairVisible(true);
-    //        XYItemRenderer
     val r = plot.getRenderer()
     r match {
       case renderer: XYLineAndShapeRenderer =>
