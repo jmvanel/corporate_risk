@@ -58,11 +58,11 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
     val content = charttype match {
       case "risk" => 
         val chart = SpiderWebChart(responseAnalysis.getRiskEval(email).toVector)
-        val spiderWebPlot = chart.peer.asInstanceOf[ org.jfree.chart.JFreeChart ]
-//        println( "chart.peer.getClass " + chart.peer.getClass )
+        chart.peer.removeLegend()
         chart
       case "capital" => {
         val chart = BarChart(responseAnalysis.getCapitalEval(email).toVector)
+        chart.peer.asInstanceOf[ org.jfree.chart.JFreeChart ].removeLegend()
         chart.plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.UP_45)
         chart
       }
@@ -138,9 +138,10 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
   }
 
   private def configureXYChart(chart: org.jfree.chart.JFreeChart) {
-    chart.setBackgroundPaint(Color.white);
+    val transparent = new Color(0xFF, 0xFF, 0xFF, 0)
+    chart.setBackgroundPaint(transparent);
     val plot = chart.getPlot().asInstanceOf[XYPlot]
-    plot.setBackgroundPaint(Color.lightGray);
+    plot.setBackgroundPaint(transparent);
     plot.setDomainGridlinePaint(Color.white);
     plot.setRangeGridlinePaint(Color.white);
     plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));

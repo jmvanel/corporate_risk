@@ -211,7 +211,7 @@ trait ApplicationTrait
    */
   def chart(charttype: String, email: String) = Action {
     val content = computeChart(charttype, email)
-    Ok(content.encodeAsPNG(320, 320)).withHeaders(CONTENT_TYPE -> "image/png")
+    Ok(content.encodeAsPNG(640, 320)).withHeaders(CONTENT_TYPE -> "image/png")
   }
 
   def history(email: String, fg: Int) =
