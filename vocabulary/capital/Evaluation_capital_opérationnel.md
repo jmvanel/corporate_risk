@@ -4,9 +4,9 @@ Evaluation du capital opérationnel
 Ce questionnaire a pour but de permettre l'évaluation du capital
 opérationnel selon les thèmes suivants :
 
-1. Capital naturel 
+1. Capital Naturel 
 
-1. capital sociétal 
+1. capital Sociétal 
 
 1. capital de marque 
 
@@ -88,7 +88,7 @@ Veuillez sélectionner une seule des propositions suivantes :
     attractives du point de vue géographique. Exemple: Bretagne, Alpes,
     Côte d’Azur…
 
-Capital sociétal
+Capital Sociétal
 ----------------
 
 Sont regroupées les rubriques :

@@ -29,8 +29,10 @@
     		<img src="@routes.Assets.at("images/logo.png")"/>
     	</header>
    		<div class="beta">Beta</div>
-    	<div class="container text-center"><span id="pagetitle">@title</span></div>
-    	<div id="content">
+    	@{ if( title != "" )
+	<div class="container text-center"><span id="pagetitle">@title</span></div>
+    	}
+	<div id="content">
         	@content
         </div>
         	
