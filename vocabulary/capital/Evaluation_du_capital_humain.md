@@ -5,7 +5,7 @@ Ce questionnaire regroupe les thèmes :
 
 1. -capital humain (collaborateurs et dirigeants 
 
-1. -capital de savoir 
+1. -capital de Savoir 
 
 Il y a 59 questions dans ce questionnaire
 
@@ -332,7 +332,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Forte proximité, liberté de parole, management participatif
 - Tensions rares et le management est participatif
 
-Capital de savoir
+Capital de Savoir
 -----------------
 
 #### Y a-t-il nouveauté ou innovation ?
