@@ -793,4 +793,3 @@ Veuillez sélectionner une seule des propositions suivantes :
 - 10%
 - Plus de 10 %
 
-

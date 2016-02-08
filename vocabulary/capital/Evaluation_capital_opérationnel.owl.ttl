@@ -190,6 +190,11 @@ ques:capital-15
         owl:oneOf rdf:nil
     ] .
 
+ques:capital-15-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-15 .
+
 ques:capital-16
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
@@ -312,6 +317,11 @@ ques:capital-2
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
+
+ques:capital-2-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-2 .
 
 ques:capital-20
     a owl:ObjectProperty ;
@@ -690,8 +700,7 @@ ques:capital-7
             [
                 ques:value 5 ;
                 rdfs:label """ Les sites de l’entreprise sont implantés dans des régions très
-attractives du point de vue climat : Région PACA, Midi Pyrénées
-Les sites de l’entreprise sont implantés dans des régions très"""
+attractives du point de vue climat : Région PACA, Midi Pyrénées"""
             ]
         )
     ] .
@@ -732,28 +741,18 @@ Côte d’Azur…"""
 
 ques:capital-9
     a owl:Class ;
-    rdfs:label "Capital sociétal" ;
+    rdfs:label "Capital Sociétal" ;
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
 
-ques:capital-fg
-    ques:properties <ques:capital-15-user-prop>, <ques:capital-2-user-prop>, <ques:capital-9-user-prop> ;
-    a ques:FormGroup ;
-    rdfs:label "Questions sur le capital immatériel."@fr .
-
-<ques:capital-15-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-15 .
-
-<ques:capital-2-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2 .
-
-<ques:capital-9-user-prop>
+ques:capital-9-user-prop
     a owl:ObjectProperty ;
     rdfs:domain ques:User ;
     rdfs:range ques:capital-9 .
+
+ques:capital-fg
+    ques:properties ques:capital-15-user-prop, ques:capital-2-user-prop, ques:capital-9-user-prop ;
+    a ques:FormGroup ;
+    rdfs:label "Questions sur le capital immatériel."@fr .
 

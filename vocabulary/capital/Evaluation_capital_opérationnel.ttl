@@ -9,8 +9,8 @@ ques:capital-1 ques:header """Evaluation du capital opérationnel""" .
 ques:capital-0 ques:subheader ques:capital-1 .
  ques:capital-1 ques:paragraph """Ce questionnaire a pour but de permettre l'évaluation du capital
 opérationnel selon les thèmes suivants :""" .
-  ques:capital-1 ques:paragraph """Capital naturel """ .
-   ques:capital-1 ques:paragraph """capital sociétal """ .
+  ques:capital-1 ques:paragraph """Capital Naturel """ .
+   ques:capital-1 ques:paragraph """capital Sociétal """ .
    ques:capital-1 ques:paragraph """capital de marque """ .
     ques:capital-1 ques:paragraph """Il y a 34 questions dans ce questionnaire""" .
   
@@ -68,8 +68,7 @@ ques:capital-7 ques:item """ Bretagne, Est, Massif Central, Normandie""" .
 ques:capital-7 ques:item """ Ile de France""" .
 ques:capital-7 ques:item """ Aquitaine, Rhône Alpes""" .
 ques:capital-7 ques:item """ Les sites de l’entreprise sont implantés dans des régions très
-attractives du point de vue climat : Région PACA, Midi Pyrénées
-Les sites de l’entreprise sont implantés dans des régions très""" .
+attractives du point de vue climat : Région PACA, Midi Pyrénées""" .
  
 ques:capital-8 ques:header """Géographie et climat""" .
 ques:capital-2 ques:subheader ques:capital-8 .
@@ -85,7 +84,7 @@ ques:capital-8 ques:item """ Les sites de l’entreprise sont implantés dans de
 attractives du point de vue géographique. Exemple: Bretagne, Alpes,
 Côte d’Azur…""" .
  
-ques:capital-9 ques:header """Capital sociétal""" .
+ques:capital-9 ques:header """Capital Sociétal""" .
 ques:capital-2 ques:subheader ques:capital-9 .
  ques:capital-9 ques:paragraph """Sont regroupées les rubriques :""" .
   ques:capital-9 ques:paragraph """Sport, culture, loisirs""" .

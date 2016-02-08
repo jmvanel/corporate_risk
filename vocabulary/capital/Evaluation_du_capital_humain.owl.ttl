@@ -21,6 +21,11 @@ ques:capital-2002
         owl:oneOf rdf:nil
     ] .
 
+ques:capital-2002-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-2002 .
+
 ques:capital-2003
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
@@ -171,8 +176,7 @@ ques:capital-2009
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord »
-Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord » """
+                rdfs:label "Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord »"
             ]
             [
                 ques:value 2 ;
@@ -180,13 +184,11 @@ Entre 80% à 100 %de « plutôt pas d’accord » et de « pas d’accord » ""
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord »
-Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord » """
+                rdfs:label "Entre 40% à 60%de « plutôt pas d’accord » et de « pas d’accord »"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord »
-Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord » """
+                rdfs:label "Entre 20% à 40%de « plutôt pas d’accord » et de « pas d’accord »"
             ]
             [
                 ques:value 5 ;
@@ -290,23 +292,19 @@ ques:capital-2013
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """De 0% à 20%
-De 0% à 20% """
+                rdfs:label "De 0% à 20%"
             ]
             [
                 ques:value 2 ;
-                rdfs:label """De 20% à 40%
-De 20% à 40% """
+                rdfs:label "De 20% à 40%"
             ]
             [
                 ques:value 3 ;
-                rdfs:label """De 40% à 70%
-De 40% à 70% """
+                rdfs:label "De 40% à 70%"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """De 70% à 80%
-De 70% à 80% """
+                rdfs:label "De 70% à 80%"
             ]
             [
                 ques:value 5 ;
@@ -360,13 +358,11 @@ ques:capital-2015
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Politique de diversité mais peu de résultat visible
-Politique de diversité mais peu de résultat visible """
+                rdfs:label "Politique de diversité mais peu de résultat visible"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """Très forte diversité mais insuffisance dans le codir (codir= comité de direction)
-Très forte diversité mais insuffisance dans le codir (codir= comité de direction) """
+                rdfs:label "Très forte diversité mais insuffisance dans le codir (codir= comité de direction)"
             ]
             [
                 ques:value 5 ;
@@ -941,10 +937,15 @@ ques:capital-2035
 
 ques:capital-2036
     a owl:Class ;
-    rdfs:label "Capital de savoir" ;
+    rdfs:label "Capital de Savoir" ;
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
+
+ques:capital-2036-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-2036 .
 
 ques:capital-2037
     a owl:ObjectProperty ;
@@ -1256,8 +1257,7 @@ ques:capital-2047
             ]
             [
                 ques:value 4 ;
-                rdfs:label """Top 5
-Top 5 """
+                rdfs:label "Top 5"
             ]
             [
                 ques:value 5 ;
@@ -1311,8 +1311,7 @@ ques:capital-2049
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Ne fait défaut sur aucune fonction
-Ne fait défaut sur aucune fonction """
+                rdfs:label "Ne fait défaut sur aucune fonction"
             ]
             [
                 ques:value 4 ;
@@ -1356,7 +1355,7 @@ ques:capital-2050
 
 ques:capital-2051
     a owl:ObjectProperty ;
-    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
+    rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :", " " ;
     rdfs:domain ques:capital-2036 ;
     rdfs:label "Taille du marché accessible (mesure de la demande)" ;
     rdfs:range [
@@ -1383,115 +1382,8 @@ ques:capital-2051
         )
     ] .
 
-ques:capital-2052
-    a owl:Class ;
-    rdfs:label "Identification de l'entreprise" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2053
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2054
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2055
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2056
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2057
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2058
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2059
-    a owl:ObjectProperty ;
-    rdfs:comment "Totale et par région :", "Veuillez écrire votre(vos) réponse(s) ici :", " " ;
-    rdfs:domain ques:capital-2052 ;
-    rdfs:label "[]Marge brute annuelle :" ;
-    rdfs:range [
-        owl:oneOf ([
-                ques:value 1 ;
-                rdfs:label "Total :"
-            ]
-            [
-                ques:value 2 ;
-                rdfs:label "Europe (EU) :"
-            ]
-            [
-                ques:value 3 ;
-                rdfs:label "US/Canada :"
-            ]
-            [
-                ques:value 4 ;
-                rdfs:label "Reste du monde :"
-            ]
-        )
-    ] .
-
-ques:capital-2060
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2061
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2062
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2063
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2064
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-2065
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
 ques:capital-fg
-    ques:properties <ques:capital-2002-user-prop>, <ques:capital-2036-user-prop>, <ques:capital-2052-user-prop> ;
+    ques:properties ques:capital-2002-user-prop, ques:capital-2036-user-prop ;
     a ques:FormGroup ;
     rdfs:label "Questions sur le capital immatériel."@fr .
-
-<ques:capital-2002-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2002 .
-
-<ques:capital-2036-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2036 .
-
-<ques:capital-2052-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-2052 .
 

@@ -16,6 +16,11 @@ ques:capital-1001
         owl:oneOf rdf:nil
     ] .
 
+ques:capital-1001-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1001 .
+
 ques:capital-1002
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
@@ -53,8 +58,7 @@ ques:capital-1003
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Un des actionnaires a une réelle notoriété mais sa réputation est négative
-Un des actionnaires a une réelle notoriété mais sa réputation est négative """
+                rdfs:label "Un des actionnaires a une réelle notoriété mais sa réputation est négative"
             ]
             [
                 ques:value 2 ;
@@ -194,6 +198,11 @@ ques:capital-1008
         owl:oneOf rdf:nil
     ] .
 
+ques:capital-1008-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1008 .
+
 ques:capital-1009
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
@@ -202,8 +211,7 @@ ques:capital-1009
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """On travaille avec tout le monde (plus de 15 fournisseurs)
-On travaille avec tout le monde (plus de 15 fournisseurs) """
+                rdfs:label "On travaille avec tout le monde (plus de 15 fournisseurs)"
             ]
             [
                 ques:value 2 ;
@@ -290,8 +298,7 @@ ques:capital-1012
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """De 0 à 6 mois
-De 0 à 6 mois """
+                rdfs:label "De 0 à 6 mois"
             ]
             [
                 ques:value 2 ;
@@ -311,6 +318,11 @@ De 0 à 6 mois """
             ]
         )
     ] .
+
+ques:capital-1012-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1012 .
 
 ques:capital-1013
     a owl:ObjectProperty ;
@@ -361,8 +373,7 @@ ques:capital-1014
             ]
             [
                 ques:value 5 ;
-                rdfs:label """Excellente relation
-Excellente relation """
+                rdfs:label "Excellente relation"
             ]
         )
     ] .
@@ -470,8 +481,7 @@ ques:capital-1018
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Pas toujours réactif – délais de prise en compte de la demande parfois longs
-Pas toujours réactif – délais de prise en compte de la demande parfois longs """
+                rdfs:label "Pas toujours réactif – délais de prise en compte de la demande parfois longs"
             ]
             [
                 ques:value 4 ;
@@ -549,6 +559,11 @@ ques:capital-1021
         owl:oneOf rdf:nil
     ] .
 
+ques:capital-1021-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1021 .
+
 ques:capital-1022
     a owl:ObjectProperty ;
     rdfs:comment "Veuillez sélectionner une seule des propositions suivantes :" ;
@@ -602,8 +617,7 @@ ques:capital-1023
             ]
             [
                 ques:value 5 ;
-                rdfs:label """L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent
-"""
+                rdfs:label "L’entreprise a montré sa capacité à se montrer adaptable et flexible dans le cadre de réorganisations dans le passé récent"
             ]
             [
                 ques:value 6 ;
@@ -611,6 +625,11 @@ ques:capital-1023
             ]
         )
     ] .
+
+ques:capital-1023-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1023 .
 
 ques:capital-1024
     a owl:ObjectProperty ;
@@ -711,8 +730,7 @@ ques:capital-1027
             ]
             [
                 ques:value 2 ;
-                rdfs:label """Il y a quelques erreurs tous les mois/jours
-Il y a quelques erreurs tous les mois/jours """
+                rdfs:label "Il y a quelques erreurs tous les mois/jours"
             ]
             [
                 ques:value 3 ;
@@ -811,8 +829,7 @@ ques:capital-1030
             ]
             [
                 ques:value 5 ;
-                rdfs:label """ActivityBasedCost
-ActivityBasedCost """
+                rdfs:label "ActivityBasedCost"
             ]
         )
     ] .
@@ -974,8 +991,7 @@ ques:capital-1036
             ]
             [
                 ques:value 2 ;
-                rdfs:label """Statiques, peu considérées
-Statiques, peu considérées """
+                rdfs:label "Statiques, peu considérées"
             ]
             [
                 ques:value 3 ;
@@ -1116,8 +1132,7 @@ ques:capital-1041
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Absente
-Absente """
+                rdfs:label "Absente"
             ]
             [
                 ques:value 2 ;
@@ -1283,8 +1298,7 @@ ques:capital-1047
             ]
             [
                 ques:value 5 ;
-                rdfs:label """Ajustée, confinée et solidaire
-Ajustée, confinée et solidaire """
+                rdfs:label "Ajustée, confinée et solidaire"
             ]
         )
     ] .
@@ -1396,8 +1410,7 @@ ques:capital-1051
             ]
             [
                 ques:value 4 ;
-                rdfs:label """Barycentre (centre de gravité)
-Barycentre (centre de gravité) """
+                rdfs:label "Barycentre (centre de gravité)"
             ]
             [
                 ques:value 5 ;
@@ -1447,8 +1460,7 @@ ques:capital-1053
             ]
             [
                 ques:value 2 ;
-                rdfs:label """Plutôt pas (peu)
-Plutôt pas (peu) """
+                rdfs:label "Plutôt pas (peu)"
             ]
             [
                 ques:value 3 ;
@@ -1477,8 +1489,7 @@ ques:capital-1054
             ]
             [
                 ques:value 2 ;
-                rdfs:label """Plutôt pas (peu)
-Plutôt pas (peu) """
+                rdfs:label "Plutôt pas (peu)"
             ]
             [
                 ques:value 3 ;
@@ -1501,6 +1512,11 @@ ques:capital-1055
     rdfs:range [
         owl:oneOf rdf:nil
     ] .
+
+ques:capital-1055-user-prop
+    a owl:ObjectProperty ;
+    rdfs:domain ques:User ;
+    rdfs:range ques:capital-1055 .
 
 ques:capital-1056
     a owl:ObjectProperty ;
@@ -1568,8 +1584,7 @@ ques:capital-1058
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Moins de 30%
-Moins de 30% """
+                rdfs:label "Moins de 30%"
             ]
             [
                 ques:value 2 ;
@@ -1598,23 +1613,19 @@ ques:capital-1059
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """De 2 à 5 % CA
-De 2 à 5 % CA """
+                rdfs:label "De 2 à 5 % CA"
             ]
             [
                 ques:value 2 ;
-                rdfs:label """De 0,5 à 2 % CA
-De 0,5 à 2 % CA """
+                rdfs:label "De 0,5 à 2 % CA"
             ]
             [
                 ques:value 3 ;
-                rdfs:label """De 0,25 à 0,5 % CA
-De 0,25 à 0,5 % CA """
+                rdfs:label "De 0,25 à 0,5 % CA"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """De 0 à 0,25 % CA
-De 0 à 0,25 % CA """
+                rdfs:label "De 0 à 0,25 % CA"
             ]
             [
                 ques:value 5 ;
@@ -1805,8 +1816,7 @@ ques:capital-1066
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """En retournement (sous performance)
-En retournement (sous performance) """
+                rdfs:label "En retournement (sous performance)"
             ]
             [
                 ques:value 2 ;
@@ -1843,13 +1853,11 @@ ques:capital-1067
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Croissance faible
-Croissance faible """
+                rdfs:label "Croissance faible"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """croissance entre 3% et 10%
-croissance entre 3% et 10% """
+                rdfs:label "croissance entre 3% et 10%"
             ]
             [
                 ques:value 5 ;
@@ -1866,8 +1874,7 @@ ques:capital-1068
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Absent (inéxistant)
-Absent (inéxistant) """
+                rdfs:label "Absent (inéxistant)"
             ]
             [
                 ques:value 2 ;
@@ -1896,28 +1903,23 @@ ques:capital-1069
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Moins de 30%
-Moins de 30% """
+                rdfs:label "Moins de 30%"
             ]
             [
                 ques:value 2 ;
-                rdfs:label """Entre 30 et 50%
-Entre 30 et 50% """
+                rdfs:label "Entre 30 et 50%"
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Entre 50% et 80%
-Entre 50% et 80% """
+                rdfs:label "Entre 50% et 80%"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """Entre 80% et 90%
-Entre 80% et 90% """
+                rdfs:label "Entre 80% et 90%"
             ]
             [
                 ques:value 5 ;
-                rdfs:label """Plus de 95 %
-Plus de 95 % """
+                rdfs:label "Plus de 95 %"
             ]
         )
     ] .
@@ -1930,28 +1932,23 @@ ques:capital-1070
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """Moins de 30%
-Moins de 30% """
+                rdfs:label "Moins de 30%"
             ]
             [
                 ques:value 2 ;
-                rdfs:label """Entre 30 et 50%
-Entre 30 et 50% """
+                rdfs:label "Entre 30 et 50%"
             ]
             [
                 ques:value 3 ;
-                rdfs:label """Entre 50% et 80%
-Entre 50% et 80% """
+                rdfs:label "Entre 50% et 80%"
             ]
             [
                 ques:value 4 ;
-                rdfs:label """Entre 80% et 90%
-Entre 80% et 90% """
+                rdfs:label "Entre 80% et 90%"
             ]
             [
                 ques:value 5 ;
-                rdfs:label """Plus de 95 %
-Plus de 95 % """
+                rdfs:label "Plus de 95 %"
             ]
         )
     ] .
@@ -2159,8 +2156,7 @@ ques:capital-1078
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """En retournement (sous performance)
-En retournement (sous performance) """
+                rdfs:label "En retournement (sous performance)"
             ]
             [
                 ques:value 2 ;
@@ -2189,8 +2185,7 @@ ques:capital-1079
     rdfs:range [
         owl:oneOf ([
                 ques:value 1 ;
-                rdfs:label """En retournement (sous performance)
-En retournement (sous performance) """
+                rdfs:label "En retournement (sous performance)"
             ]
             [
                 ques:value 2 ;
@@ -2269,135 +2264,8 @@ ques:capital-1081
         )
     ] .
 
-ques:capital-1082
-    a owl:Class ;
-    rdfs:label "Identification de l'entreprise" ;
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1083
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1084
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1085
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1086
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1087
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1088
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1089
-    a owl:ObjectProperty ;
-    rdfs:comment "Totale et par région :", "Veuillez écrire votre(vos) réponse(s) ici :", " " ;
-    rdfs:domain ques:capital-1082 ;
-    rdfs:label "Marge brute annuelle :" ;
-    rdfs:range [
-        owl:oneOf ([
-                ques:value 1 ;
-                rdfs:label "Total :"
-            ]
-            [
-                ques:value 2 ;
-                rdfs:label "Europe (EU) :"
-            ]
-            [
-                ques:value 3 ;
-                rdfs:label "US/Canada :"
-            ]
-            [
-                ques:value 4 ;
-                rdfs:label "Reste du monde :"
-            ]
-        )
-    ] .
-
-ques:capital-1090
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1091
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1092
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1093
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1094
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
-ques:capital-1095
-    rdfs:range [
-        owl:oneOf rdf:nil
-    ] .
-
 ques:capital-fg
-    ques:properties <ques:capital-1001-user-prop>, <ques:capital-1008-user-prop>, <ques:capital-1012-user-prop>, <ques:capital-1021-user-prop>, <ques:capital-1023-user-prop>, <ques:capital-1055-user-prop>, <ques:capital-1082-user-prop> ;
+    ques:properties ques:capital-1001-user-prop, ques:capital-1008-user-prop, ques:capital-1012-user-prop, ques:capital-1021-user-prop, ques:capital-1023-user-prop, ques:capital-1055-user-prop ;
     a ques:FormGroup ;
     rdfs:label "Questions sur le capital immatériel."@fr .
-
-<ques:capital-1001-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1001 .
-
-<ques:capital-1008-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1008 .
-
-<ques:capital-1012-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1012 .
-
-<ques:capital-1021-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1021 .
-
-<ques:capital-1023-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1023 .
-
-<ques:capital-1055-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1055 .
-
-<ques:capital-1082-user-prop>
-    a owl:ObjectProperty ;
-    rdfs:domain ques:User ;
-    rdfs:range ques:capital-1082 .
 

@@ -5,7 +5,11 @@ echo "See also vocabulary/risk/README.md and vocabulary/capital/README.md"
 
 echo "Avez vous fait wget http://rdf.insee.fr/codes/nafr2.ttl.zip ; unzip nafr2.ttl.zip ?"
 
+GRAPH=vocabulary
+echo "Enlever le graphe $GRAPH dans la base TDB"
+echo "DROP GRAPH <$GRAPH>" > /tmp/delete_graph.rq
 sbt <<EOF 
+runMain tdb.tdbupdate --loc=TDB --verbose --update=/tmp/delete_graph.rq
 runMain tdb.tdbloader --loc=TDB --graph=vocabulary \
 	vocabulary/risk/risk_questions.owl.ttl \
 	vocabulary/risk/labels.ttl \
