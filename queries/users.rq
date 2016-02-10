@@ -1,0 +1,9 @@
+prefix ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#>
+PREFIX user: <http://bizinnov.com/ontologies/users.owl.ttl#>
+
+SELECT ?sujet ?email ?naf ?département ?année WHERE { GRAPH ?g {
+		           ?sujet user:email ?email .
+		OPTIONAL { ?sujet user:naf ?naf }
+		OPTIONAL { ?sujet user:department ?département }
+		OPTIONAL { ?sujet user:year ?année }
+ } }
