@@ -157,12 +157,25 @@ object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
     })
     user.getOrElse(None)
   }
+ 
+  def listUsers(): List[User] = {
+    val r = dataset.r({
+      val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
+      val triples = ops.find( userGraph, ANY, bizinnovUserVocabPrefix("email"), ANY )
+      triples . map{ triple =>
+        val userEmail = foldNode(triple.objectt)(
+            _ => "", _ => "", l => fromLiteral(l)_1)
+        User(email = userEmail, "", "")
+      }
+    })
+    r.get.toList
+  }
   
   /** get user object from from its URI ;
    * convenience method that does not populate user credentials */
   def getUserFromURI(userURI: String): User =
     User(bizinnovUserPrefix.unapply(URI(userURI)).get, "", "")
   
-    def getUserURIFromEmail(email: String): String =
-      fromUri( User( email, "", "").getURI() )
+  def getUserURIFromEmail(email: String): String =
+    fromUri( User( email, "", "").getURI() )
 }

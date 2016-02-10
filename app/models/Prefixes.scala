@@ -15,9 +15,10 @@ trait Prefixes[Rdf <: RDF] {
   /** users' id prefix */
   lazy val bizinnovUserPrefix = Prefix("usr", usersPrefix)
   
+  /** URI of named graph for user information */
   lazy val bizinnovUserGraphURI = URI(usersPrefix) // URI(bizinnovUserPrefix.prefixIri)
 
-  /** user vocabulary */
+  /** vocabulary for user properties: email, department, ... */
   lazy val bizinnovUserVocabPrefix = Prefix("user",
     "http://bizinnov.com/ontologies/users.owl.ttl#")
 

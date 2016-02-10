@@ -1,4 +1,4 @@
-@(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
+@(reportData: ResponseAnalysisInterface)(implicit user: User, host: String)
 
 <h1>Rapport d'évaluation E.S.I.</h1>
 Date: @{
@@ -38,7 +38,7 @@ Cette moyenne ne tient pas compte des formulaires non remplis.
 <h2>Gestion des risques</h2>
 
 <div style="float: left">
-	<img src="http://@request.host@routes.Application.chart("risk", user.email)" />
+	<img src="http://@host@routes.Application.chart("risk", user.email)" />
 </div>
 
 <div style="clear: both"></div>
@@ -62,7 +62,7 @@ Cette moyenne ne tient pas compte des formulaires non remplis.
 <h2>Gestion du capital immatériel</h2>
 
 <div style="float: left">
-	<img src="http://@request.host@routes.Application.chart("capital", user.email)" />
+	<img src="http://@host@routes.Application.chart("capital", user.email)" />
 </div>
 <div style="clear: both"></div>
 
@@ -119,9 +119,9 @@ Cette moyenne ne tient pas compte des formulaires non remplis.
 
 A partir de toutes les réponses enregistrées au cours du temps, voici les courbes d'historique.
 <br/>
-<img src="http://@request.host@routes.Application.history( user.email, 0 )" />
+<img src="http://@host@routes.Application.history( user.email, 0 )" />
 
 <div style="clear: both"></div>
 <p> -- </p>
 
-<img src="http://@request.host@routes.Application.history( user.email, 1 )" />
+<img src="http://@host@routes.Application.history( user.email, 1 )" />

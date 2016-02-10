@@ -38,6 +38,7 @@ import play.api.mvc.Security
 import scalax.chart.api.ChartPNGExporter
 import views.Charts
 import models.LOD
+import models.PDFinBatch
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -55,7 +56,9 @@ trait ApplicationTrait
     with RDFUser[Jena, Dataset]
     with ReportGenerationTrait[Jena, Dataset]
     with FormsGroupsData1[Jena]
-    with LOD[Jena, Dataset] {
+    with LOD[Jena, Dataset]
+    with PDFinBatch // [Jena, Dataset]
+    {
 
   // override defaults from semantic_forms:
   override val recordUserActions: Boolean = true
