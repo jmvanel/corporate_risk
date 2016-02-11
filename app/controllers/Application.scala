@@ -39,6 +39,8 @@ import scalax.chart.api.ChartPNGExporter
 import views.Charts
 import models.LOD
 import models.PDFinBatch
+import deductions.runtime.services.DashboardHistoryUserActions
+import views.History
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -57,8 +59,8 @@ trait ApplicationTrait
     with ReportGenerationTrait[Jena, Dataset]
     with FormsGroupsData1[Jena]
     with LOD[Jena, Dataset]
-    with PDFinBatch // [Jena, Dataset]
-    {
+    with PDFinBatch
+    with DashboardHistoryUserActions[Jena, Dataset] {
 
   // override defaults from semantic_forms:
   override val recordUserActions: Boolean = true
@@ -256,7 +258,7 @@ trait ApplicationTrait
           case None =>
             contactInfo.phone match {
               case Some(phoneNumber) =>
-                sendEmail("", "Demande de rappel de V.S.I", phoneNumber)
+                sendEmail("", "Demande de rappel de E.S.I", phoneNumber)
                 Ok(views.html.contact(user, contactForm, "La demande a été enregistrée. Nous vous contacterons prochainement."))
               case None =>
                 Ok(views.html.contact(user, contactForm, "Merci d'entrer une information de contact"))
@@ -270,7 +272,13 @@ trait ApplicationTrait
     Ok(views.html.info(user))
   }
 
-  /** just to satisfy the compiler */
-  //  def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ , Seq[DataMatch] /*Good*/ ) = (Seq(), Seq())
+  /** make History of User Actions */
+  def makeHistoryUserActionsAction(implicit userURI: String) =
+    Action { implicit request =>
+      val history =
+        makeTableHistoryUserActions(lang = "fr")
+      Ok(new History { val content = history }.page)
+        .as("text/html; charset=utf-8")
+    }
 
 }
