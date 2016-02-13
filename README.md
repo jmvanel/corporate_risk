@@ -9,7 +9,8 @@ It is a web application built with Play! Framework and W3C's Semantic Web recomm
 
 ## Status
 
-Currently in development, first release in march.
+In production.
+
 
 ## Technique
 
@@ -35,12 +36,21 @@ See
 Apparently Activator, not SBT, is needed:
     activator -jvm-debug 9999 run
 
-### Preloading RDF content
+## Preloading RDF content
 
 - Preloading vocabularies, and pre-defined form specifications : in shell type:
 ```
     populate_db.sh
 ```
+
+## Generating all PDF
+
+Set system variable (in shell)
+
+    export PDFBATCH=true
+
+then restart the application; all reports will be in directory PDF/ /
+
 
 ## Note on the data model
 There are 3 levels:

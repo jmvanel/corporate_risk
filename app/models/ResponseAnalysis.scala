@@ -133,14 +133,14 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * transactional
    */
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float] = {
-    Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName)")
+    Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName)")
     try {
     val userData = getUserData(user(userEmail), formsGroupsURIMap(formGroupName))
     dataset.r({
-      Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) userData $userData")
+      Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {
         case FormUserData(formUri, label) =>
-          Logger.getRootLogger().info(s"getEval($userEmail, $formGroupName) $label")
+          Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName) $label")
           label -> averagePerForm(user(userEmail), fromUri(formUri))._1
       }
       val string2Int = res.toMap
@@ -203,7 +203,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
     val solutionsSeq = solutions.iterator.to[List]
-    Logger.getRootLogger().info(s"""averagePerForm($instanceURI)
+    Logger.getRootLogger().debug(s"""averagePerForm($instanceURI)
       solutions size ${solutionsSeq.size}
       """)
     val res = solutionsSeq map { row =>
@@ -211,7 +211,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
         (lit2String(row("label").get.as[Rdf#Literal].get),
           lit2Int(row("note").get.as[Rdf#Literal].get),
           lit2Int(row("coef").get.as[Rdf#Literal].get))
-      Logger.getRootLogger().info(s"""averagePerForm($instanceURI) solution $sol""")
+      Logger.getRootLogger().debug(s"""averagePerForm($instanceURI) solution $sol""")
       sol
     }
     var weightedSum: Float = 0
@@ -239,12 +239,12 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    */
   def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
     val userEmail = user.email
-    Logger.getRootLogger().info(s"averagePerFormGroup($userEmail, $formGroupURI $formGroupURI)")
+    Logger.getRootLogger().debug(s"averagePerFormGroup($userEmail, $formGroupURI $formGroupURI)")
     val userData = getUserData(user, formGroupURI)
     val avgs = dataset.r({
       val res = userData.map {
         case FormUserData(formUri, label) =>
-          Logger.getRootLogger().info(s"averagePerFormGroup($userEmail, $formUri) $label")
+          Logger.getRootLogger().debug(s"averagePerFormGroup($userEmail, $formUri) $label")
           averagePerForm(user, fromUri(formUri))
       }
       res
