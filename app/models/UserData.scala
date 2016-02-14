@@ -34,6 +34,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]
     with FormsGroupsData1[Rdf] {
 
+  /** coherent with script populate_db.sh */
+  val vocabularyGraph = "model:vocabulary"
+
   import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
@@ -91,7 +94,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       } yield (triple.objectt, classe)
       //      println(s"objectAndClass ${objectAndClass.mkString(", ")}")
 
-      implicit val graphForVocabulary = dataset.getGraph(URI("vocabulary")).get
+      implicit val graphForVocabulary = dataset.getGraph(URI(vocabularyGraph)).get
       val nodesAndLabels = for {
         (objectt, classe) <- objectAndClass
       } yield (objectt, instanceLabel(classe, graphForVocabulary, "" /*lang TODO*/ ))
@@ -255,7 +258,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX : <${bizinnovQuestionsVocabPrefix.prefixIri}>
       SELECT ?LAB ?PROP ?CLASS
-      WHERE { # GRAPH <vocabulary> {
+      WHERE { # GRAPH <$vocabularyGraph> {
        GRAPH ?G {
         <$formgroup> a :FormGroup ; rdfs:label ?LAB ;
         :properties ?PROP .

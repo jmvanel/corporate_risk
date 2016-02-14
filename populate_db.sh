@@ -5,7 +5,9 @@ echo "See also vocabulary/risk/README.md and vocabulary/capital/README.md"
 
 echo "Avez vous fait wget http://rdf.insee.fr/codes/nafr2.ttl.zip ; unzip nafr2.ttl.zip ?"
 
+# coherent with val vocabularyGraph in UserData.scala
 GRAPH=model:vocabulary
+
 echo "Enlever le graphe <$GRAPH> dans la base TDB"
 echo "DROP GRAPH <$GRAPH>" > /tmp/delete_graph.rq
 sbt <<EOF 

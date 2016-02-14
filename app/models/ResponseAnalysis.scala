@@ -55,7 +55,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           } """
       import sparqlOps._
       import ops._
-      println("responsesCount " + queryString)
+      Logger.getRootLogger().debug("responsesCount " + queryString)
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
@@ -65,7 +65,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       res.next()
     })
     val lit = countTry.getOrElse(zero)
-    println(s"responsesCount $dataURI $lit")
+    Logger.getRootLogger().debug( s"responsesCount $dataURI $lit")
     lit2Int(lit)
   }
 
@@ -88,7 +88,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
            ?PROP rdfs:domain ?CLASS .
          }
         } """
-    //    println(s"fieldsCount: $queryString")
+    //    Logger.getRootLogger().debug( s"fieldsCount: $queryString")
     val countTry = dataset.r({
       import sparqlOps._
       val query = parseSelect(queryString).get
@@ -100,7 +100,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       res.next()
     })
     val lit = countTry.getOrElse(zero)
-    println("fieldsCount " + lit)
+    Logger.getRootLogger().debug( "fieldsCount " + lit)
     lit2Int(lit)
   }
 
@@ -199,7 +199,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           } """
     import sparqlOps._
     import ops._
-    //    println(s"averagePerForm queryString $queryString")
+    //    Logger.getRootLogger().debug(s"averagePerForm queryString $queryString")
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
     val solutionsSeq = solutions.iterator.to[List]

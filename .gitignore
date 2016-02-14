@@ -1,6 +1,9 @@
+nafr2.ttl
+
 **/*.class
 **/*.log
 bblog.txt
+logfile.log*
 
 # sbt specific
 **/.cache
@@ -24,8 +27,12 @@ project/plugins/project/
 
 /bin/
 /TDB/
+
 .settings
 .cache
+
+.cache-main
+.cache-tests
 
 *.\~
 .*.swp
