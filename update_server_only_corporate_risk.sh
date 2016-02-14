@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "update corporate_risk server when code has changed in corporate_risk"
 SBT=sbt
 
