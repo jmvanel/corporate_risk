@@ -115,7 +115,7 @@ La Notation est sur 20.
 - 12 à 14
 - 14 et +
 
-### Fidélité (fournisseur depuis ?)
+#### Fidélité (fournisseur depuis ?)
 
 Veuillez sélectionner une seule des propositions suivantes :
 
@@ -219,7 +219,7 @@ Veuillez sélectionner une seule des propositions suivantes :
 - Lorsqu’un projet est lancé une équipe projet est constituée. Le chef de projet maîtrise la gestion de projet, l’entreprise dispose d’une méthode rédigée : les dépassements sont rares (budgets – délais)
 - Forte culture de la gestion de projet, maîtrise par les chefs de projet de la méthode de l’entreprise, les membres de l’équipe sont vraiment détachés au projet pendant sa durée et ne rapportent plus à leur manager habituel mais au chef de projet.
 
-### Flexibilité
+#### Flexibilité
 
 Veuillez sélectionner une seule des propositions suivantes :
 
