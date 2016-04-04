@@ -17,6 +17,7 @@ import deductions.runtime.abstract_syntax.UnfilledFormFactory
 import deductions.runtime.dataset.RDFStoreLocalProvider
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCacheAlgo
+import deductions.runtime.services.URIManagement
 
 /** an URI and a label, see function getUserData() */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
@@ -32,7 +33,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with RDFCacheAlgo[Rdf, DATASET]
     with PreferredLanguageLiteral[Rdf]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]
-    with FormsGroupsData1[Rdf] {
+    with FormsGroupsData1[Rdf]
+        with URIManagement {
 
   /** coherent with script populate_db.sh */
   val vocabularyGraph = "model:vocabulary"
@@ -304,7 +306,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   /** NON transactional */
   private def createEmptyClassInstanceForUser(userURI: Rdf#URI,
       classAndPropURI: (Rdf#URI, Rdf#URI)) = {
-    val newURI = URI(UnfilledFormFactory.makeId(userURI.toString()))
+    val newURI = URI(makeId(userURI.toString()))
     val graph = makeGraph(List(
       makeTriple(userURI, classAndPropURI._2, newURI)))
     dataset.appendToGraph(userURI, graph)
