@@ -81,6 +81,20 @@ trait ApplicationTrait
      */
   }
 
+  /** TODO pasted from semantic_forms */
+  override def serverPort = {
+    val port = Play.current.configuration.
+      getString("http.port")
+    port match {
+      case Some(p) =>
+        println("Running on port " + p)
+        p
+      case _ =>
+        println("Retrieving default port from config.")
+        super.serverPort
+    }
+  }
+
   addSaveListener(this) // for TimeSeries
 
   val logger: Logger = Logger.getRootLogger()

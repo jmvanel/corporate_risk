@@ -19,10 +19,11 @@ import scala.xml.XML
  */
 trait PDFinBatch // [Rdf <: RDF, DATASET]
     extends ResponseAnalysisInterface {
-  Future {
-    // wait a reasonable time that the server is started
+  Future { // wait a reasonable time that the server is started
     Thread.sleep(30000)
-    if (System.getenv("PDFBATCH") != null) {
+    val PDFBATCH = System.getenv("PDFBATCH")
+    println("PDFBATCH=" + PDFBATCH)
+    if (PDFBATCH != null) {
       println("Starting Batch for PDF")
       Try {
         new File("PDF").mkdir
@@ -40,6 +41,8 @@ trait PDFinBatch // [Rdf <: RDF, DATASET]
     }
   }
 
+  def serverPort: String
+
   /**
    * pasted from trait ApplicationTrait;
    *  request is only used for request.host !!!
@@ -47,7 +50,7 @@ trait PDFinBatch // [Rdf <: RDF, DATASET]
   def makePDFforOneUser()(implicit user: User) = {
     val renderer = new ITextRenderer
     val buffer = new ByteArrayOutputStream
-    implicit val host: String = "localhost"
+    implicit val host: String = "localhost:" + serverPort
 
     val report = views.html.report2(this)
     val reportAsString = report.toString.trim

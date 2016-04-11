@@ -2,10 +2,10 @@ organization := "bizinnov"
 name := "corporate_risk"
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 javacOptions ++= Seq("-source","1.7", "-target","1.7")
 
-libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.5" % Test
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.6" % Test
 
 libraryDependencies += "deductions" %% "semantic_forms" % "1.0-SNAPSHOT"
 libraryDependencies += "com.typesafe.play.plugins" %% "play-plugins-mailer" % "2.3.1"
