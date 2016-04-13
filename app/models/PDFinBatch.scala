@@ -23,7 +23,7 @@ trait PDFinBatch // [Rdf <: RDF, DATASET]
     Thread.sleep(30000)
     val PDFBATCH = System.getenv("PDFBATCH")
     println("PDFBATCH=" + PDFBATCH)
-    if (PDFBATCH != null) {
+    if( PDFBATCH != "no" ) {
       println("Starting Batch for PDF")
       Try {
         new File("PDF").mkdir
