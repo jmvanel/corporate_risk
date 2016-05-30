@@ -22,7 +22,10 @@ GET		/contact					controllers.Application.contact
 POST	/contact    				controllers.Application.contactRequest
 GET		/info						controllers.Application.info
 
+# administrateur
 GET     /history                    controllers.Application.makeHistoryUserActionsAction(userURI: String?= "")
+GET		/pdfreports					controllers.Application.exportAllPDF
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

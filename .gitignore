@@ -26,7 +26,11 @@ project/plugins/project/
 **/.settings
 
 /bin/
-/TDB/
+TDB
+TDB2
+LUCENE/
+PDF/
+rapports-ESI_*
 
 .settings
 .cache
@@ -36,3 +40,5 @@ project/plugins/project/
 
 *.\~
 .*.swp
+oldies/
+

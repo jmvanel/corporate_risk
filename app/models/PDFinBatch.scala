@@ -28,14 +28,14 @@ trait PDFinBatch extends ResponseAnalysisInterface
     Thread.sleep(30000)
     val PDFBATCH = System.getenv("PDFBATCH")
     println("PDFBATCH=" + PDFBATCH)
-    if( PDFBATCH != "no" ) populatePDF_dir()
+    if (PDFBATCH != "no") populatePDF_dir()
   }
 
   /** make a Zip from PDF/ directory */
   def makeZip: Try[Path] = {
     val zipFile = Paths.get(s"rapports-ESI_${new Date()}.zip")
-    val zipResult = pack( Paths.get("PDF"), zipFile )
-    zipResult . map ( res => zipFile )
+    val zipResult = pack(Paths.get("PDF"), zipFile)
+    zipResult.map(res => zipFile)
   }
 
   private def populatePDF_dir() {

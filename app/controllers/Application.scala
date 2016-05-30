@@ -41,6 +41,13 @@ import models.LOD
 import models.PDFinBatch
 import deductions.runtime.services.DashboardHistoryUserActions
 import views.History
+import scala.util.Try
+import java.nio.file.Path
+import play.api.libs.iteratee.Enumerator
+import play.api.mvc.Result
+import play.api.mvc.ResponseHeader
+import scala.util.Success
+import scala.util.Failure
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -223,6 +230,27 @@ trait ApplicationTrait
       renderer.layout
       renderer.createPDF(buffer)
       Ok(buffer.toByteArray()).withHeaders(CONTENT_TYPE -> "application/pdf")
+  }
+
+  def exportAllPDF = withUser { implicit user =>
+    implicit request =>
+      val zipFileTry: Try[Path] = makeZip
+      zipFileTry match {
+        case Success(path) =>
+          val file = path.toFile()
+          import scala.concurrent.ExecutionContext.Implicits.global
+          val fileContent: Enumerator[Array[Byte]] = Enumerator.fromFile(file)
+          Result(
+            header = ResponseHeader(200, Map(
+              CONTENT_LENGTH -> file.length.toString,
+              CONTENT_TYPE -> "application/zip",
+              CONTENT_DISPOSITION -> ("attachment; filename=" + file.getName)
+            )),
+            // content-disposition", "attachment; filename=
+            body = fileContent)
+        case Failure(e) =>
+          InternalServerError("A server error occurred: " + e.getLocalizedMessage)
+      }
   }
 
   /**
