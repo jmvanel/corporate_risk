@@ -33,7 +33,7 @@ trait PDFinBatch extends ResponseAnalysisInterface
 
   /** make a Zip from PDF/ directory */
   def makeZip: Try[Path] = {
-    val zipFile = Paths.get(s"rapports-ESI_${new Date()}.zip")
+    val zipFile = Paths.get(s"rapports-ESI_${new Date().toString().replaceAll(" ", "_")}.zip")
     val zipResult = pack(Paths.get("PDF"), zipFile)
     zipResult.map(res => zipFile)
   }

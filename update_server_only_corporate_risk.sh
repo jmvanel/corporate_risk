@@ -20,4 +20,5 @@ unzip $HOME/src/corporate_risk/target/universal/corporate_risk-1.0-SNAPSHOT.zip
 
 cd corporate_risk-1.0-SNAPSHOT
 ln -s ../TDBrisk TDB
+ln -s ../TDBrisk2 TDB2
 nohup bin/corporate_risk -mem 100 -J-server -Dhttp.port=9153 &
