@@ -11,32 +11,46 @@ import org.xhtmlrenderer.pdf.ITextRenderer
 import scala.util.Try
 import scala.io.Source
 import scala.xml.XML
+import java.nio.file.Path
+import java.util.Date
+import scala.util.Success
+import scala.util.Failure
 
 /**
  * run Batch for PDF after Web app. is started,
  *  if system environment variable PDFBATCH is set;
  *  then the PDF's will be in directory PDF
  */
-trait PDFinBatch // [Rdf <: RDF, DATASET]
-    extends ResponseAnalysisInterface {
+trait PDFinBatch extends ResponseAnalysisInterface
+    with ZipUtils {
+
   Future { // wait a reasonable time that the server is started
     Thread.sleep(30000)
     val PDFBATCH = System.getenv("PDFBATCH")
     println("PDFBATCH=" + PDFBATCH)
-    if (PDFBATCH != null) {
-      println("Starting Batch for PDF")
-      Try {
-        new File("PDF").mkdir
-        // loop on users
-        for (user_ <- User.listUsers) {
-          implicit val user: User = user_
-          println(s"PDFinBatch: User = $user_")
-          val pdfContent = makePDFforOneUser()
-          val file = user.email + ".pdf"
-          val path = Paths.get("PDF", file)
-          Files.write(path, pdfContent)
-          println(s"Writen $path")
-        }
+    if (PDFBATCH != null) populatePDF_dir()
+  }
+
+  /** make a Zip from PDF/ directory */
+  def makeZip: Try[Path] = {
+    val zipFile = Paths.get(s"rapports-ESI_${new Date()}.zip")
+    val zipResult = pack( Paths.get("PDF"), zipFile )
+    zipResult . map ( res => zipFile )
+  }
+
+  private def populatePDF_dir() {
+    println("Starting Batch for PDF")
+    Try {
+      new File("PDF").mkdir
+      // loop on users
+      for (user_ <- User.listUsers) {
+        implicit val user: User = user_
+        println(s"PDFinBatch: User = $user_")
+        val pdfContent = makePDFforOneUser()
+        val file = user.email + ".pdf"
+        val path = Paths.get("PDF", file)
+        Files.write(path, pdfContent)
+        println(s"Writen $path")
       }
     }
   }
@@ -44,10 +58,10 @@ trait PDFinBatch // [Rdf <: RDF, DATASET]
   def serverPort: String
 
   /**
-   * pasted from trait ApplicationTrait;
-   *  request is only used for request.host !!!
+   * pasted from trait ApplicationTrait :( ;
+   * does HTTP requests to localhost !!!
    */
-  def makePDFforOneUser()(implicit user: User) = {
+  private def makePDFforOneUser()(implicit user: User) = {
     val renderer = new ITextRenderer
     val buffer = new ByteArrayOutputStream
     implicit val host: String = "localhost:" + serverPort
@@ -70,7 +84,7 @@ trait PDFinBatch // [Rdf <: RDF, DATASET]
     buffer.toByteArray()
   }
 
-  def wrapInXML(reportData: String) = {
+  private def wrapInXML(reportData: String) = {
     <html>
       <head>
         <style>
