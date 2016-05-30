@@ -28,7 +28,7 @@ trait PDFinBatch extends ResponseAnalysisInterface
     Thread.sleep(30000)
     val PDFBATCH = System.getenv("PDFBATCH")
     println("PDFBATCH=" + PDFBATCH)
-    if (PDFBATCH != null) populatePDF_dir()
+    if( PDFBATCH != "no" ) populatePDF_dir()
   }
 
   /** make a Zip from PDF/ directory */
