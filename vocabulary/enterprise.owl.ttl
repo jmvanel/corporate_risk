@@ -1,0 +1,30 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix : <http://www.bizinnov.com/ontologies/quest.owl.ttl#> .
+
+:Enterprise a owl:Class ;
+	rdfs:label "Entreprise"@fr .
+
+:department a owl:DatatypeProperty ;
+	rdfs:label "département de l'entreprise"@fr ;
+	rdfs:domain :Enterprise ;
+	rdfs:range xsd:string .
+
+:naf a owl:DatatypeProperty ;
+	rdfs:label "Code Naf"@fr ;
+	rdfs:domain :Enterprise ;
+	rdfs:range xsd:string .
+
+:year a owl:DatatypeProperty ;
+	rdfs:label "Année de création"@fr ;
+	rdfs:domain :Enterprise ;
+	rdfs:range xsd:int .
+
+:isGroup a owl:DatatypeProperty ;
+	rdfs:label "L'entreprise fait partie d'un groupe"@fr ;
+	rdfs:domain :Enterprise ;
+	rdfs:range xsd:boolean .
+
