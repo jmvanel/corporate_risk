@@ -1,0 +1,27 @@
+@(infoForm: Form[UserCompanyInfo])(implicit user: User)
+
+@main("Bienvenue !", Some(user), currentPage = "index") {
+	<p>
+		Le capital immatériel est la richesse cachée des entreprises. La gestion du risque et 
+		la sécurisation du capital immatériel permet de mettre en lumière cette richesse inexploitée.
+		Cette plate-forme vous permet d'illustrer le processus de création de valeur de votre capital
+		immatériel.
+	</p>
+	<p>
+		<strong>L'objectif de ce site est de connaître l'état de votre capital immatériel.</strong>
+	</p>
+	<p>
+		Pour commencer, vous allez d'abord faire un pré-diagnostic de votre capital immatériel. Si
+		votre pré-diagnostic est concluant, vous allez pouvoir faire un diagnostic total de 
+		votre capital immatériel.
+	</p>
+	
+	<div class="contentform">
+	@{
+		controllers.Application.htmlFormElem(
+		   user.getURI().toString(), "", "",
+		   true, "/save", "fr",
+		   graphURI=user.getURI().toString() )
+		}
+    </div>
+}

@@ -55,12 +55,16 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
    */
   def createEmptyUserData(user: User) = {
     dataset.rw({
+      val userURI = getURI(user)
       for (fg <- formsGroups) {
         val cp = applicationClassesAndProperties(fg)
         println(s"createEmptyUserData $user $fg $cp")
         for (classAndPropURI <- cp.classesAndProperties)
-          createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
+          createEmptyClassInstanceForUser(userURI, classAndPropURI)
       }
+      val graph = (
+          userURI -- rdf.typ ->- bizinnovUserVocabPrefix("Entreprise") ).graph
+      dataset.appendToGraph(userURI, graph)
     })
   }
 
