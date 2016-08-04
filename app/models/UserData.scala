@@ -55,12 +55,16 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
    */
   def createEmptyUserData(user: User) = {
     dataset.rw({
+      val userURI = getURI(user)
       for (fg <- formsGroups) {
         val cp = applicationClassesAndProperties(fg)
         println(s"createEmptyUserData $user $fg $cp")
         for (classAndPropURI <- cp.classesAndProperties)
-          createEmptyClassInstanceForUser(getURI(user), classAndPropURI)
+          createEmptyClassInstanceForUser(userURI, classAndPropURI)
       }
+      val graph = (
+          userURI -- rdf.typ ->- bizinnovUserVocabPrefix("Entreprise") ).graph
+      dataset.appendToGraph(userURI, graph)
     })
   }
 
@@ -154,15 +158,20 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       val graph = allNamedGraph
       // possible user-specific label:
       val userSpecificLabel = instanceLabel(URI(formUri), graph, "" /*lang TODO*/ )
-      if( formUri.endsWith( userSpecificLabel ) ) {
-        // get label from class
+      //println(s"getFormLabel $formUri , ${userSpecificLabel.substring( 0, userSpecificLabel.length() - 2)}" )
+      if(
+          formUri.endsWith( userSpecificLabel) ||
+          // eliminate "#"
+          formUri.endsWith( userSpecificLabel.substring( 0, userSpecificLabel.length() - 1))
+          ) {
+        // there is no Specific Label, get label from class
         import org.w3.banana.PointedGraph
         import org.w3.banana.syntax._
         val pg = PointedGraph(URI(formUri), allNamedGraph)
         val rdfs = RDFSPrefix[Rdf]
         val lab = pg / rdf.typ / rdfs.label
         lab.nodes.headOption match {
-          case Some(n) => n.toString()
+          case Some(n) => foldNode(n)(n=>n.toString(), n=>n.toString(), lit=>fromLiteral(lit)._1)
           case None => "? " + formUri
         }
       } else userSpecificLabel
