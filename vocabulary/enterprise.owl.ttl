@@ -28,3 +28,6 @@
 	rdfs:domain :Enterprise ;
 	rdfs:range xsd:boolean .
 
+:activityArea a owl:ObjectProperty ;
+	rdfs:label "secteur d'activité"@fr ;
+	rdfs:domain :Enterprise .
