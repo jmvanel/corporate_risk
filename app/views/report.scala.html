@@ -1,39 +1,56 @@
 @(reportData: ResponseAnalysisInterface)(implicit user: User, request: RequestHeader)
-
-<h1>Rapport d'évaluation E.S.I.</h1>
-Date: @{
+<div class="report-username">@{user.email}</div>
+<div class="date">@{
 	import java.text.SimpleDateFormat
 	import java.util.Locale
 	val date = new java.util.Date()
 	val dateFormat = new SimpleDateFormat("EEEE dd MMM yyyy, HH:mm", Locale.FRENCH)
     dateFormat.format(date)
-} .
+}</div>
+<h2>V.A.I.</h2>
+Valorisation des acquis de l'immatériel
+<table>
+	<tr>
+		<td>
+			<h3>Date du dernier audit</h3>
+			<p>JJ/MM/AAAA</p>
+			<p>Auto diagnostique n°#</p>
+		</td>
+		<td>
+			<h3>Présentation de l'entreprise</h3>
+			<p>Code NAF : @{ reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") }</p>
+			<p>@{ reportData.getNAFLabel( reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") ) }</p>
+			<p>Année de création: @{ reportData.getCompanyInfo(user).get. year.getOrElse("N.R.") }</p>
+			<p>@{ if( reportData.getCompanyInfo(user).get. isGroup )
+				 	"Fait partie d'un groupe."
+				 	else
+				 	"Ne fait pas partie d'un groupe."
+				 }</p>
+		</td>
+		<td>
+			<h3>Bilan de la valorisation de l’entreprise</h3>
+			<p>
+			 	@if(reportData.globalEval(user) > 3) {
+			     L'entreprise a une bonne évaluation:
+			     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
+			  	} else {
+				  L'entreprise a une mauvaise évaluation:
+			     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
+			   }
+			</p>
+			<p>Cette moyenne ne tient pas compte des formulaires non remplis.</p>
+		</td>
+	</tr>
+</table>
 
-<h2>Présentation de l’entreprise</h2>
- @* reprendre les éléments du formulaire *@
- Code NAF : @{ reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") } . <br/>
- @{ reportData.getNAFLabel( reportData.getCompanyInfo(user).get.naf.getOrElse("N.R.") ) } .
- <br/>
- Année de création: @{ reportData.getCompanyInfo(user).get. year.getOrElse("N.R.") } . <br/> 
- @{ if( reportData.getCompanyInfo(user).get. isGroup )
- 	"Fait partie d'un groupe."
- 	else
- 	"Ne fait pas partie d'un groupe."
- } <br/>
-
-  <h2>
- Bilan de la valorisation de l’entreprise
- </h2>
-<p>
- 	@if(reportData.globalEval(user) > 3) {
-     L'entreprise a une bonne évaluation:
-     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
-  	} else {
-	  L'entreprise a une mauvaise évaluation:
-     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
-   }
-</p>
-Cette moyenne ne tient pas compte des formulaires non remplis.
+<table>
+	<tr>
+		<td>Capital XX: XX</td>
+		<td>Capital XX: XX</td>
+		<td>Capital XX: XX</td>
+		<td>Capital XX: XX</td>
+	</tr>
+</table>
 
 <h2>Gestion des risques</h2>
 
