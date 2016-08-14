@@ -41,11 +41,22 @@ header {
 .username {
 	color: white;
 	position: absolute;
+	right: 0;
 	padding: 12px;
+}
+.pagetitle {
+	position: absolute;
+	left: 0;
+	color: white;
+	padding: 1em;
+	font-size: 75%;
+}
+.pagetitle div{
+    font-size: 200%;
 }
 header img {
 	height: 180px;
-	margin-top: 27px;
+	margin-top: 13px;
 }
 #pagetitle {
 	padding: .3em 1em;
