@@ -156,13 +156,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    *  NOTE: for that, see method: User.find(email: String) */
   def user(userEmail: String): User = User(userEmail, "", "")
 
-  /**
-   * average per form;
-   * pour diagramme araignée, fonction qui chiffre chaque rubrique;
-   *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
-   *
-   * NON transactional
-   */
   def averagePerForm(
     user: User,
     instanceURI: String): (Float, Int, String) = {
@@ -309,14 +302,22 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   def getCompanyInfo(user: User): Option[UserCompanyInfo]
   val formsGroupsURIMap: Map[String, String]
   def getNAFLabel(number: String, lang: String = "fr"): String
+  def getLastUpdate(userURI: String): Option[(String, String)]
 }
-  
+
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {
   def responsesCount(user: User, dataURI: String): Int
   def fieldsCount(user: User, dataURI: String): Int
   def getRiskEval(userEmail: String): Map[String, Float]
   def getCapitalEval(userEmail: String): Map[String, Float]
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float]
+  /**
+   * average per form;
+   * pour diagramme araignée, fonction qui chiffre chaque rubrique;
+   *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
+   *
+   * NON transactional
+   */
   def averagePerForm(
     user: User,
     instanceURI: String): (Float, Int, String)

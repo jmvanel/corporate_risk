@@ -13,8 +13,12 @@ Valorisation des acquis de l'immatériel
 	<tr>
 		<td>
 			<h3>Date du dernier audit</h3>
-			<p>JJ/MM/AAAA</p>
-			<p>Auto diagnostique n°#</p>
+			<p>@{
+				val lup = reportData.getLastUpdate(user.email)
+				val v = lup . map ( up => s"""${up._1} (au sujet "${up._2})" """ )
+				v.getOrElse("Rien encore")
+			}</p>
+			<p>Auto diagnostic n°#</p>
 		</td>
 		<td>
 			<h3>Présentation de l'entreprise</h3>
@@ -43,6 +47,27 @@ Valorisation des acquis de l'immatériel
 	</tr>
 </table>
 
+<!-- 
+@{
+    val label2averageMapRisk  = reportData.getRiskEval(user.email)    
+    val label2averageMapCapital = reportData.getCapitalEval(user.email)
+
+    def makeTable(map: Map[String, Float], title: String ): xml.Elem =
+      <p>
+      <strong>{title}</strong>
+<table>{
+      for( pair <- map) yield
+      	<tr>
+		  <td>{pair._1}</td>
+	  	  <td>{pair._2}</td>
+	    </tr>
+}</table>
+</p>
+
+makeTable(label2averageMapRisk, "Maturité de la gestion des risques")
+makeTable(label2averageMapCapital, "Capital Immatériel")
+}
+
 <table>
 	<tr>
 		<td>Capital XX: XX</td>
@@ -50,7 +75,8 @@ Valorisation des acquis de l'immatériel
 		<td>Capital XX: XX</td>
 		<td>Capital XX: XX</td>
 	</tr>
-</table>
+	</table>
+ -->
 
 <h2>Gestion des risques</h2>
 

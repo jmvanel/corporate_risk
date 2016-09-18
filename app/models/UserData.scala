@@ -153,6 +153,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     if (nf isEmpty) None else Some(nf.next)
   }
 
+  /** transactional */
   def getFormLabel(formUri: String): String = {
     dataset.r({
       val graph = allNamedGraph

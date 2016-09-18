@@ -5,6 +5,7 @@ import java.net.URLEncoder
 import scala.collection.mutable.ArrayBuffer
 
 import org.w3.banana.RDF
+import java.util.Date
 
 /**
  * (textual) Report Generation :
@@ -12,7 +13,8 @@ import org.w3.banana.RDF
  */
 
 trait ReportGenerationTrait[Rdf <: RDF, DATASET]
-    extends ResponseAnalysisTrait[Rdf, DATASET] {
+    extends ResponseAnalysisTrait[Rdf, DATASET]
+  with TimeSeriesFormGroups[Rdf, DATASET] {
 
   import ops._
   import rdfStore.transactorSyntax._
@@ -40,6 +42,30 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
     (good, bad)
   }
 
+  /** transactional */
+  def getLastUpdate(userURI: String): Option[(String, String)] = {
+    /* Metadata for user updates:
+   * subject, timestamp, triple count;
+   * ordered by recent first;
+   * transactional */
+    val meta = getMetadata()(userURI)
+    val lastUpdate = meta.headOption // .getOrElse( )
+    val r = lastUpdate . map {
+      up => ( up(0), up(1) )
+    }
+    r . map {
+      n =>
+        val subject = n._1 
+        val ts = foldNode(n._2)(
+            _=>"",
+            _=>"",
+            lit=> new Date(fromLiteral(lit)._1.toLong).toString
+        )
+        ( ts ,
+        getFormLabel(subject.toString) )
+    }
+  }
+  
   //  /**
   //   * fonction qui compte les questionnaires dont toutes les réponses suivent un critère, tel que:
   //   * FILTER( xsd:decimal(?OBJ) >= 4 )
