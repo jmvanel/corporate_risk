@@ -4,6 +4,7 @@ echo "To regenerate the form from human experts data, run vocabulary/capital/gen
 echo "See also vocabulary/risk/README.md and vocabulary/capital/README.md"
 
 echo "Avez vous fait wget http://rdf.insee.fr/codes/nafr2.ttl.zip ; unzip nafr2.ttl.zip ?"
+read PAUSE
 
 # coherent with val vocabularyGraph in UserData.scala
 GRAPH=model:vocabulary

@@ -86,7 +86,10 @@ trait ApplicationTrait
       .button-add{ width: 25px; }
       .form-label{ display: table-cell; width: 160px; }
      */
-    override lazy val cssClasses = CSSClasses()
+    override lazy val cssClasses = CSSClasses(
+      formDivInputCSSClass = "",
+      formSelectDivCSSClass = ""
+    )
   }
 
   /** TODO pasted from semantic_forms */
