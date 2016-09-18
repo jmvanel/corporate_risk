@@ -4,43 +4,70 @@
 @prefix dbpedia: <http://dbpedia.org/resource/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
-# (ques:capital-1001 "Capital Actionnaire")
-# (ques:capital-1008 "Capital Partenaire")
-# (ques:capital-1012 "Fidélité (fournisseur depuis ?)")
-# (ques:capital-1021 "Capital Organisationnel")
-# (ques:capital-1023 "Flexibilité")
-# (ques:capital-1055 "Capital Client")
-# (ques:capital-1082 "Identification de l'entreprise")
-# (ques:capital-15 "Capital de Marque")
-# (ques:capital-15 "Protection juridique des noms de produits ou d’offre {.P1}")
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+# Liens sémantiques depuis les formulaires vers les catégories V.A.I.
+
+# Capital Humain : dbpedia:Human_resources
+#===============
 # (ques:capital-2002 "Capital Humain")
+ques:capital-2002 dbo:Type dbpedia:Human_resources .
+
 # (ques:capital-2036 "Capital de savoir")
-# (ques:capital-2052 "Identification de l'entreprise")
+ques:capital-2036 dbo:Type dbpedia:Human_resources .
+
+# Capital Structurel (parties prenantes) : Stakeholder_(corporate)
+#=======================================
+# Capital fournisseur/part. : x,x
+# Capital organisationnel : x.x
+# Capital client : x.x
+
+# (ques:capital-1001 "Capital Actionnaire")
+ques:capital-1001 dbo:Type <http://dbpedia.org/resource/Stakeholder_(corporate)> .
+
+# (ques:capital-1008 "Capital Partenaire")
+ques:capital-1008 dbo:Type <http://dbpedia.org/resource/Stakeholder_(corporate)> .
+
+# (ques:capital-1021 "Capital Organisationnel")
+ques:capital-1021 dbo:Type <http://dbpedia.org/resource/Stakeholder_(corporate)> .
+
+# (ques:capital-1055 "Capital Client")
+ques:capital-1055 dbo:Type <http://dbpedia.org/resource/Stakeholder_(corporate)> .
+
+
+# Capital opérationnel: dbpedia:Organization
+#=====================
+# Capital naturel : x,x
+# Capital sociétal : x,x
+# Capital marques : x,x
+
 # (ques:capital-2 "Capital Naturel")
+ques:capital-2 dbo:Type dbpedia:Organization .
+
 # (ques:capital-9 "Capital sociétal")
-# (ques:capital-9 "Sport, Culture, loisirs {.P1}")
+ques:capital-9 dbo:Type dbpedia:Organization .
+
+# (ques:capital-15 "Capital de Marque")
+ques:capital-15 dbo:Type dbpedia:Organization .
+
+######################################################################
+
+# Liens sémantiques depuis formulaires et propriétés vers les catégories dbPedia
+
+ques:capital-2 dc:subject dbpedia:Natural_capital .
+ques:capital-9 dc:subject dbpedia:Social, dbpedia:Sustainable_development .
+ques:capital-15 dc:subject dbpedia:Brand .
 
 ques:capital-1001 dc:subject dbpedia:Shareholder .
 ques:capital-1008 dc:subject dbpedia:Business_partner .
 ques:capital-1012 dc:subject dbpedia:Fidelity , dbpedia:Supplier .
 
-ques:capital-1021 dc:subject dbpedia:Organizational_capital .
-
+ques:capital-1021 dc:subject dbpedia:Organization .
 ques:capital-1023 dc:subject dbpedia:XX .
-
 ques:capital-1055 dc:subject dbpedia:Customer .
-
 ques:capital-1082 dc:subject dbpedia:Involvement .
 
-ques:capital-15 dc:subject dbpedia:Brand .
-
-ques:capital-2 dc:subject dbpedia:Natural_capital .
-
 ques:capital-2002 dc:subject dbpedia:Human_capital .
-
 ques:capital-2036 dc:subject dbpedia:Knowledge .
-
 ques:capital-2052 dc:subject dbpedia:XX .
-
-ques:capital-9 dc:subject dbpedia:Social, dbpedia:Sustainable_development .
 

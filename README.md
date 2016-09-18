@@ -63,7 +63,7 @@ A form is modeled by an OWL class C, plus an OWL object property P, such that :
     P rdfs:domain :User ; rdfs:range C .
 
 which means that P connects the class User to a class C that models the form.
-The form is built by the semantic\_forms tool from C by gathering all properties PC such that:
+The form is built by the `semantic_forms` framework from C by gathering all properties PC such that:
 
     PC rdfs:domain C .
 
