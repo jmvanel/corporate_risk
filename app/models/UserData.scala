@@ -19,7 +19,7 @@ import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCacheAlgo
 import deductions.runtime.services.URIManagement
 
-/** an URI and a label, see function getUserData() */
+/** an URI of user data, and a label, see function [[UserDataTrait#getUserData()]] */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
 
 /** Banana principle: refer to concrete implementation only in blocks without code */
@@ -34,10 +34,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with PreferredLanguageLiteral[Rdf]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]
     with FormsGroupsData1[Rdf]
-        with URIManagement {
-
-  /** coherent with script populate_db.sh */
-  val vocabularyGraph = "model:vocabulary"
+    with URIManagement
+    with UserDataPerCategories[Rdf, DATASET] {
 
   import ops._
   import rdfStore.transactorSyntax._

@@ -25,6 +25,8 @@ trait Prefixes[Rdf <: RDF] {
   /** Questionnaire vocabulary */
   lazy val bizinnovQuestionsVocabPrefix = Prefix("ques",
     "http://www.bizinnov.com/ontologies/quest.owl.ttl#")
-    
+  
+   /** coherent with script populate_db.sh */
+  val vocabularyGraph = "model:vocabulary"
   // TODO Add props & classes to Prefix objects
 }

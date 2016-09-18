@@ -162,10 +162,11 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val userURI = getURI(user)
 //          # ${declareSPARQL_PREFIX(rdfs)}
     val queryString = s"""
-          PREFIX : <http://www.bizinnov.com/ontologies/quest.owl.ttl#>      
+          PREFIX : <${bizinnovQuestionsVocabPrefix.prefixIri}>      
           ${declareSPARQL_PREFIX(xsd)}
-          PREFIX rdfs: <${rdfs.prefixIri}> # workaround bug on Banana: rdfs bad prefix 
-          PREFIX ques: <http://www.bizinnov.com/ontologies/quest.owl.ttl#> 
+          # PREFIX rdfs: <${rdfs.prefixIri}> # workaround bug on Banana: rdfs bad prefix
+          ${declareSPARQL_PREFIX(rdfs)}
+          ${declareSPARQL_PREFIX(bizinnovQuestionsVocabPrefix)}
 
           SELECT ?label (xsd:integer(?VALUE) AS ?note) (IF(bound(?COEF), xsd:integer(?COEF) ,1) AS ?coef)
           WHERE {
