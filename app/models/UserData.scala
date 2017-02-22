@@ -68,11 +68,11 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
 
   /**
    * return all (direct) User Data: a sequence of couples:
-   * - an URI <u1> associated with the user <user> through one of the RDF properties <prop> in configuration :
+   * - an URI <u1> associated with the user <user> through one of the RDF properties <prop> in database :
    *     <user> <prop> <u1> .
    * - a label string associated to the class of <u1> in configuration.
    *
-   * The configuration (data model & form groups) is gotten by function #applicationClassesAndProperties() .
+   * The data model & form groups are gotten by function #applicationClassesAndProperties() .
    *
    * transactional
    */
@@ -118,7 +118,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   }
 
   /**
-   * get User Data for all form Groups
+   * get User Data for all form Groups [[FormUserData]];
+   * see explanations in function #getUserData;
    * transactional
    */
   def getAllUserData(user: User): Seq[FormUserData[Rdf]] =
@@ -139,15 +140,15 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   /** transactional */
   def getNextForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
     val fuds = getAllUserData(user)
-    infor(s"""getNextForm for dataURI : ${dataURI} """)
-    infor(s"""getNextForm total for all groups : ${fuds.size} """)
+    logInfo(s"""getNextForm for dataURI : ${dataURI} """)
+    logInfo(s"""getNextForm total for all groups : ${fuds.size} """)
     val sl = fuds.sliding(2)
 
     val nf = for (
       Seq(f1, f2) <- sl;
       if (fromUri(f1.data) == dataURI)
     ) yield f2
-    infor(s"""getNextForm $dataURI : $nf """)
+    logInfo(s"""getNextForm $dataURI : $nf """)
     if (nf isEmpty) None else Some(nf.next)
   }
 
@@ -202,7 +203,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   }
 
   //  private
-  def infor(s: String) = Logger.getRootLogger().info(s)
+  def logInfo(s: String) = Logger.getRootLogger().info(s)
 
   /** @argument formGroup URI like eg http://www.bizinnov.com/ontologies/quest.owl.ttl#capital-fg
    * @return a FormGroup, that is a sequence of URI couples:
@@ -213,15 +214,15 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
    *  See "Note on the data model" in README.md
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
-    infor(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
-    infor(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
+    logInfo(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
+    logInfo(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
   /** like before, different argument type (eg "risk-fg")
    * NON transactional */
   def applicationClassesAndProperties(formGroupName: String): FormGroup = {
-    infor(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
+    logInfo(s"""applicationClassesAndProperties formGroupName String "$formGroupName" """)
     formGroupName match {
       case name if (name.startsWith("risk")) =>
         FormGroup(applicationClassesAndPropertiesRisk,
@@ -302,7 +303,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   }
 
   def println(mess: String) = {
-    infor(mess)
+    logInfo(mess)
     val fileName = "bblog.txt"
     import java.nio.file.{ Paths, Files }
     import java.nio.charset.StandardCharsets

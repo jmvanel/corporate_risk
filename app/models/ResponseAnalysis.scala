@@ -31,6 +31,19 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   //////// Response count ////////
 
   /**
+   * @return a list of forms, each with Label and Counts, for given form group
+   *  @param groupUri URI of form group
+   */
+  def getFormsURIsLabelCounts(groupUri: String, user: User): Seq[(String, String, Int, Int)] = {
+    getUserData(user, groupUri).map {
+      case FormUserData(formUri, label) =>
+        (fromUri(formUri), label,
+          responsesCount(user, fromUri(formUri)),
+          fieldsCount(user, fromUri(formUri)))
+    }
+  }
+
+  /**
    * fonction qui compte les réponses pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème);
    *
@@ -55,7 +68,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
       val res = solutions.iterator map { row =>
-        infor(s""" responsesCount iter ${row}""")
+        logInfo(s""" responsesCount iter ${row}""")
         row("count").get.as[Rdf#Literal].get
       }
       res.next()

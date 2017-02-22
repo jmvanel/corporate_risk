@@ -151,29 +151,40 @@ trait ApplicationTrait
 
   //////// UI for business forms ////////
 
-  /** show a list of forms */
+  /**
+   * show a list of forms for given form group
+   *  @param groupUri URI of form group
+   */
   def formgroup(groupUri: String) = withUser { implicit user =>
     implicit request =>
+      val formsURIsLabelCounts = getFormsURIsLabelCounts(groupUri, user)
       val fgName = userData.formGroupList(Some(user)).map(_.swap).get(Some(groupUri)).get
-      val forms = userData.getUserData(user, groupUri).map {
-        case FormUserData(formUri, label) =>
-          (formUri.getURI, label,
-            responseAnalysis.responsesCount(user, formUri.getURI),
-            responseAnalysis.fieldsCount(user, formUri.getURI)
-          )
-      }
-      Ok(views.html.formgroup(forms, fgName))
+      Ok(views.html.formgroup(formsURIsLabelCounts, fgName))
   }
+
+//  /**
+//   * @return a list of forms, each with Label and Counts, for given form group
+//   *  @param groupUri URI of form group
+//   */
+//  def getFormsURIsLabelCounts2(groupUri: String, user: User): Seq[(String, String, Int, Int)]
+//		  = {
+//    userData.getUserData(user, groupUri).map {
+//      case FormUserData(formUri, label) =>
+//        (formUri.getURI, label,
+//          responseAnalysis.responsesCount(user, formUri.getURI),
+//          responseAnalysis.fieldsCount(user, formUri.getURI))
+//    }
+//  }
 
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request => {
       val formGroup = userData.getFormGroup(user, uri)
       implicit val graph = rdfStore.r(dataset, { allNamedGraph }).get
-      val form = tableView.htmlFormElemJustFields(uri, editable = true,
+      val formHTML = tableView.htmlFormElemJustFields(uri, editable = true,
         graphURI = user.getURI().getURI(), formGroup = formGroup)
       val label = userData.getFormLabel(uri)
-      Ok(views.html.form(form, label, formGroup))
+      Ok(views.html.form(formHTML, label, formGroup))
     }
   }
 
@@ -181,33 +192,43 @@ trait ApplicationTrait
    * saves the values entered by the user,
    *  and redirect to next form in form group, if there is still one
    */
-  def save = withUser { implicit user =>
-    implicit request =>
-      request.body match {
-        case form: AnyContentAsFormUrlEncoded =>
-          implicit val userURI: String = user.getURI().toString()
-          saveTriples(
-            form.data.filterNot {
-              case (key: String, _) => key.startsWith("SAVE")
-            })
-          form.data.getOrElse("uri", Seq()).headOption match {
-            case Some(url) => {
-              val nextform = if (form.data.contains("SAVE_previous")) {
-                userData.getPreviousForm(user, URLDecoder.decode(url, "utf-8"))
-              } else if (form.data.contains("SAVE_next")) {
-                userData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
-              } else
-                userData.getNextForm(user, URLDecoder.decode(url, "utf-8"))
+  def save = withUser {
+    implicit user =>
+      implicit request =>
+        request.body match {
+          case form: AnyContentAsFormUrlEncoded =>
+            implicit val userURI: String = user.getURI().toString()
+            val formMap = form.data
+            saveTriples(
+              formMap.filterNot {
+                case (key, _) => key.startsWith("SAVE")
+              })
+            formMap.getOrElse("uri", Seq()).headOption match {
+              case Some(urlEncoded) => {
+                val uri = URLDecoder.decode(urlEncoded, "utf-8")
+                val nextFormInOrder = if (formMap.contains("SAVE_previous")) {
+                  userData.getPreviousForm(user, uri)
+                } else if (formMap.contains("SAVE_next")) {
+                  userData.getNextForm(user, uri)
+                } else
+                  userData.getNextForm(user, uri)
 
-              nextform match {
-                case Some(form) => Redirect(routes.Application.form(form.data.getURI))
-                case None => Redirect(routes.Application.index.url)
+                val nextForm = enforceFormGroupComplete(nextFormInOrder, user)
+
+                nextForm match {
+                  case Some(form) => Redirect(routes.Application.form(form.data.getURI))
+                  case None => Redirect(routes.Application.index.url)
+                }
               }
+              case _ => throw new IllegalArgumentException(form.asText.toString)
             }
-            case _ => throw new IllegalArgumentException(form.asText.toString)
-          }
-        case _ => throw new IllegalArgumentException(request.body.asText.toString)
-      }
+          case _ => throw new IllegalArgumentException(request.body.asText.toString)
+        }
+  }
+
+  def enforceFormGroupComplete(nextFormInOrder: Option[FormUserData[Jena]], user: User): Option[FormUserData[Jena]] = {
+    nextFormInOrder
+    // ???
   }
 
   /** shows the report for the given user, as a html preview */
