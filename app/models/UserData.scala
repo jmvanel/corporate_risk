@@ -20,7 +20,7 @@ import deductions.runtime.sparql_cache.RDFCacheAlgo
 import deductions.runtime.services.URIManagement
 
 /** an URI of user data, and a label, see function [[UserDataTrait#getUserData()]] */
-case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String)
+case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String, formGroupUri: String)
 
 /** Banana principle: refer to concrete implementation only in blocks without code */
 object UserData extends RDFStoreLocalJena1Provider
@@ -114,7 +114,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     //    println(s"uriOptions ${uriOptions.mkString(", ")}")
     val valuesAndLabels = uriOptions collect { case Some((uri, il)) => (uri, il) }
     println(s"valuesAndLabels ${valuesAndLabels.mkString(", ")}")
-    valuesAndLabels.map(e => FormUserData(e._1, e._2))
+    valuesAndLabels.map(e => FormUserData(e._1, e._2, formGroupUri))
   }
 
   /**
@@ -128,17 +128,19 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       fud <- getUserData(user, fg.toString)
     ) yield fud
 
-  /** transactional */
-  def getPreviousForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
+  /** TODO : hack !
+   *  transactional */
+  def getPreviousForm(user: User, dataURI: String): Option[(FormUserData[Rdf], FormUserData[Rdf])] = {
     val form = for (
       Seq(f1, f2) <- getAllUserData(user).sliding(2);
       if (fromUri(f2.data) == dataURI)
-    ) yield f1
+    ) yield (f1, f2)
 
     if (form isEmpty) None else Some(form.next)
   }
+
   /** transactional */
-  def getNextForm(user: User, dataURI: String): Option[FormUserData[Rdf]] = {
+  def getNextForm(user: User, dataURI: String): Option[ (FormUserData[Rdf], FormUserData[Rdf])] = {
     val fuds = getAllUserData(user)
     logInfo(s"""getNextForm for dataURI : ${dataURI} """)
     logInfo(s"""getNextForm total for all groups : ${fuds.size} """)
@@ -147,7 +149,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     val nf = for (
       Seq(f1, f2) <- sl;
       if (fromUri(f1.data) == dataURI)
-    ) yield f2
+    ) yield (f1, f2)
     logInfo(s"""getNextForm $dataURI : $nf """)
     if (nf isEmpty) None else Some(nf.next)
   }
@@ -184,7 +186,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
    */
   def getFormGroup(user: User, dataURI: String): String = {
     val formsGroupsURIs = formsGroupsURIMap.values.toSeq
-    println(s"getFormGroup ${formsGroupsURIs.mkString(", ")}")
+    println(s"getFormGroup: forms Group URIs: ${formsGroupsURIs.mkString(", ")}")
     val userDataGroups = for (fg <- formsGroupsURIs) yield getUserData(user, fg)
     println(s"getFormGroup ${userDataGroups.mkString(", ")}")
     val userDataGroup = userDataGroups.find {

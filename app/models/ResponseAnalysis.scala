@@ -31,12 +31,12 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   //////// Response count ////////
 
   /**
-   * @return a list of forms, each with Label and Counts, for given form group
+   * @return a list of forms, each with Label and Counts (responses, fields), for given form group
    *  @param groupUri URI of form group
    */
   def getFormsURIsLabelCounts(groupUri: String, user: User): Seq[(String, String, Int, Int)] = {
     getUserData(user, groupUri).map {
-      case FormUserData(formUri, label) =>
+      case FormUserData(formUri, label, _) =>
         (fromUri(formUri), label,
           responsesCount(user, fromUri(formUri)),
           fieldsCount(user, fromUri(formUri)))
@@ -148,7 +148,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     dataset.r({
       Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {
-        case FormUserData(formUri, label) =>
+        case FormUserData(formUri, label, _) =>
           Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName) $label")
           label -> averagePerForm(user(userEmail), fromUri(formUri))._1
       }
@@ -246,7 +246,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val userData = getUserData(user, formGroupURI)
     val avgs = dataset.r({
       val res = userData.map {
-        case FormUserData(formUri, label) =>
+        case FormUserData(formUri, label, _) =>
           Logger.getRootLogger().debug(s"averagePerFormGroup($userEmail, $formUri) $label")
           averagePerForm(user, fromUri(formUri))
       }

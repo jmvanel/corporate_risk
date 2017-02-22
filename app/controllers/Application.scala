@@ -84,6 +84,8 @@ trait ApplicationTrait
     )
   }
 
+  import ops._
+
   /** TODO pasted from semantic_forms */
   override def serverPort = {
     val port = Play.current.configuration.
@@ -162,20 +164,6 @@ trait ApplicationTrait
       Ok(views.html.formgroup(formsURIsLabelCounts, fgName))
   }
 
-//  /**
-//   * @return a list of forms, each with Label and Counts, for given form group
-//   *  @param groupUri URI of form group
-//   */
-//  def getFormsURIsLabelCounts2(groupUri: String, user: User): Seq[(String, String, Int, Int)]
-//		  = {
-//    userData.getUserData(user, groupUri).map {
-//      case FormUserData(formUri, label) =>
-//        (formUri.getURI, label,
-//          responseAnalysis.responsesCount(user, formUri.getURI),
-//          responseAnalysis.fieldsCount(user, formUri.getURI))
-//    }
-//  }
-
   /** edit given form, with values previously set by the user */
   def form(uri: String) = withUser { implicit user =>
     implicit request => {
@@ -216,7 +204,9 @@ trait ApplicationTrait
                 val nextForm = enforceFormGroupComplete(nextFormInOrder, user)
 
                 nextForm match {
-                  case Some(form) => Redirect(routes.Application.form(form.data.getURI))
+                  case Some(form) =>
+                    // getURI ???
+                    Redirect(routes.Application.form(form.data.getURI))
                   case None => Redirect(routes.Application.index.url)
                 }
               }
@@ -226,9 +216,26 @@ trait ApplicationTrait
         }
   }
 
-  def enforceFormGroupComplete(nextFormInOrder: Option[FormUserData[Jena]], user: User): Option[FormUserData[Jena]] = {
-    nextFormInOrder
-    // ???
+  /** enforce Form Group Complete enough */
+  def enforceFormGroupComplete(nextFormInOrder: Option[(FormUserData[Jena], FormUserData[Jena])],
+    user: User): Option[FormUserData[Jena]] = {
+    if (nextFormInOrder isDefined) {
+      val groupUri = nextFormInOrder.get._1.formGroupUri
+      val groupUriNext = nextFormInOrder.get._2.formGroupUri
+
+      val formsURIsLabelCounts = getFormsURIsLabelCounts(groupUri, user)
+      val responsesCount = formsURIsLabelCounts.map(tup => tup._3).sum
+      val fieldsCount = formsURIsLabelCounts.map(tup => tup._4).sum
+      println(s">>>> enforceFormGroupComplete: responsesCount=$responsesCount, fieldsCount=$fieldsCount")
+      val nextFormInOtherGroup = groupUriNext != groupUri
+      if (nextFormInOtherGroup)
+        // enforce enough answers in percentage  
+        if (responsesCount / fieldsCount > 0.70)
+          Some(nextFormInOrder.get._2)
+        else None
+      else
+        Some(nextFormInOrder.get._2)
+    } else None
   }
 
   /** shows the report for the given user, as a html preview */

@@ -48,7 +48,9 @@ trait UserDataPerCategories[Rdf <: RDF, DATASET]
             _ => "",
             _ => "",
             l => fromLiteral(l)._1
-          ))
+          ),
+          "" // TODO ? 
+          )
     }
   }
 }

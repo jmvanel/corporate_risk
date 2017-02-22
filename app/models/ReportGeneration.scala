@@ -29,7 +29,7 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
     val good = ArrayBuffer[DataMatch]()
     val bad = ArrayBuffer[DataMatch]()
     val forms = getUserData(user, groupUri).map {
-      case FormUserData(formUri, label) =>
+      case FormUserData(formUri, label, _) =>
         dataset.r({
           val uri = fromUri(formUri)
           val (note, _, label) = averagePerForm(user, uri)
