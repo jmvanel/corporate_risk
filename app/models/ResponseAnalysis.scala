@@ -12,10 +12,6 @@ import scalax.chart.Chart
  * Responses Analysis:
  *  see "Note on the data model" in README.md
  */
-//class ResponseAnalysis extends RDFStoreLocalJena1Provider
-//  with ReportGenerationTrait[Jena, Dataset]
-//  with JenaRDFLoader
-
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]

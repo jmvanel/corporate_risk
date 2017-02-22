@@ -43,26 +43,4 @@ trait ZipUtils {
       fos.close()
     }
   }
-
-  //  val Buffer = 2 * 1024
-  //  def zip(out: String, files: Iterable[String], retainPathInfo: Boolean = true) = {
-  //    var data = new Array[Byte](Buffer)
-  //    val zip = new ZipOutputStream(new FileOutputStream(out))
-  //    files.foreach { name =>
-  //      if (!retainPathInfo)
-  //        zip.putNextEntry(new ZipEntry(name.splitAt(name.lastIndexOf(File.separatorChar) + 1)._2))
-  //      else
-  //        zip.putNextEntry(new ZipEntry(name))
-  //      val in = new BufferedInputStream(new FileInputStream(name), Buffer)
-  //      var b = in.read(data, 0, Buffer)
-  //      while (b != -1) {
-  //        zip.write(data, 0, b)
-  //        b = in.read(data, 0, Buffer)
-  //      }
-  //      in.close()
-  //      zip.closeEntry()
-  //    }
-  //    zip.close()
-  //  }
-
 }

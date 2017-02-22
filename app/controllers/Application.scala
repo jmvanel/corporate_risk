@@ -69,7 +69,7 @@ trait ApplicationTrait
     with PDFinBatch
     with DashboardHistoryUserActions[Jena, Dataset] {
 
-  // override defaults from semantic_forms:
+  // override defaults from semantic_forms' DefaultConfiguration:
   override val recordUserActions: Boolean = true
   override val addRDFS_label_comment = false
   override val showRDFtype = false
@@ -78,14 +78,6 @@ trait ApplicationTrait
   override val displayTechnicalSemWebDetails = false
   override val css: CSS = new CSS {
     override val cssRules = ""
-    /*
-      .form-row{ display: table-row; }
-      .form-cell{ display: table-cell; }
-      .form-input{ display: table-cell; width: 500px; }
-      .form-value{ display: table-cell; width: 500px; }
-      .button-add{ width: 25px; }
-      .form-label{ display: table-cell; width: 160px; }
-     */
     override lazy val cssClasses = CSSClasses(
       formDivInputCSSClass = "",
       formSelectDivCSSClass = ""
@@ -109,8 +101,8 @@ trait ApplicationTrait
   addSaveListener(this) // for TimeSeries
 
   val logger: Logger = Logger.getRootLogger()
-  lazy val tableView = this // new TableView {}
-  val responseAnalysis = this // new ResponseAnalysis()
+  lazy val tableView = this
+  val responseAnalysis = this
   val userData = this
 
   //////// UI for user information ////////
