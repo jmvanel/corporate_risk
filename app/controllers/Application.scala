@@ -170,7 +170,7 @@ trait ApplicationTrait
       val formGroup = userData.getFormGroup(user, uri)
       implicit val graph = rdfStore.r(dataset, { allNamedGraph }).get
       val formHTML = tableView.htmlFormElemJustFields(uri, editable = true,
-        graphURI = user.getURI().getURI(), formGroup = formGroup)
+        graphURI = fromUri(user.getURI()), formGroup = formGroup)
       val label = userData.getFormLabel(uri)
       Ok(views.html.form(formHTML, label, formGroup))
     }
@@ -204,10 +204,10 @@ trait ApplicationTrait
                 val nextForm = enforceFormGroupComplete(nextFormInOrder, user)
 
                 nextForm match {
-                  case Some(form) =>
-                    // getURI ???
-                    Redirect(routes.Application.form(form.data.getURI))
-                  case None => Redirect(routes.Application.index.url)
+                  case Right(form) =>
+                    Redirect(routes.Application.form(fromUri(form.data)))
+                  case Left(message) => Redirect(routes.Application.index.url).withHeaders(
+                    "message" -> message)
                 }
               }
               case _ => throw new IllegalArgumentException(form.asText.toString)
@@ -218,7 +218,7 @@ trait ApplicationTrait
 
   /** enforce Form Group Complete enough */
   def enforceFormGroupComplete(nextFormInOrder: Option[(FormUserData[Jena], FormUserData[Jena])],
-    user: User): Option[FormUserData[Jena]] = {
+    user: User): Either[String, FormUserData[Jena]] = {
     if (nextFormInOrder isDefined) {
       val groupUri = nextFormInOrder.get._1.formGroupUri
       val groupUriNext = nextFormInOrder.get._2.formGroupUri
@@ -231,11 +231,17 @@ trait ApplicationTrait
       if (nextFormInOtherGroup)
         // enforce enough answers in percentage  
         if (responsesCount / fieldsCount > 0.70)
-          Some(nextFormInOrder.get._2)
-        else None
+          Right(nextFormInOrder.get._2)
+        else {
+          val message = s"""La partie pré-diagnostic doit être davantage remplie!
+          Actuellement $responsesCount réponses / $fieldsCount champs;
+          il faut 70% de réponses."""
+          println(s"enforceFormGroupComplete: $message")
+          Left(message)
+        }
       else
-        Some(nextFormInOrder.get._2)
-    } else None
+        Right(nextFormInOrder.get._2)
+    } else Left("Tout a été rempli! Retour à l'accueil.")
   }
 
   /** shows the report for the given user, as a html preview */
