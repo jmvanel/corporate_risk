@@ -13,7 +13,10 @@
     		</td>
     		<td class="index-col-right">
     			@* @form._3 réponse@if(form._3 >1){s} sur @form._4 *@
-    			Il reste @(form._4 - form._3) question(s) sur @form._4
+    		    @if(form._4 != form._3){
+    		    	Il reste @(form._4 - form._3) question(s) sur @form._4
+    		    } else {
+    			Questionnaire complet (@form._4 réponses)}
     		</td>
    		</tr>
    		}
