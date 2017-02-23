@@ -170,20 +170,20 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   /** average Per Form; transactional */
   def averagePerFormTR(
     user: User,
-    instanceURI: String): (Float, Int, String) = {
+    instanceURI: String): (Float, Int, String, Int) = {
     val res = rdfStore.r( dataset, {
       // wrapInReadTransaction(
       averagePerForm(user, instanceURI)
     })
-    res . getOrElse( ( 0.0f, 0, s"Error: $res" ) )
+    res . getOrElse( ( 0.0f, 0, s"Error: $res", 0 ) )
   }
 
-  /** average Per Form; NON-transactional */
+  /** average Per Form; NON-transactional
+   *  @return (weightedAverage, coefSum, labelClass, responseCount) */
   def averagePerForm(
     user: User,
-    instanceURI: String): (Float, Int, String) = {
+    instanceURI: String): (Float, Int, String, Int) = {
     val userURI = getURI(user)
-//          # ${declareSPARQL_PREFIX(rdfs)}
     val queryString = s"""
           PREFIX : <${bizinnovQuestionsVocabPrefix.prefixIri}>      
           ${declareSPARQL_PREFIX(xsd)}
@@ -191,7 +191,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
           ${declareSPARQL_PREFIX(rdfs)}
           ${declareSPARQL_PREFIX(bizinnovQuestionsVocabPrefix)}
 
-          SELECT ?label (xsd:integer(?VALUE) AS ?note) (IF(bound(?COEF), xsd:integer(?COEF) ,1) AS ?coef)
+          SELECT ?label (xsd:integer(?VALUE) AS ?note) (IF(bound(?COEF), xsd:integer(?COEF), 1) AS ?coef)
           WHERE {
            { # for direct numeric values (risk forms)
             GRAPH <$userURI> {
@@ -213,9 +213,9 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
              ?CLASS rdfs:label ?label .
             }
            }
-          } """
+          }
+          """
     import sparqlOps._
-    import ops._
     //    Logger.getRootLogger().debug(s"averagePerForm queryString $queryString")
     val query = parseSelect(queryString).get
     val solutions = dataset.executeSelect(query, Map()).get
@@ -234,31 +234,33 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     var weightedSum: Float = 0
     var coefSum = 0
     var labelClass = ""
+    var responseCount = 0
     for (tuple <- res) yield {
       val (label, note, coef) = tuple
       weightedSum += note * coef
       coefSum += coef
       labelClass = label
+      responseCount = responseCount + 1
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
-    (weightedAverage, coefSum, labelClass)
+    (weightedAverage, coefSum, labelClass, responseCount)
   }
 
   protected def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
   protected def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
 
   /**
-   * average Per FormGroup;
+   * Statistics and average Per FormGroup;
    * pour le rapport, fonction qui chiffre chaque groupe de formulaires;
    *  renvoie aussi la somme des coefficients afin de calculer la moyenne globale.
    *
    * transactional
    */
-  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int) = {
+  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int, Int) = {
     val userEmail = user.email
     Logger.getRootLogger().debug(s"averagePerFormGroup($userEmail, $formGroupURI $formGroupURI)")
     val userData = getUserData(user, formGroupURI)
-    val avgs = dataset.r({
+    val avgs = rdfStore.r( dataset, {
       val res = userData.map {
         case FormUserData(formUri, label, _) =>
           Logger.getRootLogger().debug(s"averagePerFormGroup($userEmail, $formUri) $label")
@@ -268,44 +270,48 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     }).get
     var weightedSum: Float = 0
     var coefSum = 0
+    var totalCount = 0
     for (tuple <- avgs) yield {
-      val (note, coef, _) = tuple
+      val (note, coef, _, count) = tuple
       weightedSum += note * coef
       coefSum += coef
+      totalCount += count
     }
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
-    (weightedAverage, coefSum)
+    (weightedAverage, coefSum, totalCount)
   }
 
   /**
    * fonction qui fournit la note globale
    * ( pris en compte les choix multiples pour les transformer en nombre entre 1 et 5 )
    *
-   * transactional
+   * NON transactional
    */
-  def globalEval(user: User): Float = {
+  def globalEval(user: User): (Float, Int) = {
     //    dataset.r({
     var weightedSum: Float = 0
     var coefSumGlobal = 0
+    var totalCount = 0
     for (fg <- formsGroupsURIMap.values) {
-      val (av, coefSum) = averagePerFormGroup(user, fg)
+      val (av, coefSum, count) = averagePerFormGroup(user, fg)
       weightedSum += av * coefSum
       coefSumGlobal += coefSum
+      totalCount += count
     }
     coefSumGlobal = if (coefSumGlobal != 0) coefSumGlobal else 1
-    (weightedSum / coefSumGlobal)
+    (weightedSum / coefSumGlobal, totalCount)
     //    }).get
   }
   
   /** Map forms Groups labels to their URI;
-   * and filters results acording to a criterium, here
+   * and filters results according to a criterium, here
    *           globalEval(user) > 3
    * */
   def formGroupList(userOption: Option[User]): Map[String, Option[String]] = Map(
     "Pré-diagnostic" -> Some(formsGroupsURIMap("risk")),
     "Diagnostic" -> { userOption match {
       case Some(user) => if(
-          globalEval(user) > 3
+          globalEval(user)._1 > 3
           ) Some(formsGroupsURIMap("capital")) else None
       case None => None
     }}
@@ -342,10 +348,10 @@ trait ResponseAnalysisOnlyInterface extends FormsGroupsData {
    *
    * NON transactional
    */
-  def averagePerForm(user: User, instanceURI: String): (Float, Int, String)
-  def averagePerFormTR(user: User, instanceURI: String): (Float, Int, String)
-  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int)
-  def globalEval(user: User): Float
+  def averagePerForm(user: User, instanceURI: String): (Float, Int, String, Int)
+  def averagePerFormTR(user: User, instanceURI: String): (Float, Int, String, Int)
+  def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int, Int)
+  def globalEval(user: User): (Float, Int)
   type DataMatch = (String, String)
 }
 

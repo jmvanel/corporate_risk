@@ -34,12 +34,12 @@ Valorisation des acquis de l'immatériel
 		<td>
 			<h3>Bilan de la valorisation de l’entreprise</h3>
 			<p>
-			 	@if(reportData.globalEval(user) > 3) {
+			 	@if(reportData.globalEval(user)._1 > 3) {
 			     L'entreprise a une bonne évaluation:
-			     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
+			     	@{ "%.2f".format(reportData.globalEval(user)._1)} sur 5 .
 			  	} else {
 				  L'entreprise a une mauvaise évaluation:
-			     	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
+			     	@{ "%.2f".format(reportData.globalEval(user)._1)} sur 5 .
 			   }
 			</p>
 			<p>Cette moyenne ne tient pas compte des formulaires non remplis.</p>

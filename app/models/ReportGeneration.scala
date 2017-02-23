@@ -32,7 +32,7 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
       case FormUserData(formUri, label, _) =>
         dataset.r({
           val uri = fromUri(formUri)
-          val (note, _, label) = averagePerForm(user, uri)
+          val (note, _, label, count) = averagePerForm(user, uri)
           if (note >= 3.5)
             good.append((label, uri))
           else
