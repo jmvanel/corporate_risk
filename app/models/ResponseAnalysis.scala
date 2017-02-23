@@ -7,6 +7,7 @@ import org.w3.banana.RDFSPrefix
 
 import deductions.runtime.abstract_syntax.InstanceLabelsInferenceMemory
 import scalax.chart.Chart
+import deductions.runtime.services.SPARQLHelpers
 
 /**
  * Responses Analysis:
@@ -15,6 +16,7 @@ import scalax.chart.Chart
 trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     extends UserDataTrait[Rdf, DATASET]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]
+    with SPARQLHelpers[Rdf, DATASET]
     with ResponseAnalysisOnlyInterface {
 
   import ops._
@@ -165,6 +167,18 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    *  NOTE: for that, see method: User.find(email: String) */
   def user(userEmail: String): User = User(userEmail, "", "")
 
+  /** average Per Form; transactional */
+  def averagePerFormTR(
+    user: User,
+    instanceURI: String): (Float, Int, String) = {
+    val res = rdfStore.r( dataset, {
+      // wrapInReadTransaction(
+      averagePerForm(user, instanceURI)
+    })
+    res . getOrElse( ( 0.0f, 0, s"Error: $res" ) )
+  }
+
+  /** average Per Form; NON-transactional */
   def averagePerForm(
     user: User,
     instanceURI: String): (Float, Int, String) = {
@@ -328,9 +342,8 @@ trait ResponseAnalysisOnlyInterface extends FormsGroupsData {
    *
    * NON transactional
    */
-  def averagePerForm(
-    user: User,
-    instanceURI: String): (Float, Int, String)
+  def averagePerForm(user: User, instanceURI: String): (Float, Int, String)
+  def averagePerFormTR(user: User, instanceURI: String): (Float, Int, String)
   def averagePerFormGroup(user: User, formGroupURI: String): (Float, Int)
   def globalEval(user: User): Float
   type DataMatch = (String, String)

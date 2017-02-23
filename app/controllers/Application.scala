@@ -161,6 +161,7 @@ trait ApplicationTrait
     implicit request =>
       val formsURIsLabelCounts = getFormsURIsLabelCounts(groupUri, user)
       val fgName = userData.formGroupList(Some(user)).map(_.swap).get(Some(groupUri)).get
+      implicit val analysis: ResponseAnalysisInterface = this
       Ok(views.html.formgroup(formsURIsLabelCounts, fgName))
   }
 
