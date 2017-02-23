@@ -12,7 +12,8 @@
     			<a href="@routes.Application.form(form._1.toString)" class="formname">@form._2</a>
     		</td>
     		<td class="index-col-right">
-    			@form._3 réponse@if(form._3 >1){s} sur @form._4
+    			@* @form._3 réponse@if(form._3 >1){s} sur @form._4 *@
+    			Il reste @(form._4 - form._3) question(s) sur @form._4
     		</td>
    		</tr>
    		}
