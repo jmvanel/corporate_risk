@@ -51,7 +51,7 @@ with UserVocab[Rdf] {
           makeLiteral(hashPassword(user.password), xsd.string) --
           bizinnovUserVocabPrefix("email") ->-
           makeLiteral(user.email, xsd.string)
-        dataset.rw({
+        rdfStore.rw( dataset, {
           dataset.appendToGraph(bizinnovUserGraphURI, pgr.graph)
         })
         UserData.createEmptyUserData(user)
@@ -66,7 +66,7 @@ with UserVocab[Rdf] {
    *  TODO voir pour utiliser FormSaver
    */
   def saveInfo(user: User, info: UserCompanyInfo) = {
-    dataset.rw({
+    rdfStore.rw( dataset, {
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val toDelete = ArrayBuffer[Rdf#Triple]()
       val triples = info.getMap.map({
@@ -87,7 +87,7 @@ with UserVocab[Rdf] {
   /** transactional */
   def getCompanyInfo(user: User): Option[UserCompanyInfo] = {
     val nonEntered = Some(UserCompanyInfo( Some("Non renseigné"), Some("9999"), Some("2222"),  Some("Non renseigné") ))
-    dataset.r({
+    rdfStore.r( dataset, {
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val userURI = getSubjects(userGraph,
         bizinnovUserVocabPrefix("email"),
@@ -138,7 +138,7 @@ object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
   /** get user object from her Email;
    * NON transactional */
   def find(email: String): Option[User] = {
-    val user = dataset.r({
+    val user = rdfStore.r( dataset, {
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val userURI = getSubjects(userGraph,
         bizinnovUserVocabPrefix("email"),
@@ -159,7 +159,7 @@ object User extends RDFStoreLocalJena1Provider with UserVocab[Jena] {
   }
  
   def listUsers(): List[User] = {
-    val r = dataset.r({
+    val r = rdfStore.r( dataset, {
       val userGraph = dataset.getGraph(bizinnovUserGraphURI).get
       val triples = ops.find( userGraph, ANY, bizinnovUserVocabPrefix("email"), ANY )
       triples . map{ triple =>

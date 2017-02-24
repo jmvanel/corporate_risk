@@ -89,7 +89,7 @@ extends ResponseAnalysisTrait[Rdf, DATASET]
    */
   def computeXYCharts(formGroupURI: String, email: String): Iterable[Chart] = {
     // TODO ? move to a class to manage data model
-    val labelsInFormGroup = dataset.rw({
+    val labelsInFormGroup = rdfStore.rw( dataset, {
       val formGroup = applicationClassesAndProperties(URI(formGroupURI))
       val classesAndProperties = formGroup.classesAndProperties
       classesAndProperties.map {

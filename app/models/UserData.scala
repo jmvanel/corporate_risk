@@ -58,7 +58,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
    * transactional
    */
   def createEmptyUserData(user: User) = {
-    dataset.rw({
+    rdfStore.rw( dataset, {
       val userURI = getURI(user)
       for (fg <- formsGroups) {
         val cp = applicationClassesAndProperties(fg)
@@ -90,7 +90,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
       case uri: String => URI(uri)
     }
     // rw because of instanceLabel()
-    val nodesAndLabels = dataset.rw({
+    val nodesAndLabels = rdfStore.rw( dataset, {
       val userURI = getURI(user)
       val userGraph = dataset.getGraph(userURI).get
       val classesAndProperties =
@@ -162,7 +162,7 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
 
   /** transactional */
   def getFormLabel(formUri: String): String = {
-    dataset.r({
+    rdfStore.r( dataset, {
       val graph = allNamedGraph
       // possible user-specific label:
       val userSpecificLabel = instanceLabel(URI(formUri), graph, "" /*lang TODO*/ )

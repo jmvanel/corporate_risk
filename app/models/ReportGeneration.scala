@@ -30,7 +30,7 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
     val bad = ArrayBuffer[DataMatch]()
     val forms = getUserData(user, groupUri).map {
       case FormUserData(formUri, label, _) =>
-        dataset.r({
+        rdfStore.r( dataset, {
           val uri = fromUri(formUri)
           val (note, _, label, count) = averagePerForm(user, uri)
           if (note >= 3.5)
@@ -74,7 +74,7 @@ trait ReportGenerationTrait[Rdf <: RDF, DATASET]
   //   * transactional
   //   */
   //  def filterResponses(user: User, sparqlCriterium: String): Seq[DataMatch] = {
-  //    val resultTry = dataset.r({
+  //    val resultTry = rdfStore.r( dataset, {
   //      val userURI = getURI(user)
   //      val queryString = s"""
   //          ${declareSPARQL_PREFIX(xsd)}

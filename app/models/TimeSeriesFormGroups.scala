@@ -44,7 +44,7 @@ trait TimeSeriesFormGroups[Rdf <: RDF, DATASET]
           val subjects = addedTriples.map { _.subject }.distinct
           /* NOTE: transaction within transaction, but with a different database! */
           val graphs =
-//            dataset.r({
+//            rdfStore.r( dataset, {
             subjects.map { subject =>
               val avTuple = averagePerForm(User.getUserFromURI(userURI), subject.toString())
               ( subject // URI(userURI)

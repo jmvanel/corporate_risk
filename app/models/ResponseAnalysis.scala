@@ -47,7 +47,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * transactional
    */
   def responsesCount(user: User, dataURI: String): Int = {
-    val countTry = dataset.r({
+    val countTry = rdfStore.r( dataset, {
       val userURI = getURI(user)
       // NOTE: could have used find() like in UserData.getUserData()
       val queryString = s"""
@@ -96,7 +96,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
          }
         } """
     //    Logger.getRootLogger().debug( s"fieldsCount: $queryString")
-    val countTry = dataset.r({
+    val countTry = rdfStore.r( dataset, {
       import sparqlOps._
       val query = parseSelect(queryString).get
       val solutions = dataset.executeSelect(query, Map()).get
@@ -139,7 +139,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName)")
     try {
     val userData = getUserData(user(userEmail), formsGroupsURIMap(formGroupName))
-    dataset.r({
+    rdfStore.r( dataset, {
       Logger.getRootLogger().debug(s"getEval($userEmail, $formGroupName) userData $userData")
       val res = userData.map {
         case FormUserData(formUri, label, _) =>
@@ -277,7 +277,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * @return (global_average, totalCount)
    */
   def globalEval(user: User): (Float, Int) = {
-    //    dataset.r({
+    //    rdfStore.r( dataset, {
     var weightedSum: Float = 0
     var coefSumGlobal = 0
     var totalCount = 0

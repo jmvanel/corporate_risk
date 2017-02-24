@@ -29,7 +29,7 @@ class TestResponseAnalysis extends FunSuite with BeforeAndAfterAll {
   override def beforeAll {
     prepareTDBontologies()
     createEmptyUserData(user)
-    responseAnalysis.dataset.rw({
+    responseAnalysis.rdfStore.rw( dataset, {
       val graph = (
         instanceURI
         -- prop ->- "2"
@@ -50,7 +50,7 @@ class TestResponseAnalysis extends FunSuite with BeforeAndAfterAll {
   }
 
   test("averagePerForm 1") {
-    responseAnalysis.dataset.rw({
+    responseAnalysis.rdfStore.rw( dataset, {
       val (avg, coefs, _) = responseAnalysis.averagePerForm(user, fromUri(instanceURI))
       info(s""" responseAnalysis ${fud.label}
           avg ${avg} coefs $coefs""")
