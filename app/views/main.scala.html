@@ -1,4 +1,4 @@
-@(title: String, userOption: Option[User] = None, currentPage: String = "")(content: Html)
+@(title: String, userOption: Option[User] = None, currentPage: String = "", message: String="")(content: Html)
 
 <!DOCTYPE html>
 
@@ -38,10 +38,12 @@
     	@if( title != "" ) {
 	      <div class="container text-center"><span id="pagetitle">@{ title }</span></div>
     	}
-	<div id="content">
+
+       <div id="content">
         	@content
         </div>
-        	
+        
+        @* NOTE: ce bloc n'est jamais affiché; de toute façon ces liens sont déjà là autrement *@	
 		@if(!userOption.isEmpty) {
 		<div class="formmenu">
 			<div>
@@ -78,6 +80,7 @@
 	        		<img src="/assets/images/DGE.jpg" />
 	        		<img src="/assets/images/observatoire-logo.png" />
 	        	</div>
+	        	<div>@{message}</div>
 	        	<div class="pull-right footerlink">
 	        		<div>
 	        			<a href="@routes.Application.info">Informations Légales</a>

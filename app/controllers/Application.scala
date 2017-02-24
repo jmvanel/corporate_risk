@@ -136,7 +136,11 @@ trait ApplicationTrait
   def index = withUser { implicit user =>
     implicit request =>
       val form = userInfoForm.bind(getCompanyInfo(user).getOrElse(new UserCompanyInfo).getMap)
-      Ok(views.html.index(form))
+      val message = request.headers.toMap.getOrElse("message", "").toString()
+      println(s""">>>> message: $message
+          headers ${request.headers.toMap}
+          """)
+      Ok(views.html.index(form, message))
   }
 
   /** Saves the info form for the user */
@@ -209,8 +213,11 @@ trait ApplicationTrait
                 nextForm match {
                   case Right(form) =>
                     Redirect(routes.Application.form(fromUri(form.data)))
-                  case Left(message) => Redirect(routes.Application.index.url).withHeaders(
-                    "message" -> message)
+                  case Left(message) =>
+                    //                    println(s">>>> Redirect message $message")
+                    //                    Redirect(routes.Application.index.url).withHeaders(
+                    Redirect(routes.Application.index()).withHeaders(
+                      "message" -> message)
                 }
               }
               case _ => throw new IllegalArgumentException(form.asText.toString)
