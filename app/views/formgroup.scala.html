@@ -23,14 +23,19 @@
    		</tr>
    		}
  	</table>
- 	<div id="global-note">Note globale:
+ 	<div id="global-note">
  	@{ val ge = analysis.globalEval(user)
  		val note = ge._1
  		val totalCount = ge._2
  		val questionsCount = analysis.questionsCount()
  		val formsCount = analysis.formsCount()
-
- 		"%.2f".format(note) + s" - $totalCount réponses sur $questionsCount ($formsCount formulaires)"
- 		}
+        val message1 = <div>{ "Note globale:" + "%.2f".format(note) + s" - $totalCount réponses sur $questionsCount ($formsCount formulaires)"}</div>
+        val message2 = <div>{message1}
+ 		                 <b>(Note à titre indicatif négligeant les réponses manquantes)</b>
+ 		               </div>
+        if( totalCount == questionsCount)
+          message1
+        else message2
+ 	}
  	</div>
 }
