@@ -49,6 +49,7 @@ import play.api.mvc.ResponseHeader
 import scala.util.Success
 import scala.util.Failure
 import org.w3.banana.RDFSPrefix
+import java.net.URLEncoder
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -136,10 +137,9 @@ trait ApplicationTrait
   def index = withUser { implicit user =>
     implicit request =>
       val form = userInfoForm.bind(getCompanyInfo(user).getOrElse(new UserCompanyInfo).getMap)
-      val message = request.headers.toMap.getOrElse("message", "").toString()
-      println(s""">>>> message: $message
-          headers ${request.headers.toMap}
-          """)
+      //      val message = request.headers.toMap.getOrElse("message", "").toString()
+      val message = request.queryString.getOrElse("message", Seq()).toString()
+      println(s""">>>> message: $message """)
       Ok(views.html.index(form, message))
   }
 
@@ -215,9 +215,11 @@ trait ApplicationTrait
                     Redirect(routes.Application.form(fromUri(form.data)))
                   case Left(message) =>
                     //                    println(s">>>> Redirect message $message")
-                    //                    Redirect(routes.Application.index.url).withHeaders(
-                    Redirect(routes.Application.index()).withHeaders(
-                      "message" -> message)
+                    Redirect(routes.Application.index.url +
+                      s"?message=${URLEncoder.encode(message, "utf-8")}")
+                  //                    Redirect(routes.Application.index()).                   
+                  //                    withHeaders(
+                  //                      "message" -> message)
                 }
               }
               case _ => throw new IllegalArgumentException(form.asText.toString)
