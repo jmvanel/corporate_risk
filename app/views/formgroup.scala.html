@@ -24,6 +24,10 @@
    		}
  	</table>
  	<div id="global-note">Note globale:
- 	@{ "%.2f".format(analysis.globalEval(user)._1)	}
+ 	@{ val ge = analysis.globalEval(user)
+ 		val note = ge._1
+ 		val totalCount = ge._2
+ 		"%.2f".format(note) + s" - $totalCount réponses"
+ 		}
  	</div>
 }

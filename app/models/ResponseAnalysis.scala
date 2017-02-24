@@ -286,6 +286,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * ( pris en compte les choix multiples pour les transformer en nombre entre 1 et 5 )
    *
    * NON transactional
+   * @return (global_average, totalCount)
    */
   def globalEval(user: User): (Float, Int) = {
     //    dataset.r({
