@@ -27,7 +27,10 @@
  	@{ val ge = analysis.globalEval(user)
  		val note = ge._1
  		val totalCount = ge._2
- 		"%.2f".format(note) + s" - $totalCount réponses"
+ 		val questionsCount = analysis.questionsCount()
+ 		val formsCount = analysis.formsCount()
+
+ 		"%.2f".format(note) + s" - $totalCount réponses sur $questionsCount ($formsCount formulaires)"
  		}
  	</div>
 }

@@ -49,7 +49,8 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * fonction qui compte les réponses pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème);
    *
-   *  transactional
+   * En termes RDF, compte le nombre de triplets dont le sujet est l'URI donné.
+   * transactional
    */
   def responsesCount(user: User, dataURI: String): Int = {
     val countTry = dataset.r({
@@ -84,16 +85,17 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * fonction qui compte le nombre de champs pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème);
    *
-   *  transactional
+   * En termes OWL, compte le nombre de propriétés dont le domaine est la classe donnée.
+   * transactional
    */
-  def fieldsCount(user: User, dataURI: String): Int = {
+  def fieldsCount(user: User, classURI: String): Int = {
     val userURI = getURI(user)
     val queryString = s"""
-        PREFIX rdfs: <${rdfs.prefixIri}>
+        ${declareSPARQL_PREFIX(rdfs)}
         SELECT DISTINCT (COUNT(?PROP) AS ?count) 
         WHERE {
          GRAPH <$userURI> {
-           <$dataURI> a ?CLASS .
+           <$classURI> a ?CLASS .
          }
          GRAPH ?ONTO {
            ?PROP rdfs:domain ?CLASS .
@@ -171,10 +173,9 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
   def averagePerFormTR(
     user: User,
     instanceURI: String): (Float, Int, String, Int) = {
-    val res = rdfStore.r( dataset, {
-      // wrapInReadTransaction(
+    val res = wrapInReadTransaction {
       averagePerForm(user, instanceURI)
-    })
+    }
     res . getOrElse( ( 0.0f, 0, s"Error: $res", 0 ) )
   }
 
@@ -320,7 +321,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
 }
 
 
-/** actually overall Interface for the view */
+/** Interface for report generation */
 trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   def filterQuestionnaires(user: User, groupUri: String): (Seq[DataMatch] /*Good*/ ,
       Seq[DataMatch] /*Good*/ )
@@ -336,9 +337,13 @@ trait ResponseAnalysisInterface extends ResponseAnalysisOnlyInterface {
   def getLastUpdate(userURI: String): Option[(String, String)]
 }
 
+/** Interface for form group view */
 trait ResponseAnalysisOnlyInterface extends FormsGroupsData {
   def responsesCount(user: User, dataURI: String): Int
   def fieldsCount(user: User, dataURI: String): Int
+  def questionsCount(): Int
+  def formsCount(): Int
+
   def getRiskEval(userEmail: String): Map[String, Float]
   def getCapitalEval(userEmail: String): Map[String, Float]
   def getEvaluation(userEmail: String, formGroupName: String): Map[String, Float]

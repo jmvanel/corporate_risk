@@ -18,6 +18,7 @@ import deductions.runtime.dataset.RDFStoreLocalProvider
 import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCacheAlgo
 import deductions.runtime.services.URIManagement
+import deductions.runtime.services.SPARQLHelpers
 
 /** an URI of user data, and a label, see function [[UserDataTrait#getUserData()]] */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String, formGroupUri: String)
@@ -27,7 +28,7 @@ object UserData extends RDFStoreLocalJena1Provider
 with UserDataTrait[Jena, Dataset]
 with ResponseAnalysisTrait[Jena, Dataset]
 
-/** access to user data in triple store */
+/** access to user data and data model (questionnaires as OWL ontology) in triple store */
 trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with RDFStoreLocalProvider[Rdf, DATASET]
     with RDFCacheAlgo[Rdf, DATASET]
@@ -35,7 +36,8 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     with InstanceLabelsInferenceMemory[Rdf, DATASET]
     with FormsGroupsData1[Rdf]
     with URIManagement
-    with UserDataPerCategories[Rdf, DATASET] {
+    with UserDataPerCategories[Rdf, DATASET]
+    with SPARQLHelpers[Rdf, DATASET] {
 
   import ops._
   import rdfStore.transactorSyntax._
@@ -207,18 +209,60 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   //  private
   def logInfo(s: String) = Logger.getRootLogger().info(s)
 
-  /** @argument formGroup URI like eg http://www.bizinnov.com/ontologies/quest.owl.ttl#capital-fg
+
+ 
+  /** a sequence of URI couples:
+   *  - an OWL class C,
+   *  - and a property whose domain is :User and range C
+   *
+   * Since each C is associated to a form, this defines the top-level structure of the user data input.
+   * See "Note on the data model" in README.md
+   *
+   * see #applicationClassesAndProperties() */
+  case class FormGroup(val classesAndProperties: Seq[(Rdf#URI, Rdf#URI)], label: String)
+
+  /** access to data model (questionnaires as OWL ontology) in triple store;
+   * 
+   *  @argument formGroup URI like eg http://www.bizinnov.com/ontologies/quest.owl.ttl#capital-fg
    * @return a FormGroup, that is a sequence of URI couples:
    *  - an OWL class C,
    *  - and a property whose domain is :User and range C
    *
    *  Since each C is associated to a form, this defines the top-level structure of the user data input.
    *  See "Note on the data model" in README.md
+   *  
+   * To get the list of form group URI's call:
+ *  `formGroupListRaw.values`
+ *  in trait FormsGroupsData1
+ *  
+ *  NON transactional
    */
   def applicationClassesAndProperties(formGroup: Rdf#URI): FormGroup = {
     logInfo(s"""applicationClassesAndProperties formGroupName Rdf#URI <$formGroup> """)
     logInfo(s"""applicationClassesAndProperties bizinnovQuestionsVocabPrefix $bizinnovQuestionsVocabPrefix """)
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
+  }
+
+  def questionsCount: Int = 0 // TODO <<<<<<<<<<<<<<
+
+  def formsCount(): Int = wrapInReadTransaction( applicationClassesAndPropertiesGlobal().classesAndProperties.size ).getOrElse(-1)
+
+  /** wrap In Read Transaction PASTED from SF :( */
+  def wrapInReadTransaction[T](sourceCode: => T) = {
+    val transaction = rdfStore.r(dataset, {
+      sourceCode
+    })
+    transaction
+  }
+
+  /** NON transactional */
+  def applicationClassesAndPropertiesGlobal(): FormGroup = {
+    val formGroupPairs = for (
+      uriString <- formGroupListRaw.values;
+      formGroupURI = URI(uriString);
+      formGroupPair <- applicationClassesAndProperties(formGroupURI).classesAndProperties
+    ) yield formGroupPair
+    FormGroup(formGroupPairs.toSeq, "All Classes And Properties")
   }
 
   /** like before, different argument type (eg "risk-fg")
@@ -251,9 +295,6 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
         fromUri(bizinnovQuestionsVocabPrefix(fg))
     )
   }
-
-  /** see #applicationClassesAndProperties() */
-  case class FormGroup(val classesAndProperties: Seq[(Rdf#URI, Rdf#URI)], label: String)
 
   /**
    * Detect RDF patterns like:

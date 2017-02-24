@@ -13,6 +13,8 @@ trait FormsGroupsData {
   def formGroupList(userOption: Option[User]): Map[String, Option[String]]
 }
 
+/** Get the list of form group URI's:
+ *  formGroupListRaw.values */
 trait FormsGroupsData1[Rdf <: RDF] extends FormsGroupsData with Prefixes[Rdf] {
 
   implicit val ops: RDFOps[Rdf]
