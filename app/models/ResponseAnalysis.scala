@@ -20,12 +20,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     with ResponseAnalysisOnlyInterface {
 
   import ops._
-
-  //  val xsd = XSDPrefix[Rdf]
-  private val rdfs = RDFSPrefix[Rdf]
-
-  val zero = ops.makeLiteral("0", xsd.integer)
-  import ops._
   import rdfStore.transactorSyntax._
   import rdfStore.graphStoreSyntax._
   import rdfStore.sparqlEngineSyntax._
@@ -85,7 +79,7 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
    * fonction qui compte le nombre de champs pour une propriété de User,
    *  c'est à dire un formulaire, alias une rubrique (alias thème);
    *
-   * En termes OWL, compte le nombre de propriétés dont le domaine est la classe donnée.
+   * En termes OWL, on compte le nombre de propriétés dont le domaine est la classe donnée.
    * transactional
    */
   def fieldsCount(user: User, classURI: String): Int = {
@@ -115,10 +109,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val lit = countTry.getOrElse(zero)
     Logger.getRootLogger().debug( "fieldsCount " + lit)
     lit2Int(lit)
-  }
-
-  def declareSPARQL_PREFIX(pr: Prefix[_]) = {
-    s"PREFIX ${pr.prefixName}: <${pr.prefixIri}>"
   }
 
   //////// Response Analysis proper ////////
@@ -246,9 +236,6 @@ trait ResponseAnalysisTrait[Rdf <: RDF, DATASET]
     val weightedAverage = if (coefSum != 0) weightedSum / coefSum else weightedSum
     (weightedAverage, coefSum, labelClass, responseCount)
   }
-
-  protected def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
-  protected def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
 
   /**
    * Statistics and average Per FormGroup;

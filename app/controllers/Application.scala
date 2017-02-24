@@ -48,6 +48,7 @@ import play.api.mvc.Result
 import play.api.mvc.ResponseHeader
 import scala.util.Success
 import scala.util.Failure
+import org.w3.banana.RDFSPrefix
 
 object Application extends ApplicationTrait
   with RDFUser[Jena, ImplementationSettings.DATASET]
@@ -85,6 +86,7 @@ trait ApplicationTrait
   }
 
   import ops._
+  override val rdfs = RDFSPrefix[Rdf] // super[UserDataTrait].rdfs
 
   /** TODO pasted from semantic_forms */
   override def serverPort = {

@@ -19,6 +19,7 @@ import deductions.runtime.jena.RDFStoreLocalJena1Provider
 import deductions.runtime.sparql_cache.RDFCacheAlgo
 import deductions.runtime.services.URIManagement
 import deductions.runtime.services.SPARQLHelpers
+import org.w3.banana.Prefix
 
 /** an URI of user data, and a label, see function [[UserDataTrait#getUserData()]] */
 case class FormUserData[Rdf <: RDF](data: Rdf#URI, label: String, formGroupUri: String)
@@ -44,6 +45,9 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
   import rdfStore.graphStoreSyntax._
   import rdfStore.sparqlEngineSyntax._
 
+  //  val xsd = XSDPrefix[Rdf]
+  val rdfs = RDFSPrefix[Rdf]
+  
   /**
    * create empty user managed Data for all 4 Form Groups : the triples:
    *  <pre>
@@ -243,9 +247,47 @@ trait UserDataTrait[Rdf <: RDF, DATASET] extends UserVocab[Rdf]
     applicationClassesAndProperties(questionsVocabURI2String(formGroup))
   }
 
-  def questionsCount: Int = 0 // TODO <<<<<<<<<<<<<<
-
   def formsCount(): Int = wrapInReadTransaction( applicationClassesAndPropertiesGlobal().classesAndProperties.size ).getOrElse(-1)
+
+    /**
+   * fonction qui compte le nombre de propriétés,
+   * c'est à dire le nombre total de question dans les formulaires
+   *
+   * En termes OWL, on compte le nombre de propriétés
+   * transactional
+   * TODO pasted from responsesCount() :(
+   */
+  def questionsCount: Int = {
+    val queryString = s"""
+        ${declareSPARQL_PREFIX(owl)}
+        SELECT DISTINCT (COUNT(?PROP) AS ?count) 
+        WHERE {
+         GRAPH ?ONTO {
+           ?PROP a owl:ObjectProperty .
+         }
+        } """
+    //    Logger.getRootLogger().debug( s"questionsCount: $queryString")
+    val countTry = rdfStore.r( dataset, {
+      import sparqlOps._
+      val query = parseSelect(queryString).get
+      val solutions = dataset.executeSelect(query, Map()).get
+      val res = solutions.iterator map { row =>
+        //        info(s""" fieldsCount iter ${row}""")
+        row("count").get.as[Rdf#Literal].get
+      }
+      res.next()
+    })
+    val lit = countTry.getOrElse(zero)
+    Logger.getRootLogger().debug( "fieldsCount " + lit)
+    lit2Int(lit)
+  }
+
+  def declareSPARQL_PREFIX(pr: Prefix[_]) = {
+    s"PREFIX ${pr.prefixName}: <${pr.prefixIri}>"
+  }
+  protected def lit2Int(lit: Rdf#Literal) = ops.fromLiteral(lit)._1.toInt
+  protected def lit2String(lit: Rdf#Literal) = ops.fromLiteral(lit)._1
+  val zero = ops.makeLiteral("0", xsd.integer)
 
   /** wrap In Read Transaction PASTED from SF :( */
   def wrapInReadTransaction[T](sourceCode: => T) = {
