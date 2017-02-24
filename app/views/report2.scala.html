@@ -25,7 +25,7 @@ Date: @{
  Bilan de la valorisation de l’entreprise
  </h2>
 <p>
- 	@if(reportData.globalEval(user) > 3) {
+ 	@if(reportData.globalEval(user)._1 > 3) {
      L'entreprise a une bonne évaluation:
      	@{ "%.2f".format(reportData.globalEval(user))} sur 5 .
   	} else {
